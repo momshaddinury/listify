@@ -4,10 +4,10 @@ enum KThemeMode {
 }
 
 class KTheme {
-  static var kThemeMode = KThemeMode.DARK;
+  static var kThemeMode = KThemeMode.LIGHT;
 
   static bool darkMode() {
-    if (kThemeMode == KThemeMode.LIGHT) {
+    if (kThemeMode == KThemeMode.DARK) {
       return true;
     } else {
       return false;
