@@ -5,30 +5,26 @@ import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_size.dart';
 
 class KTextStyle {
-  // TODO: Need better naming.
-  static TextStyle titleText1 = GoogleFonts.poppins(
+  static TextStyle headLine3 = GoogleFonts.poppins(
     fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 42),
     fontWeight: FontWeight.w500,
-    color: KColors.charcoal,
   );
-
-  static TextStyle buttonText({color = KColors.white}) => GoogleFonts.poppins(
-        fontSize:
-            KSize.getWidth(NavigationService.navigatorKey.currentContext, 27),
-        fontWeight: FontWeight.normal,
-        color: color,
+  static TextStyle buttonText({fontWeight = FontWeight.normal}) => GoogleFonts.poppins(
+        fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 27),
+        fontWeight: fontWeight,
       );
 
-  static TextStyle buttonText1({color = KColors.white}) => GoogleFonts.poppins(
-        fontSize:
-            KSize.getWidth(NavigationService.navigatorKey.currentContext, 22),
+  /// Normal Texts
+  static TextStyle bodyText1() => GoogleFonts.poppins(
+        fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 27),
         fontWeight: FontWeight.normal,
-        color: color,
       );
-  static TextStyle buttonText2({color = KColors.white}) => GoogleFonts.poppins(
-        fontSize:
-            KSize.getWidth(NavigationService.navigatorKey.currentContext, 24),
+  static TextStyle bodyText2() => GoogleFonts.poppins(
+        fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 24),
         fontWeight: FontWeight.w500,
-        color: color,
+      );
+  static TextStyle bodyText3() => GoogleFonts.poppins(
+        fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 22),
+        fontWeight: FontWeight.normal,
       );
 }

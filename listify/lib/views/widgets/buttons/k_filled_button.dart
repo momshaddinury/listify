@@ -19,7 +19,7 @@ class KFilledButton extends StatelessWidget {
         child: Center(
           child: Text(
             buttonText,
-            style: KTextStyle.buttonText(),
+            style: KTextStyle.buttonText().copyWith(color: KColors.white),
           ),
         ),
       ),

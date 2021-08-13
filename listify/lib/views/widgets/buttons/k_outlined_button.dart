@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listify/views/styles/k_theme.dart';
 import 'package:listify/views/styles/styles.dart';
 
 class KOutlinedButton extends StatelessWidget {
@@ -13,19 +14,16 @@ class KOutlinedButton extends StatelessWidget {
       child: Container(
         height: KSize.getHeight(context, 84),
         width: double.infinity,
-        decoration: BoxDecoration(border: Border.all(color: KColors.charcoal)),
+        decoration: BoxDecoration(border: Border.all(color: KTheme.darkMode() ? KColors.white : KColors.charcoal)),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                  height: KSize.getHeight(context, 34),
-                  width: KSize.getWidth(context, 34),
-                  child: Image.asset(assetIcon)),
+              Container(height: KSize.getHeight(context, 34), width: KSize.getWidth(context, 34), child: Image.asset(assetIcon)),
               SizedBox(width: KSize.getWidth(context, 22)),
               Text(
                 buttonText,
-                style: KTextStyle.buttonText(color: KColors.charcoal),
+                style: KTextStyle.buttonText(fontWeight: FontWeight.w500),
               ),
             ],
           ),

@@ -17,10 +17,14 @@ class LoginScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(height: KSize.getHeight(context, 369)),
-            Text(
-              "Start Using the ToDo List App Today!",
-              textAlign: TextAlign.center,
-              style: KTextStyle.titleText1,
+            Container(
+              height: KSize.getHeight(context, 126),
+              width: KSize.getWidth(context, 439),
+              child: Text(
+                "Start Using the ToDo List App Today!",
+                textAlign: TextAlign.center,
+                style: KTextStyle.headLine3,
+              ),
             ),
             SizedBox(height: KSize.getHeight(context, 61)),
             KFilledButton(
@@ -30,29 +34,29 @@ class LoginScreen extends StatelessWidget {
             Text(
               "Or",
               textAlign: TextAlign.center,
-              style: KTextStyle.buttonText(color: KColors.charcoal),
+              style: KTextStyle.bodyText1(),
             ),
             SizedBox(height: KSize.getHeight(context, 87)),
             KOutlinedButton(
-              buttonText: 'Sign up with Facebook',
-              assetIcon: KAssets.facebook,
+              buttonText: 'Sign up with Google',
+              assetIcon: KAssets.google,
             ),
             SizedBox(height: KSize.getHeight(context, 37)),
             KOutlinedButton(
-              buttonText: 'Sign up with Twitter',
-              assetIcon: KAssets.twitter,
+              buttonText: 'Sign up with Facebook',
+              assetIcon: KAssets.facebook,
             ),
             SizedBox(height: KSize.getHeight(context, 308)),
             Text(
               "Already have an account?",
               textAlign: TextAlign.center,
-              style: KTextStyle.buttonText(color: KColors.charcoal),
+              style: KTextStyle.bodyText3(),
             ),
             SizedBox(height: KSize.getHeight(context, 6)),
             Text(
               "Login",
               textAlign: TextAlign.center,
-              style: KTextStyle.buttonText2(color: KColors.charcoal),
+              style: KTextStyle.bodyText2(),
             ),
           ],
         ),
