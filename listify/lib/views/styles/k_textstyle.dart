@@ -8,6 +8,12 @@ class KTextStyle {
     fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 42),
     fontWeight: FontWeight.w500,
   );
+
+  static TextStyle headLine4 = GoogleFonts.poppins(
+    fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 32),
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle buttonText({fontWeight = FontWeight.normal}) => GoogleFonts.poppins(
         fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 27),
         fontWeight: fontWeight,

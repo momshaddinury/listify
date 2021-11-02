@@ -3,6 +3,10 @@ class KAssets {
   static const facebook = 'assets/icons/Facebook.png';
   static const twitter = 'assets/icons/Twitter.png';
 
+  /// App Bar
+  static const menu = 'assets/icons/Menu Bar.png';
+  static const notification = 'assets/icons/Notification.png';
+
   /// Textfield
   static const visibilityOff = 'assets/icons/Visibility Off.png';
   static const calendar = 'assets/icons/Calendar.png';

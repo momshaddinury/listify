@@ -5,6 +5,8 @@ import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 
+import '../home_screen.dart';
+
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key key}) : super(key: key);
 
@@ -52,7 +54,12 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: KSize.getHeight(context, 61)),
               KFilledButton(
                 buttonText: 'Login',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
               ),
               SizedBox(height: KSize.getHeight(context, 66)),
               Text(
