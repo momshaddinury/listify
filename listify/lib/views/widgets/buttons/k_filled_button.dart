@@ -3,13 +3,13 @@ import 'package:listify/views/styles/styles.dart';
 
 class KFilledButton extends StatelessWidget {
   final buttonText;
-
-  KFilledButton({@required this.buttonText});
+  final onPressed;
+  KFilledButton({@required this.buttonText, @required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onPressed,
       child: Container(
         height: KSize.getHeight(context, 84),
         width: double.infinity,

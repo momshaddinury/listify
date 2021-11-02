@@ -4,8 +4,10 @@ import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
 
+import 'sign_up_screen.dart';
+
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key? key}) : super(key: key);
+  const WelcomeScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class WelcomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(height: KSize.getHeight(context, 369)),
+            SizedBox(height: KSize.getHeight(context, 288)),
             Container(
               height: KSize.getHeight(context, 126),
               width: KSize.getWidth(context, 439),
@@ -30,6 +32,10 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(context, 61)),
             KFilledButton(
               buttonText: 'Create Account',
+              onPressed: () async => Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => SignupScreen()),
+              ),
             ),
             SizedBox(height: KSize.getHeight(context, 106)),
             Text(

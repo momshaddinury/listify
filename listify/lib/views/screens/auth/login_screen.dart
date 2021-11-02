@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:listify/views/screens/auth/sign_up_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
+import 'package:listify/views/widgets/textfields/k_textfield.dart';
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -49,6 +50,7 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(context, 61)),
             KFilledButton(
               buttonText: 'Login',
+              onPressed: () {},
             ),
             SizedBox(height: KSize.getHeight(context, 66)),
             Text(
@@ -58,12 +60,12 @@ class LoginScreen extends StatelessWidget {
             ),
             SizedBox(height: KSize.getHeight(context, 72)),
             KOutlinedButton(
-              buttonText: 'Sign up with Google',
+              buttonText: 'Login with Google',
               assetIcon: KAssets.google,
             ),
             SizedBox(height: KSize.getHeight(context, 37)),
             KOutlinedButton(
-              buttonText: 'Sign up with Facebook',
+              buttonText: 'Login with Facebook',
               assetIcon: KAssets.facebook,
             ),
             SizedBox(height: KSize.getHeight(context, 131)),
@@ -75,9 +77,9 @@ class LoginScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(context, 6)),
             InkWell(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => SignupScreen()),
                 );
               },
               child: Text(

@@ -26,4 +26,17 @@ class KTextStyle {
         fontSize: KSize.getWidth(NavigationService.navigatorKey.currentContext, 22),
         fontWeight: FontWeight.normal,
       );
+
+  /// Subtitles
+  static TextStyle subtitle1 = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    letterSpacing: 0.15,
+  );
+
+  static TextStyle subtitle2 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    letterSpacing: 0.1,
+  );
 }
