@@ -6,6 +6,7 @@ class KAssets {
   /// App Bar
   static const menu = 'assets/icons/Menu Bar.png';
   static const notification = 'assets/icons/Notification.png';
+  static const backButton = 'assets/icons/Back Button.png';
 
   /// Textfield
   static const visibilityOff = 'assets/icons/Visibility Off.png';

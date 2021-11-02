@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:listify/views/screens/create_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -48,24 +49,32 @@ class _HomeScreenState extends State<HomeScreen> {
               SizedBox(height: KSize.getHeight(context, 35)),
 
               /// Create Task / Project
-              Container(
-                  height: KSize.getHeight(context, 82),
-                  width: KSize.getWidth(context, 602),
-                  decoration: BoxDecoration(
-                    color: KColors.primary,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(width: KSize.getWidth(context, 31)),
-                      Icon(Icons.add, color: KColors.white),
-                      SizedBox(width: KSize.getWidth(context, 24)),
-                      Text(
-                        "Create New Task / Project",
-                        style: KTextStyle.bodyText2().copyWith(color: KColors.white),
-                      )
-                    ],
-                  )),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => CreateTaskScreen()),
+                  );
+                },
+                child: Container(
+                    height: KSize.getHeight(context, 82),
+                    width: KSize.getWidth(context, 602),
+                    decoration: BoxDecoration(
+                      color: KColors.primary,
+                      borderRadius: BorderRadius.circular(4),
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(width: KSize.getWidth(context, 31)),
+                        Icon(Icons.add, color: KColors.white),
+                        SizedBox(width: KSize.getWidth(context, 24)),
+                        Text(
+                          "Create New Task / Project",
+                          style: KTextStyle.bodyText2().copyWith(color: KColors.white),
+                        )
+                      ],
+                    )),
+              ),
               SizedBox(height: KSize.getHeight(context, 72)),
 
               Row(
@@ -135,7 +144,10 @@ class TaskCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text("Integrate Firebase, Google Sign In, Task Sync", style: KTextStyle.bodyText2()),
+                      Text(
+                        "Integrate Firebase, Google Sign In, Task Sync",
+                        style: KTextStyle.bodyText2(),
+                      ),
                       Text("7.56 PM",
                           style: KTextStyle.bodyText2().copyWith(
                             color: KColors.charcoal.withOpacity(0.40),
