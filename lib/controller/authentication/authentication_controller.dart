@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'authentication_state.dart';
+
 final firebaseProvider = Provider<FirebaseAuth>((ref) {
   return FirebaseAuth.instance;
 });
@@ -17,14 +19,19 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   final ProviderReference ref;
   FirebaseAuthController({this.ref}) : super(FirebaseAuthInitialState());
 
+  User user;
+
   Future signIn({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
 
       await ref.read(firebaseProvider).signInWithEmailAndPassword(email: email, password: password);
       ref.read(authStateChangesProvider).whenData(
-            (user) => user != null ? state = FirebaseAuthSuccessState() : state = FirebaseAuthErrorState(),
-          );
+        (user) {
+          if (user != null) this.user = user;
+          return user != null ? state = FirebaseAuthSuccessState() : state = FirebaseAuthErrorState();
+        },
+      );
     } on FirebaseAuthException catch (e) {
       print(e.toString());
       state = FirebaseAuthErrorState();
@@ -39,8 +46,11 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
 
       await ref.read(firebaseProvider).createUserWithEmailAndPassword(email: email, password: password);
       ref.read(authStateChangesProvider).whenData(
-            (user) => user != null ? state = FirebaseAuthSuccessState() : state = FirebaseAuthErrorState(),
-          );
+        (user) {
+          if (user != null) this.user = user;
+          return user != null ? state = FirebaseAuthSuccessState() : state = FirebaseAuthErrorState();
+        },
+      );
     } on FirebaseAuthException catch (e) {
       state = FirebaseAuthErrorState();
       return e.message;
@@ -53,24 +63,4 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     await ref.read(firebaseProvider).signOut();
     state = FirebaseAuthSuccessState();
   }
-}
-
-abstract class FirebaseAuthState {
-  const FirebaseAuthState();
-}
-
-class FirebaseAuthInitialState extends FirebaseAuthState {
-  const FirebaseAuthInitialState();
-}
-
-class FirebaseAuthLoadingState extends FirebaseAuthState {
-  const FirebaseAuthLoadingState();
-}
-
-class FirebaseAuthSuccessState extends FirebaseAuthState {
-  const FirebaseAuthSuccessState();
-}
-
-class FirebaseAuthErrorState extends FirebaseAuthState {
-  const FirebaseAuthErrorState();
 }

@@ -2,12 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:listify/services/authentication_service.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/welcome_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_theme.dart';
+
+import 'controller/authentication/authentication_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
