@@ -1,0 +1,91 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.listify"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="16"
+9        android:targetSdkVersion="30" />
+10    <!--
+11         Flutter needs it to communicate with the running application
+12         to allow setting breakpoints, to provide hot reload, etc.
+13    -->
+14    <uses-permission android:name="android.permission.INTERNET" />
+14-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/debug/AndroidManifest.xml:6:5-66
+14-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/debug/AndroidManifest.xml:6:22-64
+15
+16    <application
+16-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:3:4-40:19
+17        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+17-->[androidx.core:core:1.1.0] /Users/dinury/.gradle/caches/transforms-2/files-2.1/2e94107f30f39be366a17347c2bf100b/core-1.1.0/AndroidManifest.xml:24:18-86
+18        android:debuggable="true"
+19        android:icon="@mipmap/ic_launcher"
+19-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:5:9-43
+20        android:label="listify" >
+20-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:4:9-32
+21        <activity
+21-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:6:9-34:20
+22            android:name="com.example.listify.MainActivity"
+22-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:7:13-41
+23            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+23-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:10:13-163
+24            android:hardwareAccelerated="true"
+24-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:11:13-47
+25            android:launchMode="singleTop"
+25-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:8:13-43
+26            android:theme="@style/LaunchTheme"
+26-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:9:13-47
+27            android:windowSoftInputMode="adjustResize" >
+27-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:12:13-55
+28
+29            <!--
+30                 Specifies an Android theme to apply to this Activity as soon as
+31                 the Android process has started. This theme is visible to the user
+32                 while the Flutter UI initializes. After that, this theme continues
+33                 to determine the Window background behind the Flutter UI.
+34            -->
+35            <meta-data
+35-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:17:13-20:17
+36                android:name="io.flutter.embedding.android.NormalTheme"
+36-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:18:15-70
+37                android:resource="@style/NormalTheme" />
+37-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:19:15-52
+38            <!--
+39                 Displays an Android View that continues showing the launch screen
+40                 Drawable until Flutter paints its first frame, then this splash
+41                 screen fades out. A splash screen is useful to avoid any visual
+42                 gap between the end of Android's launch screen and the painting of
+43                 Flutter's first frame.
+44            -->
+45            <meta-data
+45-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:26:13-29:17
+46                android:name="io.flutter.embedding.android.SplashScreenDrawable"
+46-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:27:15-79
+47                android:resource="@drawable/launch_background" />
+47-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:28:15-61
+48
+49            <intent-filter>
+49-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:30:13-33:29
+50                <action android:name="android.intent.action.MAIN" />
+50-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:31:17-68
+50-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:31:25-66
+51
+52                <category android:name="android.intent.category.LAUNCHER" />
+52-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:32:17-76
+52-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:32:27-74
+53            </intent-filter>
+54        </activity>
+55        <!--
+56             Don't delete the meta-data below.
+57             This is used by the Flutter tool to generate GeneratedPluginRegistrant.java
+58        -->
+59        <meta-data
+59-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:37:9-39:33
+60            android:name="flutterEmbedding"
+60-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:38:13-44
+61            android:value="2" />
+61-->/Users/dinury/Documents/development/projects/zerothINDEX/listify/listify/android/app/src/main/AndroidManifest.xml:39:13-30
+62    </application>
+63
+64</manifest>
