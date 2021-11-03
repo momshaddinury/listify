@@ -4,7 +4,12 @@ import 'package:listify/views/styles/styles.dart';
 class KFilledButton extends StatelessWidget {
   final buttonText;
   final onPressed;
-  KFilledButton({@required this.buttonText, @required this.onPressed});
+  final Color buttonColor;
+  KFilledButton({
+    @required this.buttonText,
+    @required this.onPressed,
+    this.buttonColor = KColors.primary,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class KFilledButton extends StatelessWidget {
         height: KSize.getHeight(context, 84),
         width: double.infinity,
         decoration: BoxDecoration(
-          color: KColors.primary,
+          color: buttonColor,
         ),
         child: Center(
           child: Text(

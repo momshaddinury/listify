@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:listify/services/authentication_service.dart';
 import 'package:listify/views/screens/create_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 
@@ -29,10 +31,15 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: KSize.getWidth(context, 32),
               ),
               Text("My Day", style: KTextStyle.headLine4),
-              Image.asset(
-                KAssets.notification,
-                height: KSize.getHeight(context, 32),
-                width: KSize.getWidth(context, 32),
+              GestureDetector(
+                onTap: () {
+                  context.read(firebaseAuthProvider).signOut();
+                },
+                child: Image.asset(
+                  KAssets.notification,
+                  height: KSize.getHeight(context, 32),
+                  width: KSize.getWidth(context, 32),
+                ),
               ),
             ],
           ),

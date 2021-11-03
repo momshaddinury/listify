@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:listify/services/authentication_service.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/welcome_screen.dart';
+import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_theme.dart';
 
@@ -37,7 +39,28 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             )),
       ),
-      home: WelcomeScreen(),
+      home: AuthenticationWrapper(),
     );
+  }
+}
+
+class AuthenticationWrapper extends ConsumerWidget {
+  @override
+  Widget build(BuildContext context, watch) {
+    final asyncUser = watch(authStateChangesProvider);
+    return asyncUser.when(
+      data: (user) => user != null ? HomeScreen() : WelcomeScreen(),
+      loading: () => WelcomeScreen(),
+      error: (e, stackTrace) => ErrorWidget(),
+    );
+  }
+}
+
+class ErrorWidget extends StatelessWidget {
+  const ErrorWidget({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }

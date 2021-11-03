@@ -5,12 +5,14 @@ import 'package:listify/views/styles/styles.dart';
 class KTextField extends StatelessWidget {
   KTextField({
     this.hintText,
+    this.controller,
     this.isPasswordField = false,
     this.isCalanderField = false,
     this.isDropdownField = false,
   });
 
   final String hintText;
+  final TextEditingController controller;
   final bool isPasswordField;
   final bool isCalanderField;
   final bool isDropdownField;
@@ -29,6 +31,7 @@ class KTextField extends StatelessWidget {
           children: [
             Flexible(
               child: TextFormField(
+                controller: controller,
                 decoration: InputDecoration(
                   hintText: hintText,
                   hintStyle: KTextStyle.bodyText1(),

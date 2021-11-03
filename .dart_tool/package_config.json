@@ -141,7 +141,7 @@
     },
     {
       "name": "flutter_riverpod",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-0.14.0+3",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-0.13.1+1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -273,7 +273,7 @@
     },
     {
       "name": "riverpod",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/riverpod-0.14.0+3",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/riverpod-0.13.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -368,7 +368,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-11-03T06:18:17.966263Z",
+  "generated": "2021-11-03T07:38:09.487940Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }
