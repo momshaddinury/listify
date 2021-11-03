@@ -146,7 +146,6 @@ class TaskCard extends StatelessWidget {
         ),
         onDismissed: (direction) async {
           await context.read(tasksProvider).removeTodo(task.uid);
-          //
         },
         child: Container(
           width: KSize.getWidth(context, 602),
