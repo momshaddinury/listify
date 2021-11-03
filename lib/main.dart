@@ -7,11 +7,13 @@ import 'package:listify/views/screens/auth/welcome_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_theme.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 import 'controller/authentication/authentication_controller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initialize();
   await Firebase.initializeApp();
   runApp(ProviderScope(child: MyApp()));
 }

@@ -1,0 +1,11 @@
+framework module nb_utils {
+  umbrella header "nb_utils-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module nb_utils.Swift {
+    header "nb_utils-Swift.h"
+    requires objc
+}

@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:listify/constant/shared_preference_key.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 import 'authentication_state.dart';
 
@@ -26,12 +28,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
       state = FirebaseAuthLoadingState();
 
       await ref.read(firebaseProvider).signInWithEmailAndPassword(email: email, password: password);
-      ref.read(authStateChangesProvider).whenData(
-        (user) {
-          if (user != null) this.user = user;
-          return user != null ? state = FirebaseAuthSuccessState() : state = FirebaseAuthErrorState();
-        },
-      );
+      authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       print(e.toString());
       state = FirebaseAuthErrorState();
@@ -43,23 +40,34 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   Future signUp({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
-
       await ref.read(firebaseProvider).createUserWithEmailAndPassword(email: email, password: password);
-      ref.read(authStateChangesProvider).whenData(
-        (user) {
-          if (user != null) this.user = user;
-          return user != null ? state = FirebaseAuthSuccessState() : state = FirebaseAuthErrorState();
-        },
-      );
+      authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       state = FirebaseAuthErrorState();
       return e.message;
     }
   }
 
+  authStateChangeStatus() {
+    ref.read(authStateChangesProvider).whenData(
+      (user) {
+        if (user != null) {
+          this.user = user;
+          setValue(USER_UID, this.user.uid);
+          try {} catch (e, stackTrace) {
+            print(e);
+            print(stackTrace);
+          }
+          return state = FirebaseAuthSuccessState();
+        } else {
+          return state = FirebaseAuthErrorState();
+        }
+      },
+    );
+  }
+
   Future signOut() async {
     state = FirebaseAuthLoadingState();
-
     await ref.read(firebaseProvider).signOut();
     state = FirebaseAuthSuccessState();
   }

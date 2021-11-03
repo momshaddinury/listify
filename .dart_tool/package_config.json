@@ -2,6 +2,12 @@
   "configVersion": 2,
   "packages": [
     {
+      "name": "args",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/async-2.8.1",
       "packageUri": "lib/",
@@ -62,6 +68,42 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "connectivity_plus",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_linux",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_linux-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_macos",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_macos-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_platform_interface",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_platform_interface-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_web",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_web-1.1.0+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "connectivity_plus_windows",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/connectivity_plus_windows-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "crypto",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1",
       "packageUri": "lib/",
@@ -70,6 +112,12 @@
     {
       "name": "cupertino_icons",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "dbus",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/dbus-0.5.6",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -176,6 +224,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "fluttertoast",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "freezed_annotation",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.14.3",
       "packageUri": "lib/",
@@ -230,6 +284,18 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "nb_utils",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/nb_utils-4.4.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "nm",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/nm-0.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.0",
       "packageUri": "lib/",
@@ -272,6 +338,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "petitparser",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/petitparser-4.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "platform",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/platform-3.0.0",
       "packageUri": "lib/",
@@ -292,6 +364,42 @@
     {
       "name": "riverpod",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/riverpod-0.13.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shared_preferences",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "shared_preferences_linux",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_linux-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shared_preferences_macos",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_macos-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shared_preferences_platform_interface",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_platform_interface-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shared_preferences_web",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_web-2.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "shared_preferences_windows",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences_windows-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -380,13 +488,19 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "xml",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/xml-5.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "listify",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-11-03T11:13:41.738164Z",
+  "generated": "2021-11-03T12:59:15.353246Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }

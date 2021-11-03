@@ -8,6 +8,7 @@ class KColors {
   static const black = Colors.black;
   static const charcoal = Color(0xFF264654);
   static const spaceCadet = Color(0xFF2C3549);
+  static final lightRed = Colors.red[100];
 
   static MaterialColor createMaterialColor(Color color) {
     List strengths = <double>[.05];

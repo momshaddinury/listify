@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:listify/controller/tasks/tasks_controller.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CreateTaskScreen extends StatelessWidget {
+  final TextEditingController taskTitleController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +49,7 @@ class CreateTaskScreen extends StatelessWidget {
                 SizedBox(height: KSize.getHeight(context, 40)),
                 KTextField(
                   hintText: "Task Name",
+                  controller: taskTitleController,
                 ),
                 SizedBox(height: KSize.getHeight(context, 22)),
                 KTextField(
@@ -54,7 +58,8 @@ class CreateTaskScreen extends StatelessWidget {
                 SizedBox(height: KSize.getHeight(context, 90)),
                 KFilledButton(
                     buttonText: "Add Task",
-                    onPressed: () {
+                    onPressed: () async {
+                      await context.read(tasksProvider).createNewTask(taskTitleController.text);
                       Navigator.pop(context);
                     })
               ],
