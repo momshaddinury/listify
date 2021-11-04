@@ -53,8 +53,9 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
       (user) {
         if (user != null) {
           this.user = user;
-          setValue(USER_UID, this.user.uid);
-          try {} catch (e, stackTrace) {
+          try {
+            setValue(USER_UID, this.user.uid);
+          } catch (e, stackTrace) {
             print(e);
             print(stackTrace);
           }
