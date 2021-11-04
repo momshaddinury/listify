@@ -6,7 +6,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TaskCard extends StatelessWidget {
   final Todo task;
-  TaskCard(this.task);
+  final Color backgroundColor;
+  final bool borderOutline;
+  TaskCard(this.task, {this.backgroundColor = KColors.white, this.borderOutline = true});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,7 +31,8 @@ class TaskCard extends StatelessWidget {
           // margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
           padding: EdgeInsets.symmetric(vertical: KSize.getHeight(context, 15)),
           decoration: BoxDecoration(
-            border: Border.all(color: KColors.charcoal),
+            color: backgroundColor,
+            border: borderOutline ? Border.all(color: KColors.charcoal) : null,
             borderRadius: BorderRadius.circular(4),
           ),
           child: Row(

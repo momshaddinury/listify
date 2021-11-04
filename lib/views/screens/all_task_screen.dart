@@ -27,8 +27,8 @@ class AllTasksScreen extends StatelessWidget {
                   onTap: () => Navigator.pop(context),
                   child: Image.asset(
                     KAssets.backButton,
-                    height: KSize.getHeight(context, 62.23),
-                    width: KSize.getWidth(context, 62.23),
+                    height: KSize.getHeight(context, 32),
+                    width: KSize.getWidth(context, 32),
                   ),
                 ),
                 Text("All Tasks", style: KTextStyle.headLine4),
@@ -55,7 +55,11 @@ class AllTasksScreen extends StatelessWidget {
                             physics: BouncingScrollPhysics(),
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, index) {
-                              return TaskCard(snapshot.data[index]);
+                              return TaskCard(
+                                snapshot.data[index],
+                                backgroundColor: KColors.accent,
+                                borderOutline: false,
+                              );
                             });
                       }),
                 ),

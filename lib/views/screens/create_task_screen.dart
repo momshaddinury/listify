@@ -26,8 +26,8 @@ class CreateTaskScreen extends StatelessWidget {
                   },
                   child: Image.asset(
                     KAssets.backButton,
-                    height: KSize.getHeight(context, 62.23),
-                    width: KSize.getWidth(context, 62.23),
+                    height: KSize.getHeight(context, 32),
+                    width: KSize.getWidth(context, 32),
                   ),
                 ),
                 Text("New Task", style: KTextStyle.headLine4),
