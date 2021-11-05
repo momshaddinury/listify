@@ -17,13 +17,14 @@ class TasksController extends StateNotifier<TasksState> {
 
   CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
 
-  Future createNewTask(String title, dateTime) async {
+  Future createNewTask(String title, dateTime, priority) async {
     state = TasksLoadingState();
     try {
       DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
         "title": title,
         "dateTime": dateTime != "" ? dateTime : DateFormat('MMM dd, yyyy hh:mm:aa').format(DateTime.now()),
+        "priority": priority == "" ? "Low" : priority,
         "isCompleted": false,
       });
     } catch (error, stackTrace) {
@@ -61,6 +62,7 @@ class TasksController extends StateNotifier<TasksState> {
               isCompleted: e["isCompleted"],
               title: e["title"],
               dateTime: e["dateTime"],
+              priority: e["priority"],
               uid: e.id,
             );
           })

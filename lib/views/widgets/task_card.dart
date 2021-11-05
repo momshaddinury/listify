@@ -48,6 +48,11 @@ class TaskCard extends StatelessWidget {
                       ),
                       child: Icon(
                         Icons.brightness_1_sharp,
+                        color: task.priority == "Low"
+                            ? Colors.green
+                            : task.priority == "Medium"
+                                ? Colors.orange
+                                : Colors.red,
                         size: KSize.getWidth(context, 16),
                       ),
                     ),
