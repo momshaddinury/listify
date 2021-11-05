@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
-import 'package:listify/views/global_widgets/create_task_button.dart';
-import 'package:listify/views/global_widgets/task_card.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/create_task_button.dart';
+import 'package:listify/views/widgets/task_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   context.read(firebaseAuthProvider).signOut();
                 },
                 child: Image.asset(
-                  KAssets.notification,
+                  KAssets.logout,
                   height: KSize.getHeight(context, 32),
                   width: KSize.getWidth(context, 32),
                 ),
@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Today",
+                    "Tasks",
                     style: KTextStyle.bodyText2().copyWith(
                       color: KColors.charcoal.withOpacity(.71),
                     ),

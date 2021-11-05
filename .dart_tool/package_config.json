@@ -206,6 +206,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_datetime_picker",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_riverpod",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-0.13.1+1",
       "packageUri": "lib/",
@@ -500,7 +506,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-11-04T16:59:16.102057Z",
+  "generated": "2021-11-05T15:14:32.976533Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }

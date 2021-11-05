@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/model/todo.dart';
 import 'package:nb_utils/nb_utils.dart';
+import 'package:intl/intl.dart';
 
 import 'tasks_state.dart';
 
@@ -16,12 +17,13 @@ class TasksController extends StateNotifier<TasksState> {
 
   CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
 
-  Future createNewTask(String title) async {
+  Future createNewTask(String title, dateTime) async {
     state = TasksLoadingState();
     try {
       DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
         "title": title,
+        "dateTime": dateTime != "" ? dateTime : DateFormat('MMM dd, yyyy hh:mm:aa').format(DateTime.now()),
         "isCompleted": false,
       });
     } catch (error, stackTrace) {
@@ -53,13 +55,18 @@ class TasksController extends StateNotifier<TasksState> {
 
   List<Todo> todoFromFirestore(QuerySnapshot snapshot) {
     if (snapshot != null) {
-      return snapshot.docs.map((e) {
-        return Todo(
-          isCompleted: e["isCompleted"],
-          title: e["title"],
-          uid: e.id,
-        );
-      }).toList();
+      return snapshot.docs
+          .map((e) {
+            return Todo(
+              isCompleted: e["isCompleted"],
+              title: e["title"],
+              dateTime: e["dateTime"],
+              uid: e.id,
+            );
+          })
+          .toList()
+          .reversed
+          .toList();
     } else {
       return null;
     }

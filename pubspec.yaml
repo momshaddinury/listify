@@ -28,6 +28,7 @@ dependencies:
   table_calendar: ^3.0.3
   change_app_package_name: ^1.0.0
   nb_utils: ^4.3.0+4
+  flutter_datetime_picker: ^1.5.1
   flutter_riverpod: ^0.13.0
   firebase_core: ^1.8.0
   firebase_auth: ^3.1.4

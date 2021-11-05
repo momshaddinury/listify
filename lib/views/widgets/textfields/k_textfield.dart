@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:listify/views/styles/k_theme.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:intl/intl.dart';
 
 class KTextField extends StatelessWidget {
   KTextField({
@@ -31,6 +33,21 @@ class KTextField extends StatelessWidget {
           children: [
             Flexible(
               child: TextFormField(
+                onTap: () {
+                  if (isCalanderField) {
+                    DatePicker.showDateTimePicker(
+                      context,
+                      showTitleActions: true,
+                      minTime: DateTime(1900),
+                      maxTime: DateTime(2100),
+                      onConfirm: (date) {
+                        controller.text = DateFormat('MMM dd, yyyy hh:mm:aa').format(date);
+                      },
+                      currentTime: DateTime.now(),
+                      locale: LocaleType.en,
+                    );
+                  }
+                },
                 controller: controller,
                 decoration: InputDecoration(
                   hintText: hintText,

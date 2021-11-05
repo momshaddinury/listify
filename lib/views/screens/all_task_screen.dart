@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
-import 'package:listify/views/global_widgets/create_task_button.dart';
-import 'package:listify/views/global_widgets/task_card.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'create_task_screen.dart';
+import 'package:listify/views/widgets/create_task_button.dart';
+import 'package:listify/views/widgets/task_card.dart';
 
 class AllTasksScreen extends StatelessWidget {
   const AllTasksScreen({Key key}) : super(key: key);
@@ -51,7 +49,6 @@ class AllTasksScreen extends StatelessWidget {
                           return Container();
                         }
                         return ListView.builder(
-                            // shrinkWrap: true,
                             physics: BouncingScrollPhysics(),
                             itemCount: snapshot.data.length,
                             itemBuilder: (context, index) {

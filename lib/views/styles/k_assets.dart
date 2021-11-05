@@ -13,4 +13,6 @@ class KAssets {
   static const calendar = 'assets/icons/Calendar.png';
   static const dropdown = 'assets/icons/Dropdown.png';
   static const syncCheck = 'assets/icons/Sync Check.png';
+
+  static const logout = 'assets/icons/Logout.png';
 }

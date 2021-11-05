@@ -7,6 +7,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class CreateTaskScreen extends StatelessWidget {
   final TextEditingController taskTitleController = TextEditingController();
+  final TextEditingController dateTimeController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,13 +54,15 @@ class CreateTaskScreen extends StatelessWidget {
                 ),
                 SizedBox(height: KSize.getHeight(context, 22)),
                 KTextField(
-                  hintText: "Time",
+                  hintText: "Date Time",
+                  controller: dateTimeController,
+                  isCalanderField: true,
                 ),
                 SizedBox(height: KSize.getHeight(context, 90)),
                 KFilledButton(
                     buttonText: "Add Task",
                     onPressed: () async {
-                      await context.read(tasksProvider).createNewTask(taskTitleController.text);
+                      await context.read(tasksProvider).createNewTask(taskTitleController.text, dateTimeController.text);
                       Navigator.pop(context);
                     })
               ],
