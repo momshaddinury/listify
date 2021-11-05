@@ -40,11 +40,7 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                   ),
                 ),
                 Text("New Task", style: KTextStyle.headLine4),
-                Image.asset(
-                  KAssets.notification,
-                  height: KSize.getHeight(context, 32),
-                  width: KSize.getWidth(context, 32),
-                ),
+                Container(),
               ],
             ),
           ),
