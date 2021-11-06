@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Tasks",
+                    "Pending",
                     style: KTextStyle.bodyText2().copyWith(
                       color: KColors.charcoal.withOpacity(.71),
                     ),
@@ -85,9 +85,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               SizedBox(height: KSize.getHeight(context, 10)),
 
-              /// Tasks
+              /// Pending Tasks
               StreamBuilder(
-                  stream: context.read(tasksProvider).fetchTasks(),
+                  stream: context.read(tasksProvider).fetchPendingTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container();
@@ -99,6 +99,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           return TaskCard(snapshot.data[index]);
                         });
+                  }),
+
+              /// Completed Tasks
+              StreamBuilder(
+                  stream: context.read(tasksProvider).fetchCompletedTasks(),
+                  builder: (context, snapshot) {
+                    if (snapshot.data == null) {
+                      return Container();
+                    }
+                    return Visibility(
+                      visible: snapshot.data.length > 0,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Done",
+                                style: KTextStyle.bodyText2().copyWith(
+                                  color: KColors.charcoal.withOpacity(.71),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: KSize.getHeight(context, 10)),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                return TaskCard(snapshot.data[index]);
+                              }),
+                        ],
+                      ),
+                    );
                   }),
             ],
           ),

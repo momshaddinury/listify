@@ -50,7 +50,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                     width: KSize.getWidth(context, 32),
                   ),
                 ),
-                Text("New Task", style: KTextStyle.headLine4),
+                Text("Update Task", style: KTextStyle.headLine4),
                 Container(),
               ],
             ),

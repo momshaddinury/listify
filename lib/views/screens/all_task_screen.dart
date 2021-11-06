@@ -43,7 +43,7 @@ class AllTasksScreen extends StatelessWidget {
                 SizedBox(height: KSize.getHeight(context, 20)),
                 Expanded(
                   child: StreamBuilder(
-                      stream: context.read(tasksProvider).fetchTasks(),
+                      stream: context.read(tasksProvider).fetchPendingTasks(),
                       builder: (context, snapshot) {
                         if (snapshot.data == null) {
                           return Container();

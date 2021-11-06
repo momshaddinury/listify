@@ -53,9 +53,16 @@ class TasksController extends StateNotifier<TasksState> {
     await userTasksCollection.doc(uid).update({"isCompleted": false});
   }
 
-  Stream<List<Todo>> fetchTasks() {
+  Stream<List<Todo>> fetchPendingTasks() {
     CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
-    return userTasksCollection.snapshots().map(todoFromFirestore);
+    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: false);
+    return userTasksQuery.snapshots().map(todoFromFirestore);
+  }
+
+  Stream<List<Todo>> fetchCompletedTasks() {
+    CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: true);
+    return userTasksQuery.snapshots().map(todoFromFirestore);
   }
 
   Future removeTodo(uid) async {
