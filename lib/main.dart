@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/welcome_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
+import 'package:listify/views/screens/splash_screen.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_theme.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -41,7 +42,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.w500,
             )),
       ),
-      home: AuthenticationWrapper(),
+      home: SplashScreen(),
     );
   }
 }

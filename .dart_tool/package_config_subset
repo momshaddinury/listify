@@ -2,6 +2,10 @@ listify
 2.7
 file:///Users/dinury/Documents/development/projects/zerothINDEX/listify/
 file:///Users/dinury/Documents/development/projects/zerothINDEX/listify/lib/
+flutter_datetime_picker
+2.12
+file:///Users/dinury/src/flutter/.pub-cache/git/flutter_datetime_picker-eb66486c47d50bf550950c196486121ffcea8885/
+file:///Users/dinury/src/flutter/.pub-cache/git/flutter_datetime_picker-eb66486c47d50bf550950c196486121ffcea8885/lib/
 args
 2.12
 file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/args-2.3.0/
@@ -130,10 +134,6 @@ firebase_messaging_web
 2.12
 file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.0.7/
 file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_messaging_web-2.0.7/lib/
-flutter_datetime_picker
-2.12
-file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1/
-file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_datetime_picker-1.5.1/lib/
 flutter_riverpod
 2.12
 file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-0.13.1+1/

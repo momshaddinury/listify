@@ -67,7 +67,6 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
                   hintText: "Priority",
                   controller: priorityController,
                   dropdownFieldOptions: ['Low', 'Medium', 'High'],
-                  isObject: false,
                 ),
                 SizedBox(height: KSize.getHeight(context, 90)),
                 KFilledButton(

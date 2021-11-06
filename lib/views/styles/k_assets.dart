@@ -1,4 +1,8 @@
 class KAssets {
+  /// App Logo
+  static const appLogo = 'assets/App Logo.png';
+
+  /// Social App
   static const google = 'assets/icons/Google.png';
   static const facebook = 'assets/icons/Facebook.png';
   static const twitter = 'assets/icons/Twitter.png';

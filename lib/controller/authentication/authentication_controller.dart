@@ -13,6 +13,9 @@ final authStateChangesProvider = StreamProvider<User>(
   (ref) => ref.watch(firebaseProvider).authStateChanges(),
 );
 
+final getCurrentUserProvider = Provider<User>(
+  (ref) => ref.watch(firebaseProvider).currentUser,
+);
 final firebaseAuthProvider = StateNotifierProvider(
   (ref) => FirebaseAuthController(ref: ref),
 );
