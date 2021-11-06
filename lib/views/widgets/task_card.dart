@@ -28,7 +28,7 @@ class TaskCard extends StatelessWidget {
             color: KColors.lightRed,
           ),
           onDismissed: (direction) async {
-            await context.read(tasksProvider).removeTodo(task.uid);
+             context.read(tasksProvider).removeTodo(task.uid);
           },
           child: Container(
             width: KSize.getWidth(context, 602),
