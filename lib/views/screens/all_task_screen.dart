@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -17,7 +19,8 @@ class AllTasksScreen extends StatelessWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+            padding:
+                EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -37,7 +40,8 @@ class AllTasksScreen extends StatelessWidget {
         ),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+            padding:
+                EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
             child: Column(
               children: [
                 SizedBox(height: KSize.getHeight(context, 20)),
@@ -60,9 +64,16 @@ class AllTasksScreen extends StatelessWidget {
                             });
                       }),
                 ),
+                SizedBox(height: KSize.getHeight(context, 20)),
 
                 /// Create Task / Project
-                CreateTaskButton(),
+                Padding(
+                  padding: EdgeInsets.only(
+                      bottom: Platform.isAndroid
+                          ? KSize.getHeight(context, 50)
+                          : 0),
+                  child: CreateTaskButton(),
+                ),
               ],
             ),
           ),
