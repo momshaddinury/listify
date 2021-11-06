@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
+import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
@@ -25,13 +26,16 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding:
+              EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
                 onTap: () {
-                  snackBar(context, title: "Feature is not available yet", backgroundColor: KColors.charcoal);
+                  snackBar(context,
+                      title: "Feature is not available yet",
+                      backgroundColor: KColors.charcoal);
                 },
                 child: Image.asset(
                   KAssets.menu,
@@ -43,6 +47,10 @@ class _HomeScreenState extends State<HomeScreen> {
               GestureDetector(
                 onTap: () {
                   context.read(firebaseAuthProvider).signOut();
+                  Navigator.pushAndRemoveUntil(
+                      context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()),
+                      (route) => false);
                 },
                 child: Image.asset(
                   KAssets.logout,
@@ -57,7 +65,8 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding:
+              EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -91,7 +100,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 visible: snapshot.data.length > 5,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AllTasksScreen()));
                                   },
                                   child: Text(
                                     "View All",

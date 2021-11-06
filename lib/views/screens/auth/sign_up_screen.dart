@@ -7,6 +7,7 @@ import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key key}) : super(key: key);
@@ -116,10 +117,10 @@ class _SignupScreenState extends State<SignupScreen> {
                                 password: passwordController.text,
                               );
                         } else {
-                          print("Password mistmatch");
+                          snackBar(context, title: "Password doesn't match", backgroundColor: KColors.charcoal);
                         }
                       } else {
-                        print("State");
+                        snackBar(context, title: "Please wait", backgroundColor: KColors.charcoal);
                       }
                     },
                   );
