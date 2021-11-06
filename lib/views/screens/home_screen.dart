@@ -68,42 +68,45 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (snapshot.data == null) {
                       return Container();
                     }
-                    return Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "Pending",
-                              style: KTextStyle.bodyText2().copyWith(
-                                color: KColors.charcoal.withOpacity(.71),
+                    return Visibility(
+                      visible: snapshot.data.length > 0,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Pending",
+                                style: KTextStyle.bodyText2().copyWith(
+                                  color: KColors.charcoal.withOpacity(.71),
+                                ),
                               ),
-                            ),
-                            Visibility(
-                              visible: snapshot.data.length > 5,
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
-                                },
-                                child: Text(
-                                  "View All",
-                                  style: KTextStyle.bodyText2().copyWith(
-                                    color: KColors.charcoal.withOpacity(.71),
+                              Visibility(
+                                visible: snapshot.data.length > 5,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
+                                  },
+                                  child: Text(
+                                    "View All",
+                                    style: KTextStyle.bodyText2().copyWith(
+                                      color: KColors.charcoal.withOpacity(.71),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: KSize.getHeight(context, 10)),
-                        ListView.builder(
-                            shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
-                            itemCount: snapshot.data.length,
-                            itemBuilder: (context, index) {
-                              return TaskCard(snapshot.data[index]);
-                            }),
-                      ],
+                            ],
+                          ),
+                          SizedBox(height: KSize.getHeight(context, 10)),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: snapshot.data.length,
+                              itemBuilder: (context, index) {
+                                return TaskCard(snapshot.data[index]);
+                              }),
+                        ],
+                      ),
                     );
                   }),
 

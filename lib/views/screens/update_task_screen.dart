@@ -81,7 +81,7 @@ class _UpdateTaskScreenState extends State<UpdateTaskScreen> {
                 ),
                 SizedBox(height: KSize.getHeight(context, 90)),
                 KFilledButton(
-                    buttonText: "Add Task",
+                    buttonText: "Update Task",
                     onPressed: () async {
                       await context.read(tasksProvider).updateTask(
                             widget.todo.uid,
