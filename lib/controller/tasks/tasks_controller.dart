@@ -34,6 +34,15 @@ class TasksController extends StateNotifier<TasksState> {
     }
   }
 
+  updateTask(uid, title, dateTime, priority) async {
+    CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+    await userTasksCollection.doc(uid).update({
+      "title": title,
+      "dateTime": dateTime,
+      "priority": priority,
+    });
+  }
+
   Future completeTask(uid) async {
     CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
     await userTasksCollection.doc(uid).update({"isCompleted": true});
