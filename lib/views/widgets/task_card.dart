@@ -74,15 +74,15 @@ class TaskCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: EdgeInsets.only(right: KSize.getWidth(context, 36)),
-                child: GestureDetector(
-                  onTap: () async {
-                    if (!task.isCompleted)
-                      await context.read(tasksProvider).completeTask(task.uid);
-                    else
-                      await context.read(tasksProvider).undoCompleteTask(task.uid);
-                  },
+              InkWell(
+                onTap: () async {
+                  if (!task.isCompleted)
+                    await context.read(tasksProvider).completeTask(task.uid);
+                  else
+                    await context.read(tasksProvider).undoCompleteTask(task.uid);
+                },
+                child: Container(
+                  margin: EdgeInsets.all(KSize.getWidth(context, 36)),
                   child: Icon(
                     task.isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
                     color: KColors.primary,

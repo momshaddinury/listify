@@ -56,19 +56,15 @@ class TasksController extends StateNotifier<TasksState> {
 
   List<Todo> todoFromFirestore(QuerySnapshot snapshot) {
     if (snapshot != null) {
-      return snapshot.docs
-          .map((e) {
-            return Todo(
-              isCompleted: e["isCompleted"],
-              title: e["title"],
-              dateTime: e["dateTime"],
-              priority: e["priority"],
-              uid: e.id,
-            );
-          })
-          .toList()
-          .reversed
-          .toList();
+      return snapshot.docs.map((e) {
+        return Todo(
+          isCompleted: e["isCompleted"],
+          title: e["title"],
+          dateTime: e["dateTime"],
+          priority: e["priority"],
+          uid: e.id,
+        );
+      }).toList();
     } else {
       return null;
     }
