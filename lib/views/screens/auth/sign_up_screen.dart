@@ -46,10 +46,9 @@ class _SignupScreenState extends State<SignupScreen> {
               children: [
                 SizedBox(height: KSize.getHeight(context, 288)),
                 Container(
-                  height: KSize.getHeight(context, 126),
                   width: KSize.getWidth(context, 439),
                   child: Text(
-                    "Start Using the ToDo List App Today!",
+                    "Not your everyday Todo app!",
                     textAlign: TextAlign.center,
                     style: KTextStyle.headLine3,
                   ),

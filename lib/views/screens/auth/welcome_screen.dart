@@ -21,10 +21,9 @@ class WelcomeScreen extends StatelessWidget {
           children: [
             SizedBox(height: KSize.getHeight(context, 288)),
             Container(
-              height: KSize.getHeight(context, 126),
               width: KSize.getWidth(context, 439),
               child: Text(
-                "Start Using the ToDo List App Today!",
+                "Start Using Listify App Today!",
                 textAlign: TextAlign.center,
                 style: KTextStyle.headLine3,
               ),

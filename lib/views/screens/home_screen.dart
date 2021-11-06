@@ -6,6 +6,7 @@ import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
@@ -28,10 +29,15 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset(
-                KAssets.menu,
-                height: KSize.getHeight(context, 32),
-                width: KSize.getWidth(context, 32),
+              GestureDetector(
+                onTap: () {
+                  snackBar(context, title: "Feature is not available yet", backgroundColor: KColors.charcoal);
+                },
+                child: Image.asset(
+                  KAssets.menu,
+                  height: KSize.getHeight(context, 32),
+                  width: KSize.getWidth(context, 32),
+                ),
               ),
               Text("My Day", style: KTextStyle.headLine4),
               GestureDetector(
