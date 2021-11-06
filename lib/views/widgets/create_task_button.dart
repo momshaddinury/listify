@@ -25,7 +25,7 @@ class CreateTaskButton extends StatelessWidget {
               Icon(Icons.add, color: KColors.white),
               SizedBox(width: KSize.getWidth(context, 24)),
               Text(
-                "Create New Task / Project",
+                "Create New Task",
                 style: KTextStyle.bodyText2().copyWith(color: KColors.white),
               )
             ],
