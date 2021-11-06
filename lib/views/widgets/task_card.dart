@@ -19,7 +19,6 @@ class TaskCard extends StatelessWidget {
       child: Container(
         width: KSize.getWidth(context, 602),
         margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
-        // padding: EdgeInsets.symmetric(vertical: KSize.getHeight(context, 15)),
         child: Dismissible(
           key: Key(task.title),
           background: Container(

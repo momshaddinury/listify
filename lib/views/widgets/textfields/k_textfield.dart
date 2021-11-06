@@ -41,7 +41,7 @@ class KTextField extends StatelessWidget {
                       minTime: DateTime(1900),
                       maxTime: DateTime(2100),
                       onConfirm: (date) {
-                        controller.text = DateFormat('MMM dd, yyyy hh:mm:aa').format(date);
+                        controller.text = DateFormat('MMM dd, yyyy hh:mm aa').format(date);
                       },
                       currentTime: DateTime.now(),
                       locale: LocaleType.en,
