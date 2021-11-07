@@ -122,6 +122,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "expand_tap_area",
+      "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/expand_tap_area-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///C:/src/flutter/.pub-cache/hosted/pub.dartlang.org/fake_async-1.2.0",
       "packageUri": "lib/",
@@ -506,7 +512,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-11-06T17:37:20.202849Z",
+  "generated": "2021-11-07T07:04:46.836331Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }

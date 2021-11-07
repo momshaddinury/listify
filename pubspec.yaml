@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   google_fonts: ^2.1.0
   menu_button: ^1.4.2+1
+  expand_tap_area: ^1.1.0
   table_calendar: ^3.0.3
   change_app_package_name: ^1.0.0
   nb_utils: ^4.3.0+4

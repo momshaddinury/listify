@@ -1,3 +1,4 @@
+import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -10,6 +11,8 @@ import 'package:nb_utils/nb_utils.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // debugPaintExpandAreaEnabled = true;
+  // debugPaintExpandAreaColor = Color(0xFF00FFFF).withOpacity(0.2);
   await initialize();
   await Firebase.initializeApp();
   runApp(ProviderScope(child: MyApp()));
@@ -22,6 +25,7 @@ class MyApp extends StatelessWidget {
       title: 'Listify',
       navigatorKey: NavigationService.navigatorKey,
       debugShowCheckedModeBanner: false,
+
       theme: ThemeData(
         backgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,
         scaffoldBackgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,

@@ -1,3 +1,4 @@
+import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -32,10 +33,9 @@ class _CreateTaskScreenState extends State<CreateTaskScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
+                ExpandTapWidget(
+                  onTap: () => Navigator.pop(context),
+                  tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     KAssets.backButton,
                     height: KSize.getHeight(context, 32),
