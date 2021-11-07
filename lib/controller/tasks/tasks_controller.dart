@@ -15,25 +15,17 @@ class TasksController extends StateNotifier<TasksState> {
 
   TasksController({this.ref}) : super(TasksInitialState());
 
-  static CollectionReference tasksCollection =
-      FirebaseFirestore.instance.collection('tasks');
-  static CollectionReference userTasksCollection =
-      tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+  static CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
+  static CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
 
   Future createNewTask(String title, dateTime, priority) async {
     state = TasksLoadingState();
     try {
-      DocumentReference documentReferencer = tasksCollection
-          .doc(getStringAsync(USER_UID))
-          .collection('usertasks')
-          .doc();
+      DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
         "title": title,
-        "dateTime": dateTime != ""
-            ? DateFormat("MMM dd, yyyy hh:mm aa")
-                .parse(dateTime)
-                .millisecondsSinceEpoch
-            : DateTime.now().millisecondsSinceEpoch,
+        "dateTime":
+            dateTime != "" ? DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
         "priority": priority == "" ? "Low" : priority,
         "isCompleted": false,
       });
@@ -47,9 +39,7 @@ class TasksController extends StateNotifier<TasksState> {
   updateTask(uid, title, dateTime, priority) async {
     await userTasksCollection.doc(uid).update({
       "title": title,
-      "dateTime": DateFormat("MMM dd, yyyy hh:mm aa")
-          .parse(dateTime)
-          .millisecondsSinceEpoch,
+      "dateTime": DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch,
       "priority": priority,
     });
   }
@@ -63,16 +53,12 @@ class TasksController extends StateNotifier<TasksState> {
   }
 
   Stream<List<Todo>> fetchPendingTasks() {
-    Query userTasksQuery = userTasksCollection
-        .where("isCompleted", isEqualTo: false)
-        .orderBy("dateTime", descending: true);
+    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
     return userTasksQuery.snapshots().map(todoFromFirestore);
   }
 
   Stream<List<Todo>> fetchCompletedTasks() {
-    Query userTasksQuery = userTasksCollection
-        .where("isCompleted", isEqualTo: true)
-        .orderBy("dateTime", descending: true);
+    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
     return userTasksQuery.snapshots().map(todoFromFirestore);
   }
 
@@ -86,8 +72,7 @@ class TasksController extends StateNotifier<TasksState> {
         return Todo(
           isCompleted: e["isCompleted"],
           title: e["title"],
-          dateTime: DateFormat('MMM dd, yyyy hh:mm aa')
-              .format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
+          dateTime: DateFormat('MMM dd, yyyy hh:mm aa').format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
           priority: e["priority"],
           uid: e.id,
         );

@@ -14,6 +14,7 @@ class KAssets {
 
   /// Textfield
   static const visibilityOff = 'assets/icons/Visibility Off.png';
+  static const visibilityOn = 'assets/icons/Visibility On.png';
   static const calendar = 'assets/icons/Calendar.png';
   static const dropdown = 'assets/icons/Dropdown.png';
   static const syncCheck = 'assets/icons/Sync Check.png';

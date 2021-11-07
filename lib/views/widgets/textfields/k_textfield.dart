@@ -4,7 +4,7 @@ import 'package:listify/views/styles/k_theme.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:intl/intl.dart';
 
-class KTextField extends StatelessWidget {
+class KTextField extends StatefulWidget {
   KTextField({
     this.hintText,
     this.controller,
@@ -18,6 +18,13 @@ class KTextField extends StatelessWidget {
   final bool isPasswordField;
   final bool isCalanderField;
   final bool isDropdownField;
+
+  @override
+  State<KTextField> createState() => _KTextFieldState();
+}
+
+class _KTextFieldState extends State<KTextField> {
+  bool isVisible = false;
 
   @override
   Widget build(BuildContext context) {
@@ -34,41 +41,49 @@ class KTextField extends StatelessWidget {
             Flexible(
               child: TextFormField(
                 onTap: () {
-                  if (isCalanderField) {
+                  if (widget.isCalanderField) {
                     DatePicker.showDateTimePicker(
                       context,
                       showTitleActions: true,
                       minTime: DateTime(1900),
                       maxTime: DateTime(2100),
                       onConfirm: (date) {
-                        controller.text = DateFormat('MMM dd, yyyy hh:mm aa').format(date);
+                        widget.controller.text = DateFormat('MMM dd, yyyy hh:mm aa').format(date);
                       },
                       currentTime: DateTime.now(),
                       locale: LocaleType.en,
                     );
                   }
                 },
-                controller: controller,
+                obscureText: widget.isPasswordField ? !isVisible : false,
+                controller: widget.controller,
                 decoration: InputDecoration(
-                  hintText: hintText,
+                  hintText: widget.hintText,
                   hintStyle: KTextStyle.bodyText1(),
                   border: InputBorder.none,
                 ),
               ),
             ),
-            if (isPasswordField)
-              Image.asset(
-                KAssets.visibilityOff,
-                height: KSize.getHeight(context, 25),
-                width: KSize.getWidth(context, 25),
+            if (widget.isPasswordField)
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isVisible = !isVisible;
+                  });
+                },
+                child: Image.asset(
+                  isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
+                  height: KSize.getHeight(context, 25),
+                  width: KSize.getWidth(context, 25),
+                ),
               ),
-            if (isCalanderField)
+            if (widget.isCalanderField)
               Image.asset(
                 KAssets.calendar,
                 height: KSize.getHeight(context, 25),
                 width: KSize.getWidth(context, 25),
               ),
-            if (isDropdownField)
+            if (widget.isDropdownField)
               Image.asset(
                 KAssets.dropdown,
                 height: KSize.getHeight(context, 25),

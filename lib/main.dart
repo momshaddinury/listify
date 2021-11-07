@@ -1,6 +1,7 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:listify/services/navigation_service.dart';
@@ -21,11 +22,13 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    /// Hide Keyboard
+    SystemChannels.textInput.invokeMethod('TextInput.hide');
+
     return MaterialApp(
       title: 'Listify',
       navigatorKey: NavigationService.navigatorKey,
       debugShowCheckedModeBanner: false,
-
       theme: ThemeData(
         backgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,
         scaffoldBackgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,
@@ -47,6 +50,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
-
-
