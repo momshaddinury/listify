@@ -6,7 +6,8 @@ class KColors {
   static const darkAccent = Color(0xFF2C4251);
   static const white = Colors.white;
   static const black = Colors.black;
-  static const charcoal = Color(0xFF264654);
+  static final charcoal = Color(0xFF264654);
+  static final lightCharcoal = charcoal.withOpacity(.12);
   static const spaceCadet = Color(0xFF2C3549);
   static final lightRed = Colors.red[100];
   static final transparent = Colors.transparent;

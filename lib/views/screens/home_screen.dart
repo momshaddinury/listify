@@ -157,7 +157,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: snapshot.data.length,
                               itemBuilder: (context, index) {
-                                return TaskCard(snapshot.data[index]);
+                                return TaskCard(
+                                  snapshot.data[index],
+                                  borderOutline: false,
+                                  backgroundColor: KColors.lightCharcoal,
+                                );
                               }),
                         ],
                       ),
