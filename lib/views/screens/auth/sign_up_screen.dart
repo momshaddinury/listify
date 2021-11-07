@@ -119,22 +119,20 @@ class _SignupScreenState extends State<SignupScreen> {
                         : KColors.primary,
                     onPressed: () {
                       if (!(authState is FirebaseAuthLoadingState)) {
-                        if (passwordController.text ==
-                            confirmPasswordController.text) {
-                          hideKeyboard(context);
-                          context.read(firebaseAuthProvider).signUp(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
-                        } else {
-                          snackBar(context,
-                              title: "Password doesn't match",
-                              backgroundColor: KColors.charcoal);
+                        hideKeyboard(context);
+                        if (emailController.text.trim().isNotEmpty) {
+                          if (passwordController.text ==
+                              confirmPasswordController.text) {
+                            context.read(firebaseAuthProvider).signUp(
+                                  email: emailController.text,
+                                  password: passwordController.text,
+                                );
+                          } else {
+                            snackBar(context,
+                                title: "Password doesn't match",
+                                backgroundColor: KColors.charcoal);
+                          }
                         }
-                      } else {
-                        snackBar(context,
-                            title: "Please wait",
-                            backgroundColor: KColors.charcoal);
                       }
                     },
                   );
