@@ -22,6 +22,7 @@ final firebaseAuthProvider = StateNotifierProvider(
 
 class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   final ProviderReference ref;
+
   FirebaseAuthController({this.ref}) : super(FirebaseAuthInitialState());
 
   User user;
@@ -30,7 +31,9 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     try {
       state = FirebaseAuthLoadingState();
 
-      await ref.read(firebaseProvider).signInWithEmailAndPassword(email: email, password: password);
+      await ref
+          .read(firebaseProvider)
+          .signInWithEmailAndPassword(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       print(e.toString());
@@ -43,11 +46,14 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   Future signUp({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
-      await ref.read(firebaseProvider).createUserWithEmailAndPassword(email: email, password: password);
+      await ref
+          .read(firebaseProvider)
+          .createUserWithEmailAndPassword(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
-      state = FirebaseAuthErrorState();
-      return e.message;
+      print(e.code);
+      print(e.message);
+      state = FirebaseAuthErrorState(message: e.message);
     }
   }
 

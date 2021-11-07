@@ -15,5 +15,6 @@ class FirebaseAuthSuccessState extends FirebaseAuthState {
 }
 
 class FirebaseAuthErrorState extends FirebaseAuthState {
-  const FirebaseAuthErrorState();
+  final String message;
+  const FirebaseAuthErrorState({this.message});
 }

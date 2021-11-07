@@ -20,7 +20,8 @@ class _SignupScreenState extends State<SignupScreen> {
   // final TextEditingController sexFieldController = TextEditingController(text: 'Select');
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmPasswordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +34,9 @@ class _SignupScreenState extends State<SignupScreen> {
             MaterialPageRoute(builder: (context) => HomeScreen()),
             (route) => false,
           );
+        } else if (state is FirebaseAuthErrorState) {
+          snackBar(context,
+              title: state.message, backgroundColor: KColors.charcoal);
         }
       },
       child: Scaffold(
@@ -107,20 +111,30 @@ class _SignupScreenState extends State<SignupScreen> {
                 Consumer(builder: (context, watch, _) {
                   final authState = watch(firebaseAuthProvider.state);
                   return KFilledButton(
-                    buttonText: authState is FirebaseAuthLoadingState ? 'Please wait' : 'Create Account',
-                    buttonColor: authState is FirebaseAuthLoadingState ? KColors.spaceCadet : KColors.primary,
+                    buttonText: authState is FirebaseAuthLoadingState
+                        ? 'Please wait'
+                        : 'Create Account',
+                    buttonColor: authState is FirebaseAuthLoadingState
+                        ? KColors.spaceCadet
+                        : KColors.primary,
                     onPressed: () {
                       if (!(authState is FirebaseAuthLoadingState)) {
-                        if (passwordController.text == confirmPasswordController.text) {
+                        if (passwordController.text ==
+                            confirmPasswordController.text) {
+                          hideKeyboard(context);
                           context.read(firebaseAuthProvider).signUp(
                                 email: emailController.text,
                                 password: passwordController.text,
                               );
                         } else {
-                          snackBar(context, title: "Password doesn't match", backgroundColor: KColors.charcoal);
+                          snackBar(context,
+                              title: "Password doesn't match",
+                              backgroundColor: KColors.charcoal);
                         }
                       } else {
-                        snackBar(context, title: "Please wait", backgroundColor: KColors.charcoal);
+                        snackBar(context,
+                            title: "Please wait",
+                            backgroundColor: KColors.charcoal);
                       }
                     },
                   );
