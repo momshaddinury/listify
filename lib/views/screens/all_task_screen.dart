@@ -2,17 +2,17 @@ import 'dart:io';
 
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
 
-class AllTasksScreen extends StatelessWidget {
+class AllTasksScreen extends ConsumerWidget {
   const AllTasksScreen({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
         appBar: AppBar(
           leadingWidth: 0,
@@ -20,8 +20,7 @@ class AllTasksScreen extends StatelessWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           title: Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -42,14 +41,13 @@ class AllTasksScreen extends StatelessWidget {
         ),
         body: SafeArea(
           child: Padding(
-            padding:
-                EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
             child: Column(
               children: [
                 SizedBox(height: KSize.getHeight(context, 20)),
                 Expanded(
                   child: StreamBuilder(
-                      stream: context.read(tasksProvider).fetchPendingTasks(),
+                      stream: ref.read(tasksProvider.notifier).fetchPendingTasks(),
                       builder: (context, snapshot) {
                         if (snapshot.data == null) {
                           return Container();
@@ -70,10 +68,7 @@ class AllTasksScreen extends StatelessWidget {
 
                 /// Create Task / Project
                 Padding(
-                  padding: EdgeInsets.only(
-                      bottom: Platform.isAndroid
-                          ? KSize.getHeight(context, 50)
-                          : 0),
+                  padding: EdgeInsets.only(bottom: Platform.isAndroid ? KSize.getHeight(context, 50) : 0),
                   child: CreateTaskButton(),
                 ),
               ],

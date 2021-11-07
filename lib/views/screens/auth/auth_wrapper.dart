@@ -7,8 +7,8 @@ import 'package:listify/views/widgets/error_widget.dart';
 
 class AuthenticationWrapper extends ConsumerWidget {
   @override
-  Widget build(BuildContext context, watch) {
-    final asyncUser = watch(authStateChangesProvider);
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncUser = ref.watch(authStateChangesProvider);
     return asyncUser.when(
       data: (user) => user != null ? HomeScreen() : WelcomeScreen(),
       loading: () => WelcomeScreen(),
