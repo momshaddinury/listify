@@ -4,6 +4,7 @@ import 'package:listify/controller/authentication/authentication_controller.dart
 import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/screens/startup/welcome_screen.dart';
 import 'package:listify/views/widgets/error_widget.dart';
+
 class AuthenticationWrapper extends ConsumerWidget {
   @override
   Widget build(BuildContext context, watch) {
