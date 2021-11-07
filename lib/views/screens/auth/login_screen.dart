@@ -7,6 +7,7 @@ import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 import '../home_screen.dart';
 
@@ -25,6 +26,9 @@ class LoginScreen extends StatelessWidget {
             MaterialPageRoute(builder: (context) => HomeScreen()),
             (route) => false,
           );
+        } else if (state is FirebaseAuthErrorState) {
+          snackBar(context,
+              title: state.message, backgroundColor: KColors.charcoal);
         }
       },
       child: Scaffold(
@@ -64,7 +68,8 @@ class LoginScreen extends StatelessWidget {
                   children: [
                     Text(
                       'Forgot your password?',
-                      style: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.normal),
+                      style: KTextStyle.bodyText2()
+                          .copyWith(fontWeight: FontWeight.normal),
                     ),
                   ],
                 ),
@@ -72,14 +77,32 @@ class LoginScreen extends StatelessWidget {
                 Consumer(builder: (context, watch, _) {
                   final authState = watch(firebaseAuthProvider.state);
                   return KFilledButton(
-                    buttonText: authState is FirebaseAuthLoadingState ? 'Please wait' : 'Login',
-                    buttonColor: authState is FirebaseAuthLoadingState ? KColors.spaceCadet : KColors.primary,
+                    buttonText: authState is FirebaseAuthLoadingState
+                        ? 'Please wait'
+                        : 'Login',
+                    buttonColor: authState is FirebaseAuthLoadingState
+                        ? KColors.spaceCadet
+                        : KColors.primary,
                     onPressed: () {
                       if (!(authState is FirebaseAuthLoadingState)) {
-                        context.read(firebaseAuthProvider).signIn(
-                              email: emailController.text,
-                              password: passwordController.text,
-                            );
+                        if (emailController.text.trim().isNotEmpty &&
+                            passwordController.text.isNotEmpty) {
+                          hideKeyboard(context);
+                          context.read(firebaseAuthProvider).signIn(
+                                email: emailController.text,
+                                password: passwordController.text,
+                              );
+                        } else {
+                          if (emailController.text.trim().isEmpty) {
+                            snackBar(context,
+                                title: "Please enter email",
+                                backgroundColor: KColors.charcoal);
+                          } else if (passwordController.text.isEmpty) {
+                            snackBar(context,
+                                title: "Please enter password",
+                                backgroundColor: KColors.charcoal);
+                          }
+                        }
                       }
                     },
                   );

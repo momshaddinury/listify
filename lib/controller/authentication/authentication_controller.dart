@@ -36,8 +36,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
           .signInWithEmailAndPassword(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
-      print(e.toString());
-      state = FirebaseAuthErrorState();
+      state = FirebaseAuthErrorState(message: e.message);
 
       return e.message;
     }
