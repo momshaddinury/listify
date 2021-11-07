@@ -12,10 +12,16 @@ import 'package:nb_utils/nb_utils.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // debugPaintExpandAreaEnabled = true;
-  // debugPaintExpandAreaColor = Color(0xFF00FFFF).withOpacity(0.2);
+
+  /// Initializing shared preference via nb_utils package
   await initialize();
+
+  /// Initialize firebase
   await Firebase.initializeApp();
+
+  /// A widget that stores the state of providers.
+  /// All Flutter applications using Riverpod must contain a [ProviderScope] at
+  /// the root of their widget tree
   runApp(ProviderScope(child: MyApp()));
 }
 
