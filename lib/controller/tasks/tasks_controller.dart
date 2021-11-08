@@ -13,8 +13,8 @@ class TasksController extends StateNotifier<TasksState> {
 
   TasksController({this.ref}) : super(TasksInitialState());
 
-  static CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
-  static CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+  final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
+  CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
 
   Future createNewTask(String title, dateTime, priority) async {
     state = TasksLoadingState();

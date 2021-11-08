@@ -47,7 +47,7 @@ class AllTasksScreen extends ConsumerWidget {
                 SizedBox(height: KSize.getHeight(context, 20)),
                 Expanded(
                   child: StreamBuilder(
-                      stream: ref.read(tasksProvider.notifier).fetchPendingTasks(),
+                      stream: ref.watch(tasksProvider.notifier).fetchPendingTasks(),
                       builder: (context, snapshot) {
                         if (snapshot.data == null) {
                           return Container();

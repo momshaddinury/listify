@@ -71,7 +71,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
               /// Pending Tasks
               StreamBuilder(
-                  stream: ref.read(tasksProvider.notifier).fetchPendingTasks(),
+                  stream: ref.watch(tasksProvider.notifier).fetchPendingTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container();
@@ -120,7 +120,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
               /// Completed Tasks
               StreamBuilder(
-                  stream: ref.read(tasksProvider.notifier).fetchCompletedTasks(),
+                  stream: ref.watch(tasksProvider.notifier).fetchCompletedTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container();

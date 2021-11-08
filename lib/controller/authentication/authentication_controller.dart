@@ -72,8 +72,6 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   }
 
   Future signOut() async {
-    state = FirebaseAuthLoadingState();
     await ref.read(firebaseProvider).signOut();
-    state = FirebaseAuthSuccessState();
   }
 }
