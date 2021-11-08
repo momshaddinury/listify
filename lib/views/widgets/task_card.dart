@@ -5,21 +5,18 @@ import 'package:listify/views/screens/update_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class TaskCard extends StatelessWidget {
+class TaskCard extends ConsumerWidget {
   final Todo task;
   final Color backgroundColor;
   final bool borderOutline;
 
-  TaskCard(this.task,
-      {this.backgroundColor = KColors.white, this.borderOutline = true});
+  TaskCard(this.task, {this.backgroundColor = KColors.white, this.borderOutline = true});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        if (!task.isCompleted)
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => UpdateTaskScreen(task)));
+        if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateTaskScreen(task)));
       },
       child: Container(
         width: KSize.getWidth(context, 602),
@@ -33,17 +30,15 @@ class TaskCard extends StatelessWidget {
             color: KColors.lightRed,
           ),
           onDismissed: (direction) async {
-            context.read(tasksProvider).removeTodo(task.uid);
+            ref.read(tasksProvider.notifier).removeTodo(task.uid);
           },
           child: Container(
             width: KSize.getWidth(context, 602),
             // margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
-            padding:
-                EdgeInsets.symmetric(vertical: KSize.getHeight(context, 15)),
+            padding: EdgeInsets.symmetric(vertical: KSize.getHeight(context, 15)),
             decoration: BoxDecoration(
               color: backgroundColor,
-              border:
-                  borderOutline ? Border.all(color: KColors.charcoal) : null,
+              border: borderOutline ? Border.all(color: KColors.charcoal) : null,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
@@ -88,18 +83,14 @@ class TaskCard extends StatelessWidget {
                 InkWell(
                   onTap: () async {
                     if (!task.isCompleted)
-                      await context.read(tasksProvider).completeTask(task.uid);
+                      await ref.read(tasksProvider.notifier).completeTask(task.uid);
                     else
-                      await context
-                          .read(tasksProvider)
-                          .undoCompleteTask(task.uid);
+                      await ref.read(tasksProvider.notifier).undoCompleteTask(task.uid);
                   },
                   child: Container(
                     margin: EdgeInsets.all(KSize.getWidth(context, 36)),
                     child: Icon(
-                      task.isCompleted
-                          ? Icons.brightness_1
-                          : Icons.brightness_1_outlined,
+                      task.isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
                       color: KColors.primary,
                       size: KSize.getWidth(context, 24),
                     ),

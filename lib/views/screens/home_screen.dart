@@ -9,14 +9,14 @@ import 'package:listify/views/widgets/create_task_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,16 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
                 onTap: () {
-                  snackBar(context,
-                      title: "Feature is not available yet",
-                      backgroundColor: KColors.charcoal);
+                  snackBar(context, title: "Feature is not available yet", backgroundColor: KColors.charcoal);
                 },
                 child: Image.asset(
                   KAssets.menu,
@@ -46,11 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
               Text("My Day", style: KTextStyle.headLine4),
               GestureDetector(
                 onTap: () {
-                  context.read(firebaseAuthProvider).signOut();
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()),
-                      (route) => false);
+                  ref.read(firebaseAuthProvider.notifier).signOut();
+                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
                 },
                 child: Image.asset(
                   KAssets.logout,
@@ -65,8 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding:
-              EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -78,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               /// Pending Tasks
               StreamBuilder(
-                  stream: context.read(tasksProvider).fetchPendingTasks(),
+                  stream: ref.watch(tasksProvider.notifier).fetchPendingTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container();
@@ -100,11 +93,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 visible: snapshot.data.length > 5,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                AllTasksScreen()));
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
                                   },
                                   child: Text(
                                     "View All",
@@ -131,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               /// Completed Tasks
               StreamBuilder(
-                  stream: context.read(tasksProvider).fetchCompletedTasks(),
+                  stream: ref.watch(tasksProvider.notifier).fetchCompletedTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.data == null) {
                       return Container();

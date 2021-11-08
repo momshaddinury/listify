@@ -21,7 +21,7 @@ final firebaseAuthProvider = StateNotifierProvider(
 );
 
 class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
-  final ProviderReference ref;
+  final Ref ref;
 
   FirebaseAuthController({this.ref}) : super(FirebaseAuthInitialState());
 

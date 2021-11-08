@@ -11,12 +11,12 @@ import 'package:listify/views/styles/k_textstyle.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class SplashScreen extends StatefulWidget {
+class SplashScreen extends ConsumerStatefulWidget {
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  ConsumerState<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenState extends ConsumerState<SplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
       /// Checking if app is Newly Installed / User is logged in / User is not logged in
       if (getBoolAsync(NEW_INSTALL, defaultValue: true)) {
         setValue(NEW_INSTALL, false);
-        context.read(firebaseProvider).signOut();
+        ref.read(firebaseProvider).signOut();
       }
       Navigator.pushAndRemoveUntil(
         context,

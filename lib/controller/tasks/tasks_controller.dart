@@ -6,17 +6,15 @@ import 'package:nb_utils/nb_utils.dart';
 import 'tasks_state.dart';
 import 'package:intl/intl.dart';
 
-final tasksProvider = StateNotifierProvider<TasksController>(
-  (ref) => TasksController(ref: ref),
-);
+final tasksProvider = StateNotifierProvider((ref) => TasksController(ref: ref));
 
 class TasksController extends StateNotifier<TasksState> {
-  final ProviderReference ref;
+  final Ref ref;
 
   TasksController({this.ref}) : super(TasksInitialState());
 
-  static CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
-  static CollectionReference userTasksCollection = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+  final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
+  CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
 
   Future createNewTask(String title, dateTime, priority) async {
     state = TasksLoadingState();
@@ -24,8 +22,7 @@ class TasksController extends StateNotifier<TasksState> {
       DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
         "title": title,
-        "dateTime":
-            dateTime != "" ? DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
+        "dateTime": dateTime != "" ? DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
         "priority": priority == "" ? "Low" : priority,
         "isCompleted": false,
       });

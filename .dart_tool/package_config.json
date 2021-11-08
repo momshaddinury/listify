@@ -213,9 +213,9 @@
     },
     {
       "name": "flutter_riverpod",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-0.13.1+1",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-1.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "flutter_test",
@@ -232,12 +232,6 @@
     {
       "name": "fluttertoast",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "freezed_annotation",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/freezed_annotation-0.14.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -270,12 +264,6 @@
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/js-0.6.3",
       "packageUri": "lib/",
       "languageVersion": "2.12"
-    },
-    {
-      "name": "json_annotation",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/json_annotation-4.3.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
     },
     {
       "name": "matcher",
@@ -375,9 +363,9 @@
     },
     {
       "name": "riverpod",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/riverpod-0.13.1",
+      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/riverpod-1.0.0",
       "packageUri": "lib/",
-      "languageVersion": "2.12"
+      "languageVersion": "2.14"
     },
     {
       "name": "shared_preferences",
@@ -512,7 +500,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-11-07T16:06:26.322196Z",
+  "generated": "2021-11-08T09:16:09.297611Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }
