@@ -15,6 +15,7 @@ class CreateTaskScreen extends ConsumerStatefulWidget {
 
 class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
   final TextEditingController taskTitleController = TextEditingController();
+  final TextEditingController taskDetailsController = TextEditingController();
   final TextEditingController dateTimeController = TextEditingController();
   final TextEditingController priorityController = TextEditingController(text: 'Low');
 
@@ -59,6 +60,12 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
                 ),
                 SizedBox(height: KSize.getHeight(context, 22)),
                 KTextField(
+                  hintText: "Details",
+                  controller: taskDetailsController,
+                  multiline: true,
+                ),
+                SizedBox(height: KSize.getHeight(context, 22)),
+                KTextField(
                   hintText: "Date Time",
                   controller: dateTimeController,
                   isCalanderField: true,
@@ -76,6 +83,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
                       if (taskTitleController.text.trim().isNotEmpty) {
                         await ref.read(tasksProvider.notifier).createNewTask(
                               taskTitleController.text,
+                              taskDetailsController.text,
                               dateTimeController.text,
                               priorityController.text,
                             );

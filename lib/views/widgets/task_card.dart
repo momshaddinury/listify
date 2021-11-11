@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_controller.dart';
 import 'package:listify/model/todo.dart';
+import 'package:listify/views/screens/task_details_screen.dart';
 import 'package:listify/views/screens/update_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -16,7 +17,7 @@ class TaskCard extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return GestureDetector(
       onTap: () {
-        if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateTaskScreen(task)));
+        if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => TaskDetailsScreen(task)));
       },
       child: Container(
         width: KSize.getWidth(context, 602),
@@ -46,35 +47,57 @@ class TaskCard extends ConsumerWidget {
               children: [
                 Flexible(
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: KSize.getWidth(context, 22),
-                          right: KSize.getWidth(context, 41),
-                        ),
-                        child: Icon(
-                          Icons.brightness_1_sharp,
-                          color: task.priority == "Low"
-                              ? Colors.green
-                              : task.priority == "Medium"
-                                  ? Colors.orange
-                                  : Colors.red,
-                          size: KSize.getWidth(context, 16),
-                        ),
-                      ),
                       Flexible(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              task.title,
-                              style: KTextStyle.bodyText2(),
-                            ),
-                            Text(task.dateTime,
-                                style: KTextStyle.bodyText2().copyWith(
-                                  color: KColors.charcoal.withOpacity(0.40),
-                                )),
-                          ],
+                        child: Padding(
+                          padding: EdgeInsets.only(
+                            left: KSize.getWidth(context, 22),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.only(
+                                      right: KSize.getWidth(context, 22),
+                                    ),
+                                    child: Icon(
+                                      Icons.brightness_1_sharp,
+                                      color: task.priority == "Low"
+                                          ? Colors.green
+                                          : task.priority == "Medium"
+                                              ? Colors.orange
+                                              : Colors.red,
+                                      size: KSize.getWidth(context, 16),
+                                    ),
+                                  ),
+                                  Text(
+                                    task.title,
+                                    style: KTextStyle.bodyText2(),
+                                  ),
+                                ],
+                              ),
+                              if (task.description.length > 0)
+                                Column(
+                                  children: [
+                                    SizedBox(height: KSize.getHeight(context, 5)),
+                                    Text(
+                                      task.description,
+                                      maxLines: 2,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: KTextStyle.bodyText3(),
+                                    ),
+                                    SizedBox(height: KSize.getHeight(context, 10)),
+                                  ],
+                                ),
+                              Text(task.dateTime,
+                                  style: KTextStyle.bodyText2().copyWith(
+                                    color: KColors.charcoal.withOpacity(0.40),
+                                  )),
+                            ],
+                          ),
                         ),
                       )
                     ],

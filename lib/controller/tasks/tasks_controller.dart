@@ -16,12 +16,13 @@ class TasksController extends StateNotifier<TasksState> {
   final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
   CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
 
-  Future createNewTask(String title, dateTime, priority) async {
+  Future createNewTask(String title, description, dateTime, priority) async {
     state = TasksLoadingState();
     try {
       DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
         "title": title,
+        "description": description,
         "dateTime": dateTime != "" ? DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
         "priority": priority == "" ? "Low" : priority,
         "isCompleted": false,
@@ -33,9 +34,10 @@ class TasksController extends StateNotifier<TasksState> {
     }
   }
 
-  updateTask(uid, title, dateTime, priority) async {
+  updateTask(uid, title, description, dateTime, priority) async {
     await userTasksCollection.doc(uid).update({
       "title": title,
+      "description": description,
       "dateTime": DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch,
       "priority": priority,
     });
@@ -69,6 +71,7 @@ class TasksController extends StateNotifier<TasksState> {
         return Todo(
           isCompleted: e["isCompleted"],
           title: e["title"],
+          description: e["description"],
           dateTime: DateFormat('MMM dd, yyyy hh:mm aa').format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
           priority: e["priority"],
           uid: e.id,

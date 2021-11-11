@@ -8,6 +8,7 @@ class KTextField extends StatefulWidget {
   KTextField({
     this.hintText,
     this.controller,
+    this.multiline = false,
     this.isPasswordField = false,
     this.isCalanderField = false,
     this.isDropdownField = false,
@@ -15,6 +16,7 @@ class KTextField extends StatefulWidget {
 
   final String hintText;
   final TextEditingController controller;
+  final bool multiline;
   final bool isPasswordField;
   final bool isCalanderField;
   final bool isDropdownField;
@@ -29,7 +31,7 @@ class _KTextFieldState extends State<KTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: KSize.getHeight(context, 84),
+      // height: KSize.getHeight(context, 84),
       width: KSize.getWidth(context, 602),
       color: KTheme.darkMode() ? KColors.darkAccent : KColors.accent,
       child: Padding(
@@ -55,6 +57,8 @@ class _KTextFieldState extends State<KTextField> {
                     );
                   }
                 },
+                maxLines: widget.multiline ? null : 1,
+                minLines: widget.multiline ? 5 : 1,
                 obscureText: widget.isPasswordField ? !isVisible : false,
                 controller: widget.controller,
                 decoration: InputDecoration(

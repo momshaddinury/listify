@@ -20,6 +20,7 @@ class UpdateTaskScreen extends ConsumerStatefulWidget {
 
 class _UpdateTaskScreenState extends ConsumerState<UpdateTaskScreen> {
   final TextEditingController taskTitleController = TextEditingController();
+  final TextEditingController taskDetailsController = TextEditingController();
   final TextEditingController dateTimeController = TextEditingController();
   final TextEditingController priorityController = TextEditingController(text: 'Low');
 
@@ -27,6 +28,7 @@ class _UpdateTaskScreenState extends ConsumerState<UpdateTaskScreen> {
   void initState() {
     super.initState();
     taskTitleController.text = widget.todo.title;
+    taskDetailsController.text = widget.todo.description;
     dateTimeController.text = widget.todo.dateTime;
     priorityController.text = widget.todo.priority;
   }
@@ -72,6 +74,12 @@ class _UpdateTaskScreenState extends ConsumerState<UpdateTaskScreen> {
                 ),
                 SizedBox(height: KSize.getHeight(context, 22)),
                 KTextField(
+                  hintText: "Details",
+                  controller: taskDetailsController,
+                  multiline: true,
+                ),
+                SizedBox(height: KSize.getHeight(context, 22)),
+                KTextField(
                   hintText: "Date Time",
                   controller: dateTimeController,
                   isCalanderField: true,
@@ -90,6 +98,7 @@ class _UpdateTaskScreenState extends ConsumerState<UpdateTaskScreen> {
                         await ref.read(tasksProvider.notifier).updateTask(
                               widget.todo.uid,
                               taskTitleController.text,
+                              taskDetailsController.text,
                               dateTimeController.text,
                               priorityController.text,
                             );
