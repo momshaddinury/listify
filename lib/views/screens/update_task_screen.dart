@@ -55,7 +55,7 @@ class _UpdateTaskScreenState extends ConsumerState<UpdateTaskScreen> {
                     width: KSize.getWidth(context, 32),
                   ),
                 ),
-                Text("Update Task", style: KTextStyle.headLine4),
+                Text("Task Details", style: KTextStyle.headLine4),
                 Container(),
               ],
             ),

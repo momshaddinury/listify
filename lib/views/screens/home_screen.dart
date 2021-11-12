@@ -109,7 +109,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: snapshot.length,
                               itemBuilder: (context, index) {
-                                return TaskCard(snapshot[index]);
+                                return ProviderScope(
+                                  overrides: [taskProvider.overrideWithValue(snapshot[index])],
+                                  child: TaskCard(),
+                                );
                               }),
                         ],
                       ),
@@ -142,10 +145,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               physics: NeverScrollableScrollPhysics(),
                               itemCount: snapshot.length,
                               itemBuilder: (context, index) {
-                                return TaskCard(
-                                  snapshot[index],
-                                  borderOutline: false,
-                                  backgroundColor: KColors.lightCharcoal,
+                                return ProviderScope(
+                                  overrides: [taskProvider.overrideWithValue(snapshot[index])],
+                                  child: TaskCard(
+                                    borderOutline: false,
+                                    backgroundColor: KColors.lightCharcoal,
+                                  ),
                                 );
                               }),
                         ],

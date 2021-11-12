@@ -56,10 +56,14 @@ class AllTasksScreen extends ConsumerWidget {
                             physics: BouncingScrollPhysics(),
                             itemCount: snapshot.length,
                             itemBuilder: (context, index) {
-                              return TaskCard(
-                                snapshot[index],
-                                backgroundColor: KColors.accent,
-                                borderOutline: false,
+                              return ProviderScope(
+                                overrides: [
+                                  taskProvider.overrideWithValue(snapshot[index]),
+                                ],
+                                child: TaskCard(
+                                  backgroundColor: KColors.accent,
+                                  borderOutline: false,
+                                ),
                               );
                             });
                       }),

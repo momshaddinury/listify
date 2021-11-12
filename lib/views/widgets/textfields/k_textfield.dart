@@ -50,7 +50,7 @@ class _KTextFieldState extends State<KTextField> {
                       minTime: DateTime(1900),
                       maxTime: DateTime(2100),
                       onConfirm: (date) {
-                        widget.controller.text = DateFormat('MMM dd, yyyy hh:mm aa').format(date);
+                        widget.controller.text = DateFormat('hh:mm aa MMM dd, yyyy').format(date);
                       },
                       currentTime: DateTime.now(),
                       locale: LocaleType.en,
