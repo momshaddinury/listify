@@ -13,6 +13,8 @@ class AllTasksScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final pendingTasksStream = ref.watch(pendingTasksProvider);
+
     return Scaffold(
         appBar: AppBar(
           leadingWidth: 0,
@@ -46,18 +48,16 @@ class AllTasksScreen extends ConsumerWidget {
               children: [
                 SizedBox(height: KSize.getHeight(context, 20)),
                 Expanded(
-                  child: StreamBuilder(
-                      stream: ref.watch(tasksProvider.notifier).fetchPendingTasks(),
-                      builder: (context, snapshot) {
-                        if (snapshot.data == null) {
-                          return Container();
-                        }
+                  child: pendingTasksStream.when(
+                      loading: () => Container(),
+                      error: (e, stackTrace) => ErrorWidget(stackTrace),
+                      data: (snapshot) {
                         return ListView.builder(
                             physics: BouncingScrollPhysics(),
-                            itemCount: snapshot.data.length,
+                            itemCount: snapshot.length,
                             itemBuilder: (context, index) {
                               return TaskCard(
-                                snapshot.data[index],
+                                snapshot[index],
                                 backgroundColor: KColors.accent,
                                 borderOutline: false,
                               );

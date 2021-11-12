@@ -8,6 +8,16 @@ import 'package:intl/intl.dart';
 
 final tasksProvider = StateNotifierProvider((ref) => TasksController(ref: ref));
 
+final pendingTasksProvider = StreamProvider<List<Todo>>((ref) {
+  Query userTasksQuery = ref.watch(tasksProvider.notifier).userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
+  return userTasksQuery.snapshots().map(ref.read(tasksProvider.notifier).todoFromFirestore);
+});
+
+final completedTasksProvider = StreamProvider<List<Todo>>((ref) {
+  Query userTasksQuery = ref.watch(tasksProvider.notifier).userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
+  return userTasksQuery.snapshots().map(ref.read(tasksProvider.notifier).todoFromFirestore);
+});
+
 class TasksController extends StateNotifier<TasksState> {
   final Ref ref;
 
@@ -49,16 +59,6 @@ class TasksController extends StateNotifier<TasksState> {
 
   Future undoCompleteTask(uid) async {
     await userTasksCollection.doc(uid).update({"isCompleted": false});
-  }
-
-  Stream<List<Todo>> fetchPendingTasks() {
-    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
-    return userTasksQuery.snapshots().map(todoFromFirestore);
-  }
-
-  Stream<List<Todo>> fetchCompletedTasks() {
-    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
-    return userTasksQuery.snapshots().map(todoFromFirestore);
   }
 
   Future removeTodo(uid) async {

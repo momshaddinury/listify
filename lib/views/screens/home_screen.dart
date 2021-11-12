@@ -10,8 +10,6 @@ import 'package:listify/views/widgets/task_card.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
-  const HomeScreen({Key key}) : super(key: key);
-
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -19,6 +17,8 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final pendingTasksStream = ref.watch(pendingTasksProvider);
+    final completedTasksStream = ref.watch(completedTasksProvider);
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 0,
@@ -70,14 +70,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               SizedBox(height: KSize.getHeight(context, 72)),
 
               /// Pending Tasks
-              StreamBuilder(
-                  stream: ref.watch(tasksProvider.notifier).fetchPendingTasks(),
-                  builder: (context, snapshot) {
-                    if (snapshot.data == null) {
-                      return Container();
-                    }
+              pendingTasksStream.when(
+                  loading: () => Container(),
+                  error: (e, stackTrace) => ErrorWidget(stackTrace),
+                  data: (snapshot) {
                     return Visibility(
-                      visible: snapshot.data.length > 0,
+                      visible: snapshot.length > 0,
                       child: Column(
                         children: [
                           Row(
@@ -90,7 +88,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 ),
                               ),
                               Visibility(
-                                visible: snapshot.data.length > 5,
+                                visible: snapshot.length > 4,
                                 child: GestureDetector(
                                   onTap: () {
                                     Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
@@ -109,9 +107,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
-                              itemCount: snapshot.data.length,
+                              itemCount: snapshot.length,
                               itemBuilder: (context, index) {
-                                return TaskCard(snapshot.data[index]);
+                                return TaskCard(snapshot[index]);
                               }),
                         ],
                       ),
@@ -119,14 +117,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   }),
 
               /// Completed Tasks
-              StreamBuilder(
-                  stream: ref.watch(tasksProvider.notifier).fetchCompletedTasks(),
-                  builder: (context, snapshot) {
-                    if (snapshot.data == null) {
-                      return Container();
-                    }
+              completedTasksStream.when(
+                  loading: () => Container(),
+                  error: (e, stackTrace) => ErrorWidget(stackTrace),
+                  data: (snapshot) {
                     return Visibility(
-                      visible: snapshot.data.length > 0,
+                      visible: snapshot.length > 0,
                       child: Column(
                         children: [
                           Row(
@@ -144,10 +140,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           ListView.builder(
                               shrinkWrap: true,
                               physics: NeverScrollableScrollPhysics(),
-                              itemCount: snapshot.data.length,
+                              itemCount: snapshot.length,
                               itemBuilder: (context, index) {
                                 return TaskCard(
-                                  snapshot.data[index],
+                                  snapshot[index],
                                   borderOutline: false,
                                   backgroundColor: KColors.lightCharcoal,
                                 );
