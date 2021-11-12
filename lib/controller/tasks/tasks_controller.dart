@@ -19,7 +19,7 @@ class TasksController {
       await documentReferencer.set({
         "title": title,
         "description": description,
-        "dateTime": dateTime != "" ? DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
+        "dateTime": dateTime != "" ? DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
         "priority": priority == "" ? "Low" : priority,
         "isCompleted": false,
       });
@@ -33,7 +33,7 @@ class TasksController {
     await userTasksCollection.doc(uid).update({
       "title": title,
       "description": description,
-      "dateTime": DateFormat("MMM dd, yyyy hh:mm aa").parse(dateTime).millisecondsSinceEpoch,
+      "dateTime": DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch,
       "priority": priority,
     });
   }
@@ -57,7 +57,7 @@ class TasksController {
           isCompleted: e["isCompleted"],
           title: e["title"],
           description: e["description"],
-          dateTime: DateFormat('MMM dd, yyyy hh:mm aa').format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
+          dateTime: DateFormat('hh:mm aa MMM dd, yyyy').format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
           priority: e["priority"],
           uid: e.id,
         );
