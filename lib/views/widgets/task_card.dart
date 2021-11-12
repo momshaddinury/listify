@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/provider.dart';
-import 'package:listify/views/screens/update_task_screen.dart';
+import 'package:listify/views/screens/task_details_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TaskCard extends ConsumerWidget {
+  final Animation<double> animation;
   final Color backgroundColor;
   final bool borderOutline;
 
-  TaskCard({this.backgroundColor = KColors.white, this.borderOutline = true});
+  TaskCard({this.animation, this.backgroundColor = KColors.white, this.borderOutline = true});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -16,7 +17,7 @@ class TaskCard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => UpdateTaskScreen(task)));
+        if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => TaskDetailsScreen(task)));
       },
       child: Container(
         width: KSize.getWidth(context, 602),

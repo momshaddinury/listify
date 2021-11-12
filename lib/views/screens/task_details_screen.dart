@@ -9,16 +9,16 @@ import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class UpdateTaskScreen extends ConsumerStatefulWidget {
+class TaskDetailsScreen extends ConsumerStatefulWidget {
   final Todo todo;
 
-  UpdateTaskScreen(this.todo);
+  TaskDetailsScreen(this.todo);
 
   @override
   _UpdateTaskScreenState createState() => _UpdateTaskScreenState();
 }
 
-class _UpdateTaskScreenState extends ConsumerState<UpdateTaskScreen> {
+class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
   final TextEditingController taskTitleController = TextEditingController();
   final TextEditingController taskDetailsController = TextEditingController();
   final TextEditingController dateTimeController = TextEditingController();
