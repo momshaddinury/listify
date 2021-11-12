@@ -3,31 +3,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/model/todo.dart';
 import 'package:nb_utils/nb_utils.dart';
-import 'tasks_state.dart';
 import 'package:intl/intl.dart';
 
-final tasksProvider = StateNotifierProvider((ref) => TasksController(ref: ref));
-
-final pendingTasksProvider = StreamProvider<List<Todo>>((ref) {
-  Query userTasksQuery = ref.watch(tasksProvider.notifier).userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
-  return userTasksQuery.snapshots().map(ref.read(tasksProvider.notifier).todoFromFirestore);
-});
-
-final completedTasksProvider = StreamProvider<List<Todo>>((ref) {
-  Query userTasksQuery = ref.watch(tasksProvider.notifier).userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
-  return userTasksQuery.snapshots().map(ref.read(tasksProvider.notifier).todoFromFirestore);
-});
-
-class TasksController extends StateNotifier<TasksState> {
+class TasksController {
   final Ref ref;
 
-  TasksController({this.ref}) : super(TasksInitialState());
+  TasksController({this.ref});
 
   final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
   CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
 
   Future createNewTask(String title, description, dateTime, priority) async {
-    state = TasksLoadingState();
     try {
       DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
@@ -40,7 +26,6 @@ class TasksController extends StateNotifier<TasksState> {
     } catch (error, stackTrace) {
       print("createNewTask(): $error");
       print(stackTrace);
-      state = TasksErrorState();
     }
   }
 

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:listify/controller/tasks/tasks_controller.dart';
+import 'package:listify/controller/tasks/provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/views/screens/task_details_screen.dart';
-import 'package:listify/views/screens/update_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -31,7 +30,7 @@ class TaskCard extends ConsumerWidget {
             color: KColors.lightRed,
           ),
           onDismissed: (direction) async {
-            ref.read(tasksProvider.notifier).removeTodo(task.uid);
+            ref.read(tasksProvider).removeTodo(task.uid);
           },
           child: Container(
             width: KSize.getWidth(context, 602),
@@ -106,9 +105,9 @@ class TaskCard extends ConsumerWidget {
                 InkWell(
                   onTap: () async {
                     if (!task.isCompleted)
-                      await ref.read(tasksProvider.notifier).completeTask(task.uid);
+                      await ref.read(tasksProvider).completeTask(task.uid);
                     else
-                      await ref.read(tasksProvider.notifier).undoCompleteTask(task.uid);
+                      await ref.read(tasksProvider).undoCompleteTask(task.uid);
                   },
                   child: Container(
                     margin: EdgeInsets.all(KSize.getWidth(context, 36)),

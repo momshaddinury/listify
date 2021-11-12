@@ -1,6 +1,6 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
-import 'package:listify/controller/tasks/tasks_controller.dart';
+import 'package:listify/controller/tasks/provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/views/screens/update_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -42,7 +42,7 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                 ExpandTapWidget(
                   tapPadding: EdgeInsets.all(25),
                   onTap: () {
-                    ref.read(tasksProvider.notifier).removeTodo(widget.todo.uid);
+                    ref.read(tasksProvider).removeTodo(widget.todo.uid);
 
                     Navigator.pop(context);
                   },
@@ -130,9 +130,9 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                           InkWell(
                             onTap: () async {
                               if (!widget.todo.isCompleted)
-                                await ref.read(tasksProvider.notifier).completeTask(widget.todo.uid);
+                                await ref.read(tasksProvider).completeTask(widget.todo.uid);
                               else
-                                await ref.read(tasksProvider.notifier).undoCompleteTask(widget.todo.uid);
+                                await ref.read(tasksProvider).undoCompleteTask(widget.todo.uid);
                             },
                             child: Container(
                               margin: EdgeInsets.all(KSize.getWidth(context, 36)),
