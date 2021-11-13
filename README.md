@@ -48,6 +48,8 @@ Project is following MVC pattern. For managing state I am using Riverpod 1.0.0. 
 ├── Update Task
 └── Delete Task
 ```
+```P.S - To see on going work, feature list please check issues section and projects section```
+
 
 To learn more about riverpod:<br>
 https://codewithandrea.com/videos/flutter-state-management-riverpod/<br>
