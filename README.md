@@ -1,16 +1,12 @@
-# listify
+# Listify - Not your everyday todo app!
 
-A new Flutter project.
+A task management app with refreshing UI. Organise your tasks and share projects on the go. Track status of project, discuss ideas about tasks in dedicated discussion thread. It can be used as a regular To Do List App or can be used to plan and execute big events. 
 
-## Getting Started
+![Splash Screen](https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Splash%20Screen.png)
 
-This project is a starting point for a Flutter application.
+![Login Screen](https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Login%20Screen.png)
 
-A few resources to get you started if this is your first Flutter project:
+![Home Screen](https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Home%20Screen.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![Details Screen](https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Details%20Screen.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
