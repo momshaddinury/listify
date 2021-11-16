@@ -15,10 +15,10 @@ class TaskDetailsScreen extends ConsumerStatefulWidget {
   TaskDetailsScreen(this.todo);
 
   @override
-  _UpdateTaskScreenState createState() => _UpdateTaskScreenState();
+  _TaskDetailsScreenState createState() => _TaskDetailsScreenState();
 }
 
-class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
+class _TaskDetailsScreenState extends ConsumerState<TaskDetailsScreen> {
   final TextEditingController taskTitleController = TextEditingController();
   final TextEditingController taskDetailsController = TextEditingController();
   final TextEditingController dateTimeController = TextEditingController();

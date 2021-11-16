@@ -16,6 +16,7 @@ final authStateChangesProvider = StreamProvider<User>(
 final getCurrentUserProvider = Provider<User>(
   (ref) => ref.watch(firebaseProvider).currentUser,
 );
+
 final firebaseAuthProvider = StateNotifierProvider(
   (ref) => FirebaseAuthController(ref: ref),
 );
@@ -71,7 +72,5 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     );
   }
 
-  Future signOut() async {
-    await ref.read(firebaseProvider).signOut();
-  }
+  Future signOut() async => await ref.read(firebaseProvider).signOut();
 }

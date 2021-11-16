@@ -38,17 +38,11 @@ class TasksController {
     });
   }
 
-  Future completeTask(uid) async {
-    await userTasksCollection.doc(uid).update({"isCompleted": true});
-  }
+  Future completeTask(uid) async => await userTasksCollection.doc(uid).update({"isCompleted": true});
 
-  Future undoCompleteTask(uid) async {
-    await userTasksCollection.doc(uid).update({"isCompleted": false});
-  }
+  Future undoCompleteTask(uid) async => await userTasksCollection.doc(uid).update({"isCompleted": false});
 
-  Future removeTodo(uid) async {
-    await userTasksCollection.doc(uid).delete();
-  }
+  Future removeTodo(uid) async => await userTasksCollection.doc(uid).delete();
 
   List<Todo> todoFromFirestore(QuerySnapshot snapshot) {
     if (snapshot != null) {
