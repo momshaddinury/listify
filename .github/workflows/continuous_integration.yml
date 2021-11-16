@@ -2,10 +2,10 @@ name: CI
 on: 
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 jobs:
   flutter_test:
     name: Run flutter test and analyze
