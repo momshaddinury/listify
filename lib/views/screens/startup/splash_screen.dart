@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:listify/constant/shared_preference_key.dart';
-import 'package:listify/controller/authentication/authentication_controller.dart';
+import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/views/screens/auth/auth_wrapper.dart';
 import 'package:listify/views/styles/k_assets.dart';
 import 'package:listify/views/styles/k_colors.dart';

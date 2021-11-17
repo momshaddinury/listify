@@ -3,22 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import 'authentication_provider.dart';
 import 'authentication_state.dart';
-
-final firebaseProvider = Provider<FirebaseAuth>((ref) {
-  return FirebaseAuth.instance;
-});
-
-final authStateChangesProvider = StreamProvider<User>(
-  (ref) => ref.watch(firebaseProvider).authStateChanges(),
-);
-
-final getCurrentUserProvider = Provider<User>(
-  (ref) => ref.watch(firebaseProvider).currentUser,
-);
-final firebaseAuthProvider = StateNotifierProvider(
-  (ref) => FirebaseAuthController(ref: ref),
-);
 
 class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   final Ref ref;

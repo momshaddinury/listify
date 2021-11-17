@@ -1,6 +1,6 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
-import 'package:listify/controller/tasks/provider.dart';
+import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';

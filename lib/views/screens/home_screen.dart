@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/controller/authentication/authentication_controller.dart';
-import 'package:listify/controller/tasks/provider.dart';
+import 'package:listify/controller/authentication/authentication_provider.dart';
+import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
