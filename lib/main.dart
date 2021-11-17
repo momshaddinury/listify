@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,
         brightness: KTheme.darkMode() ? Brightness.dark : Brightness.light,
         primaryColor: KColors.primary,
-        accentColor: KColors.accent,
+        colorScheme: ThemeData().colorScheme.copyWith(secondary: KColors.accent),
         primarySwatch: KColors.createMaterialColor(KColors.primary),
         appBarTheme: AppBarTheme(
             iconTheme: IconThemeData(size: 16),
