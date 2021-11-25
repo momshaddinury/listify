@@ -8,7 +8,7 @@ class CreateTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(CreateTaskScreen());
+        Get.to(() => CreateTaskScreen());
       },
       child: Container(
           height: KSize.getHeight(context, 82),

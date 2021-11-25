@@ -92,7 +92,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 visible: snapshot.length > 4,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Get.to(AllTasksScreen());
+                                    Get.to(() => AllTasksScreen());
                                   },
                                   child: Text(
                                     "View All",

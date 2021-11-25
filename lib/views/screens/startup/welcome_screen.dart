@@ -32,7 +32,7 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(context, 61)),
             KFilledButton(
               buttonText: 'Create Account',
-              onPressed: () async => Get.to(SignupScreen()),
+              onPressed: () async => Get.to(() => SignupScreen()),
             ),
             SizedBox(height: KSize.getHeight(context, 106)),
             Text(
@@ -59,7 +59,7 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(context, 6)),
             InkWell(
               onTap: () {
-                Get.to(LoginScreen());
+                Get.to(() => LoginScreen());
               },
               child: Text(
                 "Login",

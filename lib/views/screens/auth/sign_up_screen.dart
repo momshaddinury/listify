@@ -135,7 +135,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
               SizedBox(height: KSize.getHeight(context, 6)),
               InkWell(
                 onTap: () {
-                  Get.off(LoginScreen());
+                  Get.off(() => LoginScreen());
                 },
                 child: Text(
                   "Login",
