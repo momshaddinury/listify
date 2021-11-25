@@ -212,12 +212,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "flutter_riverpod",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_riverpod-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
       "name": "flutter_test",
       "rootUri": "file:///Users/dinury/src/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -368,12 +362,6 @@
       "languageVersion": "2.12"
     },
     {
-      "name": "riverpod",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/riverpod-1.0.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.14"
-    },
-    {
       "name": "shared_preferences",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/shared_preferences-2.0.8",
       "packageUri": "lib/",
@@ -430,12 +418,6 @@
     {
       "name": "stack_trace",
       "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/stack_trace-1.10.0",
-      "packageUri": "lib/",
-      "languageVersion": "2.12"
-    },
-    {
-      "name": "state_notifier",
-      "rootUri": "file:///Users/dinury/src/flutter/.pub-cache/hosted/pub.dartlang.org/state_notifier-0.7.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -506,7 +488,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-11-25T05:20:17.190259Z",
+  "generated": "2021-11-25T11:40:57.891694Z",
   "generator": "pub",
   "generatorVersion": "2.14.4"
 }

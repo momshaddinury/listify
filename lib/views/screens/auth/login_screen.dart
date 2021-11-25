@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
@@ -10,12 +9,12 @@ import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class LoginScreen extends ConsumerStatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  ConsumerState<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends ConsumerState<LoginScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final authenticationController = Get.put(AuthenticationController());
@@ -25,35 +24,35 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: KSize.getWidth(context, 59),
+          horizontal: KSize.getWidth(59),
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: KSize.getHeight(context, 332)),
+              SizedBox(height: KSize.getHeight(332)),
               Container(
-                height: KSize.getHeight(context, 63),
-                width: KSize.getWidth(context, 315),
+                height: KSize.getHeight(63),
+                width: KSize.getWidth(315),
                 child: Text(
                   "Welcome Back",
                   textAlign: TextAlign.center,
                   style: KTextStyle.headLine3,
                 ),
               ),
-              SizedBox(height: KSize.getHeight(context, 63)),
+              SizedBox(height: KSize.getHeight(63)),
               KTextField(
                 hintText: 'Your email address',
                 controller: emailController,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
               ),
-              SizedBox(height: KSize.getHeight(context, 10)),
+              SizedBox(height: KSize.getHeight(10)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -63,7 +62,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: KSize.getHeight(context, 61)),
+              SizedBox(height: KSize.getHeight(61)),
               GetBuilder<AuthenticationController>(
                 builder: (_) {
                   return KFilledButton(
@@ -86,29 +85,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   );
                 },
               ),
-              SizedBox(height: KSize.getHeight(context, 66)),
+              SizedBox(height: KSize.getHeight(66)),
               Text(
                 "Or",
                 textAlign: TextAlign.center,
                 style: KTextStyle.bodyText1(),
               ),
-              SizedBox(height: KSize.getHeight(context, 72)),
+              SizedBox(height: KSize.getHeight(72)),
               KOutlinedButton(
                 buttonText: 'Login with Google',
                 assetIcon: KAssets.google,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KOutlinedButton(
                 buttonText: 'Login with Facebook',
                 assetIcon: KAssets.facebook,
               ),
-              SizedBox(height: KSize.getHeight(context, 131)),
+              SizedBox(height: KSize.getHeight(131)),
               Text(
                 "Don't have an account?",
                 textAlign: TextAlign.center,
                 style: KTextStyle.bodyText3(),
               ),
-              SizedBox(height: KSize.getHeight(context, 6)),
+              SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () => Get.off(() => SignupScreen()),
                 child: Text(

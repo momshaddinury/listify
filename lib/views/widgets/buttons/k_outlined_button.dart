@@ -12,15 +12,15 @@ class KOutlinedButton extends StatelessWidget {
     return GestureDetector(
       onTap: () {},
       child: Container(
-        height: KSize.getHeight(context, 84),
+        height: KSize.getHeight(84),
         width: double.infinity,
         decoration: BoxDecoration(border: Border.all(color: KTheme.darkMode() ? KColors.white : KColors.charcoal)),
         child: Center(
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(height: KSize.getHeight(context, 34), width: KSize.getWidth(context, 34), child: Image.asset(assetIcon)),
-              SizedBox(width: KSize.getWidth(context, 22)),
+              Container(height: KSize.getHeight(34), width: KSize.getWidth(34), child: Image.asset(assetIcon)),
+              SizedBox(width: KSize.getWidth(22)),
               Text(
                 buttonText,
                 style: KTextStyle.buttonText(fontWeight: FontWeight.w500),

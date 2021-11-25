@@ -16,7 +16,7 @@ class KFilledButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: KSize.getHeight(context, 84),
+        height: KSize.getHeight(84),
         width: double.infinity,
         decoration: BoxDecoration(
           color: buttonColor,

@@ -11,17 +11,17 @@ class CreateTaskButton extends StatelessWidget {
         Get.to(() => CreateTaskScreen());
       },
       child: Container(
-          height: KSize.getHeight(context, 82),
-          width: KSize.getWidth(context, 602),
+          height: KSize.getHeight(82),
+          width: KSize.getWidth(602),
           decoration: BoxDecoration(
             color: KColors.primary,
             borderRadius: BorderRadius.circular(4),
           ),
           child: Row(
             children: [
-              SizedBox(width: KSize.getWidth(context, 31)),
+              SizedBox(width: KSize.getWidth(31)),
               Icon(Icons.add, color: KColors.white),
-              SizedBox(width: KSize.getWidth(context, 24)),
+              SizedBox(width: KSize.getWidth(24)),
               Text(
                 "Create New Task",
                 style: KTextStyle.bodyText2().copyWith(color: KColors.white),

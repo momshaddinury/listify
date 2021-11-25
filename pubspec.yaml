@@ -32,7 +32,6 @@ dependencies:
   flutter_datetime_picker:
     git: https://github.com/Realank/flutter_datetime_picker.git
   # flutter_riverpod: ^0.13.0
-  flutter_riverpod: ^1.0.0
   get: ^4.3.8
   firebase_core: ^1.8.0
   firebase_auth: ^3.1.4

@@ -4,15 +4,14 @@ import 'package:listify/views/styles/k_assets.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_size.dart';
 import 'package:listify/views/styles/k_textstyle.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 
-class SplashScreen extends ConsumerStatefulWidget {
+class SplashScreen extends StatefulWidget {
   @override
-  ConsumerState<SplashScreen> createState() => _SplashScreenState();
+  State<SplashScreen> createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends ConsumerState<SplashScreen> {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
@@ -26,8 +25,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: KSize.getWidth(context, 59),
-            vertical: KSize.getWidth(context, 59),
+            horizontal: KSize.getWidth(59),
+            vertical: KSize.getWidth(59),
           ),
           child: Center(
             child: Column(
@@ -39,7 +38,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
-                  height: KSize.getHeight(context, 20),
+                  height: KSize.getHeight(20),
                 ),
                 Text(
                   "Not your every day todo app",

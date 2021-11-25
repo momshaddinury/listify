@@ -1,10 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/startup/splash_screen.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_theme.dart';
@@ -22,7 +21,7 @@ Future<void> main() async {
   /// A widget that stores the state of providers.
   /// All Flutter applications using Riverpod must contain a [ProviderScope] at
   /// the root of their widget tree
-  runApp(ProviderScope(child: MyApp()));
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -33,7 +32,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       title: 'Listify',
-      navigatorKey: NavigationService.navigatorKey,
+      navigatorKey: Get.key,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,

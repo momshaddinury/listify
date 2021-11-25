@@ -1,28 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/controller/tasks/tasks_controller.dart';
+import 'package:listify/model/todo.dart';
 import 'package:listify/views/screens/task_details_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
-class TaskCard extends ConsumerWidget {
+class TaskCard extends StatelessWidget {
   final Animation<double> animation;
   final Color backgroundColor;
   final bool borderOutline;
+  final Todo task;
 
-  TaskCard({this.animation, this.backgroundColor = KColors.white, this.borderOutline = true});
+  TaskCard(this.task, {this.animation, this.backgroundColor = KColors.white, this.borderOutline = true});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final task = ref.watch(taskProvider);
+  Widget build(BuildContext context) {
+    final taskController = Get.put(TasksController());
 
     return GestureDetector(
       onTap: () {
         if (!task.isCompleted) Get.to(() => TaskDetailsScreen(task));
       },
       child: Container(
-        width: KSize.getWidth(context, 602),
-        margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
+        width: KSize.getWidth(602),
+        margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
         child: Dismissible(
           key: Key(task.title),
           background: Container(
@@ -32,12 +34,12 @@ class TaskCard extends ConsumerWidget {
             color: KColors.lightRed,
           ),
           onDismissed: (direction) async {
-            ref.read(tasksProvider).removeTodo(task.uid);
+            taskController.removeTodo(task.uid);
           },
           child: Container(
-            width: KSize.getWidth(context, 602),
-            // margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
-            padding: EdgeInsets.symmetric(vertical: KSize.getHeight(context, 15)),
+            width: KSize.getWidth(602),
+            // margin: EdgeInsets.only(bottom: KSize.getHeight( 19)),
+            padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
             decoration: BoxDecoration(
               color: backgroundColor,
               border: borderOutline ? Border.all(color: KColors.charcoal) : null,
@@ -53,7 +55,7 @@ class TaskCard extends ConsumerWidget {
                       Flexible(
                         child: Padding(
                           padding: EdgeInsets.only(
-                            left: KSize.getWidth(context, 22),
+                            left: KSize.getWidth(22),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -62,7 +64,7 @@ class TaskCard extends ConsumerWidget {
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.only(
-                                      right: KSize.getWidth(context, 22),
+                                      right: KSize.getWidth(22),
                                     ),
                                     child: Icon(
                                       Icons.brightness_1_sharp,
@@ -71,7 +73,7 @@ class TaskCard extends ConsumerWidget {
                                           : task.priority == "Medium"
                                               ? Colors.orange
                                               : Colors.red,
-                                      size: KSize.getWidth(context, 16),
+                                      size: KSize.getWidth(16),
                                     ),
                                   ),
                                   Text(
@@ -83,14 +85,14 @@ class TaskCard extends ConsumerWidget {
                               if (task.description.length > 0)
                                 Column(
                                   children: [
-                                    SizedBox(height: KSize.getHeight(context, 5)),
+                                    SizedBox(height: KSize.getHeight(5)),
                                     Text(
                                       task.description,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       style: KTextStyle.bodyText3(),
                                     ),
-                                    SizedBox(height: KSize.getHeight(context, 10)),
+                                    SizedBox(height: KSize.getHeight(10)),
                                   ],
                                 ),
                               Text(task.dateTime,
@@ -107,16 +109,16 @@ class TaskCard extends ConsumerWidget {
                 InkWell(
                   onTap: () async {
                     if (!task.isCompleted)
-                      await ref.read(tasksProvider).completeTask(task.uid);
+                      await taskController.completeTask(task.uid);
                     else
-                      await ref.read(tasksProvider).undoCompleteTask(task.uid);
+                      await taskController.undoCompleteTask(task.uid);
                   },
                   child: Container(
-                    margin: EdgeInsets.all(KSize.getWidth(context, 36)),
+                    margin: EdgeInsets.all(KSize.getWidth(36)),
                     child: Icon(
                       task.isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
                       color: KColors.primary,
-                      size: KSize.getWidth(context, 24),
+                      size: KSize.getWidth(24),
                     ),
                   ),
                 ),

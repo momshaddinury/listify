@@ -35,9 +35,9 @@ class _KDropdownFieldState extends State<KDropdownField> {
           items: widget.dropdownFieldOptions,
           decoration: BoxDecoration(border: Border.all(color: Colors.transparent)),
           itemBuilder: (String value) => Container(
-            height: KSize.getHeight(context, 84),
+            height: KSize.getHeight(84),
             alignment: Alignment.centerLeft,
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 26)),
+            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26)),
             child: Text(
               value,
               style: KTextStyle.bodyText1(),
@@ -45,10 +45,10 @@ class _KDropdownFieldState extends State<KDropdownField> {
           ),
           child: Container(
             color: KTheme.darkMode() ? KColors.darkAccent : KColors.accent,
-            height: KSize.getHeight(context, 84),
-            width: KSize.getWidth(context, 602),
+            height: KSize.getHeight(84),
+            width: KSize.getWidth(602),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 26)),
+              padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -61,8 +61,8 @@ class _KDropdownFieldState extends State<KDropdownField> {
                   ),
                   Image.asset(
                     KAssets.dropdown,
-                    height: KSize.getHeight(context, 25),
-                    width: KSize.getWidth(context, 25),
+                    height: KSize.getHeight(25),
+                    width: KSize.getWidth(25),
                   ),
                 ],
               ),

@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
-import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/controller/tasks/tasks_controller.dart';
+import 'package:listify/model/todo.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/task_card.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final authController = Get.put(AuthenticationController());
-    final pendingTasksStream = ref.watch(pendingTasksProvider);
-    final completedTasksStream = ref.watch(completedTasksProvider);
+    final taskController = Get.put(TasksController());
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 0,
@@ -27,18 +26,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: () {
-                  kSnackBar('Warning', "Feature is not available yet");
-                },
+                onTap: () => kSnackBar('Warning', "Feature is not available yet"),
                 child: Image.asset(
                   KAssets.menu,
-                  height: KSize.getHeight(context, 32),
-                  width: KSize.getWidth(context, 32),
+                  height: KSize.getHeight(32),
+                  width: KSize.getWidth(32),
                 ),
               ),
               Text("My Day", style: KTextStyle.headLine4),
@@ -46,8 +43,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 onTap: () => authController.signOut(),
                 child: Image.asset(
                   KAssets.logout,
-                  height: KSize.getHeight(context, 32),
-                  width: KSize.getWidth(context, 32),
+                  height: KSize.getHeight(32),
+                  width: KSize.getWidth(32),
                 ),
               ),
             ],
@@ -57,103 +54,104 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: KSize.getHeight(context, 35)),
+              SizedBox(height: KSize.getHeight(35)),
 
               /// Create Task / Project
               CreateTaskButton(),
-              SizedBox(height: KSize.getHeight(context, 72)),
+              SizedBox(height: KSize.getHeight(72)),
 
               /// Pending Tasks
-              pendingTasksStream.when(
-                  loading: () => Container(),
-                  error: (e, stackTrace) => ErrorWidget(stackTrace),
-                  data: (snapshot) {
-                    return Visibility(
-                      visible: snapshot.length > 0,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Pending",
-                                style: KTextStyle.bodyText2().copyWith(
-                                  color: KColors.charcoal.withOpacity(.71),
+              StreamBuilder<List<Todo>>(
+                  stream: taskController.pendingTasks(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.active) {
+                      return Visibility(
+                        visible: snapshot.data.length > 0,
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  "Pending",
+                                  style: KTextStyle.bodyText2().copyWith(
+                                    color: KColors.charcoal.withOpacity(.71),
+                                  ),
                                 ),
-                              ),
-                              Visibility(
-                                visible: snapshot.length > 4,
-                                child: GestureDetector(
-                                  onTap: () {
-                                    Get.to(() => AllTasksScreen());
-                                  },
-                                  child: Text(
-                                    "View All",
-                                    style: KTextStyle.bodyText2().copyWith(
-                                      color: KColors.charcoal.withOpacity(.71),
+                                Visibility(
+                                  visible: snapshot.data.length > 4,
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Get.to(() => AllTasksScreen());
+                                    },
+                                    child: Text(
+                                      "View All",
+                                      style: KTextStyle.bodyText2().copyWith(
+                                        color: KColors.charcoal.withOpacity(.71),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: KSize.getHeight(context, 10)),
-                          ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: snapshot.length,
-                              itemBuilder: (context, index) {
-                                return ProviderScope(
-                                  overrides: [taskProvider.overrideWithValue(snapshot[index])],
-                                  child: TaskCard(),
-                                );
-                              }),
-                        ],
-                      ),
-                    );
+                              ],
+                            ),
+                            SizedBox(height: KSize.getHeight(10)),
+                            ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return TaskCard(snapshot.data[index]);
+                                }),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return Container();
+                    }
                   }),
 
               /// Completed Tasks
-              completedTasksStream.when(
-                  loading: () => Container(),
-                  error: (e, stackTrace) => ErrorWidget(stackTrace),
-                  data: (snapshot) {
-                    return Visibility(
-                      visible: snapshot.length > 0,
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                "Done",
-                                style: KTextStyle.bodyText2().copyWith(
-                                  color: KColors.charcoal.withOpacity(.71),
+              StreamBuilder<List<Todo>>(
+                  stream: taskController.completedTasks(),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.active) {
+                      return Visibility(
+                        visible: snapshot.data.length > 0,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "Done",
+                                  textAlign: TextAlign.left,
+                                  style: KTextStyle.bodyText2().copyWith(
+                                    color: KColors.charcoal.withOpacity(.71),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: KSize.getHeight(context, 10)),
-                          ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: snapshot.length,
-                              itemBuilder: (context, index) {
-                                return ProviderScope(
-                                  overrides: [taskProvider.overrideWithValue(snapshot[index])],
-                                  child: TaskCard(
+                              ],
+                            ),
+                            SizedBox(height: KSize.getHeight(10)),
+                            ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: snapshot.data.length,
+                                itemBuilder: (context, index) {
+                                  return TaskCard(
+                                    snapshot.data[index],
                                     borderOutline: false,
                                     backgroundColor: KColors.lightCharcoal,
-                                  ),
-                                );
-                              }),
-                        ],
-                      ),
-                    );
+                                  );
+                                }),
+                          ],
+                        ),
+                      );
+                    } else {
+                      return Container();
+                    }
                   }),
             ],
           ),

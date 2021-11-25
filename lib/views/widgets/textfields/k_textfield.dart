@@ -31,11 +31,11 @@ class _KTextFieldState extends State<KTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: KSize.getHeight(context, 84),
-      width: KSize.getWidth(context, 602),
+      // height: KSize.getHeight( 84),
+      width: KSize.getWidth(602),
       color: KTheme.darkMode() ? KColors.darkAccent : KColors.accent,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 26)),
+        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -77,21 +77,21 @@ class _KTextFieldState extends State<KTextField> {
                 },
                 child: Image.asset(
                   isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
-                  height: KSize.getHeight(context, 25),
-                  width: KSize.getWidth(context, 25),
+                  height: KSize.getHeight(25),
+                  width: KSize.getWidth(25),
                 ),
               ),
             if (widget.isCalanderField)
               Image.asset(
                 KAssets.calendar,
-                height: KSize.getHeight(context, 25),
-                width: KSize.getWidth(context, 25),
+                height: KSize.getHeight(25),
+                width: KSize.getWidth(25),
               ),
             if (widget.isDropdownField)
               Image.asset(
                 KAssets.dropdown,
-                height: KSize.getHeight(context, 25),
-                width: KSize.getWidth(context, 25),
+                height: KSize.getHeight(25),
+                width: KSize.getWidth(25),
               )
           ],
         ),

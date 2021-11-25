@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
@@ -9,14 +8,14 @@ import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-class SignupScreen extends ConsumerStatefulWidget {
+class SignupScreen extends StatefulWidget {
   SignupScreen({Key key}) : super(key: key);
 
   @override
-  ConsumerState<SignupScreen> createState() => _SignupScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _SignupScreenState extends ConsumerState<SignupScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
@@ -28,40 +27,40 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: KSize.getWidth(context, 59),
+          horizontal: KSize.getWidth(59),
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: KSize.getHeight(context, 288)),
+              SizedBox(height: KSize.getHeight(288)),
               Container(
-                width: KSize.getWidth(context, 439),
+                width: KSize.getWidth(439),
                 child: Text(
                   "Not your everyday Todo app!",
                   textAlign: TextAlign.center,
                   style: KTextStyle.headLine3,
                 ),
               ),
-              SizedBox(height: KSize.getHeight(context, 44)),
+              SizedBox(height: KSize.getHeight(44)),
               KTextField(
                 hintText: 'Email Address',
                 controller: emailController,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Confirm Password',
                 controller: confirmPasswordController,
                 isPasswordField: true,
               ),
-              SizedBox(height: KSize.getHeight(context, 106)),
+              SizedBox(height: KSize.getHeight(106)),
               GetBuilder<AuthenticationController>(
                 builder: (_) {
                   return KFilledButton(
@@ -82,13 +81,13 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   );
                 },
               ),
-              SizedBox(height: KSize.getHeight(context, 110)),
+              SizedBox(height: KSize.getHeight(110)),
               Text(
                 "Already have an account?",
                 textAlign: TextAlign.center,
                 style: KTextStyle.bodyText3(),
               ),
-              SizedBox(height: KSize.getHeight(context, 6)),
+              SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () {
                   Get.off(() => LoginScreen());

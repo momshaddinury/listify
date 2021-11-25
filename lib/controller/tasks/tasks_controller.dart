@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/model/todo.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
-class TasksController {
-  final Ref ref;
-
-  TasksController({this.ref});
-
+class TasksController extends GetxController {
   final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
   CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+
+  @override
+  onReady() {
+    super.onReady();
+  }
 
   Future createNewTask(String title, description, dateTime, priority) async {
     try {
@@ -48,6 +49,16 @@ class TasksController {
 
   Future removeTodo(uid) async {
     await userTasksCollection.doc(uid).delete();
+  }
+
+  Stream<List<Todo>> pendingTasks() {
+    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
+    return userTasksQuery.snapshots().map(todoFromFirestore);
+  }
+
+  Stream<List<Todo>> completedTasks() {
+    Query userTasksQuery = userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
+    return userTasksQuery.snapshots().map(todoFromFirestore);
   }
 
   List<Todo> todoFromFirestore(QuerySnapshot snapshot) {
