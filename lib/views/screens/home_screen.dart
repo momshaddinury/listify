@@ -7,8 +7,8 @@ import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
+import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/task_card.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   @override
@@ -33,7 +33,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             children: [
               GestureDetector(
                 onTap: () {
-                  snackBar(context, title: "Feature is not available yet", backgroundColor: KColors.charcoal);
+                  kSnackBar('Warning', "Feature is not available yet");
                 },
                 child: Image.asset(
                   KAssets.menu,

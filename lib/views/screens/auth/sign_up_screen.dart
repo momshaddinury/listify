@@ -7,6 +7,7 @@ import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
+import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -31,7 +32,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
         if (state is FirebaseAuthSuccessState) {
           Get.offUntil(MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
         } else if (state is FirebaseAuthErrorState) {
-          snackBar(context, title: state.message, backgroundColor: KColors.charcoal);
+          kSnackBar('Warning', state.message);
         }
       },
     );
@@ -119,8 +120,10 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                                 password: passwordController.text,
                               );
                         } else {
-                          snackBar(context, title: "Password doesn't match", backgroundColor: KColors.charcoal);
+                          kSnackBar('Warning', "Password doesn't match");
                         }
+                      } else {
+                        kSnackBar('Warning', "Please enter email");
                       }
                     }
                   },

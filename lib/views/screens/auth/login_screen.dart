@@ -7,6 +7,7 @@ import 'package:listify/views/screens/auth/sign_up_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
+import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -28,7 +29,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       if (state is FirebaseAuthSuccessState) {
         Get.offUntil(MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
       } else if (state is FirebaseAuthErrorState) {
-        snackBar(context, title: state.message, backgroundColor: KColors.charcoal);
+        kSnackBar('Warning', state.message);
       }
     });
 
@@ -89,9 +90,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             );
                       } else {
                         if (emailController.text.trim().isEmpty) {
-                          snackBar(context, title: "Please enter email", backgroundColor: KColors.charcoal);
+                          kSnackBar(
+                            'Warning',
+                            "Please enter email",
+                          );
                         } else if (passwordController.text.isEmpty) {
-                          snackBar(context, title: "Please enter password", backgroundColor: KColors.charcoal);
+                          kSnackBar('Warning', "Please enter password");
                         }
                       }
                     }

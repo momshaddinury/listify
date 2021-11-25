@@ -5,10 +5,10 @@ import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
+import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_dropdown_textfield.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 class TaskDetailsScreen extends ConsumerStatefulWidget {
   final Todo todo;
@@ -105,7 +105,10 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                             );
                         Get.back();
                       } else {
-                        snackBar(context, title: 'Please enter a task name', backgroundColor: KColors.charcoal);
+                        kSnackBar(
+                          'Warning',
+                          'Please enter a task name',
+                        );
                       }
                     })
               ],
