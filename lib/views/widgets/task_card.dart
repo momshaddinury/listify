@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/views/screens/task_details_screen.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -17,7 +18,7 @@ class TaskCard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => TaskDetailsScreen(task)));
+        if (!task.isCompleted) Get.to(TaskDetailsScreen(task));
       },
       child: Container(
         width: KSize.getWidth(context, 602),

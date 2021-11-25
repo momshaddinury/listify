@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
@@ -44,7 +45,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               GestureDetector(
                 onTap: () {
                   ref.read(firebaseAuthProvider.notifier).signOut();
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
+                  Get.offUntil(MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
                 },
                 child: Image.asset(
                   KAssets.logout,
@@ -91,7 +92,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                 visible: snapshot.length > 4,
                                 child: GestureDetector(
                                   onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
+                                    Get.to(AllTasksScreen());
                                   },
                                   child: Text(
                                     "View All",

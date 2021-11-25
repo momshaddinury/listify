@@ -10,6 +10,7 @@ import 'package:listify/views/styles/k_size.dart';
 import 'package:listify/views/styles/k_textstyle.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 
 class SplashScreen extends ConsumerStatefulWidget {
   @override
@@ -30,11 +31,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         setValue(NEW_INSTALL, false);
         ref.read(firebaseProvider).signOut();
       }
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => AuthenticationWrapper()),
-        (route) => false,
-      );
+      Get.offUntil(MaterialPageRoute(builder: (context) => AuthenticationWrapper()), (route) => false);
     });
   }
 

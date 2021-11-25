@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:listify/views/screens/create_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 
@@ -7,10 +8,7 @@ class CreateTaskButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => CreateTaskScreen()),
-        );
+        Get.to(CreateTaskScreen());
       },
       child: Container(
           height: KSize.getHeight(context, 82),

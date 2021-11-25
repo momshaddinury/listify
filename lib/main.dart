@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/startup/splash_screen.dart';
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
     /// Hide Keyboard
     SystemChannels.textInput.invokeMethod('TextInput.hide');
 
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Listify',
       navigatorKey: NavigationService.navigatorKey,
       debugShowCheckedModeBanner: false,
