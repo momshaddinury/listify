@@ -50,6 +50,6 @@ Project is following MVC pattern. For managing state I am using Get. All the UI 
 
 
 To learn more about get:<br>
-https://pub.dev/packages/get#reactive-state-manager
+https://pub.dev/packages/get#reactive-state-manager<br>
 To Install flutter:<br>
 https://flutter.dev/docs/get-started/install
