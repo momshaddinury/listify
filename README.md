@@ -26,7 +26,7 @@ Tools • Dart 2.14.4
 ```
 
 ## Code Flow:
-Project is following MVC pattern. For managing state I am using Riverpod 1.0.0. All the UI components are inside views folder. Business logic is handled inside controller folder. Model is used to parse data.
+Project is following MVC pattern. For managing state I am using Get. All the UI components are inside views folder. Business logic is handled inside controller folder. Model is used to parse data.
 
 ```
 └── lib/
@@ -36,8 +36,6 @@ Project is following MVC pattern. For managing state I am using Riverpod 1.0.0. 
     │   └── data layer
     ├── view/
     │   └── presentation layer
-    ├── services/
-    │   └── helper classes
     └── constant
 ```
 
@@ -51,10 +49,7 @@ Project is following MVC pattern. For managing state I am using Riverpod 1.0.0. 
 ```P.S - To see on going work, feature list please check issues section and projects section```
 
 
-To learn more about riverpod:<br>
-https://codewithandrea.com/videos/flutter-state-management-riverpod/<br>
-To learn more about MVC pattern:<br>
-https://medium.flutterdevs.com/design-patterns-in-flutter-part-1-c32a3ddb00e2<br>
+To learn more about get:<br>
+https://pub.dev/packages/get#reactive-state-manager
 To Install flutter:<br>
 https://flutter.dev/docs/get-started/install
-
