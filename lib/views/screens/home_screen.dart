@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:listify/controller/authentication/authentication_provider.dart';
+import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
-import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
@@ -18,6 +17,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final authController = Get.put(AuthenticationController());
     final pendingTasksStream = ref.watch(pendingTasksProvider);
     final completedTasksStream = ref.watch(completedTasksProvider);
     return Scaffold(
@@ -43,10 +43,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
               Text("My Day", style: KTextStyle.headLine4),
               GestureDetector(
-                onTap: () {
-                  ref.read(firebaseAuthProvider.notifier).signOut();
-                  Get.offUntil(MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
-                },
+                onTap: () => authController.signOut(),
                 child: Image.asset(
                   KAssets.logout,
                   height: KSize.getHeight(context, 32),

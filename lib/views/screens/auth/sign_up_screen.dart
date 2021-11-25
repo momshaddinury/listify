@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:get/get.dart';
-import 'package:listify/controller/authentication/authentication_provider.dart';
-import 'package:listify/controller/authentication/authentication_state.dart';
+import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
-import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
@@ -19,23 +17,14 @@ class SignupScreen extends ConsumerStatefulWidget {
 }
 
 class _SignupScreenState extends ConsumerState<SignupScreen> {
-  // final TextEditingController sexFieldController = TextEditingController(text: 'Select');
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
+  final authenticationController = Get.put(AuthenticationController());
+
   @override
   Widget build(BuildContext context) {
-    ref.listen(
-      firebaseAuthProvider,
-      (_, state) {
-        if (state is FirebaseAuthSuccessState) {
-          Get.offUntil(MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
-        } else if (state is FirebaseAuthErrorState) {
-          kSnackBar('Warning', state.message);
-        }
-      },
-    );
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -56,10 +45,6 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 ),
               ),
               SizedBox(height: KSize.getHeight(context, 44)),
-              // KTextField(
-              //   hintText: 'Name',
-              // ),
-              // SizedBox(height: KSize.getHeight(context, 37)),
               KTextField(
                 hintText: 'Email Address',
                 controller: emailController,
@@ -76,59 +61,27 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 controller: confirmPasswordController,
                 isPasswordField: true,
               ),
-
-              // SizedBox(height: KSize.getHeight(context, 37)),
-              /* KDropdownField(
-                  hintText: 'Sex',
-                  controller: sexFieldController,
-                  dropdownFieldOptions: ['Select', 'Male', 'Female'],
-                  isObject: false,
-                ), */
-              /* SizedBox(height: KSize.getHeight(context, 25)),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: KSize.getWidth(context, 14)),
-                      child: Image.asset(
-                        KAssets.syncCheck,
-                        height: KSize.getHeight(context, 18),
-                        width: KSize.getWidth(context, 19),
-                      ),
-                    ),
-                    Text(
-                      'Sync with email',
-                      style: KTextStyle.bodyText2().copyWith(
-                        fontWeight: FontWeight.w100,
-                        color: KColors.primary,
-                      ),
-                    ),
-                  ],
-                ), */
               SizedBox(height: KSize.getHeight(context, 106)),
-              Consumer(builder: (context, WidgetRef ref, _) {
-                final authState = ref.watch(firebaseAuthProvider);
-                return KFilledButton(
-                  buttonText: authState is FirebaseAuthLoadingState ? 'Please wait' : 'Create Account',
-                  buttonColor: authState is FirebaseAuthLoadingState ? KColors.spaceCadet : KColors.primary,
-                  onPressed: () {
-                    if (!(authState is FirebaseAuthLoadingState)) {
+              GetBuilder<AuthenticationController>(
+                builder: (_) {
+                  return KFilledButton(
+                    buttonText: authenticationController.isLoading ? 'Please wait' : 'Create Account',
+                    buttonColor: authenticationController.isLoading ? KColors.spaceCadet : KColors.primary,
+                    onPressed: () {
                       hideKeyboard(context);
                       if (emailController.text.trim().isNotEmpty) {
                         if (passwordController.text == confirmPasswordController.text) {
-                          ref.read(firebaseAuthProvider.notifier).signUp(
-                                email: emailController.text,
-                                password: passwordController.text,
-                              );
+                          authenticationController.signUp(email: emailController.text, password: passwordController.text);
                         } else {
                           kSnackBar('Warning', "Password doesn't match");
                         }
                       } else {
                         kSnackBar('Warning', "Please enter email");
                       }
-                    }
-                  },
-                );
-              }),
+                    },
+                  );
+                },
+              ),
               SizedBox(height: KSize.getHeight(context, 110)),
               Text(
                 "Already have an account?",
