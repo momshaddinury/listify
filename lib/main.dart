@@ -3,17 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:listify/views/screens/startup/splash_screen.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_theme.dart';
-import 'package:nb_utils/nb_utils.dart';
 
+/// Shared preference
+GetStorage box = GetStorage();
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  /// Initializing shared preference via nb_utils package
-  await initialize();
 
   /// Initialize firebase
   await Firebase.initializeApp();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
@@ -7,7 +8,6 @@ import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -71,7 +71,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     onPressed: () {
                       if (!(authenticationController.isLoading)) {
                         if (emailController.text.trim().isNotEmpty && passwordController.text.isNotEmpty) {
-                          hideKeyboard(context);
+                          SystemChannels.textInput.invokeMethod('TextInput.hide');
                           authenticationController.signIn(email: emailController.text, password: passwordController.text);
                         } else {
                           if (emailController.text.trim().isEmpty) {

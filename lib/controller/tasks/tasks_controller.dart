@@ -1,13 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:listify/constant/shared_preference_key.dart';
+import 'package:listify/main.dart';
 import 'package:listify/model/todo.dart';
-import 'package:nb_utils/nb_utils.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get.dart';
 
 class TasksController extends GetxController {
   final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
-  CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+  CollectionReference get userTasksCollection => tasksCollection.doc(box.read(USER_UID)).collection('usertasks');
 
   @override
   onReady() {
@@ -16,7 +16,7 @@ class TasksController extends GetxController {
 
   Future createNewTask(String title, description, dateTime, priority) async {
     try {
-      DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
+      DocumentReference documentReferencer = tasksCollection.doc(box.read(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
         "title": title,
         "description": description,

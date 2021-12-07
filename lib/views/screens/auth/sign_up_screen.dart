@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:listify/controller/authentication/authentication_controller.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
@@ -6,7 +7,6 @@ import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
-import 'package:nb_utils/nb_utils.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key key}) : super(key: key);
@@ -67,7 +67,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     buttonText: authenticationController.isLoading ? 'Please wait' : 'Create Account',
                     buttonColor: authenticationController.isLoading ? KColors.spaceCadet : KColors.primary,
                     onPressed: () {
-                      hideKeyboard(context);
+                      SystemChannels.textInput.invokeMethod('TextInput.hide');
                       if (emailController.text.trim().isNotEmpty) {
                         if (passwordController.text == confirmPasswordController.text) {
                           authenticationController.signUp(email: emailController.text, password: passwordController.text);

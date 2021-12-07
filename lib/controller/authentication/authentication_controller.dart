@@ -5,7 +5,8 @@ import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/screens/startup/welcome_screen.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
-import 'package:nb_utils/nb_utils.dart';
+
+import '../../main.dart';
 
 class AuthenticationController extends GetxController {
   final firebaseInstance = FirebaseAuth.instance;
@@ -18,10 +19,9 @@ class AuthenticationController extends GetxController {
     super.onReady();
     firebaseUser = Rx(firebaseInstance.currentUser);
     firebaseUser.bindStream(firebaseInstance.authStateChanges());
-    ever(firebaseUser, (User user) {
+    ever(firebaseUser, (User user) async {
       if (user != null) {
-        /// TODO: Replace setValue(key, value) with GetStroage
-        setValue(USER_UID, user.uid);
+        await box.write(USER_UID, user.uid);
         Get.offAll(() => HomeScreen());
       } else
         Get.offAll(() => WelcomeScreen());
