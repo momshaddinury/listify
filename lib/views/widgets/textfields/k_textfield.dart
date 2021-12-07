@@ -62,37 +62,27 @@ class _KTextFieldState extends State<KTextField> {
                 obscureText: widget.isPasswordField ? !isVisible : false,
                 controller: widget.controller,
                 decoration: InputDecoration(
-                  hintText: widget.hintText,
-                  hintStyle: KTextStyle.bodyText1(),
-                  border: InputBorder.none,
-                ),
+                    hintText: widget.hintText,
+                    hintStyle: KTextStyle.bodyText1(),
+                    border: InputBorder.none,
+                    suffixIcon: widget.isPasswordField
+                        ? GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isVisible = !isVisible;
+                              });
+                            },
+                            child: Image.asset(
+                              isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
+                            ),
+                          )
+                        : null,
+                    suffixIconConstraints: BoxConstraints(
+                      maxHeight: KSize.getHeight(context, 25),
+                      minWidth: KSize.getWidth(context, 25),
+                    )),
               ),
             ),
-            if (widget.isPasswordField)
-              GestureDetector(
-                onTap: () {
-                  setState(() {
-                    isVisible = !isVisible;
-                  });
-                },
-                child: Image.asset(
-                  isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
-                  height: KSize.getHeight(context, 25),
-                  width: KSize.getWidth(context, 25),
-                ),
-              ),
-            if (widget.isCalanderField)
-              Image.asset(
-                KAssets.calendar,
-                height: KSize.getHeight(context, 25),
-                width: KSize.getWidth(context, 25),
-              ),
-            if (widget.isDropdownField)
-              Image.asset(
-                KAssets.dropdown,
-                height: KSize.getHeight(context, 25),
-                width: KSize.getWidth(context, 25),
-              )
           ],
         ),
       ),
