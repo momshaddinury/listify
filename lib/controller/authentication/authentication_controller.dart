@@ -30,23 +30,23 @@ class AuthenticationController extends GetxController {
 
   Future signUp({String email, password}) async {
     try {
-      _updateLodingState(true);
+      _updateLoadingState(true);
       await firebaseInstance.createUserWithEmailAndPassword(email: email, password: password);
-      _updateLodingState(false);
+      _updateLoadingState(false);
     } on FirebaseAuthException catch (e) {
-      _updateLodingState(false);
-      kSnackBar('Firbease Exception Code: ${e.code}', e.message);
+      _updateLoadingState(false);
+      kSnackBar('Firebase Exception Code: ${e.code}', e.message);
     }
   }
 
   Future signIn({String email, password}) async {
     try {
-      _updateLodingState(true);
+      _updateLoadingState(true);
       await firebaseInstance.signInWithEmailAndPassword(email: email, password: password);
-      _updateLodingState(false);
+      _updateLoadingState(false);
     } on FirebaseAuthException catch (e) {
-      _updateLodingState(false);
-      kSnackBar('Firbease Exception Code: ${e.code}', e.message);
+      _updateLoadingState(false);
+      kSnackBar('Firebase Exception Code: ${e.code}', e.message);
     }
   }
 
@@ -54,7 +54,7 @@ class AuthenticationController extends GetxController {
     await firebaseInstance.signOut();
   }
 
-  void _updateLodingState(bool _isLoading) {
+  void _updateLoadingState(bool _isLoading) {
     isLoading = _isLoading;
     update();
   }
