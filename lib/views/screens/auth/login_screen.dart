@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:listify/controller/authentication/authentication_controller.dart';
+import 'package:listify/view_model/authentication_view_model.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
@@ -17,7 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final authenticationController = Get.put(AuthenticationController());
+  final authVM = Get.put(AuthenticationViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -63,16 +63,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 ],
               ),
               SizedBox(height: KSize.getHeight(61)),
-              GetBuilder<AuthenticationController>(
+              GetBuilder<AuthenticationViewModel>(
                 builder: (_) {
                   return KFilledButton(
-                    buttonText: authenticationController.isLoading ? 'Please wait' : 'Login',
-                    buttonColor: authenticationController.isLoading ? KColors.spaceCadet : KColors.primary,
+                    buttonText: authVM.isLoading ? 'Please wait' : 'Login',
+                    buttonColor: authVM.isLoading ? KColors.spaceCadet : KColors.primary,
                     onPressed: () {
-                      if (!(authenticationController.isLoading)) {
+                      if (!(authVM.isLoading)) {
                         if (emailController.text.trim().isNotEmpty && passwordController.text.isNotEmpty) {
                           SystemChannels.textInput.invokeMethod('TextInput.hide');
-                          authenticationController.signIn(email: emailController.text, password: passwordController.text);
+                          authVM.signIn(email: emailController.text, password: passwordController.text);
                         } else {
                           if (emailController.text.trim().isEmpty) {
                             kSnackBar('Warning', "Please enter email");

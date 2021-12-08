@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:listify/controller/authentication/authentication_controller.dart';
+import 'package:listify/view_model/authentication_view_model.dart';
 import 'package:listify/views/styles/k_assets.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/snack_bar.dart';
@@ -13,7 +13,7 @@ class KDrawer extends StatefulWidget {
 }
 
 class _KDrawerState extends State<KDrawer> {
-  AuthenticationController authController = Get.find();
+  AuthenticationViewModel authController = Get.find();
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -25,7 +25,7 @@ class _KDrawerState extends State<KDrawer> {
               style: KTextStyle.headLine4,
             ),
             accountEmail: Text(
-              authController.firebaseInstance.currentUser.email,
+              authController.getCurrentUser().email,
               style: KTextStyle.headLine4,
             ),
             currentAccountPicture: CircleAvatar(

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/controller/authentication/authentication_controller.dart';
+import 'package:listify/view_model/authentication_view_model.dart';
 import 'package:listify/views/styles/k_assets.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_size.dart';
@@ -15,7 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Get.put(AuthenticationController());
+    Get.put(AuthenticationViewModel());
   }
 
   @override

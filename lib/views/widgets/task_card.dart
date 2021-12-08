@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:listify/controller/tasks/tasks_controller.dart';
-import 'package:listify/model/todo.dart';
-import 'package:listify/views/screens/task_details_screen.dart';
+import 'package:listify/view_model/tasks_view_model.dart';
+import 'package:listify/data/model/todo.dart';
+import 'package:listify/views/screens/tasks/task_details_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:get/get.dart';
 
@@ -16,7 +16,7 @@ class TaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final taskController = Get.put(TasksController());
+    final taskController = Get.put(TasksViewModel());
 
     return GestureDetector(
       onTap: () {

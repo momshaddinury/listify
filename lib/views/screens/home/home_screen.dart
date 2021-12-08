@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:listify/controller/tasks/tasks_controller.dart';
-import 'package:listify/model/todo.dart';
-import 'package:listify/views/screens/all_task_screen.dart';
+import 'package:listify/view_model/tasks_view_model.dart';
+import 'package:listify/data/model/todo.dart';
+import 'package:listify/views/screens/tasks/all_task_screen.dart';
 import 'package:listify/views/screens/home/widgets/k_drawer.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/create_task_button.dart';
@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final taskController = Get.put(TasksController());
+    final tasksVM = Get.put(TasksViewModel());
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               /// Pending Tasks
               StreamBuilder<List<Todo>>(
-                  stream: taskController.pendingTasks(),
+                  stream: tasksVM.pendingTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.active) {
                       return Visibility(
@@ -111,7 +111,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               /// Completed Tasks
               StreamBuilder<List<Todo>>(
-                  stream: taskController.completedTasks(),
+                  stream: tasksVM.completedTasks(),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.active) {
                       return Visibility(

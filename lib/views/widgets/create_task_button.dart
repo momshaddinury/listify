@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:listify/views/screens/create_task_screen.dart';
+import 'package:listify/views/screens/tasks/create_task_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 
 class CreateTaskButton extends StatelessWidget {

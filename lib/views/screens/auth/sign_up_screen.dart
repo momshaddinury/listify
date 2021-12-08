@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:listify/controller/authentication/authentication_controller.dart';
+import 'package:listify/view_model/authentication_view_model.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
@@ -20,7 +20,7 @@ class _SignupScreenState extends State<SignupScreen> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
 
-  final authenticationController = Get.put(AuthenticationController());
+  final authVM = Get.put(AuthenticationViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -61,16 +61,16 @@ class _SignupScreenState extends State<SignupScreen> {
                 isPasswordField: true,
               ),
               SizedBox(height: KSize.getHeight(106)),
-              GetBuilder<AuthenticationController>(
+              GetBuilder<AuthenticationViewModel>(
                 builder: (_) {
                   return KFilledButton(
-                    buttonText: authenticationController.isLoading ? 'Please wait' : 'Create Account',
-                    buttonColor: authenticationController.isLoading ? KColors.spaceCadet : KColors.primary,
+                    buttonText: authVM.isLoading ? 'Please wait' : 'Create Account',
+                    buttonColor: authVM.isLoading ? KColors.spaceCadet : KColors.primary,
                     onPressed: () {
                       SystemChannels.textInput.invokeMethod('TextInput.hide');
                       if (emailController.text.trim().isNotEmpty) {
                         if (passwordController.text == confirmPasswordController.text) {
-                          authenticationController.signUp(email: emailController.text, password: passwordController.text);
+                          authVM.signUp(email: emailController.text, password: passwordController.text);
                         } else {
                           kSnackBar('Warning', "Password doesn't match");
                         }
