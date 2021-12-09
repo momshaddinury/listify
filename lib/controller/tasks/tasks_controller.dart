@@ -14,7 +14,7 @@ class TasksController extends GetxController {
     super.onReady();
   }
 
-  Future createNewTask(String title, description, dateTime, priority) async {
+  Future<void> createNewTask(String title, description, dateTime, priority) async {
     try {
       DocumentReference documentReferencer = tasksCollection.doc(box.read(USER_UID)).collection('usertasks').doc();
       await documentReferencer.set({
@@ -30,7 +30,7 @@ class TasksController extends GetxController {
     }
   }
 
-  updateTask(uid, title, description, dateTime, priority) async {
+  Future<void> updateTask(uid, title, description, dateTime, priority) async {
     await userTasksCollection.doc(uid).update({
       "title": title,
       "description": description,
@@ -39,15 +39,15 @@ class TasksController extends GetxController {
     });
   }
 
-  Future completeTask(uid) async {
+  Future<void> completeTask(uid) async {
     await userTasksCollection.doc(uid).update({"isCompleted": true});
   }
 
-  Future undoCompleteTask(uid) async {
+  Future<void> undoCompleteTask(uid) async {
     await userTasksCollection.doc(uid).update({"isCompleted": false});
   }
 
-  Future removeTodo(uid) async {
+  Future<void> removeTodo(uid) async {
     await userTasksCollection.doc(uid).delete();
   }
 

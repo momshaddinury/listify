@@ -28,7 +28,7 @@ class AuthenticationController extends GetxController {
     });
   }
 
-  Future signUp({String email, password}) async {
+  Future<void> signUp({String email, password}) async {
     try {
       _updateLoadingState(true);
       await firebaseInstance.createUserWithEmailAndPassword(email: email, password: password);
@@ -39,7 +39,7 @@ class AuthenticationController extends GetxController {
     }
   }
 
-  Future signIn({String email, password}) async {
+  Future<void> signIn({String email, password}) async {
     try {
       _updateLoadingState(true);
       await firebaseInstance.signInWithEmailAndPassword(email: email, password: password);
@@ -50,7 +50,7 @@ class AuthenticationController extends GetxController {
     }
   }
 
-  Future signOut() async {
+  Future<void> signOut() async {
     await firebaseInstance.signOut();
   }
 
