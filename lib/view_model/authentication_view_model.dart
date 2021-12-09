@@ -18,7 +18,7 @@ class AuthenticationViewModel extends GetxController {
 
   User getCurrentUser()  => _authenticationRepository.getCurrentUser();
 
-  Future signUp({String email, password}) async {
+  Future<void> signUp({String email, password}) async {
     try {
       _updateLoadingState(true);
       await _authenticationRepository.signUp(email: email, password: password);
@@ -29,7 +29,7 @@ class AuthenticationViewModel extends GetxController {
     }
   }
 
-  Future signIn({String email, password}) async {
+  Future<void> signIn({String email, password}) async {
     try {
       _updateLoadingState(true);
       await _authenticationRepository.signIn(email: email, password: password);
@@ -40,7 +40,7 @@ class AuthenticationViewModel extends GetxController {
     }
   }
 
-  Future signOut() => _authenticationRepository.signOut();
+  Future<void> signOut() => _authenticationRepository.signOut();
 
   void _updateLoadingState(bool _isLoading) {
     isLoading = _isLoading;

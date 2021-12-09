@@ -11,7 +11,7 @@ class AuthenticationRepository {
   Rx<User> firebaseUser;
   bool isLoading = false;
 
-  checkIfUserIsLoggedIn() async {
+  Future<void> checkIfUserIsLoggedIn() async {
     firebaseUser = Rx(firebaseInstance.currentUser);
     firebaseUser.bindStream(firebaseInstance.authStateChanges());
     ever(firebaseUser, (User user) async {
@@ -25,15 +25,15 @@ class AuthenticationRepository {
 
   User getCurrentUser() => firebaseInstance.currentUser;
 
-  Future signUp({String email, password}) async {
+  Future<void> signUp({String email, password}) async {
     await firebaseInstance.createUserWithEmailAndPassword(email: email, password: password);
   }
 
-  Future signIn({String email, password}) async {
+  Future<void> signIn({String email, password}) async {
     await firebaseInstance.signInWithEmailAndPassword(email: email, password: password);
   }
 
-  Future signOut() async {
+  Future<void> signOut() async {
     await firebaseInstance.signOut();
   }
 }
