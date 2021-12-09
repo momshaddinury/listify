@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 
 class Todo {
@@ -42,4 +43,21 @@ class SubTask {
         isCompleted: json["isCompleted"],
         uid: json["id"],
       );
+}
+
+List<Todo> todoFromFirestore(QuerySnapshot snapshot) {
+  if (snapshot != null) {
+    return snapshot.docs.map((e) {
+      return Todo(
+        isCompleted: e["isCompleted"],
+        title: e["title"],
+        description: e["description"],
+        dateTime: DateFormat('hh:mm aa MMM dd, yyyy').format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
+        priority: e["priority"],
+        uid: e.id,
+      );
+    }).toList();
+  } else {
+    return null;
+  }
 }

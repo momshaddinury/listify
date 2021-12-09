@@ -13,7 +13,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
 
   User user;
 
-  Future signIn({String email, password}) async {
+  Future<void> signIn({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
 
@@ -21,12 +21,10 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       state = FirebaseAuthErrorState(message: e.message);
-
-      return e.message;
     }
   }
 
-  Future signUp({String email, password}) async {
+  Future<void> signUp({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
       await ref.read(firebaseProvider).createUserWithEmailAndPassword(email: email, password: password);
@@ -38,7 +36,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     }
   }
 
-  authStateChangeStatus() {
+   authStateChangeStatus() {
     ref.read(authStateChangesProvider).whenData(
       (user) {
         if (user != null) {
@@ -57,7 +55,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     );
   }
 
-  Future signOut() async {
+  Future<void> signOut() async {
     await ref.read(firebaseProvider).signOut();
   }
 }
