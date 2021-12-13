@@ -4,7 +4,7 @@ import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/buttons/k_filled_button.dart';
-import 'package:listify/views/widgets/textfields/k_dropdown_textfield.dart';
+import 'package:listify/views/widgets/textfields/k_dropdown_field.dart';
 import 'package:listify/views/widgets/textfields/k_textfield.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -86,7 +86,6 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                 ),
                 SizedBox(height: KSize.getHeight(context, 22)),
                 KDropdownField(
-                  hintText: "Priority",
                   controller: priorityController,
                   dropdownFieldOptions: ['Low', 'Medium', 'High'],
                 ),

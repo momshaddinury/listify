@@ -50,6 +50,9 @@ class MyApp extends StatelessWidget {
               color: KColors.charcoal,
               fontWeight: FontWeight.w500,
             )),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
+        hoverColor: Colors.transparent,
       ),
       home: SplashScreen(),
     );

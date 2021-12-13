@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/create_task_button.dart';
+import 'package:listify/views/widgets/buttons/create_task_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
 
 class AllTasksScreen extends ConsumerWidget {
