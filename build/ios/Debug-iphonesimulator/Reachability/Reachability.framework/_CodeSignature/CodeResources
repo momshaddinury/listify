@@ -25,10 +25,6 @@
 	<dict>
 		<key>Headers/Reachability-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2DHFzfGzlyMgWOzLcJ53CKespNI=
-			</data>
 			<key>hash2</key>
 			<data>
 			7hFbxcpr7nALW5XuZweLtD3iORZ9G85hhvV1TMyy4Pc=
@@ -36,10 +32,6 @@
 		</dict>
 		<key>Headers/Reachability.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			f4E02VNfSS4viOS+9uEnN64dfYg=
-			</data>
 			<key>hash2</key>
 			<data>
 			nIHNbMh2yGV7cuGi0GxZCwILNBwABNehMysJS41jH3w=
@@ -47,10 +39,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Exy7cS1ldmsvfrVr/mu32pTyE+g=
-			</data>
 			<key>hash2</key>
 			<data>
 			PYoRuQ0hJt77RpiJsWjDc8dLmux9jXXB07HGzayZNYs=

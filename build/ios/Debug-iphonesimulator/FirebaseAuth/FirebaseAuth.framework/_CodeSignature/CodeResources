@@ -153,10 +153,6 @@
 	<dict>
 		<key>Headers/FIRActionCodeSettings.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			IaMZxDq94nXZFV42/c7jYRi4AMw=
-			</data>
 			<key>hash2</key>
 			<data>
 			UMKY2ULjHuXNQbwAfDsyrukqC8LjJD35y/rkQFDZ9VU=
@@ -164,10 +160,6 @@
 		</dict>
 		<key>Headers/FIRAdditionalUserInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			kw4Te/xGYtfYsRhXwhPI/EFvfXQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			4GDaNvWRT1Px2N4R152gNyNWk46PX/SFUWgPqcAdiQI=
@@ -175,10 +167,6 @@
 		</dict>
 		<key>Headers/FIRAuth.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wgRIP9cKcrbibjDbO/e+gtkK8sI=
-			</data>
 			<key>hash2</key>
 			<data>
 			n0YFAXYC3IVR24mOKMaNjW/HqqFfOlUhwSgrTB4T4/I=
@@ -186,10 +174,6 @@
 		</dict>
 		<key>Headers/FIRAuthAPNSTokenType.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			sWEcFBQ5w77vtiiZeQgufbMVvz4=
-			</data>
 			<key>hash2</key>
 			<data>
 			03XngkKxRh9zkD013B27vpl/D6GX1MHuGlg7dZpZl60=
@@ -197,10 +181,6 @@
 		</dict>
 		<key>Headers/FIRAuthCredential.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2JETOgL3wqdBUIGnCH8FcBxSDOk=
-			</data>
 			<key>hash2</key>
 			<data>
 			4PhuS4NPtCSlEdXcDpMDm+vpasR3VH1ZVF3fKVeLr/8=
@@ -208,10 +188,6 @@
 		</dict>
 		<key>Headers/FIRAuthDataResult.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			4WC34erD5IuM2MkgFRAwuF5+bBw=
-			</data>
 			<key>hash2</key>
 			<data>
 			Lb13oSi29hlzx9ab/6gCJBbfqauAfgZvXTlz+2J3a6Q=
@@ -219,10 +195,6 @@
 		</dict>
 		<key>Headers/FIRAuthErrors.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			g/y3EYJuvW06SZbawhR+JKMX384=
-			</data>
 			<key>hash2</key>
 			<data>
 			wZ2t+04kPkDypXrEQwgYi5GP1y7wtE8ROc7quuKiSjE=
@@ -230,10 +202,6 @@
 		</dict>
 		<key>Headers/FIRAuthSettings.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2/3LoXIIbgZ+H2F77FuN0HqkxGE=
-			</data>
 			<key>hash2</key>
 			<data>
 			z/ksRmJV9qpMIsRNgygjpAsa52d8gciJHFWZOIUInc4=
@@ -241,10 +209,6 @@
 		</dict>
 		<key>Headers/FIRAuthTokenResult.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			i0jSTM4DROSHQaDaCG3PXfAprpg=
-			</data>
 			<key>hash2</key>
 			<data>
 			XNx2/A6HdukDiw/CbCQ+nQqHmpXPgE6o27sV71RkxK0=
@@ -252,10 +216,6 @@
 		</dict>
 		<key>Headers/FIRAuthUIDelegate.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			rlTIY8sycROPm83bW0RPN9ato+w=
-			</data>
 			<key>hash2</key>
 			<data>
 			ILi1jsLHhai/y5PPxuF4hJnJMIUnx+nARLCB+LFq9/w=
@@ -263,10 +223,6 @@
 		</dict>
 		<key>Headers/FIREmailAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vt6sPSm5be2bw84Pt4uiY6ABpHQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			jH6bITQ6CFjcvgCYzMTP++noDob43pTLOby5vV7i/EQ=
@@ -274,10 +230,6 @@
 		</dict>
 		<key>Headers/FIRFacebookAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lUAvK+F4nlCJIg60kLiP+YkMgog=
-			</data>
 			<key>hash2</key>
 			<data>
 			kdLV9O/mq4n2Dkgrqgp9nzjQt2M1KczW59k7HGRQ7hs=
@@ -285,10 +237,6 @@
 		</dict>
 		<key>Headers/FIRFederatedAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			BrgTqcjsOi181nZO4RziRVnrJIY=
-			</data>
 			<key>hash2</key>
 			<data>
 			UjhfxzaAVQ0kMugU9nP4URE51plTIOdqi6D61zONQ3w=
@@ -296,10 +244,6 @@
 		</dict>
 		<key>Headers/FIRGameCenterAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			La2EbrkTO/zuiPdFM4aDkV+kP44=
-			</data>
 			<key>hash2</key>
 			<data>
 			ID8Rd4j4bVliAVwcGRFfnPWpOVcF5CSnJI16PE89AKQ=
@@ -307,10 +251,6 @@
 		</dict>
 		<key>Headers/FIRGitHubAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			cwwPhS/UbgGkCfjnZdxFZiofrlM=
-			</data>
 			<key>hash2</key>
 			<data>
 			XiJW9PwyV0JnyXeVQbz50CxvazdRmregzu2hb/1JisY=
@@ -318,10 +258,6 @@
 		</dict>
 		<key>Headers/FIRGoogleAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			GgGiEXbR5uwzTS/W2nw1/1Gfglo=
-			</data>
 			<key>hash2</key>
 			<data>
 			JYPANWjvfprmagyOca5uKmtQuzIqrMjQchP8su8491Y=
@@ -329,10 +265,6 @@
 		</dict>
 		<key>Headers/FIRMultiFactor.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Gq5DTNtp5keascFqd2VNwuyR0pg=
-			</data>
 			<key>hash2</key>
 			<data>
 			WUSwOuIezyxrZyem7Vg3+ZrUCQyEZczK6LXPy5ykwa0=
@@ -340,10 +272,6 @@
 		</dict>
 		<key>Headers/FIRMultiFactorAssertion.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QqrVklMWxdSb6fHEER0UnPHQv8A=
-			</data>
 			<key>hash2</key>
 			<data>
 			3IA4BwD9T1J6VoBxtmHacKjq/gURrSLG7OYcAIa7Yx4=
@@ -351,10 +279,6 @@
 		</dict>
 		<key>Headers/FIRMultiFactorInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2sOynkC7khdquxgOvJSQM5t7DEc=
-			</data>
 			<key>hash2</key>
 			<data>
 			VcWEonpXUbdTPm8oMt7rKIPo1OKW3C1s9Fl9laxCk9w=
@@ -362,10 +286,6 @@
 		</dict>
 		<key>Headers/FIRMultiFactorResolver.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vMCxt2zJ90OM82pBJhrWyuEMe00=
-			</data>
 			<key>hash2</key>
 			<data>
 			NlwJYVSIPdcJdUsVJeHeQ9h0OLlxqmdfdNqcFjwKGq0=
@@ -373,10 +293,6 @@
 		</dict>
 		<key>Headers/FIRMultiFactorSession.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/4wBB5BIqD6+pbgFrJat91dwlrw=
-			</data>
 			<key>hash2</key>
 			<data>
 			M9WWXYGmPwJNSsMdFzUWsbTvkGxaC+frTnKTMzFCy7Q=
@@ -384,10 +300,6 @@
 		</dict>
 		<key>Headers/FIROAuthCredential.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			aolt/SlHNIcC3Ifrp0FTBhE46CU=
-			</data>
 			<key>hash2</key>
 			<data>
 			UHr7KJijvLjzdNIIcpwjP1rAbtLTMpKl6Y1aiRhTVgA=
@@ -395,10 +307,6 @@
 		</dict>
 		<key>Headers/FIROAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			I8tt5GeacDIdYP+QEbtp2i0cxQ4=
-			</data>
 			<key>hash2</key>
 			<data>
 			kXfMj/gsQatd3n7D8bkanXNaL/o3nvmezxQaTVWJYp8=
@@ -406,10 +314,6 @@
 		</dict>
 		<key>Headers/FIRPhoneAuthCredential.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2Cwz5Hk5Mo+ibp/OxU2qdZkmXyI=
-			</data>
 			<key>hash2</key>
 			<data>
 			BvPLEZYDCeJZza4Skrp4BNwwKUa2dx4WKb9bBLy34I4=
@@ -417,10 +321,6 @@
 		</dict>
 		<key>Headers/FIRPhoneAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3XOgj1Csq6/1vQW1MluSVUlltj8=
-			</data>
 			<key>hash2</key>
 			<data>
 			WoLzQhE3QVFYzfSPDDK1ie+x6u0pWrMjYlMNLNDREgc=
@@ -428,10 +328,6 @@
 		</dict>
 		<key>Headers/FIRPhoneMultiFactorAssertion.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			/a//auSlPZV0PujsIiYhHnRuApo=
-			</data>
 			<key>hash2</key>
 			<data>
 			+ODIWD4ZcwpNNM2gglXVO+kiI3RurR7aV4uGD37OBaE=
@@ -439,10 +335,6 @@
 		</dict>
 		<key>Headers/FIRPhoneMultiFactorGenerator.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			dA+iVnpu++CWm2Z+3XlfkfIuSOs=
-			</data>
 			<key>hash2</key>
 			<data>
 			Fi2PFeecW6+GUN+25k0Bf9AFCzIpQMHVnddVjZNG8ps=
@@ -450,10 +342,6 @@
 		</dict>
 		<key>Headers/FIRPhoneMultiFactorInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			FwIIvsKYOzZkdz9LqZos3Hq136w=
-			</data>
 			<key>hash2</key>
 			<data>
 			g+SK9bkOwiIuBS/p+oM+TixBrKu3zQRWX/b8OgakKSY=
@@ -461,10 +349,6 @@
 		</dict>
 		<key>Headers/FIRTwitterAuthProvider.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9SxmFPudkySyn/71vdqoWL7Z0bs=
-			</data>
 			<key>hash2</key>
 			<data>
 			pTmiQ6qgI+5+mYjRzRcQhzONqprCrg5TwNafXiU/wD0=
@@ -472,10 +356,6 @@
 		</dict>
 		<key>Headers/FIRUser.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			cNU0bunVEnFG3b8yea9Uxvya0cs=
-			</data>
 			<key>hash2</key>
 			<data>
 			TmVJPrrr2+oJcyPebyxreE1F84A35D/iJpRcm6Z+F94=
@@ -483,10 +363,6 @@
 		</dict>
 		<key>Headers/FIRUserInfo.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LIYVvBX9uvT8TC8d84PintA+tK8=
-			</data>
 			<key>hash2</key>
 			<data>
 			BdAQgAsVOl6THqodGhDYUHxAv/GyFVrgSkKpKf/fbKE=
@@ -494,10 +370,6 @@
 		</dict>
 		<key>Headers/FIRUserMetadata.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			CTSR18LY4Xlr53z46s0TGjg0DqA=
-			</data>
 			<key>hash2</key>
 			<data>
 			IHytxbe5npyOSC2lm9yLRZvP8abTtekshr795lWtLG4=
@@ -505,10 +377,6 @@
 		</dict>
 		<key>Headers/FirebaseAuth-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			8+s8mkgBLlwacaEnnkVvQCg4EZg=
-			</data>
 			<key>hash2</key>
 			<data>
 			2oYPLH7HhaUhT/z8UKDJgCAqrR5HkTyum+2gQ1XnAGs=
@@ -516,10 +384,6 @@
 		</dict>
 		<key>Headers/FirebaseAuth.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			PVzyQZ0Q+t9I7gvnwbsl0v0PyZU=
-			</data>
 			<key>hash2</key>
 			<data>
 			sbMP1n6SC8N56zYEy1Vw3yM7u2ddmkLU5o2Y7+58FaM=
@@ -527,10 +391,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			L9HW3DvnLhZ/SGgo3FijmcoV16I=
-			</data>
 			<key>hash2</key>
 			<data>
 			MKl24l0O/Yr9umiFsHpOVl2lSEngBi74tlPLNBp9SgQ=

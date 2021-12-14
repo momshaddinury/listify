@@ -25,10 +25,6 @@
 	<dict>
 		<key>Headers/FLTPathProviderPlugin.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			+07W1N145g6+kFz/ocqMqHbdR6M=
-			</data>
 			<key>hash2</key>
 			<data>
 			eRnBn9tRArmcmJ9UN/gE8Lokm52lhAX0yeWEFxjMJUY=
@@ -36,10 +32,6 @@
 		</dict>
 		<key>Headers/path_provider-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			9jH0xmAzvuQrXPcB50h9KkvmApY=
-			</data>
 			<key>hash2</key>
 			<data>
 			KwdakBnpoYlwXeY1C4m2NGf5aS48+X2Fw+43z/Lx4EA=
@@ -47,10 +39,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			UbLvMEi8nVBh+K1/9lYNdrUaIZY=
-			</data>
 			<key>hash2</key>
 			<data>
 			IElmnU6Z+3aZ8obWpmCoRgJczWwKqqJmh/ozeh7Otk4=

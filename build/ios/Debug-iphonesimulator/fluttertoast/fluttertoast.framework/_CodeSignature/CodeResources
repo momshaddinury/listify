@@ -25,10 +25,6 @@
 	<dict>
 		<key>Headers/FluttertoastPlugin.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qUPGAZzKoID877n2Vj9gibU16yw=
-			</data>
 			<key>hash2</key>
 			<data>
 			iVe+FN0oFfBKNjU5uyZroJvY7L8nWygO1+ydIeTAGXM=
@@ -36,10 +32,6 @@
 		</dict>
 		<key>Headers/fluttertoast-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LiYOawBMpK5GplNIp1HhKdwKmRQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			R+W4sGPyYfQW1aBdJdZhtcBmOL7gva7XllhaA8xsOTA=
@@ -47,10 +39,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			lDFnd9E69VfrjKt0VYJbd1uU7jA=
-			</data>
 			<key>hash2</key>
 			<data>
 			97+DYaFgSnlpdufvBOfBmdTVbxpSCrgeu0oYG3x8c0Q=

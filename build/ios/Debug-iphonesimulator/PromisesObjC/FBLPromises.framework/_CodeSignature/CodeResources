@@ -105,10 +105,6 @@
 	<dict>
 		<key>Headers/FBLPromise+All.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			1/HWSa9B9CfE+6oTjy3jrp1Dbng=
-			</data>
 			<key>hash2</key>
 			<data>
 			g6BUKLMTJAGRI/4XjGU/dZaG7rA27W16VZK8WvM1eYs=
@@ -116,10 +112,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Always.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			sVZckdpNp0YMZno6+IaJ16Zal00=
-			</data>
 			<key>hash2</key>
 			<data>
 			mSLLqLIfLaAdISUzmCnHE5dI5q5afctdua9s4Ddwrw4=
@@ -127,10 +119,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Any.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			jYWCdqjloLKNtDe+sIQ4PyQsf0I=
-			</data>
 			<key>hash2</key>
 			<data>
 			ETMK2COV+ajlfA4XxDUUJzV3p8LUaA+GN9sRLwNE0Ck=
@@ -138,10 +126,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Async.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			gIl6GZ+2tBZw7sNlHmw6tQggHn4=
-			</data>
 			<key>hash2</key>
 			<data>
 			dHc8ASbXmQxrkpQCBEbAZL4HTgO6J7gNiv9erzu92QU=
@@ -149,10 +133,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Await.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WKlBKfPKetJ8or+tZtW13HAGcaM=
-			</data>
 			<key>hash2</key>
 			<data>
 			W7kqZbC71TD1Xv9wdtMIjoDbYSZ5ktUSkok5tPZS5A8=
@@ -160,10 +140,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Catch.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			WaTiqwvv8w13vIKlm2K4DAgZulo=
-			</data>
 			<key>hash2</key>
 			<data>
 			kwyC7vU/6AZticiALUlN0j/nrmzG7QFExjjBV25pQTY=
@@ -171,10 +147,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Delay.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qoQSMY2FcD2SV3kKq34NITtbdmk=
-			</data>
 			<key>hash2</key>
 			<data>
 			nSl7wEJQ+tww5d/BWlnoA4Mv9wde0pDI2SJaPISo3vI=
@@ -182,10 +154,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Do.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ggkiDySeq8jvunvZvPkZ/Kkn8xU=
-			</data>
 			<key>hash2</key>
 			<data>
 			AbrMui/y3jBRVXloC2ek4ZcwpBQPlqu29/aPRTvOE68=
@@ -193,10 +161,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Race.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			KhU7Y/hu/++OhV8HrTR0blCqsa8=
-			</data>
 			<key>hash2</key>
 			<data>
 			CNuTRimQ0rZFNUumwP/hYOqi204+JbffrEkONBFuIVg=
@@ -204,10 +168,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Recover.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bQIMfszj33smHtitYuadQj5unrM=
-			</data>
 			<key>hash2</key>
 			<data>
 			WP2VmkMLEJh9pP+sW2pW5945/IEIEhib/7rGfCaIWQQ=
@@ -215,10 +175,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Reduce.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			fHvVgIVNfukW8aWkuQb9Upl1Hv8=
-			</data>
 			<key>hash2</key>
 			<data>
 			OVoK729ybsf8EX8DRwCRRidRbTPXhRiHZjV4Kn40EtE=
@@ -226,10 +182,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Retry.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			yWcTgblFfFp1WTKDOiSPZ5jDxNQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			Va6IWZOaB2Gi/utF/TdEGwXYqFYHunwUXo4DNOCGyuc=
@@ -237,10 +189,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Testing.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Ks+FXD691hFVSvDw/g/0x4ic7+0=
-			</data>
 			<key>hash2</key>
 			<data>
 			fEVZv1dfYDKHOKyiZqgdyhYdURZ0tKWsHGVPIQL70f0=
@@ -248,10 +196,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Then.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xXwhWUcFcLdpUBrK28dob5PeMRI=
-			</data>
 			<key>hash2</key>
 			<data>
 			QMH7kzRIHfHY/An28iUioHxCvP1dvpEJ4Giffps6eBI=
@@ -259,10 +203,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Timeout.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			yngMore1DA762uLfNvM0zRhL/u0=
-			</data>
 			<key>hash2</key>
 			<data>
 			NoaGHny9bLEcgwjjW5UQxZBayRPcQORpW7WJdxa8iDg=
@@ -270,10 +210,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Validate.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			QXCa+SPD+GyNt+fKriUFP4JLYi0=
-			</data>
 			<key>hash2</key>
 			<data>
 			c+8J+TGkNw0JZn+It/LBQP3DACatwAluOhLLNDPozMw=
@@ -281,10 +217,6 @@
 		</dict>
 		<key>Headers/FBLPromise+Wrap.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			pnbKEVv3KohF9zBVmwpY92K1/H8=
-			</data>
 			<key>hash2</key>
 			<data>
 			m576DCvDiDcYotjxumxrhOVOJ8XyUnJcIM7qlVvq2nQ=
@@ -292,10 +224,6 @@
 		</dict>
 		<key>Headers/FBLPromise.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			66aJuIe5lIRcT8lc2CR4XlzUCqA=
-			</data>
 			<key>hash2</key>
 			<data>
 			MD1VrgE/xaO9Oy+HbINsjj3NdgjHGD0vqLUkZ9TEkgQ=
@@ -303,10 +231,6 @@
 		</dict>
 		<key>Headers/FBLPromiseError.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			NiD1rwNDO7Tz69bYyOj9qmlCGRQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			3LBDNhkSuyDE1LE8Kk9c19ytLxAw5ABQnJu7J4/1yk8=
@@ -314,10 +238,6 @@
 		</dict>
 		<key>Headers/FBLPromises.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xmHnPqDlpJpUbAqgOJw5Da3418U=
-			</data>
 			<key>hash2</key>
 			<data>
 			wH9eWTsWL9EixsUdC7G1gbD8vY97El45adWrrpwvqM0=
@@ -325,10 +245,6 @@
 		</dict>
 		<key>Headers/PromisesObjC-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LRjj72lPCA3L9iDRZehhvoVhUGU=
-			</data>
 			<key>hash2</key>
 			<data>
 			AToK0tCJy6hieeo6JMbMhLunYgbQLarPqQyHJ6dfRuA=
@@ -336,10 +252,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			LZnGdhdf01gvhIz70qtzgzIYPX4=
-			</data>
 			<key>hash2</key>
 			<data>
 			AMm7+HhwNWfKD7lB61N5cRjihG7RKsrGL/xaEOYGS/Y=
@@ -347,10 +259,6 @@
 		</dict>
 		<key>PrivateHeaders/FBLPromisePrivate.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			J7AOJnwCKzdcaI5lsMAhXoByoT0=
-			</data>
 			<key>hash2</key>
 			<data>
 			yTbxGjb54FkX0p6ayty7U27WUyoFPXE9uJnivUTlPv4=

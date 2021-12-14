@@ -25,10 +25,6 @@
 	<dict>
 		<key>Headers/FLTConnectivityPlusPlugin.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qIzhdwR/QaasgnrnY2pK2TE8UeE=
-			</data>
 			<key>hash2</key>
 			<data>
 			u9g+R2R0Q58xVkIZMLaVoKrgNYWUT+MVIOzBp20v4xU=
@@ -36,10 +32,6 @@
 		</dict>
 		<key>Headers/connectivity_plus-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			p8Kyae3+LHWTnU9f+vLl/yqbYAQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			7tg0UVPhl1Fjnc/5GbFOv1Z2mFhd8bqxLHLFVkDmSt0=
@@ -47,10 +39,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			tAHtUnN8CNe0HOdNo0vtJRN7Q84=
-			</data>
 			<key>hash2</key>
 			<data>
 			x5AL5ZGL9WSTNjMtqG+1D3sL/uhwJYYCPjCUXg00svs=

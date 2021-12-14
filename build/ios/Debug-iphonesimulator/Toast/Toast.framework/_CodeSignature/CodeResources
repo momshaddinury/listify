@@ -29,10 +29,6 @@
 	<dict>
 		<key>Headers/Toast-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			xoy5yQ43bcpTrCNztO2LlDXXGNI=
-			</data>
 			<key>hash2</key>
 			<data>
 			0yT8+t3Aewz9cmgUbi09SfqpWhEuvPeFsmVBDc+sA5s=
@@ -40,10 +36,6 @@
 		</dict>
 		<key>Headers/Toast.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			X4YL5vNO6jjNsgUlRwJe9sMUjnM=
-			</data>
 			<key>hash2</key>
 			<data>
 			Vbdxky+YMvKTkp3HhGBfGolls03+jxdOZSWDqCI2aGA=
@@ -51,10 +43,6 @@
 		</dict>
 		<key>Headers/UIView+Toast.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			mfXmLP9J8XYssI1priECpAz4SAk=
-			</data>
 			<key>hash2</key>
 			<data>
 			BHqQsY+IyXJJ2Qo0Y/RBtlCwZFtlkHTE8n85lErDhm4=
@@ -62,10 +50,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			bce4nlBX96MuqNZg6uigU6pb0CM=
-			</data>
 			<key>hash2</key>
 			<data>
 			XvudiIMTN1g6Ey8SsuZBIW3/CLVjLCAlyn92TYt/jf8=

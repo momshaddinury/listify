@@ -25,10 +25,6 @@
 	<dict>
 		<key>Headers/FIRCoreDiagnostics.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			GITcu3gAbquOEA3mKpqnb+mlCBw=
-			</data>
 			<key>hash2</key>
 			<data>
 			EeoWUh+TrKqC7f6fLMk+ZaVJzypkLoEmi8iDP4H71GA=
@@ -36,10 +32,6 @@
 		</dict>
 		<key>Headers/FirebaseCoreDiagnostics-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			4JmL8IjLOD4CVKh0agRXI2t0pTI=
-			</data>
 			<key>hash2</key>
 			<data>
 			KIngDWqtudDuzaN2BPqOfuA1UMncorS9jBLJlpJsUUI=
@@ -47,10 +39,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			3BUx2MCiW8bHIaui/77Jaiu90mQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			of7Lcet633iNVOeWqJtLqLdUXqQAmwpIqc2xgpzaONU=

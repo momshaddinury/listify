@@ -81,10 +81,6 @@
 	<dict>
 		<key>Headers/c.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			0rjDdVuT/x6odhbymHy0VNUNtSw=
-			</data>
 			<key>hash2</key>
 			<data>
 			hDBqhFinxNHWBT+cSY3gGWtfximG93Py8rKrwn5/C3s=
@@ -92,10 +88,6 @@
 		</dict>
 		<key>Headers/cache.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			vjtJCMsJzn73zh3YSNLK6/WvRaU=
-			</data>
 			<key>hash2</key>
 			<data>
 			ZzOvjuW5LY/Gzmim3VeY8htvFjVNUXpD+JR2JsXCmj4=
@@ -103,10 +95,6 @@
 		</dict>
 		<key>Headers/comparator.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			l8I3Jv0Dg8InVuoD3KaFG6EU+ho=
-			</data>
 			<key>hash2</key>
 			<data>
 			xo2njPPuQ8p5eDiyyj4b8e5t2j1XLb+uTkjYR0hrrhY=
@@ -114,10 +102,6 @@
 		</dict>
 		<key>Headers/db.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZqetvfHGu8IOmxoU3TDp9HsxpT0=
-			</data>
 			<key>hash2</key>
 			<data>
 			0pa5OKpSNGKuGuspf6aXbVaQCUgreyxnWy/qh2Kq7W0=
@@ -125,10 +109,6 @@
 		</dict>
 		<key>Headers/dumpfile.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			Gag1I6uZqv9sE5TnPTZBbdC9HGk=
-			</data>
 			<key>hash2</key>
 			<data>
 			d9QrAvheAfMr0hmsViCEyloTuNHEvcI7/FP7GXhjkQ0=
@@ -136,10 +116,6 @@
 		</dict>
 		<key>Headers/env.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			iiw8l6BauGiaj9T62KZasVy6IS0=
-			</data>
 			<key>hash2</key>
 			<data>
 			I5xi4wGDFT6kGejSENBSjtf+AGsSHcnZsnlcT7Y1bNs=
@@ -147,10 +123,6 @@
 		</dict>
 		<key>Headers/export.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wwQLm0Ra6BsSjeE72QUmkBDGwXQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			FtEHJacSFWiRPmuZTFjGoSJ/RZcTBlqGQMTY8TDLWvc=
@@ -158,10 +130,6 @@
 		</dict>
 		<key>Headers/filter_policy.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			wdRGEa2Acn9kGRklg6hmawVfOyQ=
-			</data>
 			<key>hash2</key>
 			<data>
 			apBtWX4vqzRXDUsaIUUjo1QiAkMAVZB56+awqxD+W8s=
@@ -169,10 +137,6 @@
 		</dict>
 		<key>Headers/iterator.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			K6uT2VNgNBzca967KvHOh5A/Wi4=
-			</data>
 			<key>hash2</key>
 			<data>
 			5tU9PS2uXLi/2FnABEylJ+pwuj5dlf1i+y8oJkT+m5s=
@@ -180,10 +144,6 @@
 		</dict>
 		<key>Headers/leveldb-library-umbrella.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			V7Nfypo9KLkG3n3ipLO6O4H44Rs=
-			</data>
 			<key>hash2</key>
 			<data>
 			ADJx+iWg0amEoMNEjBIeg+4KC+0jIUuoGHcKP0koQto=
@@ -191,10 +151,6 @@
 		</dict>
 		<key>Headers/options.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			ZjTJ+yrZ58T0cV1g4SFGNruGYFc=
-			</data>
 			<key>hash2</key>
 			<data>
 			EElQ55+61wzcE3t10n3rtbhLRrnLc6w4yxbdOaN0b2Y=
@@ -202,10 +158,6 @@
 		</dict>
 		<key>Headers/slice.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			2ic+IXwuomDriP2FJUxdnQY8C/4=
-			</data>
 			<key>hash2</key>
 			<data>
 			59baGTSkDieqr5D9ezeQxYAcdL4tKRFQ5jcTZsd9Opw=
@@ -213,10 +165,6 @@
 		</dict>
 		<key>Headers/status.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			uUnGrKyrIkl6V40EzRInR7WJgzY=
-			</data>
 			<key>hash2</key>
 			<data>
 			liDe189T5c1JEcicABLnEk7m3nibOFjgKxE82u54cRQ=
@@ -224,10 +172,6 @@
 		</dict>
 		<key>Headers/table.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hSrdgsHMHI2BluXaym5o+xh84tg=
-			</data>
 			<key>hash2</key>
 			<data>
 			wXyHCGqxUHoZOsC1AqEe/2nT4Joe7gKFJVxfRJmauNI=
@@ -235,10 +179,6 @@
 		</dict>
 		<key>Headers/table_builder.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			u4VFE8B1jUGkFeZjZScqQySscSk=
-			</data>
 			<key>hash2</key>
 			<data>
 			Us1EVEgno9yVa/eaheXlqDdTmxCQCRSc3h3UILVa/70=
@@ -246,10 +186,6 @@
 		</dict>
 		<key>Headers/write_batch.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			URr3FlmtuqQZzYV2mYEQXT6EgH8=
-			</data>
 			<key>hash2</key>
 			<data>
 			CuHR+yYgo/+3aqm0MwvUooP5yS6CmvrNUuploRzD2K0=
@@ -257,10 +193,6 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			XiHCOtoll/P1GzSxgvvpGO9wfas=
-			</data>
 			<key>hash2</key>
 			<data>
 			UhsTreyByDiflo1WFAwMQxhr4c0Lj0qYWd7aWmklhUc=
