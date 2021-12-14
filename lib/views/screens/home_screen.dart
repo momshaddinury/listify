@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
+import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -38,10 +39,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   icon: Icons.add,
                   buttonText: 'Create New Task',
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CreateTaskScreen()),
-                    );
+                    Navigation.push(context, CreateTaskScreen());
                   }),
               SizedBox(height: KSize.getHeight(72)),
 
@@ -103,7 +101,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
               return GestureDetector(
                 onTap: () {
                   ref.read(firebaseAuthProvider.notifier).signOut();
-                  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
+                  Navigation.pushAndRemoveUntil(context, LoginScreen());
                 },
                 child: Image.asset(
                   KAssets.logout,
@@ -146,7 +144,7 @@ class _PendingTasksBuilder extends StatelessWidget {
                 visible: snapshot.length > 4,
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AllTasksScreen()));
+                    Navigation.push(context, AllTasksScreen());
                   },
                   child: Text(
                     "View All",

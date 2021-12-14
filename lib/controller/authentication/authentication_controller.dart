@@ -36,7 +36,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     }
   }
 
-   authStateChangeStatus() {
+   void authStateChangeStatus() {
     ref.read(authStateChangesProvider).whenData(
       (user) {
         if (user != null) {

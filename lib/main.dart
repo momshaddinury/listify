@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       title: 'Listify',
-      navigatorKey: NavigationService.navigatorKey,
+      navigatorKey: Navigation.key,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         backgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,

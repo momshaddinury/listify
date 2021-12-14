@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
+import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/auth_wrapper.dart';
 import 'package:listify/views/styles/k_assets.dart';
 import 'package:listify/views/styles/k_colors.dart';
@@ -30,11 +31,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         setValue(NEW_INSTALL, false);
         ref.read(firebaseProvider).signOut();
       }
-      Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => AuthenticationWrapper()),
-        (route) => false,
-      );
+      Navigation.pushAndRemoveUntil(context, AuthenticationWrapper());
     });
   }
 

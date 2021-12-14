@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
+import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
@@ -24,11 +25,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     ref.listen(firebaseAuthProvider, (_, state) {
       if (state is FirebaseAuthSuccessState) {
-        Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => HomeScreen()),
-          (route) => false,
-        );
+        Navigation.pushAndRemoveUntil(context, HomeScreen());
       } else if (state is FirebaseAuthErrorState) {
         snackBar(context, title: state.message, backgroundColor: KColors.charcoal);
       }
@@ -125,10 +122,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () {
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => SignupScreen()),
-                  );
+                  Navigation.pushReplacement(context, SignupScreen());
                 },
                 child: Text(
                   "Create account",

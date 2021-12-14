@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
@@ -30,10 +31,7 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(61)),
             KFilledButton(
               buttonText: 'Create Account',
-              onPressed: () async => Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignupScreen()),
-              ),
+              onPressed: () async => Navigation.push(context, SignupScreen()),
             ),
             SizedBox(height: KSize.getHeight(106)),
             Text(
@@ -60,10 +58,7 @@ class WelcomeScreen extends StatelessWidget {
             SizedBox(height: KSize.getHeight(6)),
             InkWell(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
-                );
+                Navigation.push(context, LoginScreen());
               },
               child: Text(
                 "Login",

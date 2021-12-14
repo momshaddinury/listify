@@ -1,6 +1,7 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_dropdown_field.dart';
@@ -33,7 +34,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ExpandTapWidget(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => Navigation.pop(context) ,
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     KAssets.backButton,
@@ -86,7 +87,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
                               dateTimeController.text,
                               priorityController.text,
                             );
-                        Navigator.pop(context);
+                        Navigation.pop(context) ;
                       } else {
                         snackBar(context, title: 'Please enter a task name', backgroundColor: KColors.charcoal);
                       }

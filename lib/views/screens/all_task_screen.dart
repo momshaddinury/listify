@@ -4,6 +4,7 @@ import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
@@ -29,7 +30,7 @@ class AllTasksScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ExpandTapWidget(
-                  onTap: () => Navigator.pop(context),
+                  onTap: () => Navigation.pop(context) ,
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     KAssets.backButton,
@@ -79,10 +80,7 @@ class AllTasksScreen extends ConsumerWidget {
                       icon: Icons.add,
                       buttonText: 'Create New Task',
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => CreateTaskScreen()),
-                        );
+                        Navigation.push(context, CreateTaskScreen());
                       }),
                 ),
               ],
