@@ -4,9 +4,8 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/buttons/k_filled_button.dart';
-import 'package:listify/views/widgets/buttons/k_outlined_button.dart';
-import 'package:listify/views/widgets/textfields/k_textfield.dart';
+import 'package:listify/views/widgets/k_button.dart';
+import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../home_screen.dart';
@@ -38,35 +37,35 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: KSize.getWidth(context, 59),
+          horizontal: KSize.getWidth(59),
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: KSize.getHeight(context, 332)),
+              SizedBox(height: KSize.getHeight(332)),
               Container(
-                height: KSize.getHeight(context, 63),
-                width: KSize.getWidth(context, 315),
+                height: KSize.getHeight(63),
+                width: KSize.getWidth(315),
                 child: Text(
                   "Welcome Back",
                   textAlign: TextAlign.center,
                   style: KTextStyle.headLine3,
                 ),
               ),
-              SizedBox(height: KSize.getHeight(context, 63)),
+              SizedBox(height: KSize.getHeight(63)),
               KTextField(
                 hintText: 'Your email address',
                 controller: emailController,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
               ),
-              SizedBox(height: KSize.getHeight(context, 10)),
+              SizedBox(height: KSize.getHeight(10)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -76,7 +75,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   ),
                 ],
               ),
-              SizedBox(height: KSize.getHeight(context, 61)),
+              SizedBox(height: KSize.getHeight(61)),
               Consumer(builder: (context, WidgetRef ref, _) {
                 final authState = ref.watch(firebaseAuthProvider);
                 return KFilledButton(
@@ -101,29 +100,29 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   },
                 );
               }),
-              SizedBox(height: KSize.getHeight(context, 66)),
+              SizedBox(height: KSize.getHeight(66)),
               Text(
                 "Or",
                 textAlign: TextAlign.center,
                 style: KTextStyle.bodyText1(),
               ),
-              SizedBox(height: KSize.getHeight(context, 72)),
+              SizedBox(height: KSize.getHeight(72)),
               KOutlinedButton(
                 buttonText: 'Login with Google',
                 assetIcon: KAssets.google,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KOutlinedButton(
                 buttonText: 'Login with Facebook',
                 assetIcon: KAssets.facebook,
               ),
-              SizedBox(height: KSize.getHeight(context, 131)),
+              SizedBox(height: KSize.getHeight(131)),
               Text(
                 "Don't have an account?",
                 textAlign: TextAlign.center,
                 style: KTextStyle.bodyText3(),
               ),
-              SizedBox(height: KSize.getHeight(context, 6)),
+              SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () {
                   Navigator.pushReplacement(

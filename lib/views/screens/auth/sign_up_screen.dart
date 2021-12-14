@@ -5,8 +5,8 @@ import 'package:listify/controller/authentication/authentication_state.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/buttons/k_filled_button.dart';
-import 'package:listify/views/widgets/textfields/k_textfield.dart';
+import 'package:listify/views/widgets/k_button.dart';
+import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 class SignupScreen extends ConsumerStatefulWidget {
@@ -41,60 +41,60 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
-          horizontal: KSize.getWidth(context, 59),
+          horizontal: KSize.getWidth(59),
         ),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: KSize.getHeight(context, 288)),
+              SizedBox(height: KSize.getHeight(288)),
               Container(
-                width: KSize.getWidth(context, 439),
+                width: KSize.getWidth(439),
                 child: Text(
                   "Not your everyday Todo app!",
                   textAlign: TextAlign.center,
                   style: KTextStyle.headLine3,
                 ),
               ),
-              SizedBox(height: KSize.getHeight(context, 44)),
+              SizedBox(height: KSize.getHeight(44)),
               // KTextField(
               //   hintText: 'Name',
               // ),
-              // SizedBox(height: KSize.getHeight(context, 37)),
+              // SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Email Address',
                 controller: emailController,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
               ),
-              SizedBox(height: KSize.getHeight(context, 37)),
+              SizedBox(height: KSize.getHeight(37)),
               KTextField(
                 hintText: 'Confirm Password',
                 controller: confirmPasswordController,
                 isPasswordField: true,
               ),
 
-              // SizedBox(height: KSize.getHeight(context, 37)),
+              // SizedBox(height: KSize.getHeight(37)),
               /* KDropdownField(
                   hintText: 'Sex',
                   controller: sexFieldController,
                   dropdownFieldOptions: ['Select', 'Male', 'Female'],
                   isObject: false,
                 ), */
-              /* SizedBox(height: KSize.getHeight(context, 25)),
+              /* SizedBox(height: KSize.getHeight(25)),
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(right: KSize.getWidth(context, 14)),
+                      padding: EdgeInsets.only(right: KSize.getWidth(14)),
                       child: Image.asset(
                         KAssets.syncCheck,
-                        height: KSize.getHeight(context, 18),
-                        width: KSize.getWidth(context, 19),
+                        height: KSize.getHeight(18),
+                        width: KSize.getWidth(19),
                       ),
                     ),
                     Text(
@@ -106,7 +106,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                     ),
                   ],
                 ), */
-              SizedBox(height: KSize.getHeight(context, 106)),
+              SizedBox(height: KSize.getHeight(106)),
               Consumer(builder: (context, WidgetRef ref, _) {
                 final authState = ref.watch(firebaseAuthProvider);
                 return KFilledButton(
@@ -129,13 +129,13 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                   },
                 );
               }),
-              SizedBox(height: KSize.getHeight(context, 110)),
+              SizedBox(height: KSize.getHeight(110)),
               Text(
                 "Already have an account?",
                 textAlign: TextAlign.center,
                 style: KTextStyle.bodyText3(),
               ),
-              SizedBox(height: KSize.getHeight(context, 6)),
+              SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () {
                   Navigator.pushReplacement(

@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/buttons/create_task_button.dart';
+import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
+
+import 'create_task_screen.dart';
 
 class AllTasksScreen extends ConsumerWidget {
   const AllTasksScreen({Key key}) : super(key: key);
@@ -22,7 +24,7 @@ class AllTasksScreen extends ConsumerWidget {
           centerTitle: true,
           automaticallyImplyLeading: false,
           title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -31,8 +33,8 @@ class AllTasksScreen extends ConsumerWidget {
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     KAssets.backButton,
-                    height: KSize.getHeight(context, 32),
-                    width: KSize.getWidth(context, 32),
+                    height: KSize.getHeight(32),
+                    width: KSize.getWidth(32),
                   ),
                 ),
                 Text("All Tasks", style: KTextStyle.headLine4),
@@ -43,10 +45,10 @@ class AllTasksScreen extends ConsumerWidget {
         ),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
             child: Column(
               children: [
-                SizedBox(height: KSize.getHeight(context, 20)),
+                SizedBox(height: KSize.getHeight(20)),
                 Expanded(
                   child: pendingTasksStream.when(
                       loading: () => Container(),
@@ -68,12 +70,20 @@ class AllTasksScreen extends ConsumerWidget {
                             });
                       }),
                 ),
-                SizedBox(height: KSize.getHeight(context, 20)),
+                SizedBox(height: KSize.getHeight(20)),
 
                 /// Create Task / Project
                 Padding(
-                  padding: EdgeInsets.only(bottom: Platform.isAndroid ? KSize.getHeight(context, 50) : 0),
-                  child: CreateTaskButton(),
+                  padding: EdgeInsets.only(bottom: Platform.isAndroid ? KSize.getHeight(50) : 0),
+                  child: KFilledButton.iconText(
+                      icon: Icons.add,
+                      buttonText: 'Create New Task',
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => CreateTaskScreen()),
+                        );
+                      }),
                 ),
               ],
             ),

@@ -20,8 +20,8 @@ class TaskCard extends ConsumerWidget {
         if (!task.isCompleted) Navigator.push(context, MaterialPageRoute(builder: (context) => TaskDetailsScreen(task)));
       },
       child: Container(
-        width: KSize.getWidth(context, 602),
-        margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
+        width: KSize.getWidth(602),
+        margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
         child: Dismissible(
           key: Key(task.title),
           background: Container(
@@ -34,9 +34,9 @@ class TaskCard extends ConsumerWidget {
             ref.read(tasksProvider).removeTodo(task.uid);
           },
           child: Container(
-            width: KSize.getWidth(context, 602),
-            // margin: EdgeInsets.only(bottom: KSize.getHeight(context, 19)),
-            padding: EdgeInsets.symmetric(vertical: KSize.getHeight(context, 15)),
+            width: KSize.getWidth(602),
+            // margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
+            padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
             decoration: BoxDecoration(
               color: backgroundColor,
               border: borderOutline ? Border.all(color: KColors.charcoal) : null,
@@ -52,7 +52,7 @@ class TaskCard extends ConsumerWidget {
                       Flexible(
                         child: Padding(
                           padding: EdgeInsets.only(
-                            left: KSize.getWidth(context, 22),
+                            left: KSize.getWidth(22),
                           ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +61,7 @@ class TaskCard extends ConsumerWidget {
                                 children: [
                                   Padding(
                                     padding: EdgeInsets.only(
-                                      right: KSize.getWidth(context, 22),
+                                      right: KSize.getWidth(22),
                                     ),
                                     child: Icon(
                                       Icons.brightness_1_sharp,
@@ -70,7 +70,7 @@ class TaskCard extends ConsumerWidget {
                                           : task.priority == "Medium"
                                               ? Colors.orange
                                               : Colors.red,
-                                      size: KSize.getWidth(context, 16),
+                                      size: KSize.getWidth(16),
                                     ),
                                   ),
                                   Text(
@@ -82,14 +82,14 @@ class TaskCard extends ConsumerWidget {
                               if (task.description.length > 0)
                                 Column(
                                   children: [
-                                    SizedBox(height: KSize.getHeight(context, 5)),
+                                    SizedBox(height: KSize.getHeight(5)),
                                     Text(
                                       task.description,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
                                       style: KTextStyle.bodyText3(),
                                     ),
-                                    SizedBox(height: KSize.getHeight(context, 10)),
+                                    SizedBox(height: KSize.getHeight(10)),
                                   ],
                                 ),
                               Text(task.dateTime,
@@ -111,11 +111,11 @@ class TaskCard extends ConsumerWidget {
                       await ref.read(tasksProvider).undoCompleteTask(task.uid);
                   },
                   child: Container(
-                    margin: EdgeInsets.all(KSize.getWidth(context, 36)),
+                    margin: EdgeInsets.all(KSize.getWidth(36)),
                     child: Icon(
                       task.isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
                       color: KColors.primary,
-                      size: KSize.getWidth(context, 24),
+                      size: KSize.getWidth(24),
                     ),
                   ),
                 ),

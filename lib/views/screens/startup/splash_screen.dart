@@ -45,8 +45,8 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(
-            horizontal: KSize.getWidth(context, 59),
-            vertical: KSize.getWidth(context, 59),
+            horizontal: KSize.getWidth(59),
+            vertical: KSize.getWidth(59),
           ),
           child: Center(
             child: Column(
@@ -58,7 +58,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
-                  height: KSize.getHeight(context, 20),
+                  height: KSize.getHeight(20),
                 ),
                 Text(
                   "Not your every day todo app",

@@ -6,9 +6,11 @@ import 'package:listify/model/todo.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/buttons/create_task_button.dart';
+import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
 import 'package:nb_utils/nb_utils.dart';
+
+import 'create_task_screen.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   @override
@@ -25,15 +27,23 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: KSize.getHeight(context, 35)),
+              SizedBox(height: KSize.getHeight(35)),
 
               /// Create Task / Project
-              CreateTaskButton(),
-              SizedBox(height: KSize.getHeight(context, 72)),
+              KFilledButton.iconText(
+                  icon: Icons.add,
+                  buttonText: 'Create New Task',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CreateTaskScreen()),
+                    );
+                  }),
+              SizedBox(height: KSize.getHeight(72)),
 
               /// Pending Tasks
               pendingTasksStream.when(
@@ -74,7 +84,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       automaticallyImplyLeading: false,
       title: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(context, 59)),
+        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -84,8 +94,8 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
               },
               child: Image.asset(
                 KAssets.menu,
-                height: KSize.getHeight(context, 32),
-                width: KSize.getWidth(context, 32),
+                height: KSize.getHeight(32),
+                width: KSize.getWidth(32),
               ),
             ),
             Text("My Day", style: KTextStyle.headLine4),
@@ -97,8 +107,8 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
                 },
                 child: Image.asset(
                   KAssets.logout,
-                  height: KSize.getHeight(context, 32),
-                  width: KSize.getWidth(context, 32),
+                  height: KSize.getHeight(32),
+                  width: KSize.getWidth(32),
                 ),
               );
             }),
@@ -148,7 +158,7 @@ class _PendingTasksBuilder extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: KSize.getHeight(context, 10)),
+          SizedBox(height: KSize.getHeight(10)),
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -190,7 +200,7 @@ class _CompletedTasksBuilder extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: KSize.getHeight(context, 10)),
+          SizedBox(height: KSize.getHeight(10)),
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
