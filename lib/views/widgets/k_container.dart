@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 
 /// Widget Interface class that allow users to pass properties to render object.
 /// Users will use these class's properties to either create

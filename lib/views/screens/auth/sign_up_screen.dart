@@ -29,7 +29,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
       firebaseAuthProvider,
       (_, state) {
         if (state is FirebaseAuthSuccessState) {
-          Navigation.pushAndRemoveUntil(context, HomeScreen());
+          HomeScreen().pushAndRemoveUntil(context);
         } else if (state is FirebaseAuthErrorState) {
           snackBar(context, title: state.message, backgroundColor: KColors.charcoal);
         }
@@ -135,7 +135,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
               SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () {
-                  Navigation.pushReplacement(context, LoginScreen());
+                  LoginScreen().pushReplacement(context);
                 },
                 child: Text(
                   "Login",

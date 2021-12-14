@@ -25,7 +25,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   Widget build(BuildContext context) {
     ref.listen(firebaseAuthProvider, (_, state) {
       if (state is FirebaseAuthSuccessState) {
-        Navigation.pushAndRemoveUntil(context, HomeScreen());
+        HomeScreen().pushAndRemoveUntil(context);
       } else if (state is FirebaseAuthErrorState) {
         snackBar(context, title: state.message, backgroundColor: KColors.charcoal);
       }
@@ -121,7 +121,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               SizedBox(height: KSize.getHeight(6)),
               InkWell(
                 onTap: () {
-                  Navigation.pushReplacement(context, SignupScreen());
+                  SignupScreen().pushReplacement(context);
                 },
                 child: Text(
                   "Create account",

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 
-extension Navigation on Navigator {
+extension Navigation on Widget {
   static GlobalKey<NavigatorState> key = new GlobalKey<NavigatorState>();
 
-  static Future<T> push<T extends Object>(context, Widget widget) {
+  Future<T> push<T extends Navigator>(context) {
     return Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => widget),
+      MaterialPageRoute(builder: (context) => this),
     );
   }
 
-  static Future<T> pushAndRemoveUntil<T extends Object>(context, Widget widget) {
+  Future<T> pushAndRemoveUntil<T extends Navigator>(context) {
     return Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) => widget),
+      MaterialPageRoute(builder: (context) => this),
       (route) => false,
     );
   }
 
-  static Future<T> pushReplacement<T extends Object>(context, Widget widget) {
+  Future<T> pushReplacement<T extends Navigator>(context) {
     return Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => widget),
+      MaterialPageRoute(builder: (context) => this),
     );
   }
 

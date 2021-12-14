@@ -39,7 +39,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   icon: Icons.add,
                   buttonText: 'Create New Task',
                   onPressed: () {
-                    Navigation.push(context, CreateTaskScreen());
+                    CreateTaskScreen().push(context);
                   }),
               SizedBox(height: KSize.getHeight(72)),
 
@@ -101,7 +101,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
               return GestureDetector(
                 onTap: () {
                   ref.read(firebaseAuthProvider.notifier).signOut();
-                  Navigation.pushAndRemoveUntil(context, LoginScreen());
+                  LoginScreen().pushAndRemoveUntil(context);
                 },
                 child: Image.asset(
                   KAssets.logout,
@@ -144,7 +144,7 @@ class _PendingTasksBuilder extends StatelessWidget {
                 visible: snapshot.length > 4,
                 child: GestureDetector(
                   onTap: () {
-                    Navigation.push(context, AllTasksScreen());
+                    AllTasksScreen().push(context);
                   },
                   child: Text(
                     "View All",

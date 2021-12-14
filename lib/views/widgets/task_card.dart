@@ -18,7 +18,7 @@ class TaskCard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        if (!task.isCompleted) Navigation.push(context, TaskDetailsScreen(task));
+        if (!task.isCompleted) TaskDetailsScreen(task).push(context);
       },
       child: Container(
         width: KSize.getWidth(602),

@@ -30,7 +30,7 @@ class AllTasksScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ExpandTapWidget(
-                  onTap: () => Navigation.pop(context) ,
+                  onTap: () => Navigation.pop(context),
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     KAssets.backButton,
@@ -80,7 +80,7 @@ class AllTasksScreen extends ConsumerWidget {
                       icon: Icons.add,
                       buttonText: 'Create New Task',
                       onPressed: () {
-                        Navigation.push(context, CreateTaskScreen());
+                        CreateTaskScreen().push(context);
                       }),
                 ),
               ],

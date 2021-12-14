@@ -18,7 +18,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
   final TextEditingController taskTitleController = TextEditingController();
   final TextEditingController taskDetailsController = TextEditingController();
   final TextEditingController dateTimeController = TextEditingController();
-  final TextEditingController priorityController = TextEditingController(text: 'Low');
+  final TextEditingController priorityController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

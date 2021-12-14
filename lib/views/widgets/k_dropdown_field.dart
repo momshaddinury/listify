@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:listify/extensions/string_extension.dart';
 import 'package:listify/views/styles/styles.dart';
 
 class KDropdownField extends StatefulWidget {
@@ -36,7 +37,13 @@ class _KDropdownFieldState extends State<KDropdownField> {
   @override
   void initState() {
     super.initState();
-    if (widget.controller.text == null || widget.controller.text == "") widget.controller.text = 'Select an option';
+    if (widget.controller.text.isNullOrEmpty) widget.controller.text = 'Select an option';
+  }
+
+  @override
+  void dispose() {
+    if (isDropDownOpen) Future.microtask(() => closeDropDownMenu());
+    super.dispose();
   }
 
   void findWidget() {

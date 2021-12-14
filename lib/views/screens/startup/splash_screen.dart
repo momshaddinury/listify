@@ -31,7 +31,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
         setValue(NEW_INSTALL, false);
         ref.read(firebaseProvider).signOut();
       }
-      Navigation.pushAndRemoveUntil(context, AuthenticationWrapper());
+      AuthenticationWrapper().pushAndRemoveUntil(context);
     });
   }
 

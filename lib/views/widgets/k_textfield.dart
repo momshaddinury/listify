@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:listify/views/styles/k_theme.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:intl/intl.dart';
 
