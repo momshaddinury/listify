@@ -43,7 +43,6 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             children: [
               SizedBox(height: KSize.getHeight(332)),
               Container(
-                height: KSize.getHeight(63),
                 width: KSize.getWidth(315),
                 child: Text(
                   "Welcome Back",
