@@ -63,7 +63,7 @@ class _KTextFieldState extends State<KTextField> {
                 controller: widget.controller,
                 decoration: InputDecoration(
                     hintText: widget.hintText,
-                    hintStyle: KTextStyle.bodyText1(),
+                    hintStyle: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
                     border: InputBorder.none,
                     suffixIcon: widget.isPasswordField
                         ? GestureDetector(

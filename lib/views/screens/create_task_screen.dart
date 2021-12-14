@@ -34,7 +34,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ExpandTapWidget(
-                  onTap: () => Navigation.pop(context) ,
+                  onTap: () => Navigation.pop(context),
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     KAssets.backButton,
@@ -87,7 +87,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
                               dateTimeController.text,
                               priorityController.text,
                             );
-                        Navigation.pop(context) ;
+                        Navigation.pop(context);
                       } else {
                         snackBar(context, title: 'Please enter a task name', backgroundColor: KColors.charcoal);
                       }

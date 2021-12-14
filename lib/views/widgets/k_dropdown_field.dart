@@ -36,7 +36,7 @@ class _KDropdownFieldState extends State<KDropdownField> {
   @override
   void initState() {
     super.initState();
-    if (widget.controller.text == null) widget.controller.text = 'Select an option';
+    if (widget.controller.text == null || widget.controller.text == "") widget.controller.text = 'Select an option';
   }
 
   void findWidget() {
@@ -62,63 +62,63 @@ class _KDropdownFieldState extends State<KDropdownField> {
     return Container(
       key: _key,
       color: KColors.accent,
-      padding: EdgeInsets.fromLTRB(0, 12, 0, 12),
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26)),
-        child: InkWell(
-          onTap: () {
-            if (isDropDownOpen) {
-              closeDropDownMenu();
-            } else {
-              openDropDownMenu();
-            }
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                widget.controller.text,
-                style: KTextStyle.bodyText1(),
-              ),
-              Icon(Icons.arrow_drop_down),
-            ],
-          ),
+      padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
+      child: InkWell(
+        onTap: () {
+          if (isDropDownOpen) {
+            closeDropDownMenu();
+          } else {
+            openDropDownMenu();
+          }
+        },
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              widget.controller.text,
+              style: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
+            ),
+            Icon(Icons.arrow_drop_down),
+          ],
         ),
       ),
     );
   }
 
   Widget _dropDownMenuBuilder(List<String> item) {
-    return Container(
-      color: KColors.white,
-      height: item.length * (dropDownFieldSize.height + spaceBetweenOptions),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: List.generate(
-          item.length,
-          (index) => InkWell(
-            onTap: () {
-              setState(() {
-                widget.controller.text = item[index];
-              });
-              closeDropDownMenu();
-            },
-            child: Container(
-              width: dropDownFieldSize.width,
-              height: dropDownFieldSize.height,
-              padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26)),
-              margin: EdgeInsets.only(bottom: 5),
-              color: KColors.lightCharcoal,
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(item[index]),
-                ],
-              ),
-            ),
-          ),
-        ),
-      ),
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ListView.builder(
+            shrinkWrap: true,
+            padding: EdgeInsets.zero,
+            itemCount: item.length,
+            itemBuilder: (context, index) {
+              return InkWell(
+                onTap: () {
+                  setState(() {
+                    widget.controller.text = item[index];
+                  });
+                  closeDropDownMenu();
+                },
+                child: Container(
+                  width: dropDownFieldSize.width,
+                  padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
+                  decoration: BoxDecoration(color: KColors.accent),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Flexible(
+                          child: Text(
+                        item[index],
+                        style: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
+                      )),
+                    ],
+                  ),
+                ),
+              );
+            }),
+      ],
     );
   }
 
