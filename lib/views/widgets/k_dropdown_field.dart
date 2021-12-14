@@ -29,7 +29,7 @@ class _KDropdownFieldState extends State<KDropdownField> {
   Offset dropDownFieldPosition;
 
   double spaceBetweenFieldAndOptions = 5;
-  double spaceBetweenOptions = 5;
+  double spaceBetweenOptions = 0;
 
   bool isDropDownOpen = false;
 
@@ -104,6 +104,7 @@ class _KDropdownFieldState extends State<KDropdownField> {
                 child: Container(
                   width: dropDownFieldSize.width,
                   padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
+                  margin: EdgeInsets.only(bottom: spaceBetweenOptions),
                   decoration: BoxDecoration(color: KColors.accent),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
