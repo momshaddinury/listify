@@ -8,7 +8,7 @@ import 'package:listify/views/screens/auth/auth_wrapper.dart';
 import 'package:listify/views/styles/k_assets.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_size.dart';
-import 'package:listify/views/styles/k_textstyle.dart';
+import 'package:listify/views/styles/k_text_style.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
