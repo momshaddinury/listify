@@ -138,9 +138,7 @@ class _KDropdownFieldState extends State<KDropdownField> {
         children: [
           Positioned.fill(
             child: GestureDetector(
-              onTap: () {
-                if (isDropDownOpen) Future.microtask(() => closeDropDownMenu());
-              },
+              onTap: () => closeDropDownMenu(),
             ),
           ),
           Positioned(
