@@ -11,7 +11,6 @@ class KTextField extends StatefulWidget {
     this.minimumLines = 1,
     this.isPasswordField = false,
     this.isCalenderField = false,
-    this.isDropdownField = false,
   });
 
   final String hintText;
@@ -20,7 +19,6 @@ class KTextField extends StatefulWidget {
   final int minimumLines;
   final bool isPasswordField;
   final bool isCalenderField;
-  final bool isDropdownField;
 
   @override
   State<KTextField> createState() => _KTextFieldState();
