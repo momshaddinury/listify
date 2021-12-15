@@ -21,7 +21,7 @@ class KDropdownField extends StatefulWidget {
 }
 
 class _KDropdownFieldState extends State<KDropdownField> {
-  GlobalKey _key = LabeledGlobalKey('customDropdownField');
+  GlobalKey _key = LabeledGlobalKey('KDropdownField');
 
   OverlayEntry _overlayEntry;
 
@@ -40,12 +40,6 @@ class _KDropdownFieldState extends State<KDropdownField> {
     if (widget.controller.text.isNullOrEmpty) widget.controller.text = 'Select an option';
   }
 
-  @override
-  void dispose() {
-    if (isDropDownOpen) Future.microtask(() => closeDropDownMenu());
-    super.dispose();
-  }
-
   void findWidget() {
     RenderBox renderBox = _key.currentContext.findRenderObject();
     dropDownFieldSize = renderBox.size;
@@ -60,33 +54,41 @@ class _KDropdownFieldState extends State<KDropdownField> {
   }
 
   void closeDropDownMenu() {
-    _overlayEntry.remove();
-    isDropDownOpen = !isDropDownOpen;
+    if (isDropDownOpen) {
+      _overlayEntry.remove();
+      isDropDownOpen = !isDropDownOpen;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      key: _key,
-      color: KColors.accent,
-      padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
-      child: InkWell(
-        onTap: () {
-          if (isDropDownOpen) {
-            closeDropDownMenu();
-          } else {
-            openDropDownMenu();
-          }
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              widget.controller.text,
-              style: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
-            ),
-            Icon(Icons.arrow_drop_down),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        closeDropDownMenu();
+        return true;
+      },
+      child: Container(
+        key: _key,
+        color: KColors.accent,
+        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
+        child: InkWell(
+          onTap: () {
+            if (isDropDownOpen) {
+              closeDropDownMenu();
+            } else {
+              openDropDownMenu();
+            }
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                widget.controller.text,
+                style: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
+              ),
+              Icon(Icons.arrow_drop_down),
+            ],
+          ),
         ),
       ),
     );
@@ -132,11 +134,22 @@ class _KDropdownFieldState extends State<KDropdownField> {
 
   OverlayEntry _overlayEntryBuilder() {
     return OverlayEntry(builder: (context) {
-      return Positioned(
-          top: dropDownFieldPosition.dy + dropDownFieldSize.height + spaceBetweenFieldAndOptions,
-          left: dropDownFieldPosition.dx,
-          width: dropDownFieldSize.width,
-          child: Material(child: _dropDownMenuBuilder(widget.dropdownFieldOptions)));
+      return Stack(
+        children: [
+          Positioned.fill(
+            child: GestureDetector(
+              onTap: () {
+                if (isDropDownOpen) Future.microtask(() => closeDropDownMenu());
+              },
+            ),
+          ),
+          Positioned(
+              top: dropDownFieldPosition.dy + dropDownFieldSize.height + spaceBetweenFieldAndOptions,
+              left: dropDownFieldPosition.dx,
+              width: dropDownFieldSize.width,
+              child: Material(child: _dropDownMenuBuilder(widget.dropdownFieldOptions))),
+        ],
+      );
     });
   }
 }
