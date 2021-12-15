@@ -4,7 +4,6 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
-// import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
