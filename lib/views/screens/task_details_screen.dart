@@ -23,7 +23,7 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
   final TextEditingController taskTitleController = TextEditingController();
   final TextEditingController taskDetailsController = TextEditingController();
   final TextEditingController dateTimeController = TextEditingController();
-  final TextEditingController priorityController = TextEditingController(text: 'Low');
+  final TextEditingController priorityController = TextEditingController();
 
   @override
   void initState() {
