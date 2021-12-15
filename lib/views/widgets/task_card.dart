@@ -74,9 +74,11 @@ class TaskCard extends ConsumerWidget {
                                       size: KSize.getWidth(16),
                                     ),
                                   ),
-                                  Text(
-                                    task.title,
-                                    style: KTextStyle.bodyText2(),
+                                  Flexible(
+                                    child: Text(
+                                      task.title,
+                                      style: KTextStyle.bodyText2(),
+                                    ),
                                   ),
                                 ],
                               ),
