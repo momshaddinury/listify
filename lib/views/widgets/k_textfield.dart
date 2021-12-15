@@ -8,16 +8,18 @@ class KTextField extends StatefulWidget {
     this.hintText,
     this.controller,
     this.multiline = false,
+    this.minimumLines = 1,
     this.isPasswordField = false,
-    this.isCalanderField = false,
+    this.isCalenderField = false,
     this.isDropdownField = false,
   });
 
   final String hintText;
   final TextEditingController controller;
   final bool multiline;
+  final int minimumLines;
   final bool isPasswordField;
-  final bool isCalanderField;
+  final bool isCalenderField;
   final bool isDropdownField;
 
   @override
@@ -42,7 +44,7 @@ class _KTextFieldState extends State<KTextField> {
             Flexible(
               child: TextFormField(
                 onTap: () {
-                  if (widget.isCalanderField) {
+                  if (widget.isCalenderField) {
                     DatePicker.showDateTimePicker(
                       context,
                       showTitleActions: true,
@@ -57,7 +59,7 @@ class _KTextFieldState extends State<KTextField> {
                   }
                 },
                 maxLines: widget.multiline ? null : 1,
-                minLines: widget.multiline ? 5 : 1,
+                minLines: widget.multiline ? widget.minimumLines : 1,
                 obscureText: widget.isPasswordField ? !isVisible : false,
                 controller: widget.controller,
                 decoration: InputDecoration(

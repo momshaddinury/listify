@@ -72,6 +72,7 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                 KTextField(
                   hintText: "Task Name",
                   controller: taskTitleController,
+                  multiline: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
                 KTextField(
@@ -83,7 +84,7 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                 KTextField(
                   hintText: "Date Time",
                   controller: dateTimeController,
-                  isCalanderField: true,
+                  isCalenderField: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
                 KDropdownField(

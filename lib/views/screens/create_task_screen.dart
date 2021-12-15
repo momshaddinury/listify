@@ -59,18 +59,20 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
                 KTextField(
                   hintText: "Task Name",
                   controller: taskTitleController,
+                  multiline: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
                 KTextField(
                   hintText: "Details",
                   controller: taskDetailsController,
                   multiline: true,
+                  minimumLines: 5,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
                 KTextField(
                   hintText: "Date Time",
                   controller: dateTimeController,
-                  isCalanderField: true,
+                  isCalenderField: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
                 KDropdownField(
