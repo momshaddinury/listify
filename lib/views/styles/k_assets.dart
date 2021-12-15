@@ -15,7 +15,7 @@ class KAssets {
   static const notification = '$_iconDir/Notification.png';
   static const backButton = '$_iconDir/Back Button.png';
 
-  /// Textfield
+  /// Text field
   static const visibilityOff = '$_iconDir/Visibility Off.png';
   static const visibilityOn = '$_iconDir/Visibility On.png';
   static const calendar = '$_iconDir/Calendar.png';
