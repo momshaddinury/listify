@@ -4,6 +4,7 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
+// import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -36,11 +37,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
               /// Create Task / Project
               KFilledButton.iconText(
-                  icon: Icons.add,
-                  buttonText: 'Create New Task',
-                  onPressed: () {
-                    CreateTaskScreen().push(context);
-                  }),
+                icon: Icons.add,
+                buttonText: 'Create New Task',
+                onPressed: () {
+                  CreateTaskScreen().push(context);
+                },
+              ),
               SizedBox(height: KSize.getHeight(72)),
 
               /// Pending Tasks

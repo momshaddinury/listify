@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 extension Navigation on Widget {
   static GlobalKey<NavigatorState> key = new GlobalKey<NavigatorState>();
 
-  Future<T> push<T extends Navigator>(context) {
+  Future push(context) {
     return Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => this),
     );
   }
 
-  Future<T> pushAndRemoveUntil<T extends Navigator>(context) {
+  Future pushAndRemoveUntil(context) {
     return Navigator.pushAndRemoveUntil(
       context,
       MaterialPageRoute(builder: (context) => this),
@@ -18,7 +18,7 @@ extension Navigation on Widget {
     );
   }
 
-  Future<T> pushReplacement<T extends Navigator>(context) {
+  Future pushReplacement(context) {
     return Navigator.pushReplacement(
       context,
       MaterialPageRoute(builder: (context) => this),
