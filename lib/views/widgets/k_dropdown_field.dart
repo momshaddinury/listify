@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:listify/extensions/string_extension.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/custom_widget/dropdown_menu.dart';
 
-class KDropdownField extends StatefulWidget {
+class KDropdownField extends DropdownMenus {
   KDropdownField({
     Key key,
     this.dropdownFieldOptions,
@@ -10,144 +11,18 @@ class KDropdownField extends StatefulWidget {
     this.callbackFunction,
   })  : assert(controller != null),
         assert(dropdownFieldOptions.length > 1, 'Must have more than 1 item'),
-        super(key: key);
+        super(
+          key: key,
+          controller: controller,
+          items: dropdownFieldOptions,
+          onChange: callbackFunction,
+          hintTextStyle: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
+          itemTextStyle: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
+          menuBackgroundColor: KColors.accent,
+          itemBackgroundColor: KColors.accent,
+        );
 
   final List<String> dropdownFieldOptions;
   final TextEditingController controller;
   final Function callbackFunction;
-
-  @override
-  State<KDropdownField> createState() => _KDropdownFieldState();
-}
-
-class _KDropdownFieldState extends State<KDropdownField> {
-  GlobalKey _key = LabeledGlobalKey('KDropdownField');
-
-  OverlayEntry _overlayEntry;
-
-  Size dropDownFieldSize;
-
-  Offset dropDownFieldPosition;
-
-  double spaceBetweenFieldAndOptions = 5;
-  double spaceBetweenOptions = 0;
-
-  bool isDropDownOpen = false;
-
-  @override
-  void initState() {
-    super.initState();
-    if (widget.controller.text.isNullOrEmpty) widget.controller.text = 'Select an option';
-  }
-
-  void findWidget() {
-    RenderBox renderBox = _key.currentContext.findRenderObject();
-    dropDownFieldSize = renderBox.size;
-    dropDownFieldPosition = renderBox.localToGlobal(Offset.zero);
-  }
-
-  void openDropDownMenu() {
-    findWidget();
-    _overlayEntry = _overlayEntryBuilder();
-    Overlay.of(context).insert(_overlayEntry);
-    isDropDownOpen = !isDropDownOpen;
-  }
-
-  void closeDropDownMenu() {
-    if (isDropDownOpen) {
-      _overlayEntry.remove();
-      isDropDownOpen = !isDropDownOpen;
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async {
-        closeDropDownMenu();
-        return true;
-      },
-      child: Container(
-        key: _key,
-        color: KColors.accent,
-        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
-        child: InkWell(
-          onTap: () {
-            if (isDropDownOpen) {
-              closeDropDownMenu();
-            } else {
-              openDropDownMenu();
-            }
-          },
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                widget.controller.text,
-                style: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
-              ),
-              Icon(Icons.arrow_drop_down),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _dropDownMenuBuilder(List<String> item) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        ListView.builder(
-            shrinkWrap: true,
-            padding: EdgeInsets.zero,
-            itemCount: item.length,
-            itemBuilder: (context, index) {
-              return InkWell(
-                onTap: () {
-                  setState(() {
-                    widget.controller.text = item[index];
-                  });
-                  closeDropDownMenu();
-                },
-                child: Container(
-                  width: dropDownFieldSize.width,
-                  padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(26), vertical: 12),
-                  margin: EdgeInsets.only(bottom: spaceBetweenOptions),
-                  decoration: BoxDecoration(color: KColors.accent),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Flexible(
-                          child: Text(
-                        item[index],
-                        style: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
-                      )),
-                    ],
-                  ),
-                ),
-              );
-            }),
-      ],
-    );
-  }
-
-  OverlayEntry _overlayEntryBuilder() {
-    return OverlayEntry(builder: (context) {
-      return Stack(
-        children: [
-          Positioned.fill(
-            child: GestureDetector(
-              onTap: () => closeDropDownMenu(),
-            ),
-          ),
-          Positioned(
-              top: dropDownFieldPosition.dy + dropDownFieldSize.height + spaceBetweenFieldAndOptions,
-              left: dropDownFieldPosition.dx,
-              width: dropDownFieldSize.width,
-              child: Material(child: _dropDownMenuBuilder(widget.dropdownFieldOptions))),
-        ],
-      );
-    });
-  }
 }
