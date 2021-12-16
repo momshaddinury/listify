@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:listify/extensions/string_extension.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/custom_widget/dropdown_menu.dart';
 
