@@ -16,7 +16,7 @@ void main() {
     expect(container.read(pendingTasksProvider).value, [isA<Todo>().having((s) => s.isCompleted, 'is task completed', false)]);
   });
 
-  test('Pending Task List', () async {
+  test('Done Task List', () async {
     final container = ProviderContainer(overrides: [
       completedTasksProvider.overrideWithValue(
         AsyncValue.data([Todo(isCompleted: true)]),
