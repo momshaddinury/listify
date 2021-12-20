@@ -4,6 +4,7 @@ import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_dropdown_field.dart';
 import 'package:listify/views/widgets/k_textfield.dart';
@@ -37,30 +38,9 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leadingWidth: 0,
-          titleSpacing: 0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ExpandTapWidget(
-                  onTap: () => Navigation.pop(context) ,
-                  tapPadding: EdgeInsets.all(20.0),
-                  child: Image.asset(
-                    KAssets.backButton,
-                    height: KSize.getHeight(32),
-                    width: KSize.getWidth(32),
-                  ),
-                ),
-                Text("Task Details", style: KTextStyle.headLine4),
-                Container(),
-              ],
-            ),
-          ),
+        appBar: KAppBar(
+          titleText: "Task Details",
+          onTap: () => Navigation.pop(context),
         ),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
@@ -103,7 +83,7 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
                               dateTimeController.text,
                               priorityController.text,
                             );
-                        Navigation.pop(context) ;
+                        Navigation.pop(context);
                       } else {
                         snackBar(context, title: 'Please enter a task name', backgroundColor: KColors.charcoal);
                       }

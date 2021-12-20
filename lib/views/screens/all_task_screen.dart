@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
 
@@ -19,30 +20,9 @@ class AllTasksScreen extends ConsumerWidget {
     final pendingTasksStream = ref.watch(pendingTasksProvider);
 
     return Scaffold(
-        appBar: AppBar(
-          leadingWidth: 0,
-          titleSpacing: 0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ExpandTapWidget(
-                  onTap: () => Navigation.pop(context),
-                  tapPadding: EdgeInsets.all(20.0),
-                  child: Image.asset(
-                    KAssets.backButton,
-                    height: KSize.getHeight(32),
-                    width: KSize.getWidth(32),
-                  ),
-                ),
-                Text("All Tasks", style: KTextStyle.headLine4),
-                Container()
-              ],
-            ),
-          ),
+        appBar: KAppBar(
+          titleText: "All Tasks",
+          onTap: () => Navigation.pop(context),
         ),
         body: SafeArea(
           child: Padding(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_dropdown_field.dart';
 import 'package:listify/views/widgets/k_textfield.dart';
@@ -23,30 +24,9 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leadingWidth: 0,
-          titleSpacing: 0,
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                ExpandTapWidget(
-                  onTap: () => Navigation.pop(context),
-                  tapPadding: EdgeInsets.all(20.0),
-                  child: Image.asset(
-                    KAssets.backButton,
-                    height: KSize.getHeight(32),
-                    width: KSize.getWidth(32),
-                  ),
-                ),
-                Text("New Task", style: KTextStyle.headLine4),
-                Container(),
-              ],
-            ),
-          ),
+        appBar: KAppBar(
+          titleText: 'New Task',
+          onTap: () => Navigation.pop(context),
         ),
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
