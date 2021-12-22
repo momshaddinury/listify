@@ -41,22 +41,27 @@ class Todo {
 }
 
 class SubTask {
-  final String title;
-  final bool isCompleted;
-  final uid;
+  String title;
+  bool isCompleted;
 
-  SubTask({this.title, this.isCompleted, this.uid});
+  SubTask({
+    this.title,
+    this.isCompleted = false,
+  });
 
   factory SubTask.fromJson(Map<String, dynamic> json) => SubTask(
         title: json["title"],
         isCompleted: json["isCompleted"],
-        uid: json["id"],
       );
+
+  Map<String, dynamic> toMap() => {
+        "title": this.title,
+        "isCompleted": this.isCompleted,
+      };
 
   SubTask.fromMap(Map<String, dynamic> map)
       : title = map["title"],
-        isCompleted = map["isCompleted"],
-        uid = map["id"];
+        isCompleted = map["isCompleted"];
 }
 
 List<Todo> parseSnapshot(QuerySnapshot snapshot) => snapshot.docs.map((e) {

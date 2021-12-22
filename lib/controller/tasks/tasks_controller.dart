@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
+import 'package:listify/model/todo.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:intl/intl.dart';
 
@@ -37,6 +38,16 @@ class TasksController {
       "description": description,
       "dateTime": DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch,
       "priority": priority,
+    });
+  }
+
+  Future<void> updateSubTask(uid,List<SubTask> subTask) async {
+    List<Map<String, dynamic>> subTaskMappedList = [];
+    subTask.forEach((subTask) {
+      subTaskMappedList.add(subTask.toMap());
+    });
+    await userTasksCollection.doc(uid).update({
+      "subTask": subTaskMappedList,
     });
   }
 

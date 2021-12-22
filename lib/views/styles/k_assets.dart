@@ -22,5 +22,7 @@ class KAssets {
   static const dropdown = '$_iconDir/Dropdown.png';
   static const syncCheck = '$_iconDir/Sync Check.png';
 
+  static const add = '$_iconDir/Add.png';
+
   static const logout = '$_iconDir/Logout.png';
 }
