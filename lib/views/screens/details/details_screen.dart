@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
-import 'package:listify/services/debouncer.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/details/widget/sub_task_card.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'widget/task_details_card.dart';
