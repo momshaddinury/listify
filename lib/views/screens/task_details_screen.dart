@@ -49,19 +49,19 @@ class _UpdateTaskScreenState extends ConsumerState<TaskDetailsScreen> {
             child: Column(
               children: [
                 SizedBox(height: KSize.getHeight(40)),
-                KTextField(
+                KTextFormField(
                   hintText: "Task Name",
                   controller: taskTitleController,
                   multiline: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
-                KTextField(
+                KTextFormField(
                   hintText: "Details",
                   controller: taskDetailsController,
                   multiline: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
-                KTextField(
+                KTextFormField(
                   hintText: "Date Time",
                   controller: dateTimeController,
                   isCalenderField: true,

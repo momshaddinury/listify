@@ -51,12 +51,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
               ),
               SizedBox(height: KSize.getHeight(63)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Your email address',
                 controller: emailController,
               ),
               SizedBox(height: KSize.getHeight(37)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
