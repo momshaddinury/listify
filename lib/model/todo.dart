@@ -29,35 +29,41 @@ class Todo {
         isCompleted: json["isCompleted"],
         uid: json["id"],
       );
+
+  Todo.fromMap(Map<String, dynamic> map, id)
+      : title = map["title"],
+        description = map["description"],
+        dateTime = DateFormat('hh:mm aa MMM dd, yyyy').format(DateTime.fromMillisecondsSinceEpoch(map["dateTime"])),
+        subtask = (map["subTask"] as List<dynamic>).map((e) => SubTask.fromMap(e)).toList(),
+        priority = map["priority"],
+        isCompleted = map["isCompleted"],
+        uid = id;
 }
 
 class SubTask {
-  final String title;
-  final bool isCompleted;
-  final uid;
+  String title;
+  bool isCompleted;
 
-  SubTask({this.title, this.isCompleted, this.uid});
+  SubTask({
+    this.title,
+    this.isCompleted = false,
+  });
 
   factory SubTask.fromJson(Map<String, dynamic> json) => SubTask(
         title: json["title"],
         isCompleted: json["isCompleted"],
-        uid: json["id"],
       );
+
+  Map<String, dynamic> toMap() => {
+        "title": this.title,
+        "isCompleted": this.isCompleted,
+      };
+
+  SubTask.fromMap(Map<String, dynamic> map)
+      : title = map["title"],
+        isCompleted = map["isCompleted"];
 }
 
-List<Todo> todoFromFirestore(QuerySnapshot snapshot) {
-  if (snapshot != null) {
-    return snapshot.docs.map((e) {
-      return Todo(
-        isCompleted: e["isCompleted"],
-        title: e["title"],
-        description: e["description"],
-        dateTime: DateFormat('hh:mm aa MMM dd, yyyy').format(DateTime.fromMillisecondsSinceEpoch(e["dateTime"])),
-        priority: e["priority"],
-        uid: e.id,
-      );
+List<Todo> parseSnapshot(QuerySnapshot snapshot) => snapshot.docs.map((e) {
+      return Todo.fromMap(e.data(), e.id);
     }).toList();
-  } else {
-    return null;
-  }
-}

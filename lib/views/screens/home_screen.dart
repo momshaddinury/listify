@@ -47,7 +47,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               /// Pending Tasks
               pendingTasksStream.when(
                   loading: () => Container(),
-                  error: (e, stackTrace) => ErrorWidget(stackTrace),
+                  error: (e, stackTrace) {
+                    print(e);
+                    print(stackTrace);
+                    return ErrorWidget(stackTrace);
+                  },
                   data: (snapshot) {
                     return _PendingTasksBuilder(snapshot: snapshot);
                   }),

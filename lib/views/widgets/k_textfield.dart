@@ -11,11 +11,15 @@ class KTextField extends StatelessWidget {
     @required this.controller,
     this.textStyle,
     this.isDateTime = false,
+    this.onChanged,
+    this.hintText = 'Type something',
   }) : super(key: key);
 
   final TextEditingController controller;
   final TextStyle textStyle;
   final bool isDateTime;
+  final Function(String value) onChanged;
+  final String hintText;
 
   @override
   Widget build(BuildContext context) {
@@ -31,14 +35,19 @@ class KTextField extends StatelessWidget {
             maxTime: DateTime(2100),
             onConfirm: (date) {
               controller.text = DateFormat('hh:mm aa MMM dd, yyyy').format(date);
+              onChanged(controller.text);
             },
             currentTime: DateTime.now(),
             locale: LocaleType.en,
           );
+
         }
       },
+      onChanged: onChanged,
       maxLines: null,
       decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: KTextStyle.subtitle2.copyWith(fontSize: 13, color: KColors.charcoal.withOpacity(0.40)),
         border: InputBorder.none,
         contentPadding: EdgeInsets.zero,
         isDense: true,
@@ -114,15 +123,15 @@ class _KTextFormFieldState extends State<KTextFormField> {
                     border: InputBorder.none,
                     suffixIcon: widget.isPasswordField
                         ? GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          isVisible = !isVisible;
-                        });
-                      },
-                      child: Image.asset(
-                        isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
-                      ),
-                    )
+                            onTap: () {
+                              setState(() {
+                                isVisible = !isVisible;
+                              });
+                            },
+                            child: Image.asset(
+                              isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
+                            ),
+                          )
                         : null,
                     suffixIconConstraints: BoxConstraints(
                       maxHeight: KSize.getHeight(25),
