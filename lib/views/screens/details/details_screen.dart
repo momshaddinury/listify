@@ -20,19 +20,6 @@ class DetailsScreen extends ConsumerStatefulWidget {
 }
 
 class _DetailsScreenState extends ConsumerState<DetailsScreen> {
-  final TextEditingController taskTitleController = TextEditingController();
-  final TextEditingController taskDetailsController = TextEditingController();
-  final TextEditingController dateTimeController = TextEditingController();
-  final TextEditingController priorityController = TextEditingController();
-
-  @override
-  void initState() {
-    super.initState();
-    taskTitleController.text = widget.todo.title;
-    taskDetailsController.text = widget.todo.description;
-    dateTimeController.text = widget.todo.dateTime;
-    priorityController.text = widget.todo.priority;
-  }
 
   @override
   Widget build(BuildContext context) {
