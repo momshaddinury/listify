@@ -153,6 +153,43 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                     ),
                   ),
                 ),
+                ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: widget.todo.subtask.length,
+                    itemBuilder: (context, index) {
+                      return Container(
+                        width: KSize.getWidth(602),
+                        padding: EdgeInsets.symmetric(vertical: KSize.getHeight(22), horizontal: KSize.getWidth(22)),
+                        decoration: BoxDecoration(
+                          color: KColors.accent,
+                          borderRadius: BorderRadius.circular(4),
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Flexible(
+                                child: Text(
+                              "- "+widget.todo.subtask[index].title,
+                              style: KTextStyle.bodyText2(),
+                            )),
+                            InkWell(
+                              onTap: () async {
+                                // if (!widget.todo.isCompleted)
+                                //   await ref.read(tasksProvider).completeTask(widget.todo.subtask[index].uid);
+                                // else
+                                //   await ref.read(tasksProvider).undoCompleteTask(widget.todo.subtask[index].uid);
+                              },
+                              child: Icon(
+                                widget.todo.subtask[index].isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
+                                color: KColors.primary,
+                                size: KSize.getWidth(24),
+                              ),
+                            )
+                          ],
+                        ),
+                      );
+                    }),
                 SizedBox(height: KSize.getHeight(90)),
                 KFilledButton(
                   buttonText: "Complete Task",

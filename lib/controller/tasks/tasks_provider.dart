@@ -10,10 +10,10 @@ final taskProvider = Provider<Todo>((ref) => throw UnimplementedError());
 
 final pendingTasksProvider = StreamProvider<List<Todo>>((ref) {
   Query userTasksQuery = ref.watch(tasksProvider).userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
-  return userTasksQuery.snapshots().map(todoFromFirestore);
+  return userTasksQuery.snapshots().map(parseSnapshot);
 });
 
 final completedTasksProvider = StreamProvider<List<Todo>>((ref) {
   Query userTasksQuery = ref.watch(tasksProvider).userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
-  return userTasksQuery.snapshots().map(todoFromFirestore);
+  return userTasksQuery.snapshots().map(parseSnapshot);
 });

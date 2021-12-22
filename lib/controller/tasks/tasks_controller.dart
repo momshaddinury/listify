@@ -22,6 +22,7 @@ class TasksController {
         "dateTime":
             dateTime != "" ? DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
         "priority": priority == "" ? "Low" : priority,
+        "subTask": [],
         "isCompleted": false,
       });
     } catch (error, stackTrace) {
