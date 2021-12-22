@@ -7,10 +7,12 @@ class DropdownMenus extends StatefulWidget {
     this.items,
     this.onChange,
     this.trailing = const Icon(Icons.arrow_drop_down),
+    this.showTrailing = true,
     this.hintTextStyle = const TextStyle(color: Colors.black),
     this.itemTextStyle = const TextStyle(color: Colors.black),
     this.menuBackgroundColor = Colors.white,
     this.itemBackgroundColor = Colors.white,
+    this.padding = const EdgeInsets.fromLTRB(12, 12, 12, 12),
   })  : assert(controller != null),
         assert(items.length > 1, 'Must have more than 1 item'),
         super(key: key);
@@ -18,10 +20,12 @@ class DropdownMenus extends StatefulWidget {
   final TextEditingController controller;
   final List<String> items;
   final Widget trailing;
+  final bool showTrailing;
   final TextStyle hintTextStyle;
   final TextStyle itemTextStyle;
   final Color menuBackgroundColor;
   final Color itemBackgroundColor;
+  final EdgeInsets padding;
   final Function onChange;
 
   @override
@@ -77,7 +81,7 @@ class _DropdownMenusState extends State<DropdownMenus> {
       child: Container(
         key: _key,
         color: widget.menuBackgroundColor,
-        padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+        padding: widget.padding,
         child: InkWell(
           onTap: () {
             if (_isActive) {
@@ -93,7 +97,7 @@ class _DropdownMenusState extends State<DropdownMenus> {
                 widget.controller.text,
                 style: widget.hintTextStyle,
               ),
-              widget.trailing,
+              Visibility(visible: widget.showTrailing, child: widget.trailing),
             ],
           ),
         ),

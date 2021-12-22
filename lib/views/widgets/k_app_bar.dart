@@ -5,11 +5,12 @@ import 'package:listify/views/styles/styles.dart';
 class KAppBar extends AppBar {
   final String titleText;
   final VoidCallback onTap;
-
+  final Widget trailing;
   KAppBar({
     Key key,
     @required this.titleText,
     @required this.onTap,
+    this.trailing,
   }) : super(
           key: key,
           leadingWidth: 0,
@@ -31,7 +32,7 @@ class KAppBar extends AppBar {
                   ),
                 ),
                 Text(titleText, style: KTextStyle.headLine4),
-                Container()
+                trailing??Container()
               ],
             ),
           ),

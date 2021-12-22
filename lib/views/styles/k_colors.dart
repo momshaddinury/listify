@@ -10,6 +10,7 @@ class KColors {
   static final lightCharcoal = charcoal.withOpacity(.12);
   static const spaceCadet = Color(0xFF2C3549);
   static final lightRed = Colors.red[100];
+  static final red = Colors.red;
   static final transparent = Colors.transparent;
 
   static MaterialColor createMaterialColor(Color color) {
