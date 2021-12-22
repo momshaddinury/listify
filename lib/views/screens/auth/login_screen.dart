@@ -51,12 +51,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 ),
               ),
               SizedBox(height: KSize.getHeight(63)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Your email address',
                 controller: emailController,
               ),
               SizedBox(height: KSize.getHeight(37)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
@@ -103,12 +103,12 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 style: KTextStyle.bodyText1(),
               ),
               SizedBox(height: KSize.getHeight(72)),
-              KOutlinedButton(
+              KOutlinedButton.iconText(
                 buttonText: 'Login with Google',
                 assetIcon: KAssets.google,
               ),
               SizedBox(height: KSize.getHeight(37)),
-              KOutlinedButton(
+              KOutlinedButton.iconText(
                 buttonText: 'Login with Facebook',
                 assetIcon: KAssets.facebook,
               ),

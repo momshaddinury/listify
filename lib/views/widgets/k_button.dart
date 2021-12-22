@@ -96,12 +96,31 @@ class KFilledButton extends _KButton {
 /// According to the UI design, all outlined style buttons
 /// configuration can be set using this widget.
 class KOutlinedButton extends _KButton {
-  final String buttonText;
-  final String assetIcon;
-
   KOutlinedButton({
-    @required this.buttonText,
-    this.assetIcon,
+    @required String buttonText,
+    @required VoidCallback onPressed,
+    TextStyle textStyle,
+    Color borderColor,
+  })  : assert(buttonText != null),
+        super(
+          child: Center(
+            child: Text(
+              buttonText,
+              style: textStyle?? KTextStyle.buttonText(fontWeight: FontWeight.w500),
+            ),
+          ),
+          onPressed: onPressed,
+          backgroundColor: KColors.transparent,
+          height: KSize.getHeight(84),
+          border: Border.all(
+            color: borderColor == null ?  KTheme.darkMode() ? KColors.white : KColors.charcoal : borderColor,
+          ),
+        );
+
+  KOutlinedButton.iconText({
+    @required String buttonText,
+    VoidCallback onPressed,
+    String assetIcon,
   })  : assert(buttonText != null),
         super(
           child: Row(
@@ -119,7 +138,7 @@ class KOutlinedButton extends _KButton {
               ),
             ],
           ),
-          onPressed: () {},
+          onPressed: onPressed ?? () {},
           backgroundColor: KColors.transparent,
           height: KSize.getHeight(84),
           border: Border.all(

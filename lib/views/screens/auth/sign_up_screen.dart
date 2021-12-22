@@ -59,18 +59,18 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
               //   hintText: 'Name',
               // ),
               // SizedBox(height: KSize.getHeight(37)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Email Address',
                 controller: emailController,
               ),
               SizedBox(height: KSize.getHeight(37)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Password',
                 controller: passwordController,
                 isPasswordField: true,
               ),
               SizedBox(height: KSize.getHeight(37)),
-              KTextField(
+              KTextFormField(
                 hintText: 'Confirm Password',
                 controller: confirmPasswordController,
                 isPasswordField: true,

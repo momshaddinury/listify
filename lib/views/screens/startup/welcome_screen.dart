@@ -41,12 +41,12 @@ class WelcomeScreen extends StatelessWidget {
                 style: KTextStyle.bodyText1(),
               ),
               SizedBox(height: KSize.getHeight(87)),
-              KOutlinedButton(
+              KOutlinedButton.iconText(
                 buttonText: 'Sign up with Google',
                 assetIcon: KAssets.google,
               ),
               SizedBox(height: KSize.getHeight(37)),
-              KOutlinedButton(
+              KOutlinedButton.iconText(
                 buttonText: 'Sign up with Facebook',
                 assetIcon: KAssets.facebook,
               ),

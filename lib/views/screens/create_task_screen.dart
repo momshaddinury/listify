@@ -1,4 +1,3 @@
-import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/services/navigation_service.dart';
@@ -35,20 +34,20 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
             child: Column(
               children: [
                 SizedBox(height: KSize.getHeight(40)),
-                KTextField(
+                KTextFormField(
                   hintText: "Task Name",
                   controller: taskTitleController,
                   multiline: true,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
-                KTextField(
+                KTextFormField(
                   hintText: "Details",
                   controller: taskDetailsController,
                   multiline: true,
                   minimumLines: 5,
                 ),
                 SizedBox(height: KSize.getHeight(22)),
-                KTextField(
+                KTextFormField(
                   hintText: "Date Time",
                   controller: dateTimeController,
                   isCalenderField: true,

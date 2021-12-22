@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
