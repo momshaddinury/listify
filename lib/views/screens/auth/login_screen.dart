@@ -119,16 +119,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                 style: KTextStyle.bodyText3(),
               ),
               SizedBox(height: KSize.getHeight(6)),
-              InkWell(
-                onTap: () {
-                  SignupScreen().pushReplacement(context);
-                },
-                child: Text(
-                  "Create account",
-                  textAlign: TextAlign.center,
-                  style: KTextStyle.bodyText2(),
-                ),
-              ),
+              KTextButton(
+                  buttonText: "Create account",
+                  onPressed: () {
+                    SignupScreen().pushReplacement(context);
+                  })
             ],
           ),
         ),

@@ -43,7 +43,17 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                   itemBuilder: (context, index) {
                     return SubTaskCard(index: index);
                   }),
-              InkWell(
+              KTextButton.iconText(
+                  buttonText: 'Add Task',
+                  assetIcon: KAssets.add,
+                  onPressed: () {
+                    todoState.update((state) {
+                      state.subTask.add(SubTask());
+                      return state.copyWith(subTask: state.subTask);
+                    });
+                    ref.read(tasksProvider).updateSubTask();
+                  }),
+              /*InkWell(
                 onTap: () {
                   todoState.update((state) {
                     state.subTask.add(SubTask());
@@ -65,7 +75,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                     ),
                   ],
                 ),
-              ),
+              ),*/
               SizedBox(height: KSize.getHeight(90)),
               KFilledButton(
                 buttonText: "Complete Task",

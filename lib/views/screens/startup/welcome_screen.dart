@@ -57,16 +57,11 @@ class WelcomeScreen extends StatelessWidget {
                 style: KTextStyle.bodyText3(),
               ),
               SizedBox(height: KSize.getHeight(6)),
-              InkWell(
-                onTap: () {
-                  LoginScreen().push(context);
-                },
-                child: Text(
-                  "Login",
-                  textAlign: TextAlign.center,
-                  style: KTextStyle.bodyText2(),
-                ),
-              ),
+              KTextButton(
+                  buttonText: "Login",
+                  onPressed: () {
+                    LoginScreen().push(context);
+                  })
             ],
           ),
         ),

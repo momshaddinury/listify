@@ -106,14 +106,18 @@ class KOutlinedButton extends _KButton {
           child: Center(
             child: Text(
               buttonText,
-              style: textStyle?? KTextStyle.buttonText(fontWeight: FontWeight.w500),
+              style: textStyle ?? KTextStyle.buttonText(fontWeight: FontWeight.w500),
             ),
           ),
           onPressed: onPressed,
           backgroundColor: KColors.transparent,
           height: KSize.getHeight(84),
           border: Border.all(
-            color: borderColor == null ?  KTheme.darkMode() ? KColors.white : KColors.charcoal : borderColor,
+            color: borderColor == null
+                ? KTheme.darkMode()
+                    ? KColors.white
+                    : KColors.charcoal
+                : borderColor,
           ),
         );
 
@@ -144,5 +148,51 @@ class KOutlinedButton extends _KButton {
           border: Border.all(
             color: KTheme.darkMode() ? KColors.white : KColors.charcoal,
           ),
+        );
+}
+
+/// Text Style Button Configuration class for the [_KButton] super class.
+/// According to the UI design, all text style buttons
+/// configuration can be set using this widget.
+class KTextButton extends _KButton {
+  KTextButton({
+    @required String buttonText,
+    TextStyle buttonTextStyle,
+    @required VoidCallback onPressed,
+    TextAlign textAlign = TextAlign.center,
+  }) : super(
+          child: Text(
+            buttonText,
+            textAlign: textAlign,
+            style: buttonTextStyle ?? KTextStyle.bodyText2(),
+          ),
+          onPressed: onPressed,
+          height: null,
+          backgroundColor: KColors.transparent,
+        );
+
+  KTextButton.iconText({
+    @required String buttonText,
+    TextStyle buttonTextStyle,
+    @required String assetIcon,
+    @required VoidCallback onPressed,
+  }) : super(
+          child: Row(
+            children: [
+              Image.asset(
+                assetIcon,
+                width: KSize.getWidth(20),
+                height: KSize.getHeight(20),
+              ),
+              SizedBox(width: KSize.getWidth(15)),
+              Text(
+                buttonText,
+                style: buttonTextStyle ?? KTextStyle.bodyText3(),
+              ),
+            ],
+          ),
+          onPressed: onPressed,
+          backgroundColor: KColors.transparent,
+          height: null,
         );
 }
