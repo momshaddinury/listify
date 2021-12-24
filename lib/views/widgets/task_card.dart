@@ -18,7 +18,10 @@ class TaskCard extends ConsumerWidget {
 
     return GestureDetector(
       onTap: () {
-        if (!task.isCompleted) DetailsScreen(todo: task).push(context);
+        if (!task.isCompleted) {
+          ref.watch(taskDetailsProvider.state).state = task;
+          DetailsScreen().push(context);
+        }
       },
       child: Container(
         width: KSize.getWidth(602),
@@ -36,7 +39,6 @@ class TaskCard extends ConsumerWidget {
           },
           child: Container(
             width: KSize.getWidth(602),
-            // margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
             padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
             decoration: BoxDecoration(
               color: backgroundColor,
@@ -52,18 +54,14 @@ class TaskCard extends ConsumerWidget {
                     children: [
                       Flexible(
                         child: Padding(
-                          padding: EdgeInsets.only(
-                            left: KSize.getWidth(22),
-                          ),
+                          padding: EdgeInsets.only(left: KSize.getWidth(22)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(
-                                      right: KSize.getWidth(22),
-                                    ),
+                                    padding: EdgeInsets.only(right: KSize.getWidth(22)),
                                     child: Icon(
                                       Icons.brightness_1_sharp,
                                       color: task.priority == "Low"

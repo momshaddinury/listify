@@ -8,6 +8,10 @@ final tasksProvider = Provider((ref) => TasksController(ref: ref));
 
 final taskProvider = Provider<Todo>((ref) => throw UnimplementedError());
 
+final taskDetailsProvider = StateProvider<Todo>((ref) {
+  return Todo();
+});
+
 final pendingTasksProvider = StreamProvider<List<Todo>>((ref) {
   Query userTasksQuery = ref.watch(tasksProvider).userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
   return userTasksQuery.snapshots().map(parseSnapshot);

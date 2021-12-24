@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
-import 'package:listify/model/todo.dart';
+import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:intl/intl.dart';
 
@@ -32,21 +32,22 @@ class TasksController {
     }
   }
 
-  Future<void> updateTask(uid, title, description, dateTime, priority) async {
+  Future<void> updateTask(uid, {String title, String description, String dateTime, String priority}) async {
     await userTasksCollection.doc(uid).update({
-      "title": title,
-      "description": description,
-      "dateTime": DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch,
-      "priority": priority,
+      if (title != null) "title": title,
+      if (description != null) "description": description,
+      if (dateTime != null) "dateTime": DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch,
+      if (priority != null) "priority": priority,
     });
   }
 
-  Future<void> updateSubTask(uid,List<SubTask> subTask) async {
+  Future<void> updateSubTask() async {
     List<Map<String, dynamic>> subTaskMappedList = [];
-    subTask.forEach((subTask) {
+
+    ref.read(taskDetailsProvider).subTask.forEach((subTask) {
       subTaskMappedList.add(subTask.toMap());
     });
-    await userTasksCollection.doc(uid).update({
+    await userTasksCollection.doc(ref.read(taskDetailsProvider).uid).update({
       "subTask": subTaskMappedList,
     });
   }
@@ -62,6 +63,4 @@ class TasksController {
   Future<void> removeTodo(uid) async {
     await userTasksCollection.doc(uid).delete();
   }
-
-
 }

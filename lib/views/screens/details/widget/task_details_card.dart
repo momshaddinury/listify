@@ -8,10 +8,6 @@ import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:listify/services/debouncer.dart';
 
 class TaskCard extends ConsumerStatefulWidget {
-  final Todo todo;
-
-  TaskCard({this.todo});
-
   @override
   ConsumerState<TaskCard> createState() => _TaskCardState();
 }
@@ -27,29 +23,16 @@ class _TaskCardState extends ConsumerState<TaskCard> {
   @override
   void initState() {
     super.initState();
-    taskTitleController.text = widget.todo.title;
-    taskDetailsController.text = widget.todo.description;
-    dateTimeController.text = widget.todo.dateTime;
-    priorityController.text = widget.todo.priority;
-  }
-
-  void _updateTaskHandler() async {
-    if (taskTitleController.text != widget.todo.title ||
-        taskDetailsController.text != widget.todo.description ||
-        dateTimeController.text != widget.todo.dateTime ||
-        priorityController.text != widget.todo.priority) {
-      await ref.read(tasksProvider).updateTask(
-            widget.todo.uid,
-            taskTitleController.text,
-            taskDetailsController.text,
-            dateTimeController.text,
-            priorityController.text,
-          );
-    }
+    Todo _todo = ref.read(taskDetailsProvider);
+    taskTitleController.text = _todo.title;
+    taskDetailsController.text = _todo.description;
+    dateTimeController.text = _todo.dateTime;
+    priorityController.text = _todo.priority;
   }
 
   @override
   Widget build(BuildContext context) {
+    final todoState = ref.watch(taskDetailsProvider.state);
     return Container(
       width: KSize.getWidth(602),
       margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
@@ -69,9 +52,9 @@ class _TaskCardState extends ConsumerState<TaskCard> {
                   padding: EdgeInsets.only(right: KSize.getWidth(22)),
                   child: Icon(
                     Icons.brightness_1_sharp,
-                    color: widget.todo.priority == "Low"
+                    color: todoState.state.priority == "Low"
                         ? Colors.green
-                        : widget.todo.priority == "Medium"
+                        : todoState.state.priority == "Medium"
                             ? Colors.orange
                             : Colors.red,
                     size: KSize.getWidth(16),
@@ -81,7 +64,10 @@ class _TaskCardState extends ConsumerState<TaskCard> {
                   child: KTextField(
                     controller: taskTitleController,
                     textStyle: KTextStyle.bodyText2(),
-                    onChanged: (v) => _debouncer.run(() => _updateTaskHandler()),
+                    onChanged: (v) {
+                      todoState.update((state) => state.copyWith(title: v));
+                      _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, title: v));
+                    },
                   ),
                 ),
               ],
@@ -91,7 +77,10 @@ class _TaskCardState extends ConsumerState<TaskCard> {
               controller: taskDetailsController,
               textStyle: KTextStyle.bodyText3(),
               hintText: "Details",
-              onChanged: (v) => _debouncer.run(() => _updateTaskHandler()),
+              onChanged: (v) => _debouncer.run(() {
+                todoState.update((state) => state.copyWith(description: v));
+                _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, description: v));
+              }),
             ),
             SizedBox(height: KSize.getHeight(10)),
             KTextField(
@@ -101,7 +90,8 @@ class _TaskCardState extends ConsumerState<TaskCard> {
               ),
               isDateTime: true,
               onChanged: (v) {
-                _updateTaskHandler();
+                todoState.update((state) => state.copyWith(dateTime: v));
+                _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, dateTime: v));
               },
             ),
             SizedBox(height: KSize.getHeight(10)),
@@ -117,8 +107,8 @@ class _TaskCardState extends ConsumerState<TaskCard> {
                     itemBackgroundColor: KColors.accent,
                     padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
                     onChange: () {
-                      _updateTaskHandler();
-                      setState(() {});
+                      todoState.update((state) => state.copyWith(priority: priorityController.text));
+                      _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, priority: priorityController.text));
                     },
                   ),
                 ),

@@ -11,24 +11,20 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'widget/task_details_card.dart';
 
 class DetailsScreen extends ConsumerStatefulWidget {
-  final Todo todo;
-
-  const DetailsScreen({Key key, @required this.todo}) : super(key: key);
+  const DetailsScreen({Key key}) : super(key: key);
 
   @override
   ConsumerState<DetailsScreen> createState() => _DetailsScreenState();
 }
 
 class _DetailsScreenState extends ConsumerState<DetailsScreen> {
-
   @override
   Widget build(BuildContext context) {
+    final todoState = ref.watch(taskDetailsProvider.state);
     return Scaffold(
       appBar: KAppBar(
         titleText: "Task Details",
-        onTap: () {
-          Navigation.pop(context);
-        },
+        onTap: () => Navigation.pop(context),
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
@@ -38,20 +34,22 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
             mainAxisSize: MainAxisSize.max,
             children: [
               SizedBox(height: KSize.getHeight(40)),
-              TaskCard(todo: widget.todo),
+              TaskCard(),
               ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   padding: EdgeInsets.zero,
-                  itemCount: widget.todo.subtask.length,
+                  itemCount: todoState.state.subTask.length,
                   itemBuilder: (context, index) {
-                    return SubTaskCard(todo: widget.todo, index: index);
+                    return SubTaskCard(index: index);
                   }),
               InkWell(
                 onTap: () {
-                  widget.todo.subtask.add(SubTask());
-                  ref.read(tasksProvider).updateSubTask(widget.todo.uid, widget.todo.subtask);
-                  setState(() {});
+                  todoState.update((state) {
+                    state.subTask.add(SubTask());
+                    return state.copyWith(subTask: state.subTask);
+                  });
+                  ref.read(tasksProvider).updateSubTask();
                 },
                 child: Row(
                   children: [
@@ -72,17 +70,17 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
               KFilledButton(
                 buttonText: "Complete Task",
                 onPressed: () async {
-                  await ref.read(tasksProvider).completeTask(widget.todo.uid);
+                  await ref.read(tasksProvider).completeTask(todoState.state.uid);
                   Navigation.pop(context);
                 },
               ),
               SizedBox(height: KSize.getHeight(22)),
               KOutlinedButton(
                 buttonText: "Delete Task",
-                textStyle: KTextStyle.buttonText(fontWeight: FontWeight.w500).copyWith(color: KColors.red.withOpacity(0.5)),
-                borderColor: KColors.lightRed,
+                textStyle: KTextStyle.buttonText(fontWeight: FontWeight.w500).copyWith(color: KColors.red.withOpacity(0.8)),
+                borderColor: KColors.red.withOpacity(0.8),
                 onPressed: () async {
-                  await ref.read(tasksProvider).removeTodo(widget.todo.uid);
+                  await ref.read(tasksProvider).removeTodo(todoState.state.uid);
                   Navigation.pop(context);
                 },
               ),
@@ -94,5 +92,3 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
     );
   }
 }
-
-

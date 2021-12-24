@@ -4,8 +4,8 @@ import 'package:intl/intl.dart';
 class Todo {
   final String title;
   final String description;
-  final dateTime;
-  final List<SubTask> subtask;
+  final String dateTime;
+  final List<SubTask> subTask;
   final String priority;
   final bool isCompleted;
   final uid;
@@ -14,17 +14,36 @@ class Todo {
     this.title,
     this.description,
     this.dateTime,
-    this.subtask,
+    this.subTask,
     this.priority,
     this.isCompleted,
     this.uid,
   });
 
+  Todo copyWith({
+    String title,
+    String description,
+    String dateTime,
+    List<SubTask> subTask,
+    String priority,
+    bool isCompleted,
+    uid,
+  }) =>
+      Todo(
+        title: title ?? this.title,
+        description: description ?? this.description,
+        dateTime: dateTime ?? this.dateTime,
+        subTask: subTask ?? this.subTask,
+        priority: priority ?? this.priority,
+        isCompleted: isCompleted ?? this.isCompleted,
+        uid: uid ?? this.uid,
+      );
+
   factory Todo.fromJson(Map<String, dynamic> json) => Todo(
         title: json["title"],
         description: json["description"],
         dateTime: DateFormat("MMM dd, yyyy hh:mm aa").format(DateTime.fromMillisecondsSinceEpoch(json["dateTime"])),
-        subtask: List<SubTask>.from(json["subTask"].map((task) => SubTask.fromJson(task))),
+        subTask: List<SubTask>.from(json["subTask"].map((task) => SubTask.fromJson(task))),
         priority: json["message"],
         isCompleted: json["isCompleted"],
         uid: json["id"],
@@ -34,7 +53,7 @@ class Todo {
       : title = map["title"],
         description = map["description"],
         dateTime = DateFormat('hh:mm aa MMM dd, yyyy').format(DateTime.fromMillisecondsSinceEpoch(map["dateTime"])),
-        subtask = (map["subTask"] as List<dynamic>).map((e) => SubTask.fromMap(e)).toList(),
+        subTask = (map["subTask"] as List<dynamic>).map((e) => SubTask.fromMap(e)).toList(),
         priority = map["priority"],
         isCompleted = map["isCompleted"],
         uid = id;

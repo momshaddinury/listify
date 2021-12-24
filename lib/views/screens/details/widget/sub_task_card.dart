@@ -9,11 +9,9 @@ import 'package:listify/services/debouncer.dart';
 class SubTaskCard extends ConsumerStatefulWidget {
   const SubTaskCard({
     Key key,
-    @required this.todo,
     @required this.index,
   }) : super(key: key);
 
-  final Todo todo;
   final int index;
 
   @override
@@ -27,11 +25,12 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
   @override
   void initState() {
     super.initState();
-    subTaskController.text = widget.todo.subtask[widget.index].title;
+    subTaskController.text = ref.read(taskDetailsProvider).subTask[widget.index].title;
   }
 
   @override
   Widget build(BuildContext context) {
+    final subTaskState = ref.watch(taskDetailsProvider.state);
     return Padding(
       padding: EdgeInsets.only(bottom: KSize.getHeight(15)),
       child: Dismissible(
@@ -43,8 +42,11 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
           color: KColors.lightRed,
         ),
         onDismissed: (direction) {
-          widget.todo.subtask.removeAt(widget.index);
-          ref.read(tasksProvider).updateSubTask(widget.todo.uid, widget.todo.subtask);
+          subTaskState.update((state) {
+            state.subTask.removeAt(widget.index);
+            return state.copyWith(subTask: state.subTask);
+          });
+          ref.read(tasksProvider).updateSubTask();
         },
         child: Container(
           width: KSize.getWidth(602),
@@ -61,9 +63,8 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                   controller: subTaskController,
                   hintText: 'Enter title',
                   onChanged: (String value) {
-                    widget.todo.subtask[widget.index].title = value;
                     _debouncer.run(() {
-                      ref.read(tasksProvider).updateSubTask(widget.todo.uid, widget.todo.subtask);
+                      ref.read(tasksProvider).updateSubTask();
                     });
                   },
                   textStyle: KTextStyle.bodyText2(),
@@ -71,17 +72,17 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
               ),
               InkWell(
                 onTap: () async {
-                  if (widget.todo.subtask[widget.index].isCompleted == false) {
-                    widget.todo.subtask[widget.index].isCompleted = true;
+                  SubTask _subTask = subTaskState.state.subTask[widget.index];
+                  if (_subTask.isCompleted == false) {
+                    _subTask.isCompleted = true;
                   } else {
-                    widget.todo.subtask[widget.index].isCompleted = false;
+                    _subTask.isCompleted = false;
                   }
-                  ref.read(tasksProvider).updateSubTask(widget.todo.uid, widget.todo.subtask);
-
-                  setState(() {});
+                  subTaskState.update((state) => state.copyWith(subTask: state.subTask));
+                  ref.read(tasksProvider).updateSubTask();
                 },
                 child: Icon(
-                  widget.todo.subtask[widget.index].isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
+                  subTaskState.state.subTask[widget.index].isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
                   color: KColors.primary,
                   size: KSize.getWidth(24),
                 ),

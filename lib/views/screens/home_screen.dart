@@ -191,17 +191,13 @@ class _CompletedTasksBuilder extends StatelessWidget {
     return Visibility(
       visible: snapshot.length > 0,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                "Done",
-                style: KTextStyle.bodyText2().copyWith(
-                  color: KColors.charcoal.withOpacity(.71),
-                ),
-              ),
-            ],
+          Text(
+            "Done",
+            style: KTextStyle.bodyText2().copyWith(
+              color: KColors.charcoal.withOpacity(.71),
+            ),
           ),
           SizedBox(height: KSize.getHeight(10)),
           ListView.builder(
