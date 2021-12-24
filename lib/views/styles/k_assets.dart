@@ -3,7 +3,7 @@ class KAssets {
   static const _iconDir = '$_rootPath/icons';
 
   /// App Logo
-  static const appLogo = '$_rootPath/App Logo.png';
+  static const appLogo = '$_rootPath/logo.png';
 
   /// Social App
   static const google = '$_iconDir/Google.png';

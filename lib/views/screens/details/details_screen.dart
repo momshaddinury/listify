@@ -41,7 +41,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                   padding: EdgeInsets.zero,
                   itemCount: todoState.state.subTask.length,
                   itemBuilder: (context, index) {
-                    return SubTaskCard(index: index);
+                    return SubTaskCard(key: UniqueKey(),index: index);
                   }),
               KTextButton.iconText(
                   buttonText: 'Add Task',
