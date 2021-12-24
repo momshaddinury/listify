@@ -16,7 +16,7 @@
     <td><img src="/assets/screenshots/Details.png" width=270 ></td>
   </tr>
  </table>
-<br> Please star⭐ the repo if you like what you see😉.
+<br> Please star⭐ the repo if you like what you see.
 
 ## Project Environment:
 ```
@@ -61,7 +61,6 @@ To Install flutter:<br>
 https://flutter.dev/docs/get-started/install
 
 ## Author
-**Momshad Dinury**
 [![Twitter Follow](https://img.shields.io/twitter/follow/dinurymomshad.svg?style=social)](https://twitter.com/dinurymomshad)
 
 ## LICENCE
