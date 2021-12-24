@@ -45,6 +45,7 @@ Project is following MVC pattern. For managing state I am using Riverpod 1.0.0. 
 ```
 ├── Login & Sign up using Email and Password
 ├── Add Task with title, description, date and time, priority
+├── Add Sub Task
 ├── Update Task
 └── Delete Task
 ```
