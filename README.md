@@ -1,5 +1,5 @@
 # Listify - Not your everyday todo app!
-<img src="assets/App%20Logo.png" height=70 align="left"> 
+<img src="assets/logo.png" height=70 align="left"> 
 <p>A task management app with refreshing UI. Organise your tasks and share projects on the go. Track status of project, discuss ideas about tasks in dedicated discussion thread. It can be used as a regular To Do List App or can be used to plan and execute big events. 
 </p>
 <table>
