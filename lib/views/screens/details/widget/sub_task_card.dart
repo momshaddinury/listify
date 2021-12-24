@@ -64,6 +64,10 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                   hintText: 'Enter title',
                   onChanged: (String value) {
                     _debouncer.run(() {
+                      subTaskState.update((state) {
+                        state.subTask[widget.index].title = value;
+                        return state;
+                      });
                       ref.read(tasksProvider).updateSubTask();
                     });
                   },
