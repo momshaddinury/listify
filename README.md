@@ -1,5 +1,5 @@
 # Listify - Not your everyday todo app!
-<img src="https://github.com/dinurymomshad/listify/blob/main/assets/App%20Logo.png" height=70 align="left"> 
+<img src="assets/App%20Logo.png" height=70 align="left"> 
 <p>A task management app with refreshing UI. Organise your tasks and share projects on the go. Track status of project, discuss ideas about tasks in dedicated discussion thread. It can be used as a regular To Do List App or can be used to plan and execute big events. 
 </p>
 <table>
@@ -11,9 +11,9 @@
   </tr>
   <tr>
     <td><img src="assets/screenshots/Splash%20Screen.png" width=270 ></td>
-    <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Login%20Screen.png" width=270 ></td>
-    <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Home%20Screen.png" width=270 ></td>
-    <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Details%20Screen.png" width=270 ></td>
+    <td><img src="assets/screenshots/Login%20Screen.png" width=270 ></td>
+    <td><img src="assets/screenshots/Home%20Screen.png" width=270 ></td>
+    <td><img src="assets/screenshots/Details%20Screen.png" width=270 ></td>
   </tr>
  </table>
  
