@@ -34,7 +34,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
             mainAxisSize: MainAxisSize.max,
             children: [
               SizedBox(height: KSize.getHeight(40)),
-              TaskCard(),
+              TaskDetailsCard(),
               ListView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
@@ -53,29 +53,6 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                     });
                     ref.read(tasksProvider).updateSubTask();
                   }),
-              /*InkWell(
-                onTap: () {
-                  todoState.update((state) {
-                    state.subTask.add(SubTask());
-                    return state.copyWith(subTask: state.subTask);
-                  });
-                  ref.read(tasksProvider).updateSubTask();
-                },
-                child: Row(
-                  children: [
-                    Image.asset(
-                      KAssets.add,
-                      width: KSize.getWidth(20),
-                      height: KSize.getHeight(20),
-                    ),
-                    SizedBox(width: KSize.getWidth(15)),
-                    Text(
-                      "Add task",
-                      style: KTextStyle.bodyText3(),
-                    ),
-                  ],
-                ),
-              ),*/
               SizedBox(height: KSize.getHeight(90)),
               KFilledButton(
                 buttonText: "Complete Task",

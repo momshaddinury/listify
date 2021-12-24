@@ -7,12 +7,12 @@ import 'package:listify/views/widgets/custom_widget/dropdown_menu.dart';
 import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:listify/services/debouncer.dart';
 
-class TaskCard extends ConsumerStatefulWidget {
+class TaskDetailsCard extends ConsumerStatefulWidget {
   @override
-  ConsumerState<TaskCard> createState() => _TaskCardState();
+  ConsumerState<TaskDetailsCard> createState() => _TaskCardState();
 }
 
-class _TaskCardState extends ConsumerState<TaskCard> {
+class _TaskCardState extends ConsumerState<TaskDetailsCard> {
   final _debouncer = Debouncer(milliseconds: 500);
 
   final TextEditingController taskTitleController = TextEditingController();
