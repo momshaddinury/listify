@@ -60,10 +60,10 @@ https://medium.flutterdevs.com/design-patterns-in-flutter-part-1-c32a3ddb00e2<br
 To Install flutter:<br>
 https://flutter.dev/docs/get-started/install
 
-## 🤓 Author
+## Author
 **Momshad Dinury**
 [![Twitter Follow](https://img.shields.io/twitter/follow/dinurymomshad.svg?style=social)](https://twitter.com/dinurymomshad)
 
-## 🔖 LICENCE
+## LICENCE
 [Apache-2.0](https://github.com/dinurymomshad/listify/blob/main/LICENSE)
 
