@@ -10,7 +10,7 @@
      <td>Details Screen</td>
   </tr>
   <tr>
-    <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Splash%20Screen.png" width=270 ></td>
+    <td><img src="assets/screenshots/Splash%20Screen.png" width=270 ></td>
     <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Login%20Screen.png" width=270 ></td>
     <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Home%20Screen.png" width=270 ></td>
     <td><img src="https://github.com/dinurymomshad/listify/blob/main/assets/screenshots/Details%20Screen.png" width=270 ></td>
