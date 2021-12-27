@@ -1,7 +1,13 @@
 # Listify - Not your everyday todo app!
-<img src="assets/logo.png" height=70 align="left"> 
-<p>A task management app with refreshing UI. Organise your tasks and share projects on the go. Track status of project, discuss ideas about tasks in dedicated discussion thread. It can be used as a regular To Do List App or can be used to plan and execute big events. 
-</p>
+<table>
+  <tr>
+    <td>
+      <img src="assets/logo.png" height=70 align="left"> 
+    <p>A task management app with refreshing UI. Organise your tasks and share projects on the go. Track status of project, discuss ideas about tasks in dedicated discussion thread. It can be used as a regular To Do List App or can be used to plan and execute big events. 
+      </p>
+    </td>
+  </tr>
+</table>
 <table>
   <tr>
     <td>Splash Screen</td>
@@ -59,10 +65,3 @@ To learn more about MVC pattern:<br>
 https://medium.flutterdevs.com/design-patterns-in-flutter-part-1-c32a3ddb00e2<br>
 To Install flutter:<br>
 https://flutter.dev/docs/get-started/install
-
-## Author
-[![Twitter Follow](https://img.shields.io/twitter/follow/dinurymomshad.svg?style=social)](https://twitter.com/dinurymomshad)
-
-## LICENCE
-[Apache-2.0](https://github.com/dinurymomshad/listify/blob/main/LICENSE)
-
