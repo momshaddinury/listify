@@ -63,7 +63,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                 Flexible(
                   child: KTextField(
                     controller: taskTitleController,
-                    textStyle: KTextStyle.bodyText2(),
+                    textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.bold),
                     onChanged: (v) {
                       todoState.update((state) => state.copyWith(title: v));
                       _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, title: v));
@@ -86,7 +86,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
             KTextField(
               controller: dateTimeController,
               textStyle: KTextStyle.bodyText2().copyWith(
-                color: KColors.charcoal.withOpacity(0.40),
+                color: KColors.charcoal.withOpacity(0.70),
               ),
               isDateTime: true,
               onChanged: (v) {
@@ -97,7 +97,10 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
             SizedBox(height: KSize.getHeight(10)),
             Row(
               children: [
-                Text("Priority:"),
+                Text(
+                  "Priority:",
+                  style: KTextStyle.bodyText2(),
+                ),
                 Flexible(
                   child: DropdownMenus(
                     controller: priorityController,
@@ -106,6 +109,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                     menuBackgroundColor: KColors.transparent,
                     itemBackgroundColor: KColors.accent,
                     padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
+                    hintTextStyle: KTextStyle.bodyText2(),
                     onChange: () {
                       todoState.update((state) => state.copyWith(priority: priorityController.text));
                       _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, priority: priorityController.text));

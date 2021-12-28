@@ -40,14 +40,13 @@ class KTextField extends StatelessWidget {
             currentTime: DateTime.now(),
             locale: LocaleType.en,
           );
-
         }
       },
       onChanged: onChanged,
       maxLines: null,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: KTextStyle.subtitle2.copyWith(fontSize: 13, color: KColors.charcoal.withOpacity(0.40)),
+        hintStyle: KTextStyle.subtitle2.copyWith(color: KColors.charcoal.withOpacity(0.40)),
         border: InputBorder.none,
         contentPadding: EdgeInsets.zero,
         isDense: true,

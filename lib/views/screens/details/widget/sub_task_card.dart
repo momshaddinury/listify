@@ -71,7 +71,7 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                       ref.read(tasksProvider).updateSubTask();
                     });
                   },
-                  textStyle: KTextStyle.bodyText2(),
+                  textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.normal),
                 ),
               ),
               InkWell(
