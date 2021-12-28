@@ -7,6 +7,7 @@ import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/custom_widget/k_expansion_tile.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -161,7 +162,7 @@ class _PendingTasksBuilder extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: KSize.getHeight(10)),
+          SizedBox(height: KSize.getHeight(20)),
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -190,19 +191,23 @@ class _CompletedTasksBuilder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Visibility(
       visible: snapshot.length > 0,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Done",
-            style: KTextStyle.bodyText2().copyWith(
-              color: KColors.charcoal.withOpacity(.71),
-            ),
+      child: KExpansionTile(
+        title: Text(
+          "Done",
+          style: KTextStyle.bodyText2().copyWith(
+            color: KColors.charcoal.withOpacity(.71),
           ),
-          SizedBox(height: KSize.getHeight(10)),
+        ),
+        trailing: Image.asset(
+          KAssets.dropdown,
+          height: KSize.getHeight(20),
+          width: KSize.getWidth(20),
+        ),
+        children: [
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
+              padding: EdgeInsets.zero,
               itemCount: snapshot.length,
               itemBuilder: (context, index) {
                 return ProviderScope(
