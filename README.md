@@ -10,7 +10,7 @@
 </table>
 <table>
   <tr>
-    <td>Splash Screen</td>
+     <td>Splash Screen</td>
      <td>Login Screen</td>
      <td>Home Screen</td>
      <td>Details Screen</td>
