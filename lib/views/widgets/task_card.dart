@@ -24,10 +24,9 @@ class TaskCard extends ConsumerWidget {
         }
       },
       child: Container(
-        width: KSize.getWidth(602),
         margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
         child: Dismissible(
-          key: Key(task.title),
+          key: UniqueKey(),
           background: Container(
             padding: EdgeInsets.only(left: 20),
             alignment: Alignment.centerLeft,
@@ -38,7 +37,6 @@ class TaskCard extends ConsumerWidget {
             ref.read(tasksProvider).removeTodo(task.uid);
           },
           child: Container(
-            width: KSize.getWidth(602),
             padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
             decoration: BoxDecoration(
               color: backgroundColor,
@@ -75,7 +73,7 @@ class TaskCard extends ConsumerWidget {
                                   Flexible(
                                     child: Text(
                                       task.title,
-                                      style: KTextStyle.bodyText2(),
+                                      style: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ],
@@ -95,7 +93,7 @@ class TaskCard extends ConsumerWidget {
                                 ),
                               Text(task.dateTime,
                                   style: KTextStyle.bodyText2().copyWith(
-                                    color: KColors.charcoal.withOpacity(0.40),
+                                    color: KColors.charcoal.withOpacity(0.70),
                                   )),
                             ],
                           ),

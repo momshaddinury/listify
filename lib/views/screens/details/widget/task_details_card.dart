@@ -34,7 +34,6 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
   Widget build(BuildContext context) {
     final todoState = ref.watch(taskDetailsProvider.state);
     return Container(
-      width: KSize.getWidth(602),
       margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
       padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
       decoration: BoxDecoration(
@@ -63,7 +62,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                 Flexible(
                   child: KTextField(
                     controller: taskTitleController,
-                    textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.bold),
+                    textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.w600),
                     onChanged: (v) {
                       todoState.update((state) => state.copyWith(title: v));
                       _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, title: v));

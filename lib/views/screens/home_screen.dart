@@ -29,7 +29,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
+          padding: EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -88,7 +88,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
       centerTitle: true,
       automaticallyImplyLeading: false,
       title: Padding(
-        padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

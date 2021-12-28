@@ -33,9 +33,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: KSize.getWidth(59),
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(

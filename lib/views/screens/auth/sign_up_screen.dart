@@ -18,7 +18,6 @@ class SignupScreen extends ConsumerStatefulWidget {
 }
 
 class _SignupScreenState extends ConsumerState<SignupScreen> {
-  // final TextEditingController sexFieldController = TextEditingController(text: 'Select');
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordController = TextEditingController();
@@ -37,9 +36,7 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
     );
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: KSize.getWidth(59),
-        ),
+        padding: EdgeInsets.symmetric(horizontal: 25),
         child: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(
@@ -55,10 +52,6 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 ),
               ),
               SizedBox(height: KSize.getHeight(44)),
-              // KTextField(
-              //   hintText: 'Name',
-              // ),
-              // SizedBox(height: KSize.getHeight(37)),
               KTextFormField(
                 hintText: 'Email Address',
                 controller: emailController,
@@ -75,34 +68,6 @@ class _SignupScreenState extends ConsumerState<SignupScreen> {
                 controller: confirmPasswordController,
                 isPasswordField: true,
               ),
-
-              // SizedBox(height: KSize.getHeight(37)),
-              /* KDropdownField(
-                  hintText: 'Sex',
-                  controller: sexFieldController,
-                  dropdownFieldOptions: ['Select', 'Male', 'Female'],
-                  isObject: false,
-                ), */
-              /* SizedBox(height: KSize.getHeight(25)),
-                Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(right: KSize.getWidth(14)),
-                      child: Image.asset(
-                        KAssets.syncCheck,
-                        height: KSize.getHeight(18),
-                        width: KSize.getWidth(19),
-                      ),
-                    ),
-                    Text(
-                      'Sync with email',
-                      style: KTextStyle.bodyText2().copyWith(
-                        fontWeight: FontWeight.w100,
-                        color: KColors.primary,
-                      ),
-                    ),
-                  ],
-                ), */
               SizedBox(height: KSize.getHeight(106)),
               Consumer(builder: (context, WidgetRef ref, _) {
                 final authState = ref.watch(firebaseAuthProvider);

@@ -30,7 +30,7 @@ class _CreateTaskScreenState extends ConsumerState<CreateTaskScreen> {
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
+            padding: EdgeInsets.symmetric(horizontal: 25),
             child: Column(
               children: [
                 SizedBox(height: KSize.getHeight(40)),

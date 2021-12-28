@@ -29,7 +29,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
+          padding: EdgeInsets.symmetric(horizontal: 25),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             children: [
@@ -41,7 +41,7 @@ class _DetailsScreenState extends ConsumerState<DetailsScreen> {
                   padding: EdgeInsets.zero,
                   itemCount: todoState.state.subTask.length,
                   itemBuilder: (context, index) {
-                    return SubTaskCard(key: UniqueKey(),index: index);
+                    return SubTaskCard(key: UniqueKey(), index: index);
                   }),
               KTextButton.iconText(
                   buttonText: 'Add Task',

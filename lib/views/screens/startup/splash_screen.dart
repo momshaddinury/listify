@@ -41,10 +41,7 @@ class _SplashScreenState extends ConsumerState<SplashScreen> {
       backgroundColor: KColors.white,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: KSize.getWidth(59),
-            vertical: KSize.getWidth(59),
-          ),
+          padding: EdgeInsets.all(25),
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,

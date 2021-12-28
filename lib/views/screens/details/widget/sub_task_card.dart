@@ -49,7 +49,6 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
           ref.read(tasksProvider).updateSubTask();
         },
         child: Container(
-          width: KSize.getWidth(602),
           padding: EdgeInsets.symmetric(vertical: KSize.getHeight(22), horizontal: KSize.getWidth(22)),
           decoration: BoxDecoration(
             color: KColors.accent,

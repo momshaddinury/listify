@@ -6,6 +6,7 @@ class KAppBar extends AppBar {
   final String titleText;
   final VoidCallback onTap;
   final Widget trailing;
+
   KAppBar({
     Key key,
     @required this.titleText,
@@ -18,7 +19,7 @@ class KAppBar extends AppBar {
           centerTitle: true,
           automaticallyImplyLeading: false,
           title: Padding(
-            padding: EdgeInsets.symmetric(horizontal: KSize.getWidth(59)),
+            padding: EdgeInsets.symmetric(horizontal: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -32,7 +33,7 @@ class KAppBar extends AppBar {
                   ),
                 ),
                 Text(titleText, style: KTextStyle.headLine4),
-                trailing??Container()
+                trailing ?? Container()
               ],
             ),
           ),
