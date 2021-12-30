@@ -49,7 +49,6 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
           ref.read(tasksProvider).updateSubTask();
         },
         child: Container(
-          padding: EdgeInsets.symmetric(vertical: KSize.getHeight(22), horizontal: KSize.getWidth(22)),
           decoration: BoxDecoration(
             color: KColors.accent,
             borderRadius: BorderRadius.circular(4),
@@ -58,19 +57,26 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: KTextField(
-                  controller: subTaskController,
-                  hintText: 'Enter title',
-                  onChanged: (String value) {
-                    _debouncer.run(() {
-                      subTaskState.update((state) {
-                        state.subTask[widget.index].title = value;
-                        return state;
+                child: Padding(
+                  padding: EdgeInsets.only(
+                    left: KSize.getWidth(22),
+                    top: KSize.getHeight(22),
+                    bottom: KSize.getHeight(22),
+                  ),
+                  child: KTextField(
+                    controller: subTaskController,
+                    hintText: 'Enter title',
+                    onChanged: (String value) {
+                      _debouncer.run(() {
+                        subTaskState.update((state) {
+                          state.subTask[widget.index].title = value;
+                          return state;
+                        });
+                        ref.read(tasksProvider).updateSubTask();
                       });
-                      ref.read(tasksProvider).updateSubTask();
-                    });
-                  },
-                  textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.normal),
+                    },
+                    textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.normal),
+                  ),
                 ),
               ),
               InkWell(
@@ -84,10 +90,13 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                   subTaskState.update((state) => state.copyWith(subTask: state.subTask));
                   ref.read(tasksProvider).updateSubTask();
                 },
-                child: Icon(
-                  subTaskState.state.subTask[widget.index].isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
-                  color: KColors.primary,
-                  size: KSize.getWidth(24),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(vertical: KSize.getHeight(22), horizontal: KSize.getWidth(22)),
+                  child: Icon(
+                    subTaskState.state.subTask[widget.index].isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
+                    color: KColors.primary,
+                    size: KSize.getWidth(24),
+                  ),
                 ),
               )
             ],
