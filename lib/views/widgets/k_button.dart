@@ -177,19 +177,22 @@ class KTextButton extends _KButton {
     @required String assetIcon,
     @required VoidCallback onPressed,
   }) : super(
-          child: Row(
-            children: [
-              Image.asset(
-                assetIcon,
-                width: KSize.getWidth(20),
-                height: KSize.getHeight(20),
-              ),
-              SizedBox(width: KSize.getWidth(15)),
-              Text(
-                buttonText,
-                style: buttonTextStyle ?? KTextStyle.bodyText3(),
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: Row(
+              children: [
+                Image.asset(
+                  assetIcon,
+                  width: KSize.getWidth(20),
+                  height: KSize.getHeight(20),
+                ),
+                SizedBox(width: KSize.getWidth(15)),
+                Text(
+                  buttonText,
+                  style: buttonTextStyle ?? KTextStyle.bodyText3(),
+                ),
+              ],
+            ),
           ),
           onPressed: onPressed,
           backgroundColor: KColors.transparent,
