@@ -4,6 +4,7 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
+import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -14,60 +15,57 @@ import 'package:nb_utils/nb_utils.dart';
 
 import 'create_task_screen.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends KBaseScreen {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
+class _HomeScreenState extends KBaseState<HomeScreen> {
   @override
-  Widget build(BuildContext context) {
+  Widget appBar() {
+    return _AppBarBuilder();
+  }
+
+  @override
+  Widget body() {
     final pendingTasksStream = ref.watch(pendingTasksProvider);
     final completedTasksStream = ref.watch(completedTasksProvider);
-    return Scaffold(
-      appBar: _AppBarBuilder(),
-      body: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              SizedBox(height: KSize.getHeight(35)),
 
-              /// Create Task / Project
-              KFilledButton.iconText(
-                icon: Icons.add,
-                buttonText: 'Create New Task',
-                onPressed: () {
-                  CreateTaskScreen().push(context);
-                },
-              ),
-              SizedBox(height: KSize.getHeight(72)),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        SizedBox(height: KSize.getHeight(35)),
 
-              /// Pending Tasks
-              pendingTasksStream.when(
-                  loading: () => Container(),
-                  error: (e, stackTrace) {
-                    print(e);
-                    print(stackTrace);
-                    return ErrorWidget(stackTrace);
-                  },
-                  data: (snapshot) {
-                    return _PendingTasksBuilder(snapshot: snapshot);
-                  }),
-
-              /// Completed Tasks
-              completedTasksStream.when(
-                  loading: () => Container(),
-                  error: (e, stackTrace) => ErrorWidget(stackTrace),
-                  data: (snapshot) {
-                    return _CompletedTasksBuilder(snapshot: snapshot);
-                  }),
-            ],
-          ),
+        /// Create Task / Project
+        KFilledButton.iconText(
+          icon: Icons.add,
+          buttonText: 'Create New Task',
+          onPressed: () {
+            CreateTaskScreen().push(context);
+          },
         ),
-      ),
+        SizedBox(height: KSize.getHeight(72)),
+
+        /// Pending Tasks
+        pendingTasksStream.when(
+            loading: () => Container(),
+            error: (e, stackTrace) {
+              print(e);
+              print(stackTrace);
+              return ErrorWidget(stackTrace);
+            },
+            data: (snapshot) {
+              return _PendingTasksBuilder(snapshot: snapshot);
+            }),
+
+        /// Completed Tasks
+        completedTasksStream.when(
+            loading: () => Container(),
+            error: (e, stackTrace) => ErrorWidget(stackTrace),
+            data: (snapshot) {
+              return _CompletedTasksBuilder(snapshot: snapshot);
+            }),
+      ],
     );
   }
 }
@@ -94,7 +92,9 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
           children: [
             GestureDetector(
               onTap: () {
-                snackBar(context, title: "Feature is not available yet", backgroundColor: KColors.charcoal);
+                snackBar(context,
+                    title: "Feature is not available yet",
+                    backgroundColor: KColors.charcoal);
               },
               child: Image.asset(
                 KAssets.menu,

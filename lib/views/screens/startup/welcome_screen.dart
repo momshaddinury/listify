@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:listify/services/navigation_service.dart';
+import 'package:listify/views/k_base_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
 
 import '../auth/sign_up_screen.dart';
 
-class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({Key key}) : super(key: key);
+class WelcomeScreen extends KBaseScreen {
+  @override
+  KBaseState<WelcomeScreen> createState() => _WelcomeScreenState();
+}
 
+class _WelcomeScreenState extends KBaseState<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,5 +69,11 @@ class WelcomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  @override
+  Widget body() {
+    // TODO: implement body
+    throw UnimplementedError();
   }
 }
