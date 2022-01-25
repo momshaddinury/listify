@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
 import 'package:listify/services/navigation_service.dart';
@@ -26,6 +25,8 @@ class _SignupScreenState extends KBaseState<SignupScreen> {
 
   @override
   Widget body() {
+    final authState = ref.watch(firebaseAuthProvider);
+
     ref.listen(
       firebaseAuthProvider,
       (_, state) {
@@ -67,35 +68,31 @@ class _SignupScreenState extends KBaseState<SignupScreen> {
           isPasswordField: true,
         ),
         SizedBox(height: KSize.getHeight(106)),
-        Consumer(builder: (context, WidgetRef ref, _) {
-          final authState = ref.watch(firebaseAuthProvider);
-          return KFilledButton(
-            buttonText: authState is FirebaseAuthLoadingState
-                ? 'Please wait'
-                : 'Create Account',
-            buttonColor: authState is FirebaseAuthLoadingState
-                ? KColors.spaceCadet
-                : KColors.primary,
-            onPressed: () {
-              if (!(authState is FirebaseAuthLoadingState)) {
-                hideKeyboard(context);
-                if (emailController.text.trim().isNotEmpty) {
-                  if (passwordController.text ==
-                      confirmPasswordController.text) {
-                    ref.read(firebaseAuthProvider.notifier).signUp(
-                          email: emailController.text,
-                          password: passwordController.text,
-                        );
-                  } else {
-                    snackBar(context,
-                        title: "Password doesn't match",
-                        backgroundColor: KColors.charcoal);
-                  }
+        KFilledButton(
+          buttonText: authState is FirebaseAuthLoadingState
+              ? 'Please wait'
+              : 'Create Account',
+          buttonColor: authState is FirebaseAuthLoadingState
+              ? KColors.spaceCadet
+              : KColors.primary,
+          onPressed: () {
+            if (!(authState is FirebaseAuthLoadingState)) {
+              hideKeyboard(context);
+              if (emailController.text.trim().isNotEmpty) {
+                if (passwordController.text == confirmPasswordController.text) {
+                  ref.read(firebaseAuthProvider.notifier).signUp(
+                        email: emailController.text,
+                        password: passwordController.text,
+                      );
+                } else {
+                  snackBar(context,
+                      title: "Password doesn't match",
+                      backgroundColor: KColors.charcoal);
                 }
               }
-            },
-          );
-        }),
+            }
+          },
+        ),
         SizedBox(height: KSize.getHeight(110)),
         Text(
           "Already have an account?",
