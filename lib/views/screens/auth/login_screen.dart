@@ -19,11 +19,12 @@ class LoginScreen extends KBaseScreen {
 
 class _LoginScreenState extends KBaseState<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget body() {
+    final authState = ref.watch(firebaseAuthProvider);
+
     ref.listen(firebaseAuthProvider, (_, state) {
       if (state is FirebaseAuthSuccessState) {
         HomeScreen().pushAndRemoveUntil(context);
@@ -67,38 +68,35 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
           ],
         ),
         SizedBox(height: KSize.getHeight(61)),
-        Consumer(builder: (context, WidgetRef ref, _) {
-          final authState = ref.watch(firebaseAuthProvider);
-          return KFilledButton(
-            buttonText:
-                authState is FirebaseAuthLoadingState ? 'Please wait' : 'Login',
-            buttonColor: authState is FirebaseAuthLoadingState
-                ? KColors.spaceCadet
-                : KColors.primary,
-            onPressed: () {
-              if (!(authState is FirebaseAuthLoadingState)) {
-                if (emailController.text.trim().isNotEmpty &&
-                    passwordController.text.isNotEmpty) {
-                  hideKeyboard(context);
-                  ref.read(firebaseAuthProvider.notifier).signIn(
-                        email: emailController.text,
-                        password: passwordController.text,
-                      );
-                } else {
-                  if (emailController.text.trim().isEmpty) {
-                    snackBar(context,
-                        title: "Please enter email",
-                        backgroundColor: KColors.charcoal);
-                  } else if (passwordController.text.isEmpty) {
-                    snackBar(context,
-                        title: "Please enter password",
-                        backgroundColor: KColors.charcoal);
-                  }
+        KFilledButton(
+          buttonText:
+              authState is FirebaseAuthLoadingState ? 'Please wait' : 'Login',
+          buttonColor: authState is FirebaseAuthLoadingState
+              ? KColors.spaceCadet
+              : KColors.primary,
+          onPressed: () {
+            if (!(authState is FirebaseAuthLoadingState)) {
+              if (emailController.text.trim().isNotEmpty &&
+                  passwordController.text.isNotEmpty) {
+                hideKeyboard(context);
+                ref.read(firebaseAuthProvider.notifier).signIn(
+                      email: emailController.text,
+                      password: passwordController.text,
+                    );
+              } else {
+                if (emailController.text.trim().isEmpty) {
+                  snackBar(context,
+                      title: "Please enter email",
+                      backgroundColor: KColors.charcoal);
+                } else if (passwordController.text.isEmpty) {
+                  snackBar(context,
+                      title: "Please enter password",
+                      backgroundColor: KColors.charcoal);
                 }
               }
-            },
-          );
-        }),
+            }
+          },
+        ),
         SizedBox(height: KSize.getHeight(66)),
         Text(
           "Or",
