@@ -17,7 +17,8 @@ class KTextStyle {
     fontWeight: FontWeight.w500,
   );
 
-  static TextStyle buttonText({fontWeight = FontWeight.normal}) => GoogleFonts.quicksand(
+  static TextStyle buttonText({fontWeight = FontWeight.normal}) =>
+      GoogleFonts.quicksand(
         fontSize: KSize.getWidth(27),
         fontWeight: fontWeight,
       );
@@ -39,9 +40,9 @@ class KTextStyle {
       );
 
   static TextStyle bodyText4() => GoogleFonts.quicksand(
-    fontSize: KSize.getWidth(18),
-    fontWeight: FontWeight.normal,
-  );
+        fontSize: KSize.getWidth(18),
+        fontWeight: FontWeight.normal,
+      );
 
   /// Subtitles
   static TextStyle subtitle1 = TextStyle(
