@@ -3,6 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:listify/views/styles/k_size.dart';
 
 class KTextStyle {
+  static TextStyle headLine2 = GoogleFonts.quicksand(
+    fontSize: KSize.getWidth(144),
+    fontWeight: FontWeight.bold,
+  );
   static TextStyle headLine3 = GoogleFonts.quicksand(
     fontSize: KSize.getWidth(42),
     fontWeight: FontWeight.w500,
@@ -33,6 +37,11 @@ class KTextStyle {
         fontSize: KSize.getWidth(22),
         fontWeight: FontWeight.normal,
       );
+
+  static TextStyle bodyText4() => GoogleFonts.quicksand(
+    fontSize: KSize.getWidth(18),
+    fontWeight: FontWeight.normal,
+  );
 
   /// Subtitles
   static TextStyle subtitle1 = TextStyle(
