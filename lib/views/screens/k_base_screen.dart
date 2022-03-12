@@ -9,18 +9,22 @@ abstract class _BaseView {
           ? SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 25),
+                padding:
+                    EdgeInsets.symmetric(horizontal: defaultPadding() ? 25 : 0),
                 child: body(),
               ),
             )
           : Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
+              padding:
+                  EdgeInsets.symmetric(horizontal: defaultPadding() ? 25 : 0),
               child: body(),
             ),
     );
   }
 
   bool scrollable() => true;
+
+  bool defaultPadding() => true;
 
   Widget appBar() => null;
 
