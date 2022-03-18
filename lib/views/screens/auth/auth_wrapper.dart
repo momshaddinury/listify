@@ -23,24 +23,11 @@ class _AuthenticationWrapperState extends KBaseState<AuthenticationWrapper> {
   @override
   Widget body() {
     final asyncUser = ref.watch(authStateChangesProvider);
-    final asyncNetworkStatus = ref.watch(networkStatusProvider);
 
-    return asyncNetworkStatus.when(
-      data: (result) {
-        return asyncUser.when(
-          data: (user) {
-            return result == NetworkStatus.ONLINE
-                ? user != null
-                    ? HomeScreen()
-                    : WelcomeScreen()
-                : ErrorScreen();
-          },
-          loading: () => WelcomeScreen(),
-          error: (e, stackTrace) => ErrorScreen(),
-        );
+    return asyncUser.when(
+      data: (user) {
+        return user != null ? HomeScreen() : WelcomeScreen();
       },
-
-      /// TODO: Network status loading screen should be WelcomeScreen?
       loading: () => WelcomeScreen(),
       error: (e, stackTrace) => ErrorScreen(),
     );
