@@ -21,9 +21,7 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   @override
-  Widget body() {
-    final authState = ref.watch(firebaseAuthProvider);
-
+  VoidCallback buildMethod() {
     ref.listen(firebaseAuthProvider, (_, state) {
       if (state is FirebaseAuthSuccessState) {
         HomeScreen().pushAndRemoveUntil(context);
@@ -32,6 +30,12 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
             title: state.message, backgroundColor: KColors.charcoal);
       }
     });
+  }
+
+  @override
+  Widget body() {
+    final authState = ref.watch(firebaseAuthProvider);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

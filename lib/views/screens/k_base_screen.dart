@@ -6,6 +6,7 @@ import 'package:listify/views/screens/error_screen.dart';
 
 abstract class _BaseView {
   Widget build(BuildContext context) {
+    buildMethod();
     return Scaffold(
       appBar: appBar(),
       body: Consumer(builder: (context, ref, _) {
@@ -39,6 +40,8 @@ abstract class _BaseView {
   Widget appBar() => null;
 
   Widget body();
+
+  VoidCallback buildMethod() => (){};
 }
 
 abstract class KBaseScreen extends ConsumerStatefulWidget {

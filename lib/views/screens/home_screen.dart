@@ -48,7 +48,7 @@ class _HomeScreenState extends KBaseState<HomeScreen> {
 
         /// Pending Tasks
         pendingTasksStream.when(
-            loading: () => Container(),
+            loading: () => CircularProgressIndicator.adaptive(),
             error: (e, stackTrace) {
               print(e);
               print(stackTrace);
