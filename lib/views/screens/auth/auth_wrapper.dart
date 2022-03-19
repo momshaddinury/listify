@@ -2,25 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/views/screens/home_screen.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/screens/startup/welcome_screen.dart';
 import 'package:listify/views/screens/error_screen.dart';
 
-class AuthenticationWrapper extends KBaseScreen {
-  @override
-  KBaseState<AuthenticationWrapper> createState() =>
-      _AuthenticationWrapperState();
-}
-
-class _AuthenticationWrapperState extends KBaseState<AuthenticationWrapper> {
-  @override
-  bool scrollable() => false;
+class AuthenticationWrapper extends ConsumerWidget {
+  const AuthenticationWrapper({Key key}) : super(key: key);
 
   @override
-  bool defaultPadding() => false;
-
-  @override
-  Widget body() {
+  Widget build(BuildContext context, ref) {
     final asyncUser = ref.watch(authStateChangesProvider);
 
     return asyncUser.when(
