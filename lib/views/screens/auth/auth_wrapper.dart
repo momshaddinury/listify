@@ -22,6 +22,7 @@ class _AuthenticationWrapperState extends KBaseState<AuthenticationWrapper> {
 
   @override
   Widget body() {
+<<<<<<< Updated upstream
     final asyncUser = ref.watch(authStateChangesProvider);
 
     return asyncUser.when(
@@ -31,5 +32,14 @@ class _AuthenticationWrapperState extends KBaseState<AuthenticationWrapper> {
       loading: () => WelcomeScreen(),
       error: (e, stackTrace) => ErrorScreen(),
     );
+=======
+    return ref.watch(authStateChangesProvider).when(
+          data: (user) {
+            return user != null ? HomeScreen() : WelcomeScreen();
+          },
+          loading: () => WelcomeScreen(),
+          error: (e, stackTrace) => ErrorScreen(),
+        );
+>>>>>>> Stashed changes
   }
 }
