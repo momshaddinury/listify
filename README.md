@@ -1,3 +1,10 @@
+<p align="center">
+<a href="https://github.com/dinurymomshad/listify/actions"><img src="https://github.com/dinurymomshad/listify/actions/workflows/continuous_integration.yml/badge.svg?style=flat&logo=github" alt="CI Status"></a>
+<a href="https://github.com/dinurymomshad/listify"><img src="https://img.shields.io/github/stars/dinurymomshad/listify.svg?style=flat&logo=github" alt="Star on Github"></a>
+<a href="https://github.com/dinurymomshad/listify/releases"><img src="https://img.shields.io/github/v/release/dinurymomshad/listify?style=flat&logo=github&color=b02053&include_prereleases" alt="GitHub release (latest by date including pre-releases)"></a>
+<a href="http://www.apache.org/licenses/"><img src="https://img.shields.io/github/license/dinurymomshad/listify?style=flat&logo=github&color=832878" alt="License: Apache"></a>
+</p>
+
 # Listify - Not your everyday todo app!
 <table>
   <tr>
