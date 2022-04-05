@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
-import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/custom_widget/dropdown_menu.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:listify/services/debouncer.dart';
+import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/widgets.dart';
 
 class TaskDetailsCard extends ConsumerStatefulWidget {
   @override
@@ -62,10 +62,13 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                 Flexible(
                   child: KTextField(
                     controller: taskTitleController,
-                    textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.w600),
+                    textStyle: KTextStyle.bodyText2()
+                        .copyWith(fontWeight: FontWeight.w600),
                     onChanged: (v) {
                       todoState.update((state) => state.copyWith(title: v));
-                      _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, title: v));
+                      _debouncer.run(() => ref
+                          .read(tasksProvider)
+                          .updateTask(todoState.state.uid, title: v));
                     },
                   ),
                 ),
@@ -78,7 +81,9 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
               hintText: "Details",
               onChanged: (v) => _debouncer.run(() {
                 todoState.update((state) => state.copyWith(description: v));
-                _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, description: v));
+                _debouncer.run(() => ref
+                    .read(tasksProvider)
+                    .updateTask(todoState.state.uid, description: v));
               }),
             ),
             SizedBox(height: KSize.getHeight(10)),
@@ -90,7 +95,9 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
               isDateTime: true,
               onChanged: (v) {
                 todoState.update((state) => state.copyWith(dateTime: v));
-                _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, dateTime: v));
+                _debouncer.run(() => ref
+                    .read(tasksProvider)
+                    .updateTask(todoState.state.uid, dateTime: v));
               },
             ),
             SizedBox(height: KSize.getHeight(10)),
@@ -110,8 +117,11 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                     padding: EdgeInsets.fromLTRB(12, 0, 0, 0),
                     hintTextStyle: KTextStyle.bodyText2(),
                     onChange: () {
-                      todoState.update((state) => state.copyWith(priority: priorityController.text));
-                      _debouncer.run(() => ref.read(tasksProvider).updateTask(todoState.state.uid, priority: priorityController.text));
+                      todoState.update((state) =>
+                          state.copyWith(priority: priorityController.text));
+                      _debouncer.run(() => ref.read(tasksProvider).updateTask(
+                          todoState.state.uid,
+                          priority: priorityController.text));
                     },
                   ),
                 ),

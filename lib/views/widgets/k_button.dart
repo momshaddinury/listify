@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:listify/views/styles/styles.dart';
 
 /// Base protected class for all the heavy lifting.
@@ -106,7 +107,8 @@ class KOutlinedButton extends _KButton {
           child: Center(
             child: Text(
               buttonText,
-              style: textStyle ?? KTextStyle.buttonText(fontWeight: FontWeight.w500),
+              style: textStyle ??
+                  KTextStyle.buttonText(fontWeight: FontWeight.w500),
             ),
           ),
           onPressed: onPressed,

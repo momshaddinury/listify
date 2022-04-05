@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/details/details_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TaskCard extends ConsumerWidget {
   final Animation<double> animation;
   final Color backgroundColor;
   final bool borderOutline;
 
-  TaskCard({this.animation, this.backgroundColor = KColors.white, this.borderOutline = true});
+  TaskCard(
+      {this.animation,
+      this.backgroundColor = KColors.white,
+      this.borderOutline = true});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -40,7 +44,8 @@ class TaskCard extends ConsumerWidget {
             padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
             decoration: BoxDecoration(
               color: backgroundColor,
-              border: borderOutline ? Border.all(color: KColors.charcoal) : null,
+              border:
+                  borderOutline ? Border.all(color: KColors.charcoal) : null,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
@@ -59,7 +64,8 @@ class TaskCard extends ConsumerWidget {
                               Row(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(right: KSize.getWidth(22)),
+                                    padding: EdgeInsets.only(
+                                        right: KSize.getWidth(22)),
                                     child: Icon(
                                       Icons.brightness_1_sharp,
                                       color: task.priority == "Low"
@@ -73,7 +79,8 @@ class TaskCard extends ConsumerWidget {
                                   Flexible(
                                     child: Text(
                                       task.title,
-                                      style: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.w600),
+                                      style: KTextStyle.bodyText2().copyWith(
+                                          fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ],
@@ -112,7 +119,9 @@ class TaskCard extends ConsumerWidget {
                   child: Container(
                     margin: EdgeInsets.all(KSize.getWidth(36)),
                     child: Icon(
-                      task.isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
+                      task.isCompleted
+                          ? Icons.brightness_1
+                          : Icons.brightness_1_outlined,
                       color: KColors.primary,
                       size: KSize.getWidth(24),
                     ),

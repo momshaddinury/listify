@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nb_utils/nb_utils.dart';
+
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
+import 'package:listify/views/screens/create_task_screen.dart';
+import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/custom_widget/k_expansion_tile.dart';
-import 'package:listify/views/widgets/k_button.dart';
-import 'package:listify/views/widgets/task_card.dart';
-import 'package:nb_utils/nb_utils.dart';
-
-import 'create_task_screen.dart';
+import 'package:listify/views/widgets/widgets.dart';
 
 class HomeScreen extends KBaseScreen {
   @override

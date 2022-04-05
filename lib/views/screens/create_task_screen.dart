@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
+
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/k_app_bar.dart';
-import 'package:listify/views/widgets/k_button.dart';
-import 'package:listify/views/widgets/k_dropdown_field.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:listify/views/widgets/widgets.dart';
 
 class CreateTaskScreen extends KBaseScreen {
   @override

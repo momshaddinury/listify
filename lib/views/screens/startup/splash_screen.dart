@@ -1,14 +1,15 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:nb_utils/nb_utils.dart';
+
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/views/screens/auth/auth_wrapper.dart';
 import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:nb_utils/nb_utils.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class SplashScreen extends KBaseScreen {
   @override

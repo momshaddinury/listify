@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
+
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
 import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
+import 'package:listify/views/screens/home_screen.dart';
+import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/k_button.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
-import 'package:nb_utils/nb_utils.dart';
-
-import '../home_screen.dart';
+import 'package:listify/views/widgets/widgets.dart';
 
 class LoginScreen extends KBaseScreen {
   @override

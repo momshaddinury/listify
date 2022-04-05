@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'authentication_controller.dart';
+import 'package:listify/controller/authentication/authentication_controller.dart';
 
 final firebaseProvider = Provider<FirebaseAuth>((ref) {
   return FirebaseAuth.instance;

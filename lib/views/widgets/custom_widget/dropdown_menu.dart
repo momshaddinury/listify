@@ -48,7 +48,8 @@ class _DropdownMenusState extends State<DropdownMenus> {
   @override
   void initState() {
     super.initState();
-    if (widget.controller.text == null || widget.controller.text.isEmpty) widget.controller.text = 'Select an option';
+    if (widget.controller.text == null || widget.controller.text.isEmpty)
+      widget.controller.text = 'Select an option';
   }
 
   void findWidget() {

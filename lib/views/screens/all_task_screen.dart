@@ -2,15 +2,13 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/services/navigation_service.dart';
+import 'package:listify/views/screens/create_task_screen.dart';
 import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/k_app_bar.dart';
-import 'package:listify/views/widgets/k_button.dart';
-import 'package:listify/views/widgets/task_card.dart';
-
-import 'create_task_screen.dart';
+import 'package:listify/views/widgets/widgets.dart';
 
 class AllTasksScreen extends KBaseScreen {
   @override

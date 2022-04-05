@@ -42,8 +42,10 @@ class Todo {
   factory Todo.fromJson(Map<String, dynamic> json) => Todo(
         title: json["title"],
         description: json["description"],
-        dateTime: DateFormat("MMM dd, yyyy hh:mm aa").format(DateTime.fromMillisecondsSinceEpoch(json["dateTime"])),
-        subTask: List<SubTask>.from(json["subTask"].map((task) => SubTask.fromJson(task))),
+        dateTime: DateFormat("MMM dd, yyyy hh:mm aa")
+            .format(DateTime.fromMillisecondsSinceEpoch(json["dateTime"])),
+        subTask: List<SubTask>.from(
+            json["subTask"].map((task) => SubTask.fromJson(task))),
         priority: json["message"],
         isCompleted: json["isCompleted"],
         uid: json["id"],
@@ -52,8 +54,11 @@ class Todo {
   Todo.fromMap(Map<String, dynamic> map, id)
       : title = map["title"],
         description = map["description"],
-        dateTime = DateFormat('hh:mm aa MMM dd, yyyy').format(DateTime.fromMillisecondsSinceEpoch(map["dateTime"])),
-        subTask = (map["subTask"] as List<dynamic>).map((e) => SubTask.fromMap(e)).toList(),
+        dateTime = DateFormat('hh:mm aa MMM dd, yyyy')
+            .format(DateTime.fromMillisecondsSinceEpoch(map["dateTime"])),
+        subTask = (map["subTask"] as List<dynamic>)
+            .map((e) => SubTask.fromMap(e))
+            .toList(),
         priority = map["priority"],
         isCompleted = map["isCompleted"],
         uid = id;

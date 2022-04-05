@@ -1,5 +1,6 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
+
 import 'package:listify/views/styles/styles.dart';
 
 ///TODO: Leading icon should be optional

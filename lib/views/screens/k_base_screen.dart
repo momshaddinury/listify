@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:listify/services/network_status.dart';
-import 'error_screen.dart';
 import 'package:listify/views/screens/error_screen.dart';
 
 abstract class _BaseView {
@@ -41,7 +41,7 @@ abstract class _BaseView {
 
   Widget body();
 
-  VoidCallback buildMethod() => (){};
+  VoidCallback buildMethod() => () {};
 }
 
 abstract class KBaseScreen extends ConsumerStatefulWidget {

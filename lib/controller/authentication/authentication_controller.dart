@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/constant/shared_preference_key.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import 'authentication_provider.dart';
-import 'authentication_state.dart';
+import 'package:listify/constant/shared_preference_key.dart';
+import 'package:listify/controller/authentication/authentication_provider.dart';
+import 'package:listify/controller/authentication/authentication_state.dart';
 
 class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   final Ref ref;
@@ -17,7 +17,9 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     try {
       state = FirebaseAuthLoadingState();
 
-      await ref.read(firebaseProvider).signInWithEmailAndPassword(email: email, password: password);
+      await ref
+          .read(firebaseProvider)
+          .signInWithEmailAndPassword(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       state = FirebaseAuthErrorState(message: e.message);
@@ -27,7 +29,9 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   Future<void> signUp({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
-      await ref.read(firebaseProvider).createUserWithEmailAndPassword(email: email, password: password);
+      await ref
+          .read(firebaseProvider)
+          .createUserWithEmailAndPassword(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       print(e.code);
@@ -36,7 +40,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     }
   }
 
-   void authStateChangeStatus() {
+  void authStateChangeStatus() {
     ref.read(authStateChangesProvider).whenData(
       (user) {
         if (user != null) {

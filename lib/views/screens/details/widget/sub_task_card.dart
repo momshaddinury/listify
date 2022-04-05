@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
-import 'package:listify/views/styles/styles.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:listify/services/debouncer.dart';
+import 'package:listify/views/styles/styles.dart';
+import 'package:listify/views/widgets/widgets.dart';
 
 class SubTaskCard extends ConsumerStatefulWidget {
   const SubTaskCard({
@@ -25,7 +26,8 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
   @override
   void initState() {
     super.initState();
-    subTaskController.text = ref.read(taskDetailsProvider).subTask[widget.index].title;
+    subTaskController.text =
+        ref.read(taskDetailsProvider).subTask[widget.index].title;
   }
 
   @override
@@ -75,7 +77,8 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                         ref.read(tasksProvider).updateSubTask();
                       });
                     },
-                    textStyle: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.normal),
+                    textStyle: KTextStyle.bodyText2()
+                        .copyWith(fontWeight: FontWeight.normal),
                   ),
                 ),
               ),
@@ -87,13 +90,18 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                   } else {
                     _subTask.isCompleted = false;
                   }
-                  subTaskState.update((state) => state.copyWith(subTask: state.subTask));
+                  subTaskState.update(
+                      (state) => state.copyWith(subTask: state.subTask));
                   ref.read(tasksProvider).updateSubTask();
                 },
                 child: Padding(
-                  padding: EdgeInsets.symmetric(vertical: KSize.getHeight(22), horizontal: KSize.getWidth(22)),
+                  padding: EdgeInsets.symmetric(
+                      vertical: KSize.getHeight(22),
+                      horizontal: KSize.getWidth(22)),
                   child: Icon(
-                    subTaskState.state.subTask[widget.index].isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
+                    subTaskState.state.subTask[widget.index].isCompleted
+                        ? Icons.brightness_1
+                        : Icons.brightness_1_outlined,
                     color: KColors.primary,
                     size: KSize.getWidth(24),
                   ),
