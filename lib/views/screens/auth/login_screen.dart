@@ -110,6 +110,8 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
         KOutlinedButton.iconText(
           buttonText: 'Login with Google',
           assetIcon: KAssets.google,
+          onPressed: () =>
+              ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
         ),
         SizedBox(height: KSize.getHeight(37)),
         KOutlinedButton.iconText(
