@@ -21,7 +21,7 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
   final TextEditingController passwordController = TextEditingController();
 
   @override
-  VoidCallback buildMethod() {
+  void buildMethod() {
     ref.listen(firebaseAuthProvider, (_, state) {
       if (state is FirebaseAuthSuccessState) {
         HomeScreen().pushAndRemoveUntil(context);
@@ -108,6 +108,8 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
         ),
         SizedBox(height: KSize.getHeight(72)),
         KOutlinedButton.iconText(
+          onPressed: () =>
+              ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
           buttonText: 'Login with Google',
           assetIcon: KAssets.google,
         ),

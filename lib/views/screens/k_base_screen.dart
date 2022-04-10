@@ -41,7 +41,7 @@ abstract class _BaseView {
 
   Widget body();
 
-  VoidCallback buildMethod() => (){};
+  void buildMethod() => () {};
 }
 
 abstract class KBaseScreen extends ConsumerStatefulWidget {
