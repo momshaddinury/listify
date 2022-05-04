@@ -50,12 +50,15 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
       } else {
         final GoogleSignInAccount googleUser =
             await ref.read(googleSignInProvider).signIn();
+
         final GoogleSignInAuthentication googleSignInAuth =
             await googleUser.authentication;
+
         final OAuthCredential credential = GoogleAuthProvider.credential(
           accessToken: googleSignInAuth.accessToken,
           idToken: googleSignInAuth.idToken,
         );
+
         await ref.read(firebaseProvider).signInWithCredential(credential);
       }
       authStateChangeStatus();
