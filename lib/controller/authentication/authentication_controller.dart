@@ -66,6 +66,10 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
       print(e.code);
       print(e.message);
       state = FirebaseAuthErrorState(message: e.message);
+    } catch (e, stackTrace) {
+      print(e.toString());
+      print(stackTrace);
+      state = FirebaseAuthErrorState(message: "Something went wrong");
     }
   }
 

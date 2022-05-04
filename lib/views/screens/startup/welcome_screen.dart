@@ -5,7 +5,9 @@ import 'package:listify/views/screens/k_base_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
+import 'package:nb_utils/nb_utils.dart';
 
+import '../../../controller/authentication/authentication_provider.dart';
 import '../auth/sign_up_screen.dart';
 
 class WelcomeScreen extends KBaseScreen {
@@ -43,11 +45,16 @@ class _WelcomeScreenState extends KBaseState<WelcomeScreen> {
         KOutlinedButton.iconText(
           buttonText: 'Sign up with Google',
           assetIcon: KAssets.google,
+          onPressed: () =>
+              ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
         ),
         SizedBox(height: KSize.getHeight(37)),
         KOutlinedButton.iconText(
           buttonText: 'Sign up with Facebook',
           assetIcon: KAssets.facebook,
+          onPressed: () => snackBar(context,
+              title: "Feature is not available yet",
+              backgroundColor: KColors.charcoal),
         ),
         SizedBox(height: KSize.getHeight(308)),
         Text(
