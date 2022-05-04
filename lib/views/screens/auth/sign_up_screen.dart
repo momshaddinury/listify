@@ -24,9 +24,7 @@ class _SignupScreenState extends KBaseState<SignupScreen> {
       TextEditingController();
 
   @override
-  Widget body() {
-    final authState = ref.watch(firebaseAuthProvider);
-
+  void buildMethod() {
     ref.listen(
       firebaseAuthProvider,
       (_, state) {
@@ -38,6 +36,13 @@ class _SignupScreenState extends KBaseState<SignupScreen> {
         }
       },
     );
+    super.buildMethod();
+  }
+
+  @override
+  Widget body() {
+    final authState = ref.watch(firebaseAuthProvider);
+
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
