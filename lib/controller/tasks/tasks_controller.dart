@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/core/logger.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:intl/intl.dart';
 
@@ -10,33 +11,49 @@ class TasksController {
 
   TasksController({this.ref});
 
-  final CollectionReference tasksCollection = FirebaseFirestore.instance.collection('tasks');
+  final CollectionReference tasksCollection =
+      FirebaseFirestore.instance.collection('tasks');
 
-  CollectionReference get userTasksCollection => tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+  CollectionReference get userTasksCollection =>
+      tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
 
-  Future<void> createNewTask(String title, description, dateTime, priority) async {
+  Future<void> createNewTask(
+      String title, description, dateTime, priority) async {
     try {
-      DocumentReference documentReferencer = tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks').doc();
+      DocumentReference documentReferencer = tasksCollection
+          .doc(getStringAsync(USER_UID))
+          .collection('usertasks')
+          .doc();
       await documentReferencer.set({
         "title": title,
         "description": description,
-        "dateTime":
-            dateTime != "" ? DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch : DateTime.now().millisecondsSinceEpoch,
+        "dateTime": dateTime != ""
+            ? DateFormat('hh:mm aa MMM dd, yyyy')
+                .parse(dateTime)
+                .millisecondsSinceEpoch
+            : DateTime.now().millisecondsSinceEpoch,
         "priority": priority == "" ? "Low" : priority,
         "subTask": [],
         "isCompleted": false,
       });
     } catch (error, stackTrace) {
-      print("createNewTask(): $error");
-      print(stackTrace);
+      Log.error("createNewTask(): $error");
+      Log.error(stackTrace.toString());
     }
   }
 
-  Future<void> updateTask(uid, {String title, String description, String dateTime, String priority}) async {
+  Future<void> updateTask(uid,
+      {String title,
+      String description,
+      String dateTime,
+      String priority}) async {
     await userTasksCollection.doc(uid).update({
       if (title != null) "title": title,
       if (description != null) "description": description,
-      if (dateTime != null) "dateTime": DateFormat('hh:mm aa MMM dd, yyyy').parse(dateTime).millisecondsSinceEpoch,
+      if (dateTime != null)
+        "dateTime": DateFormat('hh:mm aa MMM dd, yyyy')
+            .parse(dateTime)
+            .millisecondsSinceEpoch,
       if (priority != null) "priority": priority,
     });
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/core/logger.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
 import 'package:listify/core/base/base_view.dart';
@@ -50,8 +51,8 @@ class _HomeScreenState extends BaseViewState<HomeScreen> {
         pendingTasksStream.when(
             loading: () => CircularProgressIndicator.adaptive(),
             error: (e, stackTrace) {
-              print(e);
-              print(stackTrace);
+              Log.error(e);
+              Log.error(stackTrace.toString());
               return ErrorWidget(stackTrace);
             },
             data: (snapshot) {

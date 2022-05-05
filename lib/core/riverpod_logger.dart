@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:listify/core/logger.dart';
 
 class RiverpodLogger extends ProviderObserver {
   @override
@@ -8,7 +9,7 @@ class RiverpodLogger extends ProviderObserver {
     Object newValue,
     ProviderContainer container,
   ) {
-    print('''
+    Log.info('''
 {
   "provider": "${provider.name ?? provider.runtimeType}",
   "newValue": "$newValue"

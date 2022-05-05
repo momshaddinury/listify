@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:listify/constant/shared_preference_key.dart';
+import 'package:listify/core/logger.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import 'authentication_provider.dart';
@@ -35,8 +36,8 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
           .createUserWithEmailAndPassword(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
-      print(e.code);
-      print(e.message);
+      Log.error(e.code);
+      Log.error(e.message);
       state = FirebaseAuthErrorState(message: e.message);
     }
   }
@@ -63,12 +64,12 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
       }
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
-      print(e.code);
-      print(e.message);
+      Log.error(e.code);
+      Log.error(e.message);
       state = FirebaseAuthErrorState(message: e.message);
     } catch (e, stackTrace) {
-      print(e.toString());
-      print(stackTrace);
+      Log.error(e.toString());
+      Log.error(stackTrace.toString());
       state = FirebaseAuthErrorState(message: "Something went wrong");
     }
   }
@@ -81,8 +82,8 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
           try {
             setValue(USER_UID, this.user.uid);
           } catch (e, stackTrace) {
-            print(e);
-            print(stackTrace);
+            Log.error(e);
+            Log.error(stackTrace.toString());
           }
           return state = FirebaseAuthSuccessState();
         } else {
