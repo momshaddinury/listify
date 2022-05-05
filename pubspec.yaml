@@ -21,25 +21,24 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  change_app_package_name: ^1.0.0
+  cloud_firestore: ^2.5.4
+  connectivity_plus: ^2.2.1
+  cupertino_icons: ^1.0.2
+  expand_tap_area: ^1.1.0
+  firebase_auth: ^3.1.4
+  firebase_core: ^1.8.0
   flutter:
     sdk: flutter
-  google_fonts: ^2.1.0
-  menu_button: ^1.4.2+1
-  expand_tap_area: ^1.1.0
-  table_calendar: ^3.0.3
-  change_app_package_name: ^1.0.0
-  nb_utils: ^4.3.0+4
   flutter_datetime_picker:
     git: https://github.com/Realank/flutter_datetime_picker.git
   flutter_riverpod: ^1.0.0
-  firebase_core: ^1.8.0
-  firebase_auth: ^3.1.4
-  cloud_firestore: ^2.5.4
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
-  connectivity_plus: ^2.2.1
+  google_fonts: ^2.1.0
   google_sign_in: ^5.2.4
+  logger: ^1.1.0
+  menu_button: ^1.4.2+1
+  nb_utils: ^4.3.0+4
+  table_calendar: ^3.0.3
 
 dev_dependencies:
   flutter_test:
@@ -50,7 +49,6 @@ dependency_overrides:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
 # The following section is specific to Flutter.
 flutter:
 
@@ -64,13 +62,10 @@ flutter:
     - assets/icons/
     - assets/
   #   - images/a_dot_ham.jpeg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
-
   # For details regarding adding assets from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
-
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
