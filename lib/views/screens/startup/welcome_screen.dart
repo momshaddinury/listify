@@ -44,14 +44,14 @@ class _WelcomeScreenState extends BaseViewState<WelcomeScreen> {
         SizedBox(height: KSize.getHeight(87)),
         KOutlinedButton.iconText(
           buttonText: 'Sign up with Google',
-          assetIcon: KAssets.google,
+          assetIcon: ListifyAssets.google,
           onPressed: () =>
               ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
         ),
         SizedBox(height: KSize.getHeight(37)),
         KOutlinedButton.iconText(
           buttonText: 'Sign up with Facebook',
-          assetIcon: KAssets.facebook,
+          assetIcon: ListifyAssets.facebook,
           onPressed: () => snackBar(context,
               title: "Feature is not available yet",
               backgroundColor: KColors.charcoal),

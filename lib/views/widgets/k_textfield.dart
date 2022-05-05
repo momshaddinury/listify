@@ -34,7 +34,8 @@ class KTextField extends StatelessWidget {
             minTime: DateTime(1900),
             maxTime: DateTime(2100),
             onConfirm: (date) {
-              controller.text = DateFormat('hh:mm aa MMM dd, yyyy').format(date);
+              controller.text =
+                  DateFormat('hh:mm aa MMM dd, yyyy').format(date);
               onChanged(controller.text);
             },
             currentTime: DateTime.now(),
@@ -46,7 +47,8 @@ class KTextField extends StatelessWidget {
       maxLines: null,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: KTextStyle.subtitle2.copyWith(color: KColors.charcoal.withOpacity(0.40)),
+        hintStyle: KTextStyle.subtitle2
+            .copyWith(color: KColors.charcoal.withOpacity(0.40)),
         border: InputBorder.none,
         contentPadding: EdgeInsets.zero,
         isDense: true,
@@ -88,9 +90,11 @@ class _KTextFormFieldState extends State<KTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: /*KTheme.darkMode() ? KColors.darkAccent : KColors.accent*/ widget.background,
+      color: /*KTheme.darkMode() ? KColors.darkAccent : KColors.accent*/ widget
+          .background,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: widget.padding ?? KSize.getWidth(26)),
+        padding: EdgeInsets.symmetric(
+            horizontal: widget.padding ?? KSize.getWidth(26)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -105,7 +109,8 @@ class _KTextFormFieldState extends State<KTextFormField> {
                       minTime: DateTime(1900),
                       maxTime: DateTime(2100),
                       onConfirm: (date) {
-                        widget.controller.text = DateFormat('hh:mm aa MMM dd, yyyy').format(date);
+                        widget.controller.text =
+                            DateFormat('hh:mm aa MMM dd, yyyy').format(date);
                       },
                       currentTime: DateTime.now(),
                       locale: LocaleType.en,
@@ -118,7 +123,9 @@ class _KTextFormFieldState extends State<KTextFormField> {
                 controller: widget.controller,
                 decoration: InputDecoration(
                     hintText: widget.hintText,
-                    hintStyle: widget.hintTextStyle ?? KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
+                    hintStyle: widget.hintTextStyle ??
+                        KTextStyle.bodyText1()
+                            .copyWith(color: KColors.charcoal),
                     border: InputBorder.none,
                     suffixIcon: widget.isPasswordField
                         ? GestureDetector(
@@ -128,7 +135,9 @@ class _KTextFormFieldState extends State<KTextFormField> {
                               });
                             },
                             child: Image.asset(
-                              isVisible ? KAssets.visibilityOn : KAssets.visibilityOff,
+                              isVisible
+                                  ? ListifyAssets.visibilityOn
+                                  : ListifyAssets.visibilityOff,
                             ),
                           )
                         : null,

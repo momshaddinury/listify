@@ -98,7 +98,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
                     backgroundColor: KColors.charcoal);
               },
               child: Image.asset(
-                KAssets.menu,
+                ListifyAssets.menu,
                 height: KSize.getHeight(32),
                 width: KSize.getWidth(32),
               ),
@@ -111,7 +111,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
                   LoginScreen().pushAndRemoveUntil(context);
                 },
                 child: Image.asset(
-                  KAssets.logout,
+                  ListifyAssets.logout,
                   height: KSize.getHeight(32),
                   width: KSize.getWidth(32),
                 ),
@@ -200,7 +200,7 @@ class _CompletedTasksBuilder extends StatelessWidget {
           ),
         ),
         trailing: Image.asset(
-          KAssets.dropdown,
+          ListifyAssets.dropdown,
           height: KSize.getHeight(20),
           width: KSize.getWidth(20),
         ),

@@ -44,7 +44,7 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
             }),
         KTextButton.iconText(
             buttonText: 'Add Task',
-            assetIcon: KAssets.add,
+            assetIcon: ListifyAssets.add,
             onPressed: () {
               todoState.update((state) {
                 state.subTask.add(SubTask());

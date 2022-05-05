@@ -28,7 +28,7 @@ class KAppBar extends AppBar {
                   onTap: onTap,
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
-                    KAssets.backButton,
+                    ListifyAssets.backButton,
                     height: KSize.getHeight(32),
                     width: KSize.getWidth(32),
                   ),

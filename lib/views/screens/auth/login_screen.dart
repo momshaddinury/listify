@@ -111,12 +111,12 @@ class _LoginScreenState extends BaseViewState<LoginScreen> {
           onPressed: () =>
               ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
           buttonText: 'Login with Google',
-          assetIcon: KAssets.google,
+          assetIcon: ListifyAssets.google,
         ),
         SizedBox(height: KSize.getHeight(37)),
         KOutlinedButton.iconText(
           buttonText: 'Login with Facebook',
-          assetIcon: KAssets.facebook,
+          assetIcon: ListifyAssets.facebook,
           onPressed: () => snackBar(context,
               title: "Feature is not available yet",
               backgroundColor: KColors.charcoal),

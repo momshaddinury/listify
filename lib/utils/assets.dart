@@ -1,4 +1,4 @@
-class KAssets {
+class ListifyAssets {
   static const _rootPath = 'assets';
   static const _iconDir = '$_rootPath/icons';
 

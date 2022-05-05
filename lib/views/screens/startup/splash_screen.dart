@@ -55,7 +55,7 @@ class _SplashScreenState extends BaseViewState<SplashScreen> {
             style: KTextStyle.subtitle1,
           ),
           Image.asset(
-            KAssets.appLogo,
+            ListifyAssets.appLogo,
             width: MediaQuery.of(context).size.width * .30,
           ),
         ],
