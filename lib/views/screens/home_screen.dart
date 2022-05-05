@@ -4,7 +4,7 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
+import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
@@ -15,12 +15,12 @@ import 'package:nb_utils/nb_utils.dart';
 
 import 'create_task_screen.dart';
 
-class HomeScreen extends KBaseScreen {
+class HomeScreen extends BaseView {
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends KBaseState<HomeScreen> {
+class _HomeScreenState extends BaseViewState<HomeScreen> {
   @override
   Widget appBar() {
     return _AppBarBuilder();

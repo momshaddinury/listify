@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/services/network_status.dart';
-import 'error_screen.dart';
+import '../../views/screens/error_screen.dart';
 import 'package:listify/views/screens/error_screen.dart';
 
-abstract class _BaseView {
+class _BaseView {
   Widget build(BuildContext context) {
     buildMethod();
     return Scaffold(
@@ -39,14 +39,17 @@ abstract class _BaseView {
 
   Widget appBar() => null;
 
-  Widget body();
+  Widget body() => Container();
 
   void buildMethod() => () {};
 }
 
-abstract class KBaseScreen extends ConsumerStatefulWidget {
-  KBaseScreen({Key key}) : super(key: key);
+class BaseView extends ConsumerStatefulWidget {
+  BaseView({Key key}) : super(key: key);
+
+  @override
+  ConsumerState<ConsumerStatefulWidget> createState() => BaseViewState();
 }
 
-abstract class KBaseState<Screen extends KBaseScreen>
-    extends ConsumerState<Screen> with _BaseView {}
+class BaseViewState<Screen extends BaseView> extends ConsumerState<Screen>
+    with _BaseView {}

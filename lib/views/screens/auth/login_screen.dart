@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
 import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
+import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
@@ -11,12 +11,12 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../home_screen.dart';
 
-class LoginScreen extends KBaseScreen {
+class LoginScreen extends BaseView {
   @override
-  KBaseState<LoginScreen> createState() => _LoginScreenState();
+  BaseViewState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends KBaseState<LoginScreen> {
+class _LoginScreenState extends BaseViewState<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 

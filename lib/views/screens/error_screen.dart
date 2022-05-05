@@ -1,17 +1,17 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
+import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/styles/k_colors.dart';
 import 'package:listify/views/styles/k_text_style.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 
-class ErrorScreen extends KBaseScreen {
+class ErrorScreen extends BaseView {
   @override
-  KBaseState<ErrorScreen> createState() => _ErrorScreenState();
+  BaseViewState<ErrorScreen> createState() => _ErrorScreenState();
 }
 
-class _ErrorScreenState extends KBaseState<ErrorScreen> {
+class _ErrorScreenState extends BaseViewState<ErrorScreen> {
   @override
   Widget appBar() {
     return KAppBar(
@@ -20,6 +20,7 @@ class _ErrorScreenState extends KBaseState<ErrorScreen> {
           Navigator.of(context).canPop() ? Navigation.pop(context) : null,
     );
   }
+
   @override
   bool defaultPadding() => false;
 

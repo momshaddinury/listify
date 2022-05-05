@@ -14,10 +14,13 @@ final _initNetworkStatusProvider = FutureProvider<NetworkStatus>((ref) async {
   return _networkStatus;
 });
 
-final networkStatusProvider = StreamProvider<NetworkStatus>((ref) {
-  // ignore: close_sinks
+final networkStatusProvider = StreamProvider.autoDispose<NetworkStatus>((ref) {
   StreamController<NetworkStatus> controller =
       StreamController<NetworkStatus>();
+
+  ref.onDispose(() {
+    controller.close();
+  });
 
   controller.sink.add(ref.watch(_initNetworkStatusProvider).value);
 

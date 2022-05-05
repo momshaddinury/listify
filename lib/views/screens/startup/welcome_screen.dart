@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/k_base_screen.dart';
+import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/styles/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
@@ -10,12 +10,12 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../../controller/authentication/authentication_provider.dart';
 import '../auth/sign_up_screen.dart';
 
-class WelcomeScreen extends KBaseScreen {
+class WelcomeScreen extends BaseView {
   @override
   ConsumerState<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-class _WelcomeScreenState extends KBaseState<WelcomeScreen> {
+class _WelcomeScreenState extends BaseViewState<WelcomeScreen> {
   @override
   Widget body() {
     return Column(
