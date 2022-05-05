@@ -8,7 +8,7 @@ import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 import 'package:listify/views/widgets/custom_widget/k_expansion_tile.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';

@@ -1,6 +1,6 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 
 ///TODO: Leading icon should be optional
 class KAppBar extends AppBar {

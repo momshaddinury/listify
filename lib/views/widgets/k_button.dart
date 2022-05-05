@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 
 /// Base protected class for all the heavy lifting.
 /// All other button class must extend this class.

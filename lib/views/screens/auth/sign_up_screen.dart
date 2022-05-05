@@ -5,7 +5,7 @@ import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';

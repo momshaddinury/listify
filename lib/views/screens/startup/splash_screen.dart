@@ -6,7 +6,7 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/views/screens/auth/auth_wrapper.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

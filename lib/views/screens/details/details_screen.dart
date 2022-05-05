@@ -4,7 +4,7 @@ import 'package:listify/model/todo.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/views/screens/details/widget/sub_task_card.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

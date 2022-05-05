@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:listify/views/screens/details/details_screen.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 import 'package:intl/intl.dart';
 
 /// Used in [DetailsScreen]

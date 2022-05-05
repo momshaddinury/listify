@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/utils/styles.dart';
+import 'package:listify/utils/utils.dart';
 
 class KExpansionTile extends StatelessWidget {
   const KExpansionTile({
