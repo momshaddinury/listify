@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "285735510429-5dmrkbj44i2n9k0par4eo33fuqkpoleu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.listify.listify",
+            "certificate_hash": "0140ad01b6877bc8caa298bdc0b60a215b1406a7"
+          }
+        },
+        {
           "client_id": "285735510429-dv8aevdahkcd095q9t8gt96k2nqvmsos.apps.googleusercontent.com",
           "client_type": 3
         }

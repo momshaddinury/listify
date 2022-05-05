@@ -108,6 +108,8 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
         ),
         SizedBox(height: KSize.getHeight(72)),
         KOutlinedButton.iconText(
+          onPressed: () =>
+              ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
           buttonText: 'Login with Google',
           assetIcon: KAssets.google,
         ),
@@ -115,6 +117,9 @@ class _LoginScreenState extends KBaseState<LoginScreen> {
         KOutlinedButton.iconText(
           buttonText: 'Login with Facebook',
           assetIcon: KAssets.facebook,
+          onPressed: () => snackBar(context,
+              title: "Feature is not available yet",
+              backgroundColor: KColors.charcoal),
         ),
         SizedBox(height: KSize.getHeight(131)),
         Text(
