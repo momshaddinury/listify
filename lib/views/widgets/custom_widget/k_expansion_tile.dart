@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 
 class KExpansionTile extends StatelessWidget {
   const KExpansionTile({
@@ -17,7 +17,7 @@ class KExpansionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData().copyWith(
-          dividerColor: KColors.transparent,
+          dividerColor: ListifyColors.transparent,
           dividerTheme: DividerThemeData(
             space: 0,
             endIndent: 0,
@@ -32,7 +32,7 @@ class KExpansionTile extends StatelessWidget {
       child: ExpansionTile(
         childrenPadding: EdgeInsets.zero,
         tilePadding: EdgeInsets.zero,
-        iconColor: KColors.primary,
+        iconColor: ListifyColors.primary,
         title: title,
         trailing: trailing,
         children: children,

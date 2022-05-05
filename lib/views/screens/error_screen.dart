@@ -1,9 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/views/styles/k_colors.dart';
-import 'package:listify/views/styles/k_text_style.dart';
+import 'package:listify/utils/colors.dart';
+import 'package:listify/utils/text_style.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 
 class ErrorScreen extends BaseView {
@@ -49,7 +49,7 @@ class KErrorWidget extends StatelessWidget {
           Spacer(),
           Text(
             "OOPS",
-            style: KTextStyle.headLine2.copyWith(
+            style: ListifyTextStyle.headLine2.copyWith(
               color: Color(0xFFE5F3F1),
               letterSpacing: 29.5,
             ),
@@ -57,8 +57,8 @@ class KErrorWidget extends StatelessWidget {
           SizedBox(height: 10),
           Text(
             "Something Went Wrong",
-            style: KTextStyle.headLine3.copyWith(
-              color: KColors.charcoal,
+            style: ListifyTextStyle.headLine3.copyWith(
+              color: ListifyColors.charcoal,
             ),
           ),
           SizedBox(height: 30),
@@ -67,14 +67,14 @@ class KErrorWidget extends StatelessWidget {
             text: TextSpan(
               text:
                   """Sorry, we can’t process your request at the moment. Please try again after sometime. Few things to check: Internet connection, Try restarting the app, Check for update. If nothing works please report a bug""",
-              style: KTextStyle.bodyText1().copyWith(
-                color: KColors.charcoal,
+              style: ListifyTextStyle.bodyText1().copyWith(
+                color: ListifyColors.charcoal,
               ),
               children: [
                 TextSpan(
                     text: " here.",
-                    style: KTextStyle.bodyText1().copyWith(
-                      color: KColors.primary,
+                    style: ListifyTextStyle.bodyText1().copyWith(
+                      color: ListifyColors.primary,
                       fontWeight: FontWeight.bold,
                     ),
                     recognizer: TapGestureRecognizer()

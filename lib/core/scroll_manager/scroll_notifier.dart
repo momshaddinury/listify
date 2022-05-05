@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../services/navigation_service.dart';
+import '../../utils/navigation.dart';
 import 'scroll_state.dart';
 
 class ScrollNotifier extends StateNotifier<ScrollState> {

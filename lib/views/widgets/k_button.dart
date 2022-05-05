@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 
 /// Base protected class for all the heavy lifting.
 /// All other button class must extend this class.
@@ -9,7 +9,7 @@ class _KButton extends StatelessWidget {
   _KButton({
     @required this.child,
     @required this.onPressed,
-    this.backgroundColor = KColors.primary,
+    this.backgroundColor = ListifyColors.primary,
     this.height = 50,
     this.width = double.infinity,
     this.border,
@@ -51,44 +51,46 @@ class KFilledButton extends _KButton {
   KFilledButton({
     @required String buttonText,
     @required VoidCallback onPressed,
-    Color buttonColor = KColors.primary,
+    Color buttonColor = ListifyColors.primary,
   })  : assert(buttonText != null),
         assert(onPressed != null),
         super(
           child: Center(
             child: Text(
               buttonText,
-              style: KTextStyle.buttonText().copyWith(color: KColors.white),
+              style: ListifyTextStyle.buttonText()
+                  .copyWith(color: ListifyColors.white),
             ),
           ),
           onPressed: onPressed,
           backgroundColor: buttonColor,
-          height: KSize.getHeight(84),
+          height: ListifySize.height(84),
         );
 
   KFilledButton.iconText({
     @required IconData icon,
     @required String buttonText,
     @required VoidCallback onPressed,
-    Color buttonColor = KColors.primary,
+    Color buttonColor = ListifyColors.primary,
   })  : assert(icon != null),
         assert(buttonText != null),
         assert(onPressed != null),
         super(
           child: Row(
             children: [
-              SizedBox(width: KSize.getWidth(31)),
-              Icon(icon, color: KColors.white),
-              SizedBox(width: KSize.getWidth(24)),
+              SizedBox(width: ListifySize.width(31)),
+              Icon(icon, color: ListifyColors.white),
+              SizedBox(width: ListifySize.width(24)),
               Text(
                 buttonText,
-                style: KTextStyle.bodyText2().copyWith(color: KColors.white),
+                style: ListifyTextStyle.bodyText2()
+                    .copyWith(color: ListifyColors.white),
               )
             ],
           ),
           onPressed: onPressed,
           backgroundColor: buttonColor,
-          height: KSize.getHeight(84),
+          height: ListifySize.height(84),
         );
 }
 
@@ -106,17 +108,18 @@ class KOutlinedButton extends _KButton {
           child: Center(
             child: Text(
               buttonText,
-              style: textStyle ?? KTextStyle.buttonText(fontWeight: FontWeight.w500),
+              style: textStyle ??
+                  ListifyTextStyle.buttonText(fontWeight: FontWeight.w500),
             ),
           ),
           onPressed: onPressed,
-          backgroundColor: KColors.transparent,
-          height: KSize.getHeight(84),
+          backgroundColor: ListifyColors.transparent,
+          height: ListifySize.height(84),
           border: Border.all(
             color: borderColor == null
-                ? KTheme.darkMode()
-                    ? KColors.white
-                    : KColors.charcoal
+                ? ListifyTheme.darkMode()
+                    ? ListifyColors.white
+                    : ListifyColors.charcoal
                 : borderColor,
           ),
         );
@@ -131,22 +134,24 @@ class KOutlinedButton extends _KButton {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                height: KSize.getHeight(34),
-                width: KSize.getWidth(34),
+                height: ListifySize.height(34),
+                width: ListifySize.width(34),
                 child: Image.asset(assetIcon),
               ),
-              SizedBox(width: KSize.getWidth(22)),
+              SizedBox(width: ListifySize.width(22)),
               Text(
                 buttonText,
-                style: KTextStyle.buttonText(fontWeight: FontWeight.w500),
+                style: ListifyTextStyle.buttonText(fontWeight: FontWeight.w500),
               ),
             ],
           ),
           onPressed: onPressed ?? () {},
-          backgroundColor: KColors.transparent,
-          height: KSize.getHeight(84),
+          backgroundColor: ListifyColors.transparent,
+          height: ListifySize.height(84),
           border: Border.all(
-            color: KTheme.darkMode() ? KColors.white : KColors.charcoal,
+            color: ListifyTheme.darkMode()
+                ? ListifyColors.white
+                : ListifyColors.charcoal,
           ),
         );
 }
@@ -164,11 +169,11 @@ class KTextButton extends _KButton {
           child: Text(
             buttonText,
             textAlign: textAlign,
-            style: buttonTextStyle ?? KTextStyle.bodyText2(),
+            style: buttonTextStyle ?? ListifyTextStyle.bodyText2(),
           ),
           onPressed: onPressed,
           height: null,
-          backgroundColor: KColors.transparent,
+          backgroundColor: ListifyColors.transparent,
         );
 
   KTextButton.iconText({
@@ -183,19 +188,19 @@ class KTextButton extends _KButton {
               children: [
                 Image.asset(
                   assetIcon,
-                  width: KSize.getWidth(20),
-                  height: KSize.getHeight(20),
+                  width: ListifySize.width(20),
+                  height: ListifySize.height(20),
                 ),
-                SizedBox(width: KSize.getWidth(15)),
+                SizedBox(width: ListifySize.width(15)),
                 Text(
                   buttonText,
-                  style: buttonTextStyle ?? KTextStyle.bodyText3(),
+                  style: buttonTextStyle ?? ListifyTextStyle.bodyText3(),
                 ),
               ],
             ),
           ),
           onPressed: onPressed,
-          backgroundColor: KColors.transparent,
+          backgroundColor: ListifyColors.transparent,
           height: null,
         );
 }

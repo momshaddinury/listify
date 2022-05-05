@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_dropdown_field.dart';
@@ -33,31 +33,31 @@ class _CreateTaskScreenState extends BaseViewState<CreateTaskScreen> {
   Widget body() {
     return Column(
       children: [
-        SizedBox(height: KSize.getHeight(40)),
+        SizedBox(height: ListifySize.height(40)),
         KTextFormField(
           hintText: "Task Name",
           controller: taskTitleController,
           multiline: true,
         ),
-        SizedBox(height: KSize.getHeight(22)),
+        SizedBox(height: ListifySize.height(22)),
         KTextFormField(
           hintText: "Details",
           controller: taskDetailsController,
           multiline: true,
           minimumLines: 5,
         ),
-        SizedBox(height: KSize.getHeight(22)),
+        SizedBox(height: ListifySize.height(22)),
         KTextFormField(
           hintText: "Date Time",
           controller: dateTimeController,
           isCalenderField: true,
         ),
-        SizedBox(height: KSize.getHeight(22)),
+        SizedBox(height: ListifySize.height(22)),
         KDropdownField(
           controller: priorityController,
           dropdownFieldOptions: ['Low', 'Medium', 'High'],
         ),
-        SizedBox(height: KSize.getHeight(90)),
+        SizedBox(height: ListifySize.height(90)),
         KFilledButton(
             buttonText: "Add Task",
             onPressed: () async {
@@ -72,7 +72,7 @@ class _CreateTaskScreenState extends BaseViewState<CreateTaskScreen> {
               } else {
                 snackBar(context,
                     title: 'Please enter a task name',
-                    backgroundColor: KColors.charcoal);
+                    backgroundColor: ListifyColors.charcoal);
               }
             })
       ],

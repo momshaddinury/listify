@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:listify/views/screens/details/details_screen.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:intl/intl.dart';
 
 /// Used in [DetailsScreen]
@@ -47,8 +47,8 @@ class KTextField extends StatelessWidget {
       maxLines: null,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: KTextStyle.subtitle2
-            .copyWith(color: KColors.charcoal.withOpacity(0.40)),
+        hintStyle: ListifyTextStyle.subtitle2
+            .copyWith(color: ListifyColors.charcoal.withOpacity(0.40)),
         border: InputBorder.none,
         contentPadding: EdgeInsets.zero,
         isDense: true,
@@ -66,7 +66,7 @@ class KTextFormField extends StatefulWidget {
     this.minimumLines = 1,
     this.isPasswordField = false,
     this.isCalenderField = false,
-    this.background = KColors.accent,
+    this.background = ListifyColors.accent,
     this.padding,
   });
 
@@ -94,7 +94,7 @@ class _KTextFormFieldState extends State<KTextFormField> {
           .background,
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: widget.padding ?? KSize.getWidth(26)),
+            horizontal: widget.padding ?? ListifySize.width(26)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -124,8 +124,8 @@ class _KTextFormFieldState extends State<KTextFormField> {
                 decoration: InputDecoration(
                     hintText: widget.hintText,
                     hintStyle: widget.hintTextStyle ??
-                        KTextStyle.bodyText1()
-                            .copyWith(color: KColors.charcoal),
+                        ListifyTextStyle.bodyText1()
+                            .copyWith(color: ListifyColors.charcoal),
                     border: InputBorder.none,
                     suffixIcon: widget.isPasswordField
                         ? GestureDetector(
@@ -142,8 +142,8 @@ class _KTextFormFieldState extends State<KTextFormField> {
                           )
                         : null,
                     suffixIconConstraints: BoxConstraints(
-                      maxHeight: KSize.getHeight(25),
-                      minWidth: KSize.getWidth(25),
+                      maxHeight: ListifySize.height(25),
+                      minWidth: ListifySize.width(25),
                     )),
               ),
             ),

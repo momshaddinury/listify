@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/custom_widget/dropdown_menu.dart';
 
 class KDropdownField extends DropdownMenus {
@@ -15,10 +15,12 @@ class KDropdownField extends DropdownMenus {
           controller: controller,
           items: dropdownFieldOptions,
           onChange: callbackFunction,
-          hintTextStyle: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
-          itemTextStyle: KTextStyle.bodyText1().copyWith(color: KColors.charcoal),
-          menuBackgroundColor: KColors.accent,
-          itemBackgroundColor: KColors.accent,
+          hintTextStyle: ListifyTextStyle.bodyText1()
+              .copyWith(color: ListifyColors.charcoal),
+          itemTextStyle: ListifyTextStyle.bodyText1()
+              .copyWith(color: ListifyColors.charcoal),
+          menuBackgroundColor: ListifyColors.accent,
+          itemBackgroundColor: ListifyColors.accent,
         );
 
   final List<String> dropdownFieldOptions;

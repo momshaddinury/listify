@@ -1,6 +1,6 @@
 import 'package:expand_tap_area/expand_tap_area.dart';
 import 'package:flutter/material.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 
 ///TODO: Leading icon should be optional
 class KAppBar extends AppBar {
@@ -29,11 +29,11 @@ class KAppBar extends AppBar {
                   tapPadding: EdgeInsets.all(20.0),
                   child: Image.asset(
                     ListifyAssets.backButton,
-                    height: KSize.getHeight(32),
-                    width: KSize.getWidth(32),
+                    height: ListifySize.height(32),
+                    width: ListifySize.width(32),
                   ),
                 ),
-                Text(titleText, style: KTextStyle.headLine4),
+                Text(titleText, style: ListifyTextStyle.headLine4),
                 trailing ?? Container()
               ],
             ),

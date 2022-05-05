@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/auth/sign_up_screen.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -27,7 +27,7 @@ class _LoginScreenState extends BaseViewState<LoginScreen> {
         HomeScreen().pushAndRemoveUntil(context);
       } else if (state is FirebaseAuthErrorState) {
         snackBar(context,
-            title: state.message, backgroundColor: KColors.charcoal);
+            title: state.message, backgroundColor: ListifyColors.charcoal);
       }
     });
   }
@@ -39,44 +39,44 @@ class _LoginScreenState extends BaseViewState<LoginScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: KSize.getHeight(332)),
+        SizedBox(height: ListifySize.height(332)),
         Container(
-          width: KSize.getWidth(315),
+          width: ListifySize.width(315),
           child: Text(
             "Welcome Back",
             textAlign: TextAlign.center,
-            style: KTextStyle.headLine3,
+            style: ListifyTextStyle.headLine3,
           ),
         ),
-        SizedBox(height: KSize.getHeight(63)),
+        SizedBox(height: ListifySize.height(63)),
         KTextFormField(
           hintText: 'Your email address',
           controller: emailController,
         ),
-        SizedBox(height: KSize.getHeight(37)),
+        SizedBox(height: ListifySize.height(37)),
         KTextFormField(
           hintText: 'Password',
           controller: passwordController,
           isPasswordField: true,
         ),
-        SizedBox(height: KSize.getHeight(10)),
+        SizedBox(height: ListifySize.height(10)),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
               'Forgot your password?',
-              style: KTextStyle.bodyText2()
+              style: ListifyTextStyle.bodyText2()
                   .copyWith(fontWeight: FontWeight.normal),
             ),
           ],
         ),
-        SizedBox(height: KSize.getHeight(61)),
+        SizedBox(height: ListifySize.height(61)),
         KFilledButton(
           buttonText:
               authState is FirebaseAuthLoadingState ? 'Please wait' : 'Login',
           buttonColor: authState is FirebaseAuthLoadingState
-              ? KColors.spaceCadet
-              : KColors.primary,
+              ? ListifyColors.spaceCadet
+              : ListifyColors.primary,
           onPressed: () {
             if (!(authState is FirebaseAuthLoadingState)) {
               if (emailController.text.trim().isNotEmpty &&
@@ -90,44 +90,44 @@ class _LoginScreenState extends BaseViewState<LoginScreen> {
                 if (emailController.text.trim().isEmpty) {
                   snackBar(context,
                       title: "Please enter email",
-                      backgroundColor: KColors.charcoal);
+                      backgroundColor: ListifyColors.charcoal);
                 } else if (passwordController.text.isEmpty) {
                   snackBar(context,
                       title: "Please enter password",
-                      backgroundColor: KColors.charcoal);
+                      backgroundColor: ListifyColors.charcoal);
                 }
               }
             }
           },
         ),
-        SizedBox(height: KSize.getHeight(66)),
+        SizedBox(height: ListifySize.height(66)),
         Text(
           "Or",
           textAlign: TextAlign.center,
-          style: KTextStyle.bodyText1(),
+          style: ListifyTextStyle.bodyText1(),
         ),
-        SizedBox(height: KSize.getHeight(72)),
+        SizedBox(height: ListifySize.height(72)),
         KOutlinedButton.iconText(
           onPressed: () =>
               ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
           buttonText: 'Login with Google',
           assetIcon: ListifyAssets.google,
         ),
-        SizedBox(height: KSize.getHeight(37)),
+        SizedBox(height: ListifySize.height(37)),
         KOutlinedButton.iconText(
           buttonText: 'Login with Facebook',
           assetIcon: ListifyAssets.facebook,
           onPressed: () => snackBar(context,
               title: "Feature is not available yet",
-              backgroundColor: KColors.charcoal),
+              backgroundColor: ListifyColors.charcoal),
         ),
-        SizedBox(height: KSize.getHeight(131)),
+        SizedBox(height: ListifySize.height(131)),
         Text(
           "Don't have an account?",
           textAlign: TextAlign.center,
-          style: KTextStyle.bodyText3(),
+          style: ListifyTextStyle.bodyText3(),
         ),
-        SizedBox(height: KSize.getHeight(6)),
+        SizedBox(height: ListifySize.height(6)),
         KTextButton(
             buttonText: "Create account",
             onPressed: () {

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/authentication/authentication_state.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
 import 'package:listify/views/screens/home_screen.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -32,7 +32,7 @@ class _SignupScreenState extends BaseViewState<SignupScreen> {
           HomeScreen().pushAndRemoveUntil(context);
         } else if (state is FirebaseAuthErrorState) {
           snackBar(context,
-              title: state.message, backgroundColor: KColors.charcoal);
+              title: state.message, backgroundColor: ListifyColors.charcoal);
         }
       },
     );
@@ -46,40 +46,40 @@ class _SignupScreenState extends BaseViewState<SignupScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: KSize.getHeight(288)),
+        SizedBox(height: ListifySize.height(288)),
         Container(
-          width: KSize.getWidth(439),
+          width: ListifySize.width(439),
           child: Text(
             "Not your everyday Todo app!",
             textAlign: TextAlign.center,
-            style: KTextStyle.headLine3,
+            style: ListifyTextStyle.headLine3,
           ),
         ),
-        SizedBox(height: KSize.getHeight(44)),
+        SizedBox(height: ListifySize.height(44)),
         KTextFormField(
           hintText: 'Email Address',
           controller: emailController,
         ),
-        SizedBox(height: KSize.getHeight(37)),
+        SizedBox(height: ListifySize.height(37)),
         KTextFormField(
           hintText: 'Password',
           controller: passwordController,
           isPasswordField: true,
         ),
-        SizedBox(height: KSize.getHeight(37)),
+        SizedBox(height: ListifySize.height(37)),
         KTextFormField(
           hintText: 'Confirm Password',
           controller: confirmPasswordController,
           isPasswordField: true,
         ),
-        SizedBox(height: KSize.getHeight(106)),
+        SizedBox(height: ListifySize.height(106)),
         KFilledButton(
           buttonText: authState is FirebaseAuthLoadingState
               ? 'Please wait'
               : 'Create Account',
           buttonColor: authState is FirebaseAuthLoadingState
-              ? KColors.spaceCadet
-              : KColors.primary,
+              ? ListifyColors.spaceCadet
+              : ListifyColors.primary,
           onPressed: () {
             if (!(authState is FirebaseAuthLoadingState)) {
               hideKeyboard(context);
@@ -92,19 +92,19 @@ class _SignupScreenState extends BaseViewState<SignupScreen> {
                 } else {
                   snackBar(context,
                       title: "Password doesn't match",
-                      backgroundColor: KColors.charcoal);
+                      backgroundColor: ListifyColors.charcoal);
                 }
               }
             }
           },
         ),
-        SizedBox(height: KSize.getHeight(110)),
+        SizedBox(height: ListifySize.height(110)),
         Text(
           "Already have an account?",
           textAlign: TextAlign.center,
-          style: KTextStyle.bodyText3(),
+          style: ListifyTextStyle.bodyText3(),
         ),
-        SizedBox(height: KSize.getHeight(6)),
+        SizedBox(height: ListifySize.height(6)),
         KTextButton(
             buttonText: "Login",
             onPressed: () {

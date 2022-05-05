@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
@@ -38,7 +38,7 @@ class _AllTasksScreenState extends BaseViewState<AllTasksScreen> {
     return SafeArea(
       child: Column(
         children: [
-          SizedBox(height: KSize.getHeight(20)),
+          SizedBox(height: ListifySize.height(20)),
           Expanded(
             child: pendingTasksStream.when(
                 loading: () => Container(),
@@ -53,19 +53,19 @@ class _AllTasksScreenState extends BaseViewState<AllTasksScreen> {
                             taskProvider.overrideWithValue(snapshot[index]),
                           ],
                           child: TaskCard(
-                            backgroundColor: KColors.accent,
+                            backgroundColor: ListifyColors.accent,
                             borderOutline: false,
                           ),
                         );
                       });
                 }),
           ),
-          SizedBox(height: KSize.getHeight(20)),
+          SizedBox(height: ListifySize.height(20)),
 
           /// Create Task / Project
           Padding(
             padding: EdgeInsets.only(
-                bottom: Platform.isAndroid ? KSize.getHeight(50) : 0),
+                bottom: Platform.isAndroid ? ListifySize.height(50) : 0),
             child: KFilledButton.iconText(
                 icon: Icons.add,
                 buttonText: 'Create New Task',

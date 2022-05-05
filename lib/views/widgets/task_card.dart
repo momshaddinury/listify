@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/views/screens/details/details_screen.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class TaskCard extends ConsumerWidget {
@@ -10,7 +10,10 @@ class TaskCard extends ConsumerWidget {
   final Color backgroundColor;
   final bool borderOutline;
 
-  TaskCard({this.animation, this.backgroundColor = KColors.white, this.borderOutline = true});
+  TaskCard(
+      {this.animation,
+      this.backgroundColor = ListifyColors.white,
+      this.borderOutline = true});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -24,23 +27,25 @@ class TaskCard extends ConsumerWidget {
         }
       },
       child: Container(
-        margin: EdgeInsets.only(bottom: KSize.getHeight(19)),
+        margin: EdgeInsets.only(bottom: ListifySize.height(19)),
         child: Dismissible(
           key: UniqueKey(),
           background: Container(
             padding: EdgeInsets.only(left: 20),
             alignment: Alignment.centerLeft,
             child: Icon(Icons.delete),
-            color: KColors.lightRed,
+            color: ListifyColors.lightRed,
           ),
           onDismissed: (direction) async {
             ref.read(tasksProvider).removeTodo(task.uid);
           },
           child: Container(
-            padding: EdgeInsets.symmetric(vertical: KSize.getHeight(15)),
+            padding: EdgeInsets.symmetric(vertical: ListifySize.height(15)),
             decoration: BoxDecoration(
               color: backgroundColor,
-              border: borderOutline ? Border.all(color: KColors.charcoal) : null,
+              border: borderOutline
+                  ? Border.all(color: ListifyColors.charcoal)
+                  : null,
               borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
@@ -52,14 +57,15 @@ class TaskCard extends ConsumerWidget {
                     children: [
                       Flexible(
                         child: Padding(
-                          padding: EdgeInsets.only(left: KSize.getWidth(22)),
+                          padding: EdgeInsets.only(left: ListifySize.width(22)),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Row(
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(right: KSize.getWidth(22)),
+                                    padding: EdgeInsets.only(
+                                        right: ListifySize.width(22)),
                                     child: Icon(
                                       Icons.brightness_1_sharp,
                                       color: task.priority == "Low"
@@ -67,13 +73,15 @@ class TaskCard extends ConsumerWidget {
                                           : task.priority == "Medium"
                                               ? Colors.orange
                                               : Colors.red,
-                                      size: KSize.getWidth(16),
+                                      size: ListifySize.width(16),
                                     ),
                                   ),
                                   Flexible(
                                     child: Text(
                                       task.title,
-                                      style: KTextStyle.bodyText2().copyWith(fontWeight: FontWeight.w600),
+                                      style: ListifyTextStyle.bodyText2()
+                                          .copyWith(
+                                              fontWeight: FontWeight.w600),
                                     ),
                                   ),
                                 ],
@@ -81,19 +89,20 @@ class TaskCard extends ConsumerWidget {
                               if (task.description.length > 0)
                                 Column(
                                   children: [
-                                    SizedBox(height: KSize.getHeight(5)),
+                                    SizedBox(height: ListifySize.height(5)),
                                     Text(
                                       task.description,
                                       maxLines: 2,
                                       overflow: TextOverflow.ellipsis,
-                                      style: KTextStyle.bodyText3(),
+                                      style: ListifyTextStyle.bodyText3(),
                                     ),
-                                    SizedBox(height: KSize.getHeight(10)),
+                                    SizedBox(height: ListifySize.height(10)),
                                   ],
                                 ),
                               Text(task.dateTime,
-                                  style: KTextStyle.bodyText2().copyWith(
-                                    color: KColors.charcoal.withOpacity(0.70),
+                                  style: ListifyTextStyle.bodyText2().copyWith(
+                                    color: ListifyColors.charcoal
+                                        .withOpacity(0.70),
                                   )),
                             ],
                           ),
@@ -110,11 +119,13 @@ class TaskCard extends ConsumerWidget {
                       await ref.read(tasksProvider).undoCompleteTask(task.uid);
                   },
                   child: Container(
-                    margin: EdgeInsets.all(KSize.getWidth(36)),
+                    margin: EdgeInsets.all(ListifySize.width(36)),
                     child: Icon(
-                      task.isCompleted ? Icons.brightness_1 : Icons.brightness_1_outlined,
-                      color: KColors.primary,
-                      size: KSize.getWidth(24),
+                      task.isCompleted
+                          ? Icons.brightness_1
+                          : Icons.brightness_1_outlined,
+                      color: ListifyColors.primary,
+                      size: ListifySize.width(24),
                     ),
                   ),
                 ),

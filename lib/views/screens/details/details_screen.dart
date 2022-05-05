@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/views/screens/details/widget/sub_task_card.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/k_app_bar.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -32,7 +32,7 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: [
-        SizedBox(height: KSize.getHeight(40)),
+        SizedBox(height: ListifySize.height(40)),
         TaskDetailsCard(),
         ListView.builder(
             shrinkWrap: true,
@@ -52,7 +52,7 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
               });
               ref.read(tasksProvider).updateSubTask();
             }),
-        SizedBox(height: KSize.getHeight(90)),
+        SizedBox(height: ListifySize.height(90)),
         KFilledButton(
           buttonText: "Complete Task",
           onPressed: () async {
@@ -60,18 +60,18 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
             Navigation.pop(context);
           },
         ),
-        SizedBox(height: KSize.getHeight(22)),
+        SizedBox(height: ListifySize.height(22)),
         KOutlinedButton(
           buttonText: "Delete Task",
-          textStyle: KTextStyle.buttonText(fontWeight: FontWeight.w500)
-              .copyWith(color: KColors.red.withOpacity(0.8)),
-          borderColor: KColors.red.withOpacity(0.8),
+          textStyle: ListifyTextStyle.buttonText(fontWeight: FontWeight.w500)
+              .copyWith(color: ListifyColors.red.withOpacity(0.8)),
+          borderColor: ListifyColors.red.withOpacity(0.8),
           onPressed: () async {
             await ref.read(tasksProvider).removeTodo(todoState.state.uid);
             Navigation.pop(context);
           },
         ),
-        SizedBox(height: KSize.getHeight(90)),
+        SizedBox(height: ListifySize.height(90)),
       ],
     );
   }

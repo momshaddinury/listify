@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:nb_utils/nb_utils.dart';
 
@@ -21,48 +21,48 @@ class _WelcomeScreenState extends BaseViewState<WelcomeScreen> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        SizedBox(height: KSize.getHeight(288)),
+        SizedBox(height: ListifySize.height(288)),
         Container(
-          width: KSize.getWidth(439),
+          width: ListifySize.width(439),
           child: Text(
             "Start Using Listify App Today!",
             textAlign: TextAlign.center,
-            style: KTextStyle.headLine3,
+            style: ListifyTextStyle.headLine3,
           ),
         ),
-        SizedBox(height: KSize.getHeight(61)),
+        SizedBox(height: ListifySize.height(61)),
         KFilledButton(
           buttonText: 'Create Account',
           onPressed: () => SignupScreen().push(context),
         ),
-        SizedBox(height: KSize.getHeight(106)),
+        SizedBox(height: ListifySize.height(106)),
         Text(
           "Or",
           textAlign: TextAlign.center,
-          style: KTextStyle.bodyText1(),
+          style: ListifyTextStyle.bodyText1(),
         ),
-        SizedBox(height: KSize.getHeight(87)),
+        SizedBox(height: ListifySize.height(87)),
         KOutlinedButton.iconText(
           buttonText: 'Sign up with Google',
           assetIcon: ListifyAssets.google,
           onPressed: () =>
               ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
         ),
-        SizedBox(height: KSize.getHeight(37)),
+        SizedBox(height: ListifySize.height(37)),
         KOutlinedButton.iconText(
           buttonText: 'Sign up with Facebook',
           assetIcon: ListifyAssets.facebook,
           onPressed: () => snackBar(context,
               title: "Feature is not available yet",
-              backgroundColor: KColors.charcoal),
+              backgroundColor: ListifyColors.charcoal),
         ),
-        SizedBox(height: KSize.getHeight(308)),
+        SizedBox(height: ListifySize.height(308)),
         Text(
           "Already have an account?",
           textAlign: TextAlign.center,
-          style: KTextStyle.bodyText3(),
+          style: ListifyTextStyle.bodyText3(),
         ),
-        SizedBox(height: KSize.getHeight(6)),
+        SizedBox(height: ListifySize.height(6)),
         KTextButton(
             buttonText: "Login",
             onPressed: () {

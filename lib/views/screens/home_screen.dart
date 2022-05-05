@@ -4,11 +4,11 @@ import 'package:listify/controller/authentication/authentication_provider.dart';
 import 'package:listify/controller/tasks/tasks_provider.dart';
 import 'package:listify/core/logger.dart';
 import 'package:listify/model/todo.dart';
-import 'package:listify/services/navigation_service.dart';
+import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/views/screens/all_task_screen.dart';
 import 'package:listify/views/screens/auth/login_screen.dart';
-import 'package:listify/views/styles/styles.dart';
+import 'package:listify/utils/styles.dart';
 import 'package:listify/views/widgets/custom_widget/k_expansion_tile.dart';
 import 'package:listify/views/widgets/k_button.dart';
 import 'package:listify/views/widgets/task_card.dart';
@@ -35,7 +35,7 @@ class _HomeScreenState extends BaseViewState<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        SizedBox(height: KSize.getHeight(35)),
+        SizedBox(height: ListifySize.height(35)),
 
         /// Create Task / Project
         KFilledButton.iconText(
@@ -45,7 +45,7 @@ class _HomeScreenState extends BaseViewState<HomeScreen> {
             CreateTaskScreen().push(context);
           },
         ),
-        SizedBox(height: KSize.getHeight(72)),
+        SizedBox(height: ListifySize.height(72)),
 
         /// Pending Tasks
         pendingTasksStream.when(
@@ -95,15 +95,15 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
               onTap: () {
                 snackBar(context,
                     title: "Feature is not available yet",
-                    backgroundColor: KColors.charcoal);
+                    backgroundColor: ListifyColors.charcoal);
               },
               child: Image.asset(
                 ListifyAssets.menu,
-                height: KSize.getHeight(32),
-                width: KSize.getWidth(32),
+                height: ListifySize.height(32),
+                width: ListifySize.width(32),
               ),
             ),
-            Text("My Day", style: KTextStyle.headLine4),
+            Text("My Day", style: ListifyTextStyle.headLine4),
             Consumer(builder: (context, ref, _) {
               return GestureDetector(
                 onTap: () {
@@ -112,8 +112,8 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
                 },
                 child: Image.asset(
                   ListifyAssets.logout,
-                  height: KSize.getHeight(32),
-                  width: KSize.getWidth(32),
+                  height: ListifySize.height(32),
+                  width: ListifySize.width(32),
                 ),
               );
             }),
@@ -143,8 +143,8 @@ class _PendingTasksBuilder extends StatelessWidget {
             children: [
               Text(
                 "Pending",
-                style: KTextStyle.bodyText2().copyWith(
-                  color: KColors.charcoal.withOpacity(.71),
+                style: ListifyTextStyle.bodyText2().copyWith(
+                  color: ListifyColors.charcoal.withOpacity(.71),
                 ),
               ),
               Visibility(
@@ -155,15 +155,15 @@ class _PendingTasksBuilder extends StatelessWidget {
                   },
                   child: Text(
                     "View All",
-                    style: KTextStyle.bodyText2().copyWith(
-                      color: KColors.charcoal.withOpacity(.71),
+                    style: ListifyTextStyle.bodyText2().copyWith(
+                      color: ListifyColors.charcoal.withOpacity(.71),
                     ),
                   ),
                 ),
               ),
             ],
           ),
-          SizedBox(height: KSize.getHeight(20)),
+          SizedBox(height: ListifySize.height(20)),
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
@@ -195,14 +195,14 @@ class _CompletedTasksBuilder extends StatelessWidget {
       child: KExpansionTile(
         title: Text(
           "Done",
-          style: KTextStyle.bodyText2().copyWith(
-            color: KColors.charcoal.withOpacity(.71),
+          style: ListifyTextStyle.bodyText2().copyWith(
+            color: ListifyColors.charcoal.withOpacity(.71),
           ),
         ),
         trailing: Image.asset(
           ListifyAssets.dropdown,
-          height: KSize.getHeight(20),
-          width: KSize.getWidth(20),
+          height: ListifySize.height(20),
+          width: ListifySize.width(20),
         ),
         children: [
           ListView.builder(
@@ -215,7 +215,7 @@ class _CompletedTasksBuilder extends StatelessWidget {
                   overrides: [taskProvider.overrideWithValue(snapshot[index])],
                   child: TaskCard(
                     borderOutline: false,
-                    backgroundColor: KColors.lightCharcoal,
+                    backgroundColor: ListifyColors.lightCharcoal,
                   ),
                 );
               }),
