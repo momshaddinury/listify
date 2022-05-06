@@ -1,57 +1,60 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
+import 'package:listify/core/base/base_state.dart';
 import 'package:listify/core/logger.dart';
 import 'package:listify/data/repository/authentication/authentication_repository.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import 'authentication_state.dart';
+final authenticationProvider = StateNotifierProvider(
+  (ref) => _AuthenticationController(ref: ref),
+);
 
-class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
+class _AuthenticationController extends StateNotifier<BaseState> {
   final Ref ref;
-  FirebaseAuthController({this.ref}) : super(FirebaseAuthInitialState());
+  AuthenticationRepository _repository;
+
+  _AuthenticationController({this.ref}) : super(InitialState()) {
+    _repository = ref.watch(authenticationRepositoryProvider);
+  }
 
   User user;
 
   Future<void> signIn({String email, password}) async {
     try {
-      state = FirebaseAuthLoadingState();
-      ref
-          .read(authenticationRepositoryProvider)
-          .signIn(email: email, password: password);
+      state = LoadingState();
+      await _repository.signIn(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
-      state = FirebaseAuthErrorState(message: e.message);
+      state = ErrorState(message: e.message);
     }
   }
 
   Future<void> signUp({String email, password}) async {
     try {
-      state = FirebaseAuthLoadingState();
-      await ref
-          .read(authenticationRepositoryProvider)
-          .signUp(email: email, password: password);
+      state = LoadingState();
+      await _repository.signUp(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       Log.error(e.code);
       Log.error(e.message);
-      state = FirebaseAuthErrorState(message: e.message);
+      state = ErrorState(message: e.message);
     }
   }
 
   Future<void> signInWithGoogle() async {
     try {
-      state = FirebaseAuthLoadingState();
-      await ref.read(authenticationRepositoryProvider).signInWithGoogle();
+      state = LoadingState();
+      await _repository.signInWithGoogle();
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       Log.error(e.code);
       Log.error(e.message);
-      state = FirebaseAuthErrorState(message: e.message);
+      state = ErrorState(message: e.message);
     } catch (e, stackTrace) {
       Log.error(e.toString());
       Log.error(stackTrace.toString());
-      state = FirebaseAuthErrorState(message: "Something went wrong");
+      state = ErrorState(message: "Something went wrong");
     }
   }
 
@@ -62,18 +65,19 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
           this.user = user;
           try {
             setValue(USER_UID, this.user.uid);
+            print(this.user.uid);
           } catch (e, stackTrace) {
             Log.error(e);
             Log.error(stackTrace.toString());
+            state = ErrorState(message: e.toString());
           }
-          return state = FirebaseAuthSuccessState();
+          return state = SuccessState();
         } else {
-          return state = FirebaseAuthErrorState();
+          state = ErrorState(message: "Something went wrong");
         }
       },
     );
   }
 
-  Future<void> signOut() async =>
-      await ref.read(authenticationRepositoryProvider).signOut();
+  Future<void> signOut() async => await _repository.signOut();
 }

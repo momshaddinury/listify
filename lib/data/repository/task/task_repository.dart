@@ -7,17 +7,22 @@ import '../../../constant/shared_preference_key.dart';
 import '../../../feature/task_details/controllers/task_details_controller.dart';
 import '../../model/todo.dart';
 
-final taskRepositoryProvider = Provider((ref) => _TaskRepository(ref: ref));
+final taskRepositoryProvider = Provider((ref) => TaskRepository(ref: ref));
 
-class _TaskRepository {
+class TaskRepository {
   final Ref ref;
 
-  _TaskRepository({this.ref});
+  TaskRepository({this.ref});
+
   final CollectionReference tasksCollection =
       FirebaseFirestore.instance.collection('tasks');
 
-  CollectionReference get userTasksCollection =>
-      tasksCollection.doc(getStringAsync(USER_UID)).collection('usertasks');
+  CollectionReference get userTasksCollection {
+    print(getStringAsync(USER_UID));
+    return tasksCollection
+        .doc(getStringAsync(USER_UID))
+        .collection('usertasks');
+  }
 
   Stream<List<Todo>> pendingTasks() {
     Query userTasksQuery = userTasksCollection

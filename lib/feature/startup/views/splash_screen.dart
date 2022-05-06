@@ -2,13 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:listify/constant/shared_preference_key.dart';
-import 'package:listify/feature/authentication/controllers/authentication_provider.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/feature/authentication/helpers/auth_wrapper.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/utils/utils.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../../data/repository/authentication/authentication_repository.dart';
 
 class SplashScreen extends BaseView {
   @override

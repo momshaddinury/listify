@@ -7,7 +7,7 @@ import 'package:listify/utils/utils.dart';
 import 'package:listify/widgets/k_button.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../authentication/controllers/authentication_provider.dart';
+import '../../authentication/controllers/authentication_controller.dart';
 import '../../authentication/views/sign_up_screen.dart';
 
 class WelcomeScreen extends BaseView {
@@ -46,7 +46,7 @@ class _WelcomeScreenState extends BaseViewState<WelcomeScreen> {
           buttonText: 'Sign up with Google',
           assetIcon: ListifyAssets.google,
           onPressed: () =>
-              ref.read(firebaseAuthProvider.notifier).signInWithGoogle(),
+              ref.read(authenticationProvider.notifier).signInWithGoogle(),
         ),
         SizedBox(height: ListifySize.height(37)),
         KOutlinedButton.iconText(

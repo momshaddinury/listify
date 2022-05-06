@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/feature/authentication/controllers/authentication_provider.dart';
-import 'package:listify/feature/authentication/controllers/authentication_state.dart';
+import 'package:listify/core/base/base_state.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/feature/authentication/views/login_screen.dart';
@@ -9,6 +8,8 @@ import 'package:listify/utils/utils.dart';
 import 'package:listify/widgets/k_button.dart';
 import 'package:listify/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
+
+import '../controllers/authentication_controller.dart';
 
 class SignupScreen extends BaseView {
   SignupScreen({Key key}) : super(key: key);
@@ -26,11 +27,11 @@ class _SignupScreenState extends BaseViewState<SignupScreen> {
   @override
   void buildMethod() {
     ref.listen(
-      firebaseAuthProvider,
+      authenticationProvider,
       (_, state) {
-        if (state is FirebaseAuthSuccessState) {
+        if (state is SuccessState) {
           HomeScreen().pushAndRemoveUntil(context);
-        } else if (state is FirebaseAuthErrorState) {
+        } else if (state is ErrorState) {
           snackBar(context,
               title: state.message, backgroundColor: ListifyColors.charcoal);
         }
@@ -41,7 +42,7 @@ class _SignupScreenState extends BaseViewState<SignupScreen> {
 
   @override
   Widget body() {
-    final authState = ref.watch(firebaseAuthProvider);
+    final authState = ref.watch(authenticationProvider);
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -74,18 +75,17 @@ class _SignupScreenState extends BaseViewState<SignupScreen> {
         ),
         SizedBox(height: ListifySize.height(106)),
         KFilledButton(
-          buttonText: authState is FirebaseAuthLoadingState
-              ? 'Please wait'
-              : 'Create Account',
-          buttonColor: authState is FirebaseAuthLoadingState
+          buttonText:
+              authState is LoadingState ? 'Please wait' : 'Create Account',
+          buttonColor: authState is LoadingState
               ? ListifyColors.spaceCadet
               : ListifyColors.primary,
           onPressed: () {
-            if (!(authState is FirebaseAuthLoadingState)) {
+            if (!(authState is LoadingState)) {
               hideKeyboard(context);
               if (emailController.text.trim().isNotEmpty) {
                 if (passwordController.text == confirmPasswordController.text) {
-                  ref.read(firebaseAuthProvider.notifier).signUp(
+                  ref.read(authenticationProvider.notifier).signUp(
                         email: emailController.text,
                         password: passwordController.text,
                       );

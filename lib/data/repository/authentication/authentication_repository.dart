@@ -20,12 +20,13 @@ final getCurrentUserProvider = Provider<User>(
 );
 
 final authenticationRepositoryProvider =
-    Provider((ref) => _AuthenticationRepository(ref: ref));
+    Provider((ref) => AuthenticationRepository(ref: ref));
 
-class _AuthenticationRepository {
+class AuthenticationRepository {
   final Ref ref;
-  var _firebase;
-  _AuthenticationRepository({this.ref}) {
+  FirebaseAuth _firebase;
+
+  AuthenticationRepository({this.ref}) {
     _firebase = ref.read(firebaseProvider);
   }
 

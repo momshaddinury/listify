@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/feature/authentication/controllers/authentication_provider.dart';
 import 'package:listify/core/logger.dart';
 import 'package:listify/data/model/todo.dart';
 import 'package:listify/utils/navigation.dart';
@@ -13,6 +12,7 @@ import 'package:listify/widgets/k_button.dart';
 import 'package:listify/widgets/task_card.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../../authentication/controllers/authentication_controller.dart';
 import '../../create_task/views/create_task_screen.dart';
 import '../controllers/tasks_controller.dart';
 
@@ -51,7 +51,7 @@ class _HomeScreenState extends BaseViewState<HomeScreen> {
         pendingTasksStream.when(
             loading: () => CircularProgressIndicator.adaptive(),
             error: (e, stackTrace) {
-              Log.error(e);
+              Log.error(e.toString());
               Log.error(stackTrace.toString());
               return ErrorWidget(stackTrace);
             },
@@ -107,7 +107,7 @@ class _AppBarBuilder extends StatelessWidget with PreferredSizeWidget {
             Consumer(builder: (context, ref, _) {
               return GestureDetector(
                 onTap: () {
-                  ref.read(firebaseAuthProvider.notifier).signOut();
+                  ref.read(authenticationProvider.notifier).signOut();
                   LoginScreen().pushAndRemoveUntil(context);
                 },
                 child: Image.asset(

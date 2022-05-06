@@ -15,6 +15,6 @@ class SuccessState extends BaseState {
 }
 
 class ErrorState extends BaseState {
-  final String errorMessage;
-  const ErrorState(this.errorMessage);
+  final String message;
+  const ErrorState({this.message});
 }
