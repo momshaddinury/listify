@@ -17,20 +17,18 @@ final completedTasksProvider = StreamProvider<List<Todo>>((ref) {
 
 class _TasksController {
   final Ref ref;
-  var _repository;
-  _TasksController({this.ref}) {
-    _repository = ref.read(taskRepositoryProvider);
-  }
+
+  _TasksController({this.ref});
 
   void completeTask(uid) {
-    _repository.completeTask(uid);
+    ref.read(taskRepositoryProvider).completeTask(uid);
   }
 
   void undoCompleteTask(uid) {
-    _repository.undoCompleteTask(uid);
+    ref.read(taskRepositoryProvider).undoCompleteTask(uid);
   }
 
   void removeTodo(uid) {
-    _repository.removeTodo(uid);
+    ref.read(taskRepositoryProvider).removeTodo(uid);
   }
 }
