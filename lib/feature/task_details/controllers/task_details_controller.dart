@@ -13,8 +13,11 @@ final taskDetailsViewControllerProvider =
 
 class _TaskDetailsController {
   final Ref ref;
+  var _repository;
 
-  _TaskDetailsController({this.ref});
+  _TaskDetailsController({this.ref}) {
+    _repository = ref.read(taskRepositoryProvider);
+  }
 
   Future<void> updateTask(uid,
       {String title,
@@ -22,25 +25,24 @@ class _TaskDetailsController {
       String dateTime,
       String priority}) async {
     try {
-      ref.read(taskRepositoryProvider).updateTask(
-            uid,
-            title: title,
-            description: description,
-            dateTime: dateTime,
-            priority: priority,
-          );
+      _repository.updateTask(
+        uid,
+        title: title,
+        description: description,
+        dateTime: dateTime,
+        priority: priority,
+      );
     } catch (error, stackTrace) {
       Log.error(error);
       Log.error(stackTrace.toString());
     }
   }
 
-  void updateSubTask() => ref.read(taskRepositoryProvider).updateSubTask();
+  void updateSubTask() => _repository.updateSubTask();
 
-  void completeTask(uid) => ref.read(taskRepositoryProvider).completeTask(uid);
+  void completeTask(uid) => _repository.completeTask(uid);
 
-  void undoCompleteTask(uid) =>
-      ref.read(taskRepositoryProvider).undoCompleteTask(uid);
+  void undoCompleteTask(uid) => _repository.undoCompleteTask(uid);
 
-  void removeTodo(uid) => ref.read(taskRepositoryProvider).removeTodo(uid);
+  void removeTodo(uid) => _repository.removeTodo(uid);
 }
