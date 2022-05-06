@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/utils/utils.dart';
@@ -11,6 +10,7 @@ import 'package:listify/widgets/k_button.dart';
 import 'package:listify/widgets/task_card.dart';
 
 import '../../create_task/views/create_task_screen.dart';
+import '../controllers/tasks_controller.dart';
 
 class AllTasksScreen extends BaseView {
   @override
@@ -27,9 +27,7 @@ class _AllTasksScreenState extends BaseViewState<AllTasksScreen> {
   }
 
   @override
-  bool scrollable() {
-    return false;
-  }
+  bool scrollable() => false;
 
   @override
   Widget body() {

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
-import 'package:listify/model/todo.dart';
+import 'package:listify/data/model/todo.dart';
 import 'package:listify/utils/utils.dart';
 import 'package:listify/widgets/dropdown_menu.dart';
 import 'package:listify/widgets/k_textfield.dart';
 import 'package:listify/utils/debouncer.dart';
+
+import '../controllers/task_details_controller.dart';
 
 class TaskDetailsCard extends ConsumerStatefulWidget {
   @override
@@ -67,7 +68,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                     onChanged: (v) {
                       todoState.update((state) => state.copyWith(title: v));
                       _debouncer.run(() => ref
-                          .read(tasksProvider)
+                          .read(taskDetailsViewControllerProvider)
                           .updateTask(todoState.state.uid, title: v));
                     },
                   ),
@@ -82,7 +83,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
               onChanged: (v) => _debouncer.run(() {
                 todoState.update((state) => state.copyWith(description: v));
                 _debouncer.run(() => ref
-                    .read(tasksProvider)
+                    .read(taskDetailsViewControllerProvider)
                     .updateTask(todoState.state.uid, description: v));
               }),
             ),
@@ -96,7 +97,7 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
               onChanged: (v) {
                 todoState.update((state) => state.copyWith(dateTime: v));
                 _debouncer.run(() => ref
-                    .read(tasksProvider)
+                    .read(taskDetailsViewControllerProvider)
                     .updateTask(todoState.state.uid, dateTime: v));
               },
             ),
@@ -119,9 +120,10 @@ class _TaskCardState extends ConsumerState<TaskDetailsCard> {
                     onChange: () {
                       todoState.update((state) =>
                           state.copyWith(priority: priorityController.text));
-                      _debouncer.run(() => ref.read(tasksProvider).updateTask(
-                          todoState.state.uid,
-                          priority: priorityController.text));
+                      _debouncer.run(() => ref
+                          .read(taskDetailsViewControllerProvider)
+                          .updateTask(todoState.state.uid,
+                              priority: priorityController.text));
                     },
                   ),
                 ),

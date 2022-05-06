@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/feature/task_details/views/details_screen.dart';
 import 'package:listify/utils/utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../feature/home/controllers/tasks_controller.dart';
+import '../feature/task_details/controllers/task_details_controller.dart';
 
 class TaskCard extends ConsumerWidget {
   final Animation<double> animation;
@@ -114,9 +116,9 @@ class TaskCard extends ConsumerWidget {
                 InkWell(
                   onTap: () async {
                     if (!task.isCompleted)
-                      await ref.read(tasksProvider).completeTask(task.uid);
+                      ref.read(tasksProvider).completeTask(task.uid);
                     else
-                      await ref.read(tasksProvider).undoCompleteTask(task.uid);
+                      ref.read(tasksProvider).undoCompleteTask(task.uid);
                   },
                   child: Container(
                     margin: EdgeInsets.all(ListifySize.width(36)),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
-import 'package:listify/model/todo.dart';
+import 'package:listify/data/model/todo.dart';
+import 'package:listify/feature/task_details/controllers/task_details_controller.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/feature/task_details/widgets/sub_task_card.dart';
 import 'package:listify/core/base/base_view.dart';
@@ -27,6 +27,8 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
 
   @override
   Widget body() {
+    /// TODO: When completed it should Undo complete button
+
     final todoState = ref.watch(taskDetailsProvider.state);
 
     return Column(
@@ -50,13 +52,15 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
                 state.subTask.add(SubTask());
                 return state.copyWith(subTask: state.subTask);
               });
-              ref.read(tasksProvider).updateSubTask();
+              ref.read(taskDetailsViewControllerProvider).updateSubTask();
             }),
         SizedBox(height: ListifySize.height(90)),
         KFilledButton(
           buttonText: "Complete Task",
           onPressed: () async {
-            await ref.read(tasksProvider).completeTask(todoState.state.uid);
+            ref
+                .read(taskDetailsViewControllerProvider)
+                .completeTask(todoState.state.uid);
             Navigation.pop(context);
           },
         ),
@@ -67,7 +71,9 @@ class _DetailsScreenState extends BaseViewState<DetailsScreen> {
               .copyWith(color: ListifyColors.red.withOpacity(0.8)),
           borderColor: ListifyColors.red.withOpacity(0.8),
           onPressed: () async {
-            await ref.read(tasksProvider).removeTodo(todoState.state.uid);
+            ref
+                .read(taskDetailsViewControllerProvider)
+                .removeTodo(todoState.state.uid);
             Navigation.pop(context);
           },
         ),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/feature/authentication/controllers/authentication_provider.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/core/logger.dart';
-import 'package:listify/model/todo.dart';
+import 'package:listify/data/model/todo.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/feature/home/views/all_task_screen.dart';
@@ -15,6 +14,7 @@ import 'package:listify/widgets/task_card.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../../create_task/views/create_task_screen.dart';
+import '../controllers/tasks_controller.dart';
 
 class HomeScreen extends BaseView {
   @override

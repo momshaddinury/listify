@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
-import 'package:listify/model/todo.dart';
+import 'package:listify/data/model/todo.dart';
 import 'package:listify/utils/utils.dart';
 import 'package:listify/widgets/k_textfield.dart';
 import 'package:listify/utils/debouncer.dart';
+
+import '../controllers/task_details_controller.dart';
 
 class SubTaskCard extends ConsumerStatefulWidget {
   const SubTaskCard({
@@ -47,7 +48,7 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
             state.subTask.removeAt(widget.index);
             return state.copyWith(subTask: state.subTask);
           });
-          ref.read(tasksProvider).updateSubTask();
+          ref.read(taskDetailsViewControllerProvider).updateSubTask();
         },
         child: Container(
           decoration: BoxDecoration(
@@ -73,7 +74,9 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                           state.subTask[widget.index].title = value;
                           return state;
                         });
-                        ref.read(tasksProvider).updateSubTask();
+                        ref
+                            .read(taskDetailsViewControllerProvider)
+                            .updateSubTask();
                       });
                     },
                     textStyle: ListifyTextStyle.bodyText2()
@@ -91,7 +94,7 @@ class _SubTaskState extends ConsumerState<SubTaskCard> {
                   }
                   subTaskState.update(
                       (state) => state.copyWith(subTask: state.subTask));
-                  ref.read(tasksProvider).updateSubTask();
+                  ref.read(taskDetailsViewControllerProvider).updateSubTask();
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(

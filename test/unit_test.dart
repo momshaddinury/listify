@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
-import 'package:listify/model/todo.dart';
+import 'package:listify/data/model/todo.dart';
+import 'package:listify/feature/home/controllers/tasks_controller.dart';
 
 void main() {
   test('Pending Task List', () async {

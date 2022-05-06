@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:listify/feature/home/controllers/tasks_provider.dart';
+import 'package:listify/feature/create_task/controllers/create_task_controller.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/utils/utils.dart';
@@ -62,7 +62,7 @@ class _CreateTaskScreenState extends BaseViewState<CreateTaskScreen> {
             buttonText: "Add Task",
             onPressed: () async {
               if (taskTitleController.text.trim().isNotEmpty) {
-                await ref.read(tasksProvider).createNewTask(
+                await ref.read(createTaskProvider).createNewTask(
                       taskTitleController.text,
                       taskDetailsController.text,
                       dateTimeController.text,
