@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 
 void main() {
@@ -13,7 +13,8 @@ void main() {
 
     await container.read(pendingTasksProvider.future);
 
-    expect(container.read(pendingTasksProvider).value, [isA<Todo>().having((s) => s.isCompleted, 'is task completed', false)]);
+    expect(container.read(pendingTasksProvider).value,
+        [isA<Todo>().having((s) => s.isCompleted, 'is task completed', false)]);
   });
 
   test('Done Task List', () async {
@@ -25,6 +26,7 @@ void main() {
 
     await container.read(completedTasksProvider.future);
 
-    expect(container.read(completedTasksProvider).value, [isA<Todo>().having((s) => s.isCompleted, 'is task completed', true)]);
+    expect(container.read(completedTasksProvider).value,
+        [isA<Todo>().having((s) => s.isCompleted, 'is task completed', true)]);
   });
 }

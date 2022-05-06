@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/views/screens/auth/login_screen.dart';
+import 'package:listify/feature/authentication/views/login_screen.dart';
 import 'package:listify/utils/utils.dart';
-import 'package:listify/views/widgets/k_button.dart';
+import 'package:listify/widgets/k_button.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../../../controller/authentication/authentication_provider.dart';
-import '../auth/sign_up_screen.dart';
+import '../../authentication/controllers/authentication_provider.dart';
+import '../../authentication/views/sign_up_screen.dart';
 
 class WelcomeScreen extends BaseView {
   @override

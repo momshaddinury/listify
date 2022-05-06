@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/model/todo.dart';
 import 'package:listify/utils/utils.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
+import 'package:listify/widgets/k_textfield.dart';
 import 'package:listify/utils/debouncer.dart';
 
 class SubTaskCard extends ConsumerStatefulWidget {

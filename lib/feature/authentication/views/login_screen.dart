@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:listify/controller/authentication/authentication_provider.dart';
-import 'package:listify/controller/authentication/authentication_state.dart';
+import 'package:listify/feature/authentication/controllers/authentication_provider.dart';
+import 'package:listify/feature/authentication/controllers/authentication_state.dart';
 import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
-import 'package:listify/views/screens/auth/sign_up_screen.dart';
+import 'package:listify/feature/authentication/views/sign_up_screen.dart';
 import 'package:listify/utils/utils.dart';
-import 'package:listify/views/widgets/k_button.dart';
-import 'package:listify/views/widgets/k_textfield.dart';
+import 'package:listify/widgets/k_button.dart';
+import 'package:listify/widgets/k_textfield.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../home_screen.dart';
+import '../../home/views/home_screen.dart';
 
 class LoginScreen extends BaseView {
   @override

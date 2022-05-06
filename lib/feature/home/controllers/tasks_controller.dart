@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/constant/shared_preference_key.dart';
-import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/core/logger.dart';
 import 'package:nb_utils/nb_utils.dart';
 import 'package:intl/intl.dart';

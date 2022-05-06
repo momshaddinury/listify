@@ -4,7 +4,7 @@ import 'package:listify/utils/navigation.dart';
 import 'package:listify/core/base/base_view.dart';
 import 'package:listify/utils/colors.dart';
 import 'package:listify/utils/text_style.dart';
-import 'package:listify/views/widgets/k_app_bar.dart';
+import 'package:listify/widgets/k_app_bar.dart';
 
 class ErrorScreen extends BaseView {
   @override

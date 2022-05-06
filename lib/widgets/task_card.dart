@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:listify/controller/tasks/tasks_provider.dart';
+import 'package:listify/feature/home/controllers/tasks_provider.dart';
 import 'package:listify/utils/navigation.dart';
-import 'package:listify/views/screens/details/details_screen.dart';
+import 'package:listify/feature/task_details/views/details_screen.dart';
 import 'package:listify/utils/utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

@@ -13,11 +13,19 @@ final taskDetailsProvider = StateProvider<Todo>((ref) {
 });
 
 final pendingTasksProvider = StreamProvider<List<Todo>>((ref) {
-  Query userTasksQuery = ref.watch(tasksProvider).userTasksCollection.where("isCompleted", isEqualTo: false).orderBy("dateTime", descending: true);
+  Query userTasksQuery = ref
+      .watch(tasksProvider)
+      .userTasksCollection
+      .where("isCompleted", isEqualTo: false)
+      .orderBy("dateTime", descending: true);
   return userTasksQuery.snapshots().map(parseSnapshot);
 });
 
 final completedTasksProvider = StreamProvider<List<Todo>>((ref) {
-  Query userTasksQuery = ref.watch(tasksProvider).userTasksCollection.where("isCompleted", isEqualTo: true).orderBy("dateTime", descending: true);
+  Query userTasksQuery = ref
+      .watch(tasksProvider)
+      .userTasksCollection
+      .where("isCompleted", isEqualTo: true)
+      .orderBy("dateTime", descending: true);
   return userTasksQuery.snapshots().map(parseSnapshot);
 });

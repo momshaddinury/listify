@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:listify/utils/navigation.dart';
-import 'package:listify/views/screens/startup/splash_screen.dart';
+import 'package:listify/feature/startup/views/splash_screen.dart';
 import 'package:listify/utils/colors.dart';
 import 'package:listify/utils/theme.dart';
 import 'package:nb_utils/nb_utils.dart';

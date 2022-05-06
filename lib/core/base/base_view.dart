@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:listify/utils/connectivity.dart';
-import '../../views/screens/error_screen.dart';
-import 'package:listify/views/screens/error_screen.dart';
+import '../../feature/error/view/error_screen.dart';
+import 'package:listify/feature/error/view/error_screen.dart';
 
 class _BaseView {
   Widget build(BuildContext context) {
