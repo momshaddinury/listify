@@ -28,7 +28,7 @@ class _TaskRepository {
 
   Stream<List<Todo>> completedTasks() {
     Query userTasksQuery = userTasksCollection
-        .where("isCompleted", isEqualTo: false)
+        .where("isCompleted", isEqualTo: true)
         .orderBy("dateTime", descending: true);
     return userTasksQuery.snapshots().map(parseSnapshot);
   }

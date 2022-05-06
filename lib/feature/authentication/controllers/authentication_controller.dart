@@ -1,17 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/core/logger.dart';
+import 'package:listify/data/repository/authentication/authentication_repository.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import 'authentication_provider.dart';
 import 'authentication_state.dart';
 
 class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   final Ref ref;
-
   FirebaseAuthController({this.ref}) : super(FirebaseAuthInitialState());
 
   User user;
@@ -19,9 +16,9 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   Future<void> signIn({String email, password}) async {
     try {
       state = FirebaseAuthLoadingState();
-      await ref
-          .read(firebaseProvider)
-          .signInWithEmailAndPassword(email: email, password: password);
+      ref
+          .read(authenticationRepositoryProvider)
+          .signIn(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       state = FirebaseAuthErrorState(message: e.message);
@@ -32,8 +29,8 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     try {
       state = FirebaseAuthLoadingState();
       await ref
-          .read(firebaseProvider)
-          .createUserWithEmailAndPassword(email: email, password: password);
+          .read(authenticationRepositoryProvider)
+          .signUp(email: email, password: password);
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       Log.error(e.code);
@@ -45,23 +42,7 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
   Future<void> signInWithGoogle() async {
     try {
       state = FirebaseAuthLoadingState();
-      if (kIsWeb) {
-        final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
-        await ref.read(firebaseProvider).signInWithRedirect(googleAuthProvider);
-      } else {
-        final GoogleSignInAccount googleUser =
-            await ref.read(googleSignInProvider).signIn();
-
-        final GoogleSignInAuthentication googleSignInAuth =
-            await googleUser.authentication;
-
-        final OAuthCredential credential = GoogleAuthProvider.credential(
-          accessToken: googleSignInAuth.accessToken,
-          idToken: googleSignInAuth.idToken,
-        );
-
-        await ref.read(firebaseProvider).signInWithCredential(credential);
-      }
+      await ref.read(authenticationRepositoryProvider).signInWithGoogle();
       authStateChangeStatus();
     } on FirebaseAuthException catch (e) {
       Log.error(e.code);
@@ -93,8 +74,6 @@ class FirebaseAuthController extends StateNotifier<FirebaseAuthState> {
     );
   }
 
-  Future<void> signOut() async {
-    await ref.read(googleSignInProvider).signOut();
-    await ref.read(firebaseProvider).signOut();
-  }
+  Future<void> signOut() async =>
+      await ref.read(authenticationRepositoryProvider).signOut();
 }
