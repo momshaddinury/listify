@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:listify/services/navigation_service.dart';
-import 'package:listify/views/screens/startup/splash_screen.dart';
-import 'package:listify/views/styles/k_colors.dart';
-import 'package:listify/views/styles/k_theme.dart';
+import 'package:listify/utils/navigation.dart';
+import 'package:listify/feature/startup/views/splash_screen.dart';
+import 'package:listify/utils/colors.dart';
+import 'package:listify/utils/theme.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 Future<void> main() async {
@@ -35,19 +35,25 @@ class MyApp extends StatelessWidget {
       navigatorKey: Navigation.key,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        backgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,
-        scaffoldBackgroundColor: KTheme.darkMode() ? KColors.spaceCadet : KColors.white,
-        brightness: KTheme.darkMode() ? Brightness.dark : Brightness.light,
-        primaryColor: KColors.primary,
-        colorScheme: ThemeData().colorScheme.copyWith(secondary: KColors.accent),
-        primarySwatch: KColors.createMaterialColor(KColors.primary),
+        backgroundColor: ListifyTheme.darkMode()
+            ? ListifyColors.spaceCadet
+            : ListifyColors.white,
+        scaffoldBackgroundColor: ListifyTheme.darkMode()
+            ? ListifyColors.spaceCadet
+            : ListifyColors.white,
+        brightness:
+            ListifyTheme.darkMode() ? Brightness.dark : Brightness.light,
+        primaryColor: ListifyColors.primary,
+        colorScheme:
+            ThemeData().colorScheme.copyWith(secondary: ListifyColors.accent),
+        primarySwatch: ListifyColors.createMaterialColor(ListifyColors.primary),
         appBarTheme: AppBarTheme(
             iconTheme: IconThemeData(size: 16),
             actionsIconTheme: IconThemeData(size: 16),
-            backgroundColor: KColors.white,
+            backgroundColor: ListifyColors.white,
             elevation: 0,
             titleTextStyle: GoogleFonts.poppins(
-              color: KColors.charcoal,
+              color: ListifyColors.charcoal,
               fontWeight: FontWeight.w500,
             )),
         splashColor: Colors.transparent,
