@@ -7,12 +7,14 @@ import '../../../constant/shared_preference_key.dart';
 import '../../../feature/task_details/controllers/task_details_controller.dart';
 import '../../model/todo.dart';
 
-final taskRepositoryProvider = Provider((ref) => TaskRepository(ref: ref));
+final _taskRepoProvider = Provider((ref) => TaskRepository(ref: ref));
 
 class TaskRepository {
+  TaskRepository({this.ref});
+
   final Ref ref;
 
-  TaskRepository({this.ref});
+  static Provider<TaskRepository> get provider => _taskRepoProvider;
 
   final CollectionReference tasksCollection =
       FirebaseFirestore.instance.collection('tasks');

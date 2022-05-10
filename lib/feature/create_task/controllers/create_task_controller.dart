@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/data/repository/task/task_repository.dart';
+import 'package:listify/core/dependency/repository.dart';
 
 import '../../../core/logger.dart';
 
@@ -14,7 +14,7 @@ class _CreateTaskController {
       String title, description, dateTime, priority) async {
     try {
       ref
-          .read(taskRepositoryProvider)
+          .read(Repository.task)
           .createNewTask(title, description, dateTime, priority);
     } catch (error, stackTrace) {
       Log.error("createNewTask(): $error");

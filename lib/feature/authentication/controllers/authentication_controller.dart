@@ -4,21 +4,24 @@ import 'package:listify/constant/shared_preference_key.dart';
 import 'package:listify/core/base/base_state.dart';
 import 'package:listify/core/logger.dart';
 import 'package:listify/data/repository/authentication/authentication_repository.dart';
+import 'package:listify/core/dependency/repository.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 final authenticationProvider = StateNotifierProvider(
-  (ref) => _AuthenticationController(ref: ref),
+  (ref) => AuthenticationController(ref: ref),
 );
 
-class _AuthenticationController extends StateNotifier<BaseState> {
-  final Ref ref;
-  AuthenticationRepository _repository;
-
-  _AuthenticationController({this.ref}) : super(InitialState()) {
-    _repository = ref.watch(authenticationRepositoryProvider);
+class AuthenticationController extends StateNotifier<BaseState> {
+  AuthenticationController({this.ref}) : super(InitialState()) {
+    _repository = ref.watch(Repository.authentication);
   }
 
+  final Ref ref;
+  AuthenticationRepository _repository;
   User user;
+
+  static StateNotifierProvider<AuthenticationController, dynamic>
+      get controller => authenticationProvider;
 
   Future<void> signIn({String email, password}) async {
     try {

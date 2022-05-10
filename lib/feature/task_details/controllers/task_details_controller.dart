@@ -1,4 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:listify/core/dependency/repository.dart';
 import 'package:listify/data/repository/task/task_repository.dart';
 
 import '../../../core/logger.dart';
@@ -16,7 +17,7 @@ class _TaskDetailsController {
   TaskRepository _repository;
 
   _TaskDetailsController({this.ref}) {
-    _repository = ref.watch(taskRepositoryProvider);
+    _repository = ref.watch(Repository.task);
   }
 
   Future<void> updateTask(uid,

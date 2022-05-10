@@ -3,52 +3,41 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-final firebaseProvider = Provider<FirebaseAuth>((ref) {
-  return FirebaseAuth.instance;
-});
-
-final googleSignInProvider = Provider<GoogleSignIn>((ref) {
-  return GoogleSignIn();
-});
+import '../../../core/dependency/dependency.dart';
 
 final authStateChangesProvider = StreamProvider<User>(
-  (ref) => ref.watch(firebaseProvider).authStateChanges(),
+  (ref) => ref.watch(Dependency.firebaseAuth).authStateChanges(),
 );
 
-final getCurrentUserProvider = Provider<User>(
-  (ref) => ref.watch(firebaseProvider).currentUser,
-);
-
-final authenticationRepositoryProvider =
-    Provider((ref) => AuthenticationRepository(ref: ref));
+final _authRepoProvider = Provider((ref) => AuthenticationRepository(ref.read));
 
 class AuthenticationRepository {
-  final Ref ref;
-  FirebaseAuth _firebase;
-
-  AuthenticationRepository({this.ref}) {
-    _firebase = ref.read(firebaseProvider);
+  AuthenticationRepository(this.reader) {
+    _firebaseAuth = reader(Dependency.firebaseAuth);
   }
 
-  User user;
+  final Reader reader;
+  FirebaseAuth _firebaseAuth;
+
+  static Provider<AuthenticationRepository> get provider => _authRepoProvider;
 
   Future signIn({String email, password}) async {
-    await _firebase.signInWithEmailAndPassword(
+    await _firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }
 
   Future<void> signUp({String email, password}) async {
-    await _firebase.createUserWithEmailAndPassword(
+    await _firebaseAuth.createUserWithEmailAndPassword(
         email: email, password: password);
   }
 
   Future<void> signInWithGoogle() async {
     if (kIsWeb) {
       final GoogleAuthProvider googleAuthProvider = GoogleAuthProvider();
-      await _firebase.signInWithRedirect(googleAuthProvider);
+      await _firebaseAuth.signInWithRedirect(googleAuthProvider);
     } else {
       final GoogleSignInAccount googleUser =
-          await ref.read(googleSignInProvider).signIn();
+          await reader(Dependency.googleSignIn).signIn();
 
       final GoogleSignInAuthentication googleSignInAuth =
           await googleUser.authentication;
@@ -58,12 +47,12 @@ class AuthenticationRepository {
         idToken: googleSignInAuth.idToken,
       );
 
-      await _firebase.signInWithCredential(credential);
+      await _firebaseAuth.signInWithCredential(credential);
     }
   }
 
   Future<void> signOut() async {
-    await ref.read(googleSignInProvider).signOut();
-    await _firebase.signOut();
+    await reader(Dependency.googleSignIn).signOut();
+    await _firebaseAuth.signOut();
   }
 }
