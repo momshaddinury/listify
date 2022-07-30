@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:listify/utils/navigation.dart';
-import 'package:listify/feature/task_details/views/details_screen.dart';
-import 'package:listify/utils/utils.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import '../feature/home/controllers/tasks_controller.dart';
-import '../feature/task_details/controllers/task_details_controller.dart';
+import 'package:listify/feature/home/controllers/tasks_controller.dart';
+import 'package:listify/feature/task_details/controllers/task_details_controller.dart';
+import 'package:listify/feature/task_details/views/details_screen.dart';
+import 'package:listify/utils/navigation.dart';
+import 'package:listify/utils/utils.dart';
 
 class TaskCard extends ConsumerWidget {
+  TaskCard({
+    this.animation,
+    this.backgroundColor = ListifyColors.white,
+    this.borderOutline = true,
+  });
+
   final Animation<double> animation;
   final Color backgroundColor;
   final bool borderOutline;
-
-  TaskCard(
-      {this.animation,
-      this.backgroundColor = ListifyColors.white,
-      this.borderOutline = true});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -81,9 +81,10 @@ class TaskCard extends ConsumerWidget {
                                   Flexible(
                                     child: Text(
                                       task.title,
-                                      style: ListifyTextStyle.bodyText2()
-                                          .copyWith(
-                                              fontWeight: FontWeight.w600),
+                                      style:
+                                          ListifyTextStyle.bodyText2().copyWith(
+                                        fontWeight: FontWeight.w600,
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -101,11 +102,13 @@ class TaskCard extends ConsumerWidget {
                                     SizedBox(height: ListifySize.height(10)),
                                   ],
                                 ),
-                              Text(task.dateTime,
-                                  style: ListifyTextStyle.bodyText2().copyWith(
-                                    color: ListifyColors.charcoal
-                                        .withOpacity(0.70),
-                                  )),
+                              Text(
+                                task.dateTime,
+                                style: ListifyTextStyle.bodyText2().copyWith(
+                                  color:
+                                      ListifyColors.charcoal.withOpacity(0.70),
+                                ),
+                              ),
                             ],
                           ),
                         ),

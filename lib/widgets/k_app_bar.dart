@@ -4,10 +4,6 @@ import 'package:listify/utils/utils.dart';
 
 ///TODO: Leading icon should be optional
 class KAppBar extends AppBar {
-  final String titleText;
-  final VoidCallback onTap;
-  final Widget trailing;
-
   KAppBar({
     Key key,
     @required this.titleText,
@@ -39,4 +35,8 @@ class KAppBar extends AppBar {
             ),
           ),
         );
+
+  final String titleText;
+  final VoidCallback onTap;
+  final Widget trailing;
 }

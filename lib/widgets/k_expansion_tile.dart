@@ -17,18 +17,19 @@ class KExpansionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Theme(
       data: ThemeData().copyWith(
-          dividerColor: ListifyColors.transparent,
-          dividerTheme: DividerThemeData(
-            space: 0,
-            endIndent: 0,
-            indent: 0,
-            thickness: 0,
-          ),
-          listTileTheme: ListTileThemeData(
-            dense: true,
-            contentPadding: EdgeInsets.zero,
-            minVerticalPadding: 0,
-          )),
+        dividerColor: ListifyColors.transparent,
+        dividerTheme: DividerThemeData(
+          space: 0,
+          endIndent: 0,
+          indent: 0,
+          thickness: 0,
+        ),
+        listTileTheme: ListTileThemeData(
+          dense: true,
+          contentPadding: EdgeInsets.zero,
+          minVerticalPadding: 0,
+        ),
+      ),
       child: ExpansionTile(
         childrenPadding: EdgeInsets.zero,
         tilePadding: EdgeInsets.zero,

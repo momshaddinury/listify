@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:listify/utils/connectivity.dart';
-import '../../feature/error/view/error_screen.dart';
 import 'package:listify/feature/error/view/error_screen.dart';
+import 'package:listify/utils/connectivity.dart';
+
+import '../../feature/error/view/error_screen.dart';
 
 class _BaseView {
   Widget build(BuildContext context) {
@@ -18,14 +19,16 @@ class _BaseView {
                       ? SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
                           child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: defaultPadding() ? 25 : 0),
-                              child: body()),
+                            padding: EdgeInsets.symmetric(
+                                horizontal: defaultPadding() ? 25 : 0),
+                            child: body(),
+                          ),
                         )
                       : Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: defaultPadding() ? 25 : 0),
-                          child: body());
+                          child: body(),
+                        );
             },
             loading: () => CircularProgressIndicator.adaptive(),
             error: (e, stackTrace) => KErrorWidget());

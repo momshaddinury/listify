@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:listify/feature/task_details/views/details_screen.dart';
 import 'package:listify/utils/utils.dart';
-import 'package:intl/intl.dart';
 
 /// Used in [DetailsScreen]
 class KTextField extends StatelessWidget {
@@ -47,8 +47,9 @@ class KTextField extends StatelessWidget {
       maxLines: null,
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: ListifyTextStyle.subtitle2
-            .copyWith(color: ListifyColors.charcoal.withOpacity(0.40)),
+        hintStyle: ListifyTextStyle.subtitle2.copyWith(
+          color: ListifyColors.charcoal.withOpacity(0.40),
+        ),
         border: InputBorder.none,
         contentPadding: EdgeInsets.zero,
         isDense: true,
@@ -62,12 +63,12 @@ class KTextFormField extends StatefulWidget {
     this.hintText,
     this.hintTextStyle,
     this.controller,
+    this.padding,
     this.multiline = false,
     this.minimumLines = 1,
     this.isPasswordField = false,
     this.isCalenderField = false,
     this.background = ListifyColors.accent,
-    this.padding,
   });
 
   final String hintText;
@@ -90,11 +91,11 @@ class _KTextFormFieldState extends State<KTextFormField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: /*KTheme.darkMode() ? KColors.darkAccent : KColors.accent*/ widget
-          .background,
+      color: widget.background,
       child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: widget.padding ?? ListifySize.width(26)),
+          horizontal: widget.padding ?? ListifySize.width(26),
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -122,29 +123,31 @@ class _KTextFormFieldState extends State<KTextFormField> {
                 obscureText: widget.isPasswordField ? !isVisible : false,
                 controller: widget.controller,
                 decoration: InputDecoration(
-                    hintText: widget.hintText,
-                    hintStyle: widget.hintTextStyle ??
-                        ListifyTextStyle.bodyText1()
-                            .copyWith(color: ListifyColors.charcoal),
-                    border: InputBorder.none,
-                    suffixIcon: widget.isPasswordField
-                        ? GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                isVisible = !isVisible;
-                              });
-                            },
-                            child: Image.asset(
-                              isVisible
-                                  ? ListifyAssets.visibilityOn
-                                  : ListifyAssets.visibilityOff,
-                            ),
-                          )
-                        : null,
-                    suffixIconConstraints: BoxConstraints(
-                      maxHeight: ListifySize.height(25),
-                      minWidth: ListifySize.width(25),
-                    )),
+                  hintText: widget.hintText,
+                  hintStyle: widget.hintTextStyle ??
+                      ListifyTextStyle.bodyText1().copyWith(
+                        color: ListifyColors.charcoal,
+                      ),
+                  border: InputBorder.none,
+                  suffixIcon: widget.isPasswordField
+                      ? GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              isVisible = !isVisible;
+                            });
+                          },
+                          child: Image.asset(
+                            isVisible
+                                ? ListifyAssets.visibilityOn
+                                : ListifyAssets.visibilityOff,
+                          ),
+                        )
+                      : null,
+                  suffixIconConstraints: BoxConstraints(
+                    maxHeight: ListifySize.height(25),
+                    minWidth: ListifySize.width(25),
+                  ),
+                ),
               ),
             ),
           ],

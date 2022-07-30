@@ -15,10 +15,12 @@ class KDropdownField extends DropdownMenus {
           controller: controller,
           items: dropdownFieldOptions,
           onChange: callbackFunction,
-          hintTextStyle: ListifyTextStyle.bodyText1()
-              .copyWith(color: ListifyColors.charcoal),
-          itemTextStyle: ListifyTextStyle.bodyText1()
-              .copyWith(color: ListifyColors.charcoal),
+          hintTextStyle: ListifyTextStyle.bodyText1().copyWith(
+            color: ListifyColors.charcoal,
+          ),
+          itemTextStyle: ListifyTextStyle.bodyText1().copyWith(
+            color: ListifyColors.charcoal,
+          ),
           menuBackgroundColor: ListifyColors.accent,
           itemBackgroundColor: ListifyColors.accent,
         );

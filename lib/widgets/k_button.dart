@@ -9,10 +9,10 @@ class _KButton extends StatelessWidget {
   _KButton({
     @required this.child,
     @required this.onPressed,
+    this.border,
     this.backgroundColor = ListifyColors.primary,
     this.height = 50,
     this.width = double.infinity,
-    this.border,
   })  : assert(child != null),
         assert(onPressed != null);
 
@@ -58,8 +58,9 @@ class KFilledButton extends _KButton {
           child: Center(
             child: Text(
               buttonText,
-              style: ListifyTextStyle.buttonText()
-                  .copyWith(color: ListifyColors.white),
+              style: ListifyTextStyle.buttonText().copyWith(
+                color: ListifyColors.white,
+              ),
             ),
           ),
           onPressed: onPressed,
@@ -83,8 +84,9 @@ class KFilledButton extends _KButton {
               SizedBox(width: ListifySize.width(24)),
               Text(
                 buttonText,
-                style: ListifyTextStyle.bodyText2()
-                    .copyWith(color: ListifyColors.white),
+                style: ListifyTextStyle.bodyText2().copyWith(
+                  color: ListifyColors.white,
+                ),
               )
             ],
           ),

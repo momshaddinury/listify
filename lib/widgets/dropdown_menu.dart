@@ -48,7 +48,9 @@ class _DropdownMenusState extends State<DropdownMenus> {
   @override
   void initState() {
     super.initState();
-    if (widget.controller.text == null || widget.controller.text.isEmpty) widget.controller.text = 'Select an option';
+    if (widget.controller.text == null || widget.controller.text.isEmpty) {
+      widget.controller.text = 'Select an option';
+    }
   }
 
   void findWidget() {
@@ -97,7 +99,10 @@ class _DropdownMenusState extends State<DropdownMenus> {
                 widget.controller.text,
                 style: widget.hintTextStyle,
               ),
-              Visibility(visible: widget.showTrailing, child: widget.trailing),
+              Visibility(
+                visible: widget.showTrailing,
+                child: widget.trailing,
+              ),
             ],
           ),
         ),
@@ -107,54 +112,61 @@ class _DropdownMenusState extends State<DropdownMenus> {
 
   Widget _dropDownMenuBuilder(List<String> item) {
     return ListView.builder(
-        shrinkWrap: true,
-        padding: EdgeInsets.zero,
-        itemCount: item.length,
-        itemBuilder: (context, index) {
-          return InkWell(
-            onTap: () {
-              setState(() {
-                widget.controller.text = item[index];
-              });
-              if (widget.onChange != null) widget.onChange();
-              closeDropDownMenu();
-            },
-            child: Container(
-              width: _menuSize.width,
-              padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-              margin: EdgeInsets.only(bottom: itemsPadding),
-              decoration: BoxDecoration(color: widget.itemBackgroundColor),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Flexible(
-                      child: Text(
+      shrinkWrap: true,
+      padding: EdgeInsets.zero,
+      itemCount: item.length,
+      itemBuilder: (context, index) {
+        return InkWell(
+          onTap: () {
+            setState(() {
+              widget.controller.text = item[index];
+            });
+            if (widget.onChange != null) widget.onChange();
+            closeDropDownMenu();
+          },
+          child: Container(
+            width: _menuSize.width,
+            padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
+            margin: EdgeInsets.only(bottom: itemsPadding),
+            decoration: BoxDecoration(color: widget.itemBackgroundColor),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Flexible(
+                  child: Text(
                     item[index],
                     style: widget.itemTextStyle,
-                  )),
-                ],
-              ),
+                  ),
+                ),
+              ],
             ),
-          );
-        });
+          ),
+        );
+      },
+    );
   }
 
   OverlayEntry _overlayEntryBuilder() {
-    return OverlayEntry(builder: (context) {
-      return Stack(
-        children: [
-          Positioned.fill(
-            child: GestureDetector(
-              onTap: () => closeDropDownMenu(),
+    return OverlayEntry(
+      builder: (context) {
+        return Stack(
+          children: [
+            Positioned.fill(
+              child: GestureDetector(
+                onTap: () => closeDropDownMenu(),
+              ),
             ),
-          ),
-          Positioned(
+            Positioned(
               top: _menuPosition.dy + _menuSize.height + 5,
               left: _menuPosition.dx,
               width: _menuSize.width,
-              child: Material(child: _dropDownMenuBuilder(widget.items))),
-        ],
-      );
-    });
+              child: Material(
+                child: _dropDownMenuBuilder(widget.items),
+              ),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
