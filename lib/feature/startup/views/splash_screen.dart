@@ -24,7 +24,8 @@ class _SplashScreenState extends BaseViewState<SplashScreen> {
 
   initialize() async {
     Timer(Duration(milliseconds: 1000), () {
-      /// Checking if app is Newly Installed / User is logged in / User is not logged in
+      /// Checking if app is Newly Installed / User is logged in / User is not
+      /// logged in
       if (getBoolAsync(NEW_INSTALL, defaultValue: true)) {
         setValue(NEW_INSTALL, false);
         ref.read(authenticationProvider.notifier).signOut();
