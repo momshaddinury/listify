@@ -33,10 +33,10 @@
 
 ## Project Environment:
 ```
-Flutter 2.5.3 • channel stable • https://github.com/flutter/flutter.git
-Framework • revision 18116933e7 (4 weeks ago) • 2021-10-15 10:46:35 -0700
-Engine • revision d3ea636dc5
-Tools • Dart 2.14.4
+1. Flutter 2.5.3 • channel stable • https://github.com/flutter/flutter.git
+2. Framework • revision 18116933e7 (4 weeks ago) • 2021-10-15 10:46:35 -0700
+3. Engine • revision d3ea636dc5
+4. Tools • Dart 2.14.4
 ```
 
 ## Code Flow:
